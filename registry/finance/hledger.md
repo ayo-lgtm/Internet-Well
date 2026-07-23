@@ -1,8 +1,10 @@
 ---
 name: hledger
-category: finance-operations
+category: finance
 subcategory: bookkeeping
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/simonmichael/hledger
 website: https://hledger.org

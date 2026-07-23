@@ -1,8 +1,10 @@
 ---
 name: BorgBackup
-category: operations-backups
+category: operations
 subcategory: backup-restore
 status: approved
+tier: C
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/borgbackup/borg
 website: https://www.borgbackup.org

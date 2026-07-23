@@ -1,8 +1,10 @@
 ---
 name: Syft
-category: security-engineering
+category: security
 subcategory: sbom-generation
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/anchore/syft
 website: https://anchore.com/opensource

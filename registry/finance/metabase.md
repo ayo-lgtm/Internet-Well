@@ -1,8 +1,10 @@
 ---
 name: Metabase (Open Source edition)
-category: finance-operations
+category: finance
 subcategory: business-intelligence
 status: approved-with-restrictions
+tier: C
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/metabase/metabase
 website: https://www.metabase.com

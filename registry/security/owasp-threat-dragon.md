@@ -1,8 +1,10 @@
 ---
 name: OWASP Threat Dragon
-category: security-engineering
+category: security
 subcategory: threat-modeling
 status: approved
+tier: C
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/OWASP/threat-dragon
 website: https://owasp.org/www-project-threat-dragon/

@@ -1,8 +1,10 @@
 ---
 name: Trivy
-category: security-engineering
+category: security
 subcategory: dependency-scanning-sbom
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/aquasecurity/trivy
 website: https://trivy.dev

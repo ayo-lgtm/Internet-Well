@@ -2,13 +2,13 @@ name: Verify registry
 
 on:
   push:
-    paths: ["registry/**", "tools/**"]
+    paths: ["registry/**", "automation/**", "schemas/**"]
   pull_request:
-    paths: ["registry/**", "tools/**"]
+    paths: ["registry/**", "automation/**", "schemas/**"]
   schedule:
     # Weekly staleness sweep (Mondays 06:00 UTC). Entries older than the
     # 90-day re-verification window fail the run, implementing the
-    # Phase 4 loop in PHASES.md.
+    # continuous-verification loop in PHASES.md.
     - cron: "0 6 * * 1"
 
 jobs:
@@ -16,5 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Lint registry consistency and staleness
-        run: python3 tools/verify_registry.py --max-age 90
+      - name: Lint registry consistency, tier rules, and staleness
+        run: python3 automation/verify_registry.py --max-age 90
+      - name: Check INDEX.md is regenerated
+        run: python3 automation/build_index.py --check

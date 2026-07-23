@@ -1,8 +1,10 @@
 ---
 name: Grype
-category: security-engineering
+category: security
 subcategory: vulnerability-scanning
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/anchore/grype
 website: https://anchore.com/opensource

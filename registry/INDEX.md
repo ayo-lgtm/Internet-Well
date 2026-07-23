@@ -1,108 +1,93 @@
 # Registry Index
 
-61 entries as of 2026-07-23 (Phase 4) — 55 validated records (42 approved,
-12 approved-with-restrictions, 1 experimental) + 6 preserved rejections;
-22 records execution-tested. Counts are machine-checked by
-`tools/verify_registry.py` (which caught an off-by-one in the previous
-hand-counted header).
-Statuses: ✅ approved · ⚠️ approved-with-restrictions · 🧪 experimental ·
-❌ rejected. Scores per METHODOLOGY §5; standards/templates unscored by
-design. `tested` = sandboxed execution test performed (¹ = tested at a
-distro version, not the pin — see record).
+**GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-## Approved
+55 records as of 2026-07-23 — 42 approved, 12 approved-with-restrictions, 1 experimental. Tiers: 38×B, 17×C. Execution-tested: 22. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
-| Name | Function | Type | License | Version pinned | Score | Tested |
-|---|---|---|---|---|---|---|
-| [Gitleaks](security/gitleaks.md) | Secrets detection | tool | MIT | v8.30.1 | 84 | ✅ |
-| [Trivy](security/trivy.md) | Vuln/misconfig/SBOM scanning | tool | Apache-2.0 | v0.72.0 | 89 | – |
-| [ZAP](security/zaproxy.md) | DAST | tool | Apache-2.0 | v2.17.0 | 85 | – |
-| [Syft](security/syft.md) | SBOM generation | tool | Apache-2.0 | v1.49.0 | 86 | ✅ |
-| [Grype](security/grype.md) | Vulnerability scanning | tool | Apache-2.0 | v0.116.0 | 85 | – |
-| [OWASP Threat Dragon](security/owasp-threat-dragon.md) | Threat modeling | tool | Apache-2.0 | v2.6.2 | 75 | – |
-| [OWASP ASVS](security/owasp-asvs.md) | Security requirements | standard | CC-BY-SA-4.0 | v5.0.0 | n/a | n/a |
-| [OpenSSF Scorecard](security/openssf-scorecard.md) | Supply-chain health | tool | Apache-2.0 | v5.5.0 | 84 | – |
-| [Playwright](testing-quality/playwright.md) | E2E testing | framework | Apache-2.0 | 1.61.1 | 90 | ✅ |
-| [pytest](testing-quality/pytest.md) | Python testing | framework | MIT | 9.1.1 | 91 | ✅ |
-| [Vitest](testing-quality/vitest.md) | JS/TS testing | framework | MIT | 4.1.10 | 87 | ✅ |
-| [Ruff](testing-quality/ruff.md) | Python lint/format | tool | MIT | 0.15.22 | 88 | ✅ |
-| [pre-commit](testing-quality/pre-commit.md) | Git hook manager | framework | MIT | 4.6.1 | 85 | ✅ |
-| [OpenTofu](devops/opentofu.md) | Infrastructure as code | tool | MPL-2.0 | v1.12.5 | 86 | ✅ |
-| [Prometheus](devops/prometheus.md) | Metrics + alerting | tool | Apache-2.0 | v3.13.1 | 88 | – |
-| [Uptime Kuma](devops/uptime-kuma.md) | Uptime + status page | tool | MIT | 2.4.0 | 78 | – |
-| [restic](operations/restic.md) | Backups | tool | BSD-2-Clause | v0.19.1 | 87 | ✅ |
-| [BorgBackup](operations/borgbackup.md) | Backups | tool | BSD-3-Clause | 1.4.5 | 78 | – |
-| [PagerDuty IR Docs](operations/pagerduty-incident-response.md) | Incident response process | reference | Apache-2.0 | master | n/a | n/a |
-| [axe-core](design-ux/axe-core.md) | Accessibility testing | tool | MPL-2.0 | 4.12.1 | 88 | ✅ |
-| [GOV.UK Frontend](design-ux/govuk-frontend.md) | Design system | framework | MIT | 6.4.0 | 85 | ✅ |
-| [Penpot](design-ux/penpot.md) | Design/prototyping | tool | MPL-2.0 | 2.17.0 | 80 | – |
-| [Umami](marketing-analytics/umami.md) | Web analytics | tool | MIT | v3.2.0 | 79 | – |
-| [hledger](finance/hledger.md) | Bookkeeping | tool | GPL-3.0-or-later | 1.52.1 | 80 | ✅¹ |
-| [ScanCode Toolkit](compliance/scancode-toolkit.md) | License compliance | tool | Apache-2.0 + CC-BY-4.0 | 32.5.0 | 82 | ✅ |
-| [NIST AI RMF](compliance/nist-ai-rmf.md) | AI governance | standard | Public domain (US) | AI 100-1 / 600-1 | n/a | n/a |
-| [Inspect AI](ai-engineering/inspect-ai.md) | LLM evaluation | framework | MIT | 0.3.249 | 84 | ✅ |
-| [OWASP LLM Top 10](ai-engineering/owasp-llm-top10.md) | AI security risks | standard | CC-BY-SA-4.0 | v2.0 | n/a | n/a |
-| [fastlane](mobile/fastlane.md) | Mobile release automation | tool | MIT | 2.237.0 | 82 | – |
-| [OWASP MASVS](mobile/owasp-masvs.md) | Mobile security standard | standard | CC-BY-SA-4.0 | v2.1.0 | n/a | n/a |
-| [MADR](product-strategy/madr.md) | Decision records | template | MIT OR CC0-1.0 | 4.0.0 | n/a | n/a |
-| [OpenAPI Spec](product-strategy/openapi-specification.md) | API contract standard | standard | Apache-2.0 | 3.2.0 | n/a | n/a |
-| [Lighthouse](marketing-analytics/lighthouse.md) | SEO/perf/a11y audits | tool | Apache-2.0 | 13.4.1 | 88 | ✅ |
-| [checkdmarc](marketing-analytics/checkdmarc.md) | Email auth validation | tool | Apache-2.0 | 5.17.3 | 79 | ✅ |
-| [GitLab Handbook](product-strategy/gitlab-handbook.md) | Company-ops reference | reference | MIT | rolling | n/a | n/a |
-| [Open Source Guides](product-strategy/opensource-guide.md) | OSS strategy | reference | CC-BY-4.0 | rolling | n/a | n/a |
-| [Common Paper agreements](operations/common-paper-csa.md) | Legal templates (counsel required) | template | CC-BY-4.0 | CSA v2.1 | n/a | n/a |
-| [PostgreSQL](devops/postgresql.md) | Database | tool | PostgreSQL | 16.13 | 93 | ✅ |
-| [FastAPI](devops/fastapi.md) | Backend API framework | framework | MIT | 0.139.2 | 87 | ✅ |
-| [dbmate](devops/dbmate.md) | Schema migrations | tool | MIT | v2.34.1 | 83 | ✅ |
-| [parsedmarc](marketing-analytics/parsedmarc.md) | DMARC report analysis | tool | Apache-2.0 | 10.2.4 | 80 | ✅ |
-| [C4 Model](product-strategy/c4-model.md) | Architecture diagrams | standard | CC-BY-4.0 | current | n/a | n/a |
+Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
-## Approved with restrictions
+## ✅ approved (42)
 
-| Name | Function | Restriction summary | Score | Tested |
-|---|---|---|---|---|
-| [Semgrep CE](security/semgrep.md) | SAST | LGPL engine ✔; official rules non-OSS (internal use only); telemetry with registry configs | 78 | ✅ |
-| [Grafana](devops/grafana.md) | Dashboards | AGPL-3.0 network copyleft; open-core; 28-GHSA history → prompt updates mandatory | 83 | – |
-| [Plausible CE](marketing-analytics/plausible-ce.md) | Web analytics | AGPL-3.0; CE trails cloud; ClickHouse ops weight | 81 | – |
-| [listmonk](marketing-analytics/listmonk.md) | Newsletter/email | AGPL-3.0; single-maintainer; needs external SMTP | 79 | – |
-| [Chatwoot](sales-support/chatwoot.md) | Support desk | MIT core but `enterprise/` proprietary; verify 2026-07 advisory fix in pin | 80 | – |
-| [Twenty](sales-support/twenty.md) | CRM | AGPL core + per-file `@license Enterprise` markers | 76 | – |
-| [EspoCRM](sales-support/espocrm.md) | CRM (mature) | AGPL-3.0; paid proprietary extensions at edges | 79 | – |
-| [Metabase OSS](finance/metabase.md) | BI dashboards | AGPL + in-repo commercial editions; embedding terms | 80 | – |
-| [Documenso](operations/documenso.md) | E-signature | AGPL; enterprise boundary unverified; counsel on validity | 76 | – |
-| [Business Model Canvas](product-strategy/business-model-canvas.md) | Business modeling | CC-BY-SA-3.0 attribution + ShareAlike on derivatives | n/a | n/a |
-| [Scrapy](product-strategy/scrapy.md) | Market-research data collection | Legal/ethical crawl constraints are user's burden | 84 | ✅ |
-| [Renovate](devops/renovate.md) | Dependency updates | AGPL-3.0 (2025 relicense from MIT); repo write access | 82 | – |
+| Name | Category | Tier | Function | License | Pinned | Score | Tested |
+|---|---|---|---|---|---|---|---|
+| [axe-core](design/axe-core.md) | design | B | accessibility-testing | MPL-2.0 | 4.12.1 (npm, published 2026-06-10) | 88 | ✅ |
+| [GOV.UK Frontend (GOV.UK Design System)](design/govuk-frontend.md) | design | B | design-system | MIT | 6.4.0 (npm, published 2026-07-16) | 85 | ✅ |
+| [Penpot](design/penpot.md) | design | C | design-tool | MPL-2.0 | 2.17.0 (2026-07-22) | 80 | – |
+| [FastAPI](engineering/fastapi.md) | engineering | B | backend-api-framework | MIT | 0.139.2 (PyPI, published 2026-07-16) | 87 | ✅ |
+| [Inspect AI](engineering/inspect-ai.md) | engineering | B | llm-evaluation | MIT | 0.3.249 (PyPI, published 2026-07-21) | 84 | ✅ |
+| [OWASP Top 10 for LLM Applications / GenAI Security Project](engineering/owasp-llm-top10.md) | engineering | B | ai-security-standard | CC-BY-SA-4.0 | v2.0 list (2024-11-18 release; project… | n/a | n/a |
+| [Playwright](engineering/playwright.md) | engineering | B | e2e-testing | Apache-2.0 | @playwright/test 1.61.1 (npm, publishe… | 90 | ✅ |
+| [PostgreSQL](engineering/postgresql.md) | engineering | B | database | PostgreSQL (OSI-approved, BSD-like) | 16.13 (tested; current majors 16–18 su… | 93 | ✅ |
+| [pre-commit](engineering/pre-commit.md) | engineering | B | git-hooks | MIT | 4.6.1 (PyPI, published 2026-07-21) | 85 | ✅ |
+| [pytest](engineering/pytest.md) | engineering | B | unit-testing-python | MIT | 9.1.1 (PyPI, published 2026-06-19) | 91 | ✅ |
+| [Ruff](engineering/ruff.md) | engineering | B | linting-formatting-python | MIT | 0.15.22 (PyPI, published 2026-07-16) | 88 | ✅ |
+| [Vitest](engineering/vitest.md) | engineering | B | unit-testing-javascript | MIT | 4.1.10 (npm, published 2026-07-06) | 87 | ✅ |
+| [hledger](finance/hledger.md) | finance | B | bookkeeping | GPL-3.0-or-later | 1.52.1 (2026-04-28) | 80 | ✅ |
+| [dbmate](launch-maintenance/dbmate.md) | launch-maintenance | B | database-migrations | MIT | v2.34.1 (commit ddd00ff09d2034168072bc… | 83 | ✅ |
+| [fastlane](launch-maintenance/fastlane.md) | launch-maintenance | C | release-automation | MIT | 2.237.0 (2026-07-05) | 82 | – |
+| [Common Paper Standard Agreements (CSA, DPA, SLA, NDA family)](legal-compliance/common-paper-csa.md) | legal-compliance | B | legal-templates | CC-BY-4.0 | CSA v2.1 (2024-11-05) | n/a | n/a |
+| [NIST AI Risk Management Framework (AI RMF 1.0)](legal-compliance/nist-ai-rmf.md) | legal-compliance | B | ai-governance | Public domain (US federal government work, 17 U.S.C. §105) | AI RMF 1.0 (NIST AI 100-1, 2023-01-26)… | n/a | n/a |
+| [ScanCode Toolkit](legal-compliance/scancode-toolkit.md) | legal-compliance | B | license-compliance | Apache-2.0 AND CC-BY-4.0 (license/data files) per PyPI expression | 32.5.0 (PyPI, published 2026-01-15) | 82 | ✅ |
+| [checkdmarc](marketing/checkdmarc.md) | marketing | B | email-deliverability | Apache-2.0 | 5.17.3 (PyPI, published 2026-06-23) | 79 | ✅ |
+| [Lighthouse](marketing/lighthouse.md) | marketing | B | seo-performance-audit | Apache-2.0 | 13.4.1 (npm, published 2026-07-20) | 88 | ✅ |
+| [parsedmarc](marketing/parsedmarc.md) | marketing | B | email-deliverability | Apache-2.0 | 10.2.4 (PyPI, published 2026-07-20) | 80 | ✅ |
+| [Umami](marketing/umami.md) | marketing | C | web-analytics | MIT | v3.2.0 (2026-06-24) | 79 | – |
+| [BorgBackup](operations/borgbackup.md) | operations | C | backup-restore | BSD-3-Clause | 1.4.5 (PyPI, latest stable 1.x) | 78 | – |
+| [OpenTofu](operations/opentofu.md) | operations | B | infrastructure-as-code | MPL-2.0 | v1.12.5 (commit 230349e959a44fb8eb7b83… | 86 | ✅ |
+| [PagerDuty Incident Response Documentation](operations/pagerduty-incident-response.md) | operations | B | incident-response-process | Apache-2.0 | master (127 commits as of 2026-07-23; … | n/a | n/a |
+| [Prometheus](operations/prometheus.md) | operations | B | monitoring-metrics | Apache-2.0 | v3.13.1 (Go module v0.313.1, commit 73… | 88 | – |
+| [restic](operations/restic.md) | operations | B | backup-restore | BSD-2-Clause | v0.19.1 (2026-07-05) | 87 | ✅ |
+| [Uptime Kuma](operations/uptime-kuma.md) | operations | C | uptime-monitoring | MIT | 2.4.0 (2026-05-31) | 78 | – |
+| [C4 Model](product/c4-model.md) | product | B | architecture-documentation | CC-BY-4.0 | current site (model stable since ~2011… | n/a | n/a |
+| [GitLab Handbook](product/gitlab-handbook.md) | product | B | company-operations-reference | MIT (repository license) | rolling (104k+ commits; pin by commit … | n/a | n/a |
+| [MADR (Markdown Architectural Decision Records)](product/madr.md) | product | B | decision-records | MIT OR CC0-1.0 (user's choice) | 4.0.0 (2024-09-17) | n/a | n/a |
+| [Open Source Guides (opensource.guide)](product/opensource-guide.md) | product | B | open-source-strategy | CC-BY-4.0 (content); code under licenses listed in notices.md | rolling (5,459 commits; pin by commit … | n/a | n/a |
+| [OpenAPI Specification (OAS)](product/openapi-specification.md) | product | B | api-design-standard | Apache-2.0 | 3.2.0 (2025-09-19) | n/a | n/a |
+| [Gitleaks](security/gitleaks.md) | security | B | secrets-detection | MIT | v8.30.1 (commit 8d1f98c7967eb1e79cb44a… | 84 | ✅ |
+| [Grype](security/grype.md) | security | B | vulnerability-scanning | Apache-2.0 | v0.116.0 (commit 3b014b00097d43933e5cc… | 85 | – |
+| [OpenSSF Scorecard](security/openssf-scorecard.md) | security | B | supply-chain-security | Apache-2.0 | v5.5.0 (commit c395761df6afe1a69e476bc… | 84 | – |
+| [OWASP Application Security Verification Standard (ASVS)](security/owasp-asvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v5.0.0 (May 2025) | n/a | n/a |
+| [OWASP MASVS (Mobile Application Security Verification Standard)](security/owasp-masvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v2.1.0 (2024-01-18) | n/a | n/a |
+| [OWASP Threat Dragon](security/owasp-threat-dragon.md) | security | C | threat-modeling | Apache-2.0 | v2.6.2 (2026-05-10) | 75 | – |
+| [Syft](security/syft.md) | security | B | sbom-generation | Apache-2.0 | v1.49.0 (commit 29fd7d0dec81cf03e0a119… | 86 | ✅ |
+| [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.72.0 (commit 8a32853686209a428179bb… | 89 | – |
+| [ZAP (Zed Attack Proxy)](security/zaproxy.md) | security | C | dast | Apache-2.0 | v2.17.0 (2025-12-15) | 85 | – |
 
-## Experimental
+## ⚠️ approved-with-restrictions (12)
 
-| Name | Function | Why not yet approved |
-|---|---|---|
-| [promptfoo](ai-engineering/promptfoo.md) | Prompt testing/red-teaming | Telemetry + open-core audits and execution test outstanding |
+| Name | Category | Tier | Function | License | Pinned | Score | Tested |
+|---|---|---|---|---|---|---|---|
+| [Metabase (Open Source edition)](finance/metabase.md) | finance | C | business-intelligence | AGPL-3.0 (OSS edition); commercial editions under Metabase Commercial License in same repo | v0.63.1 OSS (release "63.1", 2026-07-2… | 80 | – |
+| [Renovate](launch-maintenance/renovate.md) | launch-maintenance | C | dependency-updates | AGPL-3.0-only | 43.278.3 (npm, published 2026-07-22) | 82 | – |
+| [Documenso](legal-compliance/documenso.md) | legal-compliance | C | e-signature | AGPL-3.0 (root LICENSE); packages/ee enterprise directory present — audit before use | v2.15.0 (2026-07-21) | 76 | – |
+| [listmonk](marketing/listmonk.md) | marketing | C | email-newsletter | AGPL-3.0 | v6.2.0 (2026-06-26) | 79 | – |
+| [Plausible Analytics (Community Edition)](marketing/plausible-ce.md) | marketing | C | web-analytics | AGPL-3.0-or-later (JS tracker snippet MIT) | v3.2.1 (2026-05-15) | 81 | – |
+| [Scrapy](marketing/scrapy.md) | marketing | B | data-collection | BSD-3-Clause | 2.17.0 (PyPI, published 2026-07-07) | 84 | ✅ |
+| [Chatwoot](operations/chatwoot.md) | operations | C | customer-support | MIT (core); enterprise/ directory under proprietary enterprise license | v4.16.0 (2026-07-18) | 80 | – |
+| [EspoCRM](operations/espocrm.md) | operations | C | crm | AGPL-3.0 | 10.0.3 (2026-07-17) | 79 | – |
+| [Grafana](operations/grafana.md) | operations | C | observability-dashboards | AGPL-3.0-only (with per-directory Apache-2.0 exceptions per LICENSING.md) | v13.1.1 (2026-07-21) | 83 | – |
+| [Twenty](operations/twenty.md) | operations | C | crm | AGPL-3.0 (core); files marked "@license Enterprise" under Twenty Commercial License | v2.23.0 (2026-07-22) | 76 | – |
+| [Business Model Canvas](product/business-model-canvas.md) | product | B | business-modeling | CC-BY-SA-3.0 | canonical single-page canvas (stable s… | n/a | n/a |
+| [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 
-## Rejected — see [REJECTED.md](REJECTED.md)
+## 🧪 experimental (1)
 
-Terraform (BUSL-1.1) · Sentry self-hosted (FSL-1.1) · n8n (Sustainable Use
-License) · Invoice Ninja v5 (Elastic License 2.0) · Crater (abandoned
-since 2022) · Shape Up (free-to-read, no open license)
+| Name | Category | Tier | Function | License | Pinned | Score | Tested |
+|---|---|---|---|---|---|---|---|
+| [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
 
-## Recheck required — see [RECHECK.md](RECHECK.md)
+## Coverage
 
-Scorecard scores, OSV sweep completion, release-signature verification,
-Docker-requiring deployment tests, and the Phase 2 items listed there.
+| Category | Records |
+|---|---|
+| design | 3 |
+| engineering | 10 |
+| finance | 2 |
+| launch-maintenance | 3 |
+| legal-compliance | 4 |
+| marketing | 7 |
+| operations | 10 |
+| product | 6 |
+| security | 10 |
 
-## Coverage map vs the 15 scope areas
-
-All 15 scope areas now have at least one validated entry: CEO/strategy
-(4), market research (1 — Scrapy, data-collection with legal
-restrictions), product/PRD-adjacent standards (MADR, OpenAPI, C4),
-architecture (C4, MADR), engineering (PostgreSQL, FastAPI + the testing
-stack), testing/quality (5), security (8), compliance incl. privacy/
-licensing/AI governance (2 + ScanCode), design/UX/accessibility (3),
-DevOps/CI/monitoring/backups/incident response (10+), launch prep
-(fastlane, MASVS, Lighthouse), marketing/SEO/email (7), sales/CRM/support
-(3), finance/BI (2), post-launch maintenance (Renovate, dbmate,
-advisory-sweep practice). **Remaining thin spots, held open honestly**
-(see [PHASES.md](../PHASES.md)): PRD templates with real provenance,
-customer-success playbooks, keyword/rank tooling, forecasting beyond
-hledger budgets + Metabase — no candidate met the evidence bar yet.
+Known thin spots, held open honestly (see [PHASES.md](../PHASES.md)): PRD templates with real provenance, customer-success playbooks, keyword/rank tooling, forecasting beyond hledger budgets + Metabase.

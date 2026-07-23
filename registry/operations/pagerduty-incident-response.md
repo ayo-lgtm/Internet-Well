@@ -1,8 +1,10 @@
 ---
 name: PagerDuty Incident Response Documentation
-category: operations-incident-response
+category: operations
 subcategory: incident-response-process
 status: approved
+tier: B
+human_reviewed: false
 type: reference-implementation
 canonical_repo: https://github.com/PagerDuty/incident-response-docs
 website: https://response.pagerduty.com

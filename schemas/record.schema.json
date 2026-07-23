@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "founder-os/record.schema.json",
+  "title": "Founder OS registry record front matter",
+  "type": "object",
+  "required": ["name", "category", "subcategory", "status", "tier",
+               "human_reviewed", "type", "website", "pinned_version",
+               "license", "score", "confidence", "tested",
+               "last_verified"],
+  "properties": {
+    "name": {"type": "string", "minLength": 1},
+    "category": {"enum": ["engineering", "security", "product", "design",
+                           "legal-compliance", "marketing", "finance",
+                           "operations", "launch-maintenance"]},
+    "subcategory": {"type": "string", "minLength": 1},
+    "status": {"enum": ["approved", "approved-with-restrictions",
+                         "experimental", "rejected", "recheck-required"]},
+    "tier": {"enum": ["A", "B", "C"]},
+    "human_reviewed": {"type": "boolean"},
+    "type": {"enum": ["tool", "framework", "template", "standard",
+                       "reference-implementation", "agent-skill"]},
+    "canonical_repo": {"type": "string"},
+    "website": {"type": "string"},
+    "pinned_version": {"type": "string", "minLength": 1},
+    "license": {"type": "string", "minLength": 1,
+                 "description": "SPDX identifier; open-core boundaries annotated inline"},
+    "score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "tested": {"enum": [true, false, "not-applicable"]},
+    "last_verified": {"type": "string",
+                       "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"tier": {"const": "A"}}},
+      "then": {
+        "properties": {
+          "status": {"const": "approved"},
+          "tested": {"const": true},
+          "confidence": {"const": "high"},
+          "human_reviewed": {"const": true}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "experimental"}}},
+      "then": {"properties": {"tier": {"const": "C"}}}
+    }
+  ]
+}

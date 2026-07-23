@@ -74,7 +74,7 @@ Still open for later passes:
 
 Implemented this pass:
 
-- **Verification tooling**: `tools/verify_registry.py` lints every
+- **Verification tooling**: `automation/verify_registry.py` (then tools/) lints every
   record's front matter (schema, status values, INDEX cross-references)
   and flags entries whose `last_verified` exceeds 90 days; wired into CI
   (`.github/workflows/verify-registry.yml`) on push/PR + weekly cron.
@@ -100,4 +100,32 @@ Standing loop (the ongoing Phase 4 process):
 3. Advisory check per touch: GitHub security tab (reachable) + OSV/
    Scorecard once network access permits.
 4. Environment-blocked debts (Scorecard API, OSV API, Docker deployment
-   tests, RubyGems) remain enumerated in registry/RECHECK.md.
+   tests, RubyGems) remain enumerated in evidence/RECHECK.md.
+
+## Phase 5 — founder-os restructure (DONE, 2026-07-23)
+
+Per the founder's design directive:
+
+- Records reorganized into nine registry categories (engineering,
+  security, product, design, legal-compliance, marketing, finance,
+  operations, launch-maintenance); finer functions preserved in
+  `subcategory` front matter.
+- New top-level structure: `skills/` (approved/experimental/deprecated —
+  none approved yet, bar documented), `evaluations/` (execution-test
+  transcript), `licenses/` (obligations matrix), `evidence/` (policy +
+  RECHECK ledger), `schemas/` (record contract, MD + JSON Schema),
+  `workflows/` (adopt-a-dependency, re-verify-entry, incident-response
+  bootstrap, launch checklist), `rejected/` (tier-D docket),
+  `automation/` (linter + generated index).
+- A/B/C/D tier model added to every record with enforced rules: Tier A
+  requires human review — always, and non-negotiably in sensitive areas;
+  initial state is 0×A, 38×B, 17×C, 6×D. `human_reviewed` may only be
+  set by a person.
+- `registry/INDEX.md` is now generated (`automation/build_index.py`),
+  eliminating the hand-count drift class; CI checks both linter and
+  index freshness.
+- README now states the no-vendoring rationale and the honest
+  cannot-guarantee list; METHODOLOGY §1a names the standard verification
+  signals (OpenSSF Scorecard, SLSA, SPDX, dependency graph, Dependabot)
+  with the explicit caveat that signals are evidence, not proof of
+  safety.

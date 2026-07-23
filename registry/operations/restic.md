@@ -1,8 +1,10 @@
 ---
 name: restic
-category: operations-backups
+category: operations
 subcategory: backup-restore
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/restic/restic
 website: https://restic.net

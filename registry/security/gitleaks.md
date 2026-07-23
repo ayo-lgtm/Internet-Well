@@ -1,8 +1,10 @@
 ---
 name: Gitleaks
-category: security-engineering
+category: security
 subcategory: secrets-detection
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/gitleaks/gitleaks
 website: https://gitleaks.io

@@ -1,8 +1,10 @@
 ---
 name: Semgrep CE (Community Edition)
-category: security-engineering
+category: security
 subcategory: sast
 status: approved-with-restrictions
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/semgrep/semgrep
 website: https://semgrep.dev

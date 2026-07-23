@@ -24,6 +24,34 @@ must follow this protocol; entries that do not follow it must be marked
 claims, GitHub stars. Stars may be recorded as context but never justify
 approval.
 
+## 1a. Standard verification signals
+
+The verification foundation uses these named, defensible signals:
+
+- **OpenSSF Scorecard** — automated open-source security-health checks
+  (API access noted per environment; see §4)
+- **SLSA** — build integrity and software provenance levels; recorded
+  where releases publish provenance/attestations
+- **SPDX** — standardized license identifiers and SBOM data (used in
+  every record's `license` field and in Syft/Trivy SBOM output)
+- **GitHub dependency graph** — dependency, license, and vulnerability
+  visibility for hosted repos
+- **GitHub Dependabot alerts** — known-vulnerable dependency signals
+
+These signals do not prove a repository is safe. They provide defensible
+verification evidence; interpretation and acceptance remain judgments,
+and sensitive areas additionally require human review (§5a).
+
+## 1b. No vendoring
+
+The registry never copies upstream repositories into this repository.
+Copies create license/attribution complications, rapidly outdated code,
+unpatched vulnerabilities, enormous history, dependency conflicts,
+upstream-tracking difficulty, and malicious-code exposure. Every record
+points to a pinned upstream release (with a VCS hash where obtainable).
+Fork only when you actually need to modify or preserve a project — and
+only after confirming its license allows the intended use.
+
 ## 2. Mandatory validation checklist
 
 Every record must capture (or explicitly mark `unknown` with a reason):
@@ -118,6 +146,30 @@ Scores are comparative judgments grounded in the recorded evidence; the
 per-dimension notes in each record explain deductions. A high score is not a
 warranty.
 
+## 5a. Approval tiers (A/B/C/D)
+
+Every record carries a `tier` in addition to its status and score:
+
+| Tier | Meaning |
+|---|---|
+| **A** | Strong primary evidence, active maintenance, suitable license, strong security posture, reproducibly tested — **and reviewed by a competent human** |
+| **B** | Generally reliable but has documented limitations or dependencies |
+| **C** | Promising and useful for experimentation; insufficient evidence for critical work |
+| **D** | Rejected: abandoned, unsafe, legally unsuitable, or unverifiable (recorded in `rejected/README.md`) |
+
+Enforced rules (`automation/verify_registry.py`):
+
+- Tier A requires status `approved`, `tested: true`, `confidence: high`,
+  and `human_reviewed: true`. **Automated scoring alone can never produce
+  Tier A** — in sensitive areas (security, legal-compliance, finance,
+  privacy, production deployment) this is non-negotiable, and the rule is
+  applied registry-wide for consistency.
+- `human_reviewed` is set by a person after reviewing the record and its
+  evidence; agents must never set it.
+- Experimental records are always Tier C.
+- The registry's initial state is zero Tier A — every entry was validated
+  by agent research; founders promote entries after their own review.
+
 ## 6. Hard disqualification rules
 
 A resource is `rejected` regardless of score if any of the following holds:
@@ -141,25 +193,14 @@ constraints).
 
 ## 7. Record schema
 
-Each record is a Markdown file with YAML front matter:
-
-```yaml
-name: ""
-category: ""            # one of the 15 scope areas
-subcategory: ""
-status: ""              # approved | approved-with-restrictions | experimental | rejected | recheck-required
-type: ""                # tool | framework | template | standard | reference-implementation | agent-skill
-canonical_repo: ""
-website: ""
-pinned_version: ""      # release tag or commit verified
-license: ""             # SPDX id; note open-core boundaries in body
-score: 0                # per rubric; omit for standards/templates where execution dimensions don't apply
-confidence: ""          # high | medium | low
-tested: false           # sandboxed execution test performed
-last_verified: ""       # YYYY-MM-DD
-```
+The record front-matter contract lives in
+[`schemas/record-schema.md`](schemas/record-schema.md) (human-readable)
+and [`schemas/record.schema.json`](schemas/record.schema.json)
+(machine-readable), and is enforced by `automation/verify_registry.py` —
+including the tier rules from §5a. Categories are the nine registry
+directories; finer functions go in `subcategory`.
 
 Body sections: What it does · When to use · When not to use · Evidence
-(with claim tags and sources) · Validation results · Security findings ·
-Legal/licensing findings · Installation · Agent integration · Required
-human review · Score notes.
+(with claim tags and sources — see `evidence/README.md`) · Validation
+results · Security findings · Legal/licensing findings · Installation ·
+Agent integration · Required human review · Score notes.

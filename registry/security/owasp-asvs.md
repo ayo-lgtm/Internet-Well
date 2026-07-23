@@ -1,8 +1,10 @@
 ---
 name: OWASP Application Security Verification Standard (ASVS)
-category: security-engineering
+category: security
 subcategory: security-standard
 status: approved
+tier: B
+human_reviewed: false
 type: standard
 canonical_repo: https://github.com/OWASP/ASVS
 website: https://owasp.org/www-project-application-security-verification-standard/

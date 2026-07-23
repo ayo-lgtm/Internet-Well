@@ -1,8 +1,10 @@
 ---
 name: ZAP (Zed Attack Proxy)
-category: security-engineering
+category: security
 subcategory: dast
 status: approved
+tier: C
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/zaproxy/zaproxy
 website: https://www.zaproxy.org

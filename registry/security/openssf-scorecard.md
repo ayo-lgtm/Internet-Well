@@ -1,8 +1,10 @@
 ---
 name: OpenSSF Scorecard
-category: security-engineering
+category: security
 subcategory: supply-chain-security
 status: approved
+tier: B
+human_reviewed: false
 type: tool
 canonical_repo: https://github.com/ossf/scorecard
 website: https://scorecard.dev
