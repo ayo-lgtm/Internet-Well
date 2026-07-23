@@ -9,8 +9,8 @@ website: https://aboutcode.org
 pinned_version: 32.5.0 (PyPI, published 2026-01-15)
 license: Apache-2.0 AND CC-BY-4.0 (license/data files) per PyPI expression
 score: 82
-confidence: medium
-tested: false
+confidence: high
+tested: true
 last_verified: 2026-07-23
 ---
 
@@ -42,9 +42,13 @@ actually shipping?" Feeds SBOM/attribution workflows.
 - Professional provenance: nexB / AboutCode org; used by major OSS
   compliance programs and the ClearlyDefined project `[C]`
 
-## Validation results
-- Not execution-tested this pass (large install with native deps; Phase 2
-  smoke test: scan a small mixed-license fixture).
+## Validation results (sandboxed test, 2026-07-23, Phase 2)
+- `pip install scancode-toolkit==32.5.0` in fresh venv — reproducible
+  (large install; several minutes)
+- Scanned a C-file fixture containing an SPDX MIT header and a copyright
+  line: detected `mit` license expression and
+  `Copyright (c) 2026 Example Corp` exactly; JSON output well-formed.
+  Fully offline.
 
 ## Security findings
 - Local scanning; no code egress `[M]`

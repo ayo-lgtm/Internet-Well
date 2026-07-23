@@ -50,9 +50,13 @@ Prometheus.
 ## Security findings
 - Ships with default admin credentials on first run — change immediately;
   keep it off the public internet or behind SSO `[C]` — official hardening
-  docs. No unresolved material advisories located this pass; note Grafana
-  has had serious CVEs historically (e.g. path traversal CVE-2021-43798),
-  all patched in current majors `[C]` — advisory records; keep updated.
+  docs.
+- Advisory sweep (2026-07-23): repository publishes **28 GHSA advisories**
+  with a functioning disclosure process `[V]` — GitHub security tab;
+  history includes Critical-severity issues (privilege-escalation race,
+  path traversal CVE-2021-43798), patched in current majors `[V]`/`[C]`.
+  Consequence: Grafana must be on a prompt update cadence; do not pin and
+  forget.
 
 ## Legal / licensing findings
 - AGPL-3.0-only: commercial use and SaaS permitted; network-use source

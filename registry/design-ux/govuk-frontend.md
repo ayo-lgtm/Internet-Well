@@ -10,7 +10,7 @@ pinned_version: 6.4.0 (npm, published 2026-07-16)
 license: MIT
 score: 85
 confidence: high
-tested: false
+tested: true
 last_verified: 2026-07-23
 ---
 
@@ -42,9 +42,12 @@ accessible-by-default UI patterns.
 - Components documented with user-research rationale `[M]` — design-system
   site
 
-## Validation results
-- Not execution-tested this pass (visual framework; Phase 2: render + axe
-  scan of sample components).
+## Validation results (sandboxed test, 2026-07-23, Phase 2)
+- `npm i govuk-frontend@6.4.0` — reproducible; dist bundle present
+- Rendered a form group (label+input) and button with the package's
+  compiled CSS in headless Chromium: components styled correctly
+  (computed styles applied), and an axe-core 4.12.1 scan of the rendered
+  page reported **zero violations**
 
 ## Security findings
 - Static assets; no network egress `[I]`

@@ -17,17 +17,31 @@ Tranches:
 - **1d Rejection docket**: commonly recommended tools that fail the
   open-source disqualification rules, with license evidence preserved.
 
-## Phase 2 — Depth and execution testing (PLANNED)
+## Phase 2 — Depth and execution testing (IN PROGRESS, started 2026-07-23)
 
-- Sandboxed execution tests for entries marked `tested: false` where an
-  environment with clone access is available
-- OpenSSF Scorecard retrieval for all entries (blocked by network policy in
-  Phase 1 — see METHODOLOGY §4)
-- Mobile engineering, iOS/Android toolchains, App Store / Play launch
-  checklists
-- AI engineering and AI governance (evaluation harnesses, model/dataset
-  license analysis, NIST AI RMF alignment)
-- Backup/restore, incident response, on-call and postmortem templates
+Completed this pass:
+
+- Execution tests closed for syft (SPDX SBOM generation), scancode-toolkit
+  (license+copyright detection), hledger (distro version; double-entry
+  roundtrip), govuk-frontend (render + clean axe scan), restic (full
+  encrypted backup→restore→verify roundtrip), Inspect AI (offline eval via
+  mock model); OpenTofu and Trivy source-build attempts documented
+  (including the finding that `go install` is not a supported OpenTofu
+  install path)
+- GitHub advisory sweep for the PII-holding server apps (Grafana 28 GHSAs,
+  Chatwoot 4 incl. 2026 SQLi, Uptime Kuma 10+ incl. 2026 SSTI) — recorded
+  in the affected records
+- New tranches: operations (restic, BorgBackup, PagerDuty incident
+  response), mobile (fastlane, OWASP MASVS), AI engineering/governance
+  (Inspect AI, OWASP LLM Top 10, NIST AI RMF, promptfoo as experimental)
+
+Still open (carried in RECHECK.md):
+
+- OpenSSF Scorecard API and OSV API remain blocked from this environment
+- Docker-requiring server deployments (daemon unavailable in sandbox):
+  Grafana, Penpot, Chatwoot, Twenty, Plausible, Umami, listmonk, ZAP,
+  Prometheus, Uptime Kuma, Threat Dragon
+- BorgBackup executable retest; promptfoo telemetry audit before approval
 
 ## Phase 3 — Breadth completion (PLANNED)
 

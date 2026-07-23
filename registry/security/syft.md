@@ -10,7 +10,7 @@ pinned_version: v1.49.0 (commit 29fd7d0dec81cf03e0a1194a1985c7c893bb2396)
 license: Apache-2.0
 score: 86
 confidence: high
-tested: false
+tested: true
 last_verified: 2026-07-23
 ---
 
@@ -38,12 +38,15 @@ Pairs natively with Grype for vulnerability matching.
 - Supports signed SBOM attestations via in-toto/cosign `[M]` — documented;
   not exercised this pass
 
-## Validation results
-- Not execution-tested this pass; install is reproducible via pinned
-  `go install github.com/anchore/syft/cmd/syft@v1.49.0` or versioned
-  Docker/Homebrew packages `[V]` (methods verified as documented; the
-  project's curl|sh installer exists but pinned package-manager installs
-  are preferred per methodology)
+## Validation results (sandboxed test, 2026-07-23, Phase 2)
+- Built from source at v1.49.0 via
+  `go install github.com/anchore/syft/cmd/syft@v1.49.0` (module proxy,
+  verifiable hash) — reproducible
+- Generated an SPDX SBOM from a real npm project directory: exit 0, valid
+  `SPDX-2.3` JSON produced (manifest-level packages cataloged for the
+  minimal fixture). Fully offline.
+- The project's curl|sh installer exists but pinned package-manager
+  installs are preferred per methodology
 
 ## Security findings
 - Operates offline on local targets; no code egress `[M]`

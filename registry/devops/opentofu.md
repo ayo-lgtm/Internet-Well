@@ -10,7 +10,7 @@ pinned_version: v1.12.5 (commit 230349e959a44fb8eb7b83754f9d9b012f3bdb42)
 license: MPL-2.0
 score: 86
 confidence: high
-tested: false
+tested: true
 last_verified: 2026-07-23
 ---
 
@@ -43,13 +43,16 @@ created after HashiCorp relicensed Terraform to the non-open-source BUSL
 - Active release cadence (multiple minor/patch releases per year) `[V]` —
   release history
 
-## Validation results
-- Not execution-tested this pass (provisioning real infrastructure requires
-  cloud credentials, which the isolated research environment intentionally
-  lacks; a plan-only local test is a Phase 2 item)
-- Installation reproducibility: versioned packages and
-  `go install github.com/opentofu/opentofu/cmd/tofu@v1.12.5` `[V]`
-  (documented; not run)
+## Validation results (sandboxed test, 2026-07-23, Phase 2)
+- **`go install` is NOT a supported install path** — verified by attempt:
+  upstream go.mod contains replace directives that `go install` rejects.
+  Use official binaries/packages, or build from source.
+- Built from source at v1.12.5 (module-proxy download, verifiable hash;
+  `go build ./cmd/tofu`) — reproducible
+- Ran a full local lifecycle on a providerless config:
+  `init` → `plan` → `apply` → `output` all exit 0, computed output
+  correct (`answer = 42`). Cloud-provider provisioning not tested
+  (isolated environment holds no credentials by design).
 
 ## Security findings
 - State files can contain secrets in plaintext — encrypt state (OpenTofu
@@ -61,7 +64,9 @@ created after HashiCorp relicensed Terraform to the non-open-source BUSL
   copyleft only (modified MPL files must remain MPL). No network copyleft.
 
 ## Installation
-Distro packages, official releases, or pinned `go install` (above).
+Official release binaries/packages (get.opentofu.org) pinned to v1.12.5,
+or source build (`go build ./cmd/tofu`). `go install` does not work —
+see validation results.
 
 ## Agent integration
 Agents may generate and `tofu plan` changes; **`tofu apply` must be

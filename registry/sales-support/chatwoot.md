@@ -47,8 +47,15 @@ responses, and automation rules.
 
 ## Security findings
 - Holds customer PII and conversation history — same data-protection
-  surface as a CRM; no unresolved material advisories located; `[U]`
-  Scorecard
+  surface as a CRM
+- Advisory sweep (2026-07-23): SECURITY.md present; **4 published GHSA
+  advisories**, including recent ones — High SQL injection in filter API
+  (2026-05-05) and Moderate cross-account resource transfer (2026-07-16)
+  `[V]` — GitHub security tab. Published advisories indicate a working
+  disclosure process; the 2026-07-16 advisory predates pinned v4.16.0
+  (2026-07-18) release by two days — **verify the fix landed in v4.16.0
+  before deploying** (RECHECK item)
+- Scorecard `[U]`
 
 ## Legal / licensing findings
 - MIT core: commercial use, SaaS permitted. Enterprise-directory features

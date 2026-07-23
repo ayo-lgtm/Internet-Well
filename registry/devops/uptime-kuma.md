@@ -46,7 +46,14 @@ replacement.
 - Status pages are public by design — review what monitor names/URLs reveal
   about your infrastructure `[I]`
 - Keep the admin UI off the public internet or behind auth proxy `[I]`
-- No unresolved material advisories located this pass; Scorecard `[U]`
+- Advisory sweep (2026-07-23): security policy present; **10+ published
+  GHSA advisories**, recent ones in 2026 (Moderate SSTI arbitrary-file-read
+  via notification templates 2026-03-16; Moderate unauthorized ping-badge
+  data leak 2026-03-11; Low stored XSS in RSS feed 2026-02-08) `[V]` —
+  GitHub security tab. Pinned 2.4.0 (2026-05-31) postdates these
+  advisories; treat prompt upgrades as mandatory for internet-facing
+  status pages.
+- Scorecard `[U]`
 
 ## Legal / licensing findings
 - MIT — commercial use, SaaS, redistribution permitted.

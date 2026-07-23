@@ -10,7 +10,7 @@ pinned_version: 1.52.1 (2026-04-28)
 license: GPL-3.0-or-later
 score: 80
 confidence: medium
-tested: false
+tested: true  # at Ubuntu distro version 1.30.1; pinned upstream 1.52.1 untested
 last_verified: 2026-07-23
 ---
 
@@ -41,9 +41,14 @@ currency, budgeting. Your books live in git-versionable text you own.
   (ledger, beancount) `[I]`
 - Strong regression-testing practice `[M]` — project documentation
 
-## Validation results
-- Not execution-tested this pass (Haskell binary install exceeded session
-  budget; Phase 2 — good smoke-test candidate: journal in, balance out).
+## Validation results (sandboxed test, 2026-07-23, Phase 2)
+- Tested at **Ubuntu noble's packaged 1.30.1** (upstream 1.52.1 binary was
+  not fetchable in the research environment — version gap noted honestly)
+- Wrote a two-transaction journal (opening balance + expense);
+  `hledger balance` returned arithmetically correct double-entry balances
+  (assets 960, equity −1000, expenses 40) and `hledger check` passed,
+  both exit 0, fully offline
+- Journal file format is stable across these versions `[C]` — docs
 
 ## Security findings
 - Fully local; no network egress; books are files you must back up and

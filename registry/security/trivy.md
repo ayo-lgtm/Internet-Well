@@ -41,13 +41,15 @@ secrets, and license issues; generates SBOMs (SPDX, CycloneDX).
   projects; not re-verified individually this pass
 - Not archived; active commit history (4,100+ commits) `[V]`
 
-## Validation results
-- Not execution-tested this pass (Go compile of the full scanner exceeded
-  the session budget; official binaries could not be fetched because
-  GitHub release-asset downloads were blocked by the research environment's
-  network policy). Marked for Phase 2 execution test.
-- Installation reproducibility: pinned `go install` and versioned Docker
-  images available `[V]` (methods documented; not run)
+## Validation results (attempted Phase 2, 2026-07-23)
+- Source build at v0.72.0 failed in the research sandbox under both Go
+  1.24.7 and an explicit go1.26.5 toolchain (stdlib `encoding/json/v2`
+  build-constraint conflict — an environment/toolchain artifact, not
+  independently reproduced elsewhere). Official binaries/Docker images
+  were not fetchable (network policy).
+- Consequence: still not execution-tested; primary install path for users
+  remains the official binaries/Docker images `[V]` (documented; not run).
+  Remains on the RECHECK list.
 
 ## Security findings
 - Runtime behavior: downloads its vulnerability DB from ghcr.io on first
