@@ -33,6 +33,8 @@ re-recommend them.
 | `registry/<category>/*.md` | One structured record per resource (YAML front matter + narrative evidence) |
 | [`registry/REJECTED.md`](registry/REJECTED.md) | Rejected candidates with preserved reasons |
 | [`registry/RECHECK.md`](registry/RECHECK.md) | Entries needing re-verification and why |
+| [`VERIFICATION-LOG.md`](VERIFICATION-LOG.md) | Reproducible record of every execution test (and failed attempts) |
+| [`tools/verify_registry.py`](tools/verify_registry.py) | Consistency linter + 90-day staleness check (runs in CI weekly) |
 
 ## Honest limitations
 

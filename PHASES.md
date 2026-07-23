@@ -70,9 +70,34 @@ Still open for later passes:
 - Keyword/rank tooling; social scheduling (candidates are mostly SaaS or
   unproven — needs deeper discovery)
 
-## Phase 4 — Continuous verification (PLANNED)
+## Phase 4 — Continuous verification (ACTIVE, started 2026-07-23)
 
-- 90-day re-verification sweep driven by `last_verified` dates
-- CVE/advisory monitoring for approved entries
-- License-change detection (several Phase 1 rejections were relicensing
-  events; this is a recurring risk)
+Implemented this pass:
+
+- **Verification tooling**: `tools/verify_registry.py` lints every
+  record's front matter (schema, status values, INDEX cross-references)
+  and flags entries whose `last_verified` exceeds 90 days; wired into CI
+  (`.github/workflows/verify-registry.yml`) on push/PR + weekly cron.
+  Its first run caught a hand-count error in INDEX.md.
+- **RECHECK closures**: Chatwoot advisory fix confirmed at pin;
+  Documenso open-core boundary verified (`packages/ee` exists, root
+  LICENSE pure AGPL); parsedmarc promoted from candidate to tested
+  record.
+- **Remaining scope-gap fills with execution tests**: PostgreSQL (live
+  server DDL/DML), FastAPI (TestClient roundtrip), dbmate (full
+  migration up/insert/rollback on SQLite), Scrapy (extraction core),
+  parsedmarc (offline aggregate-report parse); plus Renovate (dependency
+  maintenance; AGPL relicense documented) and C4 Model (architecture
+  notation).
+
+Standing loop (the ongoing Phase 4 process):
+
+1. Weekly CI run fails when any entry crosses the 90-day window →
+   re-verify that entry per METHODOLOGY, update `last_verified`.
+2. On every entry touch: re-read the license at the new pin (license
+   drift is the registry's most-observed failure mode: Terraform,
+   Sentry, n8n, Grafana, Renovate all relicensed).
+3. Advisory check per touch: GitHub security tab (reachable) + OSV/
+   Scorecard once network access permits.
+4. Environment-blocked debts (Scorecard API, OSV API, Docker deployment
+   tests, RubyGems) remain enumerated in registry/RECHECK.md.

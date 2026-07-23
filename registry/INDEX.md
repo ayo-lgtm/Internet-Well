@@ -1,7 +1,10 @@
 # Registry Index
 
-53 entries as of 2026-07-23 (Phase 3) — 47 validated records (36 approved,
-10 approved-with-restrictions, 1 experimental) + 6 preserved rejections.
+61 entries as of 2026-07-23 (Phase 4) — 55 validated records (42 approved,
+12 approved-with-restrictions, 1 experimental) + 6 preserved rejections;
+22 records execution-tested. Counts are machine-checked by
+`tools/verify_registry.py` (which caught an off-by-one in the previous
+hand-counted header).
 Statuses: ✅ approved · ⚠️ approved-with-restrictions · 🧪 experimental ·
 ❌ rejected. Scores per METHODOLOGY §5; standards/templates unscored by
 design. `tested` = sandboxed execution test performed (¹ = tested at a
@@ -48,6 +51,11 @@ distro version, not the pin — see record).
 | [GitLab Handbook](product-strategy/gitlab-handbook.md) | Company-ops reference | reference | MIT | rolling | n/a | n/a |
 | [Open Source Guides](product-strategy/opensource-guide.md) | OSS strategy | reference | CC-BY-4.0 | rolling | n/a | n/a |
 | [Common Paper agreements](operations/common-paper-csa.md) | Legal templates (counsel required) | template | CC-BY-4.0 | CSA v2.1 | n/a | n/a |
+| [PostgreSQL](devops/postgresql.md) | Database | tool | PostgreSQL | 16.13 | 93 | ✅ |
+| [FastAPI](devops/fastapi.md) | Backend API framework | framework | MIT | 0.139.2 | 87 | ✅ |
+| [dbmate](devops/dbmate.md) | Schema migrations | tool | MIT | v2.34.1 | 83 | ✅ |
+| [parsedmarc](marketing-analytics/parsedmarc.md) | DMARC report analysis | tool | Apache-2.0 | 10.2.4 | 80 | ✅ |
+| [C4 Model](product-strategy/c4-model.md) | Architecture diagrams | standard | CC-BY-4.0 | current | n/a | n/a |
 
 ## Approved with restrictions
 
@@ -63,6 +71,8 @@ distro version, not the pin — see record).
 | [Metabase OSS](finance/metabase.md) | BI dashboards | AGPL + in-repo commercial editions; embedding terms | 80 | – |
 | [Documenso](operations/documenso.md) | E-signature | AGPL; enterprise boundary unverified; counsel on validity | 76 | – |
 | [Business Model Canvas](product-strategy/business-model-canvas.md) | Business modeling | CC-BY-SA-3.0 attribution + ShareAlike on derivatives | n/a | n/a |
+| [Scrapy](product-strategy/scrapy.md) | Market-research data collection | Legal/ethical crawl constraints are user's burden | 84 | ✅ |
+| [Renovate](devops/renovate.md) | Dependency updates | AGPL-3.0 (2025 relicense from MIT); repo write access | 82 | – |
 
 ## Experimental
 
@@ -83,12 +93,16 @@ Docker-requiring deployment tests, and the Phase 2 items listed there.
 
 ## Coverage map vs the 15 scope areas
 
-Covered: security engineering (8), testing/quality (5), DevOps/monitoring
-(4), operations: backups + incident response + legal ops (5),
-design/UX/accessibility (3), marketing: analytics/email/SEO/deliverability
-(5), CRM/support (3), finance/BI (2), compliance incl. AI governance (2),
-AI engineering (3), mobile (2), CEO/strategy + product/API standards (6).
-**Known gaps held open** (see [PHASES.md](../PHASES.md)): market-research
-tooling, PRD templates with provenance, customer-success playbooks,
-keyword/rank tooling — no candidate met the evidence bar yet. Gaps are
-deliberate — no entry ships without validation.
+All 15 scope areas now have at least one validated entry: CEO/strategy
+(4), market research (1 — Scrapy, data-collection with legal
+restrictions), product/PRD-adjacent standards (MADR, OpenAPI, C4),
+architecture (C4, MADR), engineering (PostgreSQL, FastAPI + the testing
+stack), testing/quality (5), security (8), compliance incl. privacy/
+licensing/AI governance (2 + ScanCode), design/UX/accessibility (3),
+DevOps/CI/monitoring/backups/incident response (10+), launch prep
+(fastlane, MASVS, Lighthouse), marketing/SEO/email (7), sales/CRM/support
+(3), finance/BI (2), post-launch maintenance (Renovate, dbmate,
+advisory-sweep practice). **Remaining thin spots, held open honestly**
+(see [PHASES.md](../PHASES.md)): PRD templates with real provenance,
+customer-success playbooks, keyword/rank tooling, forecasting beyond
+hledger budgets + Metabase — no candidate met the evidence bar yet.

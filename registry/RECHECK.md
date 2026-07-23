@@ -21,23 +21,35 @@ plausible-ce, umami, listmonk, chatwoot, twenty, grype (needs vuln DB
 download; blocked), trivy (source build failed on a sandbox toolchain
 artifact and binaries were unfetchable — fully untested, see its record).
 
-## New items opened in Phase 3 (2026-07-23)
+## Items opened in Phases 3–4 (2026-07-23)
 
 - **Business Model Canvas**: license CC-BY-SA-3.0 corroborated via the
   official PDF's CC mark + usage page summaries; fetch
   strategyzer.com/legal/usage-of-our-tools directly to primary-verify.
-- **Documenso**: enterprise/commercial licensing boundary at pinned
-  v2.15.0 unverified — audit repo for commercial-licensed
-  directories/file markers.
+- **C4 Model**: CC-BY-4.0 corroborated (multiple sources); c4model.com
+  unreachable this pass — primary-verify the site's license statement.
 - **Metabase / EspoCRM / Documenso**: deployment execution tests (Docker
-  daemon required).
+  daemon required). Documenso: also audit `packages/ee` license terms at
+  the pin (directory existence verified 2026-07-23).
 - **Common Paper**: attorney-committee provenance is maintainer-claimed;
   optionally verify committee roster independently.
-- **checkdmarc companion**: validate parsedmarc (DMARC aggregate-report
-  analyzer) as a future entry.
+- **Renovate**: config-only dry run (`--dry-run`) with a scoped token;
+  verify current telemetry/data-handling posture of the self-hosted
+  runner.
 - **GitLab Handbook**: repo license is MIT (verified); confirm whether
   handbook *content* carries an additional CC license statement anywhere
   on handbook.gitlab.com (page was unreachable this pass).
+
+### Closed in Phase 4 (2026-07-23)
+
+- ✅ Chatwoot GHSA-x288-jh8j-348c: patched in 4.9.0+ per the advisory —
+  pinned v4.16.0 includes the fix (record updated)
+- ✅ Documenso open-core boundary: root LICENSE pure AGPLv3;
+  `packages/ee` directory confirmed present (record updated)
+- ✅ parsedmarc validated as a full record (execution-tested offline)
+- ✅ Registry consistency now machine-checked (`tools/verify_registry.py`
+  + weekly CI workflow); fixed a hand-count error in INDEX.md on first
+  run
 
 ## New items opened in Phase 2
 

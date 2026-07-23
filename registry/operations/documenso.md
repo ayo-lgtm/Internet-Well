@@ -7,7 +7,7 @@ type: tool
 canonical_repo: https://github.com/documenso/documenso
 website: https://documenso.com
 pinned_version: v2.15.0 (2026-07-21)
-license: AGPL-3.0 (enterprise plan exists; verify per-directory licensing at pin)
+license: AGPL-3.0 (root LICENSE); packages/ee enterprise directory present — audit before use
 score: 76
 confidence: medium
 tested: false
@@ -28,10 +28,11 @@ audit trails; API and embedding support.
   fees, keeping signed documents on your infrastructure
 
 ## When not to use / restrictions
-- AGPL-3.0 network copyleft; an enterprise plan exists — audit the repo
-  for commercial-licensed directories/markers at your pinned version
-  before building on advanced features `[M→RECHECK]` (README references
-  an enterprise tier; boundary not verified this pass)
+- AGPL-3.0 network copyleft. **Open-core boundary verified (2026-07-23):**
+  root LICENSE is pure AGPLv3 with no carve-out text `[V]`, but a
+  `packages/ee` directory exists in the monorepo `[V]` — before building
+  on any feature, confirm it does not import from `packages/ee`, and
+  check that directory's own license terms at your pinned version
 - **E-signature legal validity varies by jurisdiction and document type**
   (some documents require notarization/wet ink). Validity of
   self-hosted signatures for your use cases is a counsel question, not
