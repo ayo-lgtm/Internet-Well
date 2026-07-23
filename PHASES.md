@@ -43,13 +43,32 @@ Still open (carried in RECHECK.md):
   Prometheus, Uptime Kuma, Threat Dragon
 - BorgBackup executable retest; promptfoo telemetry audit before approval
 
-## Phase 3 — Breadth completion (PLANNED)
+## Phase 3 — Breadth completion (IN PROGRESS, started 2026-07-23)
 
-- CEO/strategy and market-research frameworks with verifiable provenance
-- SEO/content/social tooling; deliverability testing
-- Sales pipelines, customer-success playbooks
-- Forecasting and operational controls
-- Legal templates (with explicit professional-review requirements)
+Completed this pass:
+
+- CEO/strategy: GitLab Handbook (MIT, reference implementation of company
+  operations), Open Source Guides (CC-BY-4.0, GitHub), Business Model
+  Canvas (CC-BY-SA-3.0, restrictions noted)
+- SEO/deliverability: Lighthouse (execution-tested: local-page audit,
+  category scores produced) and checkdmarc (execution-tested: live DNS
+  SPF/DMARC validation)
+- Operational controls/BI: Metabase (AGPL + in-repo commercial editions —
+  restrictions documented)
+- Sales: EspoCRM added as the mature CRM alternative to Twenty
+- Legal ops: Common Paper standard agreements (CC-BY-4.0,
+  attorney-committee provenance) + Documenso e-signing (AGPL,
+  restrictions); both records hard-require counsel review
+- Rejections: Crater (abandoned since 2022), Shape Up (free-to-read but
+  no open license)
+
+Still open for later passes:
+
+- Market-research tooling with verifiable provenance (no candidate met
+  the evidence bar this pass — gap held open deliberately)
+- PRD templates with real provenance; customer-success playbooks
+- Keyword/rank tooling; social scheduling (candidates are mostly SaaS or
+  unproven — needs deeper discovery)
 
 ## Phase 4 — Continuous verification (PLANNED)
 

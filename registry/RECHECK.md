@@ -21,6 +21,24 @@ plausible-ce, umami, listmonk, chatwoot, twenty, grype (needs vuln DB
 download; blocked), trivy (source build failed on a sandbox toolchain
 artifact and binaries were unfetchable — fully untested, see its record).
 
+## New items opened in Phase 3 (2026-07-23)
+
+- **Business Model Canvas**: license CC-BY-SA-3.0 corroborated via the
+  official PDF's CC mark + usage page summaries; fetch
+  strategyzer.com/legal/usage-of-our-tools directly to primary-verify.
+- **Documenso**: enterprise/commercial licensing boundary at pinned
+  v2.15.0 unverified — audit repo for commercial-licensed
+  directories/file markers.
+- **Metabase / EspoCRM / Documenso**: deployment execution tests (Docker
+  daemon required).
+- **Common Paper**: attorney-committee provenance is maintainer-claimed;
+  optionally verify committee roster independently.
+- **checkdmarc companion**: validate parsedmarc (DMARC aggregate-report
+  analyzer) as a future entry.
+- **GitLab Handbook**: repo license is MIT (verified); confirm whether
+  handbook *content* carries an additional CC license statement anywhere
+  on handbook.gitlab.com (page was unreachable this pass).
+
 ## New items opened in Phase 2
 
 - **Chatwoot**: verify GHSA-x288-jh8j-348c (2026-07-16, cross-account

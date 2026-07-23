@@ -1,7 +1,7 @@
 # Registry Index
 
-43 entries as of 2026-07-23 (Phase 2) — 38 validated records (31 approved,
-6 approved-with-restrictions, 1 experimental) + 4 preserved rejections.
+53 entries as of 2026-07-23 (Phase 3) — 47 validated records (36 approved,
+10 approved-with-restrictions, 1 experimental) + 6 preserved rejections.
 Statuses: ✅ approved · ⚠️ approved-with-restrictions · 🧪 experimental ·
 ❌ rejected. Scores per METHODOLOGY §5; standards/templates unscored by
 design. `tested` = sandboxed execution test performed (¹ = tested at a
@@ -43,6 +43,11 @@ distro version, not the pin — see record).
 | [OWASP MASVS](mobile/owasp-masvs.md) | Mobile security standard | standard | CC-BY-SA-4.0 | v2.1.0 | n/a | n/a |
 | [MADR](product-strategy/madr.md) | Decision records | template | MIT OR CC0-1.0 | 4.0.0 | n/a | n/a |
 | [OpenAPI Spec](product-strategy/openapi-specification.md) | API contract standard | standard | Apache-2.0 | 3.2.0 | n/a | n/a |
+| [Lighthouse](marketing-analytics/lighthouse.md) | SEO/perf/a11y audits | tool | Apache-2.0 | 13.4.1 | 88 | ✅ |
+| [checkdmarc](marketing-analytics/checkdmarc.md) | Email auth validation | tool | Apache-2.0 | 5.17.3 | 79 | ✅ |
+| [GitLab Handbook](product-strategy/gitlab-handbook.md) | Company-ops reference | reference | MIT | rolling | n/a | n/a |
+| [Open Source Guides](product-strategy/opensource-guide.md) | OSS strategy | reference | CC-BY-4.0 | rolling | n/a | n/a |
+| [Common Paper agreements](operations/common-paper-csa.md) | Legal templates (counsel required) | template | CC-BY-4.0 | CSA v2.1 | n/a | n/a |
 
 ## Approved with restrictions
 
@@ -54,6 +59,10 @@ distro version, not the pin — see record).
 | [listmonk](marketing-analytics/listmonk.md) | Newsletter/email | AGPL-3.0; single-maintainer; needs external SMTP | 79 | – |
 | [Chatwoot](sales-support/chatwoot.md) | Support desk | MIT core but `enterprise/` proprietary; verify 2026-07 advisory fix in pin | 80 | – |
 | [Twenty](sales-support/twenty.md) | CRM | AGPL core + per-file `@license Enterprise` markers | 76 | – |
+| [EspoCRM](sales-support/espocrm.md) | CRM (mature) | AGPL-3.0; paid proprietary extensions at edges | 79 | – |
+| [Metabase OSS](finance/metabase.md) | BI dashboards | AGPL + in-repo commercial editions; embedding terms | 80 | – |
+| [Documenso](operations/documenso.md) | E-signature | AGPL; enterprise boundary unverified; counsel on validity | 76 | – |
+| [Business Model Canvas](product-strategy/business-model-canvas.md) | Business modeling | CC-BY-SA-3.0 attribution + ShareAlike on derivatives | n/a | n/a |
 
 ## Experimental
 
@@ -64,7 +73,8 @@ distro version, not the pin — see record).
 ## Rejected — see [REJECTED.md](REJECTED.md)
 
 Terraform (BUSL-1.1) · Sentry self-hosted (FSL-1.1) · n8n (Sustainable Use
-License) · Invoice Ninja v5 (Elastic License 2.0)
+License) · Invoice Ninja v5 (Elastic License 2.0) · Crater (abandoned
+since 2022) · Shape Up (free-to-read, no open license)
 
 ## Recheck required — see [RECHECK.md](RECHECK.md)
 
@@ -74,10 +84,11 @@ Docker-requiring deployment tests, and the Phase 2 items listed there.
 ## Coverage map vs the 15 scope areas
 
 Covered: security engineering (8), testing/quality (5), DevOps/monitoring
-(4), operations: backups + incident response (3), design/UX/accessibility
-(3), analytics/email (3), CRM/support (2), finance (1), compliance incl.
-AI governance (2), AI engineering (3), mobile (2), product/API standards
-(2). **Not yet covered** (see [PHASES.md](../PHASES.md)): CEO/strategy
-frameworks, market research, PRD templates, SEO/content tooling,
-forecasting, legal templates. Gaps are deliberate — no entry ships without
-validation.
+(4), operations: backups + incident response + legal ops (5),
+design/UX/accessibility (3), marketing: analytics/email/SEO/deliverability
+(5), CRM/support (3), finance/BI (2), compliance incl. AI governance (2),
+AI engineering (3), mobile (2), CEO/strategy + product/API standards (6).
+**Known gaps held open** (see [PHASES.md](../PHASES.md)): market-research
+tooling, PRD templates with provenance, customer-success playbooks,
+keyword/rank tooling — no candidate met the evidence bar yet. Gaps are
+deliberate — no entry ships without validation.

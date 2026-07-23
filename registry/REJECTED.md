@@ -1,5 +1,8 @@
 # Rejected Candidates
 
+*(Updated 2026-07-23: Phase 3 added Crater and Shape Up below the
+original four license-based rejections.)*
+
 Preserved with evidence so future agents and researchers do not
 re-recommend them. **Rejection here means "fails this registry's
 genuinely-free-and-open-source criterion (METHODOLOGY §6),"** not that the
@@ -66,12 +69,42 @@ on 2026-07-23.
 - **Notes:** Phase 2/3 will validate open invoicing alternatives (e.g.
   Crater status check, or invoice generation via hledger + templates).
 
+## Crater (invoicing)
+- **Repo:** github.com/crater-invoice/crater
+- **License:** AGPL-3.0 `[V]` — license itself is acceptable
+- **Why rejected (2026-07-23):** **Abandonment.** Latest release 6.0.6
+  dated 2022-03-06 — over four years old — with 386 open issues `[V]` —
+  repository. An internet-facing invoicing app handling customer and
+  payment data requires active security maintenance; METHODOLOGY §6
+  disqualifies abandoned projects where maintenance is essential.
+- **Notes:** Frequently still recommended in "open source invoicing"
+  listicles. Alternatives: hledger + templated PDF generation for simple
+  needs (`registry/finance/hledger.md`); re-evaluate the invoicing space
+  in a future phase.
+
+## Shape Up (Basecamp) — product-development methodology book
+- **Source:** basecamp.com/shapeup
+- **License:** No open license found `[U]` — the book is free to read/
+  download, but no Creative Commons or other open-license statement was
+  located (searches, 2026-07-23; the primary page was unreachable from
+  this environment). Free-to-access is not openly licensed; standard
+  copyright is the default presumption.
+- **Why rejected:** Fails the registry's ascertainable-open-license
+  requirement — for *inclusion in this registry as a reusable open
+  resource*. Reading it and applying its ideas (shaping, appetite,
+  six-week cycles) is of course fine and often valuable for founders;
+  what is not permitted without permission is redistributing or adapting
+  the text itself.
+- **Revisit if:** evidence of an explicit open license emerges.
+
 ---
 
 ## Rejection pattern worth naming
 
-Four for four above are **relicensing or fair-code events on formerly (or
-nominally) open projects**. Practical rules derived:
+The first four rejections are **relicensing or fair-code events on
+formerly (or nominally) open projects**; Phase 3 added the two other
+recurring failure modes — **abandonment** (Crater) and **free-to-read
+mistaken for openly-licensed** (Shape Up). Practical rules derived:
 
 1. Never trust a repo badge, README claim, or listicle — read LICENSE at
    the pinned version you intend to use.
