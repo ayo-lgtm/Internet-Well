@@ -1,14 +1,41 @@
-name: Verify registry
+name: Verify Internet-Well
 
 on:
   push:
-    paths: ["registry/**", "automation/**", "schemas/**"]
+    paths:
+      - "registry/**"
+      - "automation/**"
+      - "schemas/**"
+      - "commands/**"
+      - "playbooks/**"
+      - "capabilities/**"
+      - "profiles/**"
+      - "stacks/**"
+      - "bundles/**"
+      - "skills/**"
+      - "outputs/**"
+      - "AGENTS.md"
+      - "START-HERE.md"
+      - "FOUNDER-OS.md"
+      - "README.md"
   pull_request:
-    paths: ["registry/**", "automation/**", "schemas/**"]
+    paths:
+      - "registry/**"
+      - "automation/**"
+      - "schemas/**"
+      - "commands/**"
+      - "playbooks/**"
+      - "capabilities/**"
+      - "profiles/**"
+      - "stacks/**"
+      - "bundles/**"
+      - "skills/**"
+      - "outputs/**"
+      - "AGENTS.md"
+      - "START-HERE.md"
+      - "FOUNDER-OS.md"
+      - "README.md"
   schedule:
-    # Weekly staleness sweep (Mondays 06:00 UTC). Entries older than the
-    # 90-day re-verification window fail the run, implementing the
-    # continuous-verification loop in PHASES.md.
     - cron: "0 6 * * 1"
 
 jobs:
@@ -16,7 +43,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Lint registry consistency, tier rules, and staleness
+      - name: Validate registry consistency, tier rules, and staleness
         run: python3 automation/verify_registry.py --max-age 90
-      - name: Check INDEX.md is regenerated
+      - name: Check generated registry index
         run: python3 automation/build_index.py --check
+      - name: Validate Founder OS structure and safety gates
+        run: python3 automation/verify_founder_os.py
+      - name: Compile Python validators
+        run: python3 -m py_compile automation/*.py
