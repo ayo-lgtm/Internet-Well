@@ -1,0 +1,61 @@
+name: Verify anchor tranche 01
+
+on:
+  pull_request:
+    paths:
+      - "automation/verify_anchor_tranche_01.py"
+      - "evidence/intensive-verification/tranche-01.md"
+      - ".github/workflows/verify-anchor-tranche-01.yml"
+  workflow_dispatch:
+
+jobs:
+  python-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install exact verified pins
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            "markitdown==0.1.6" \
+            "semantic-kernel==1.44.0" \
+            "langgraph==1.2.9" \
+            "pydantic-ai==1.104.0" \
+            "litellm==1.92.0"
+      - name: Capture dependency inventory
+        run: python -m pip freeze | sort | tee tranche-01-python-freeze.txt
+      - name: Run credential-free behavior tests
+        run: python automation/verify_anchor_tranche_01.py | tee tranche-01-python-results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tranche-01-python-evidence
+          path: |
+            tranche-01-python-freeze.txt
+            tranche-01-python-results.json
+
+  playwright-mcp-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+      - name: Install exact Playwright MCP pin without launching a browser server
+        run: npm install --no-save --ignore-scripts "@playwright/mcp@0.0.75"
+      - name: Capture package inventory
+        run: npm ls --all --json > tranche-01-playwright-mcp-dependencies.json
+      - name: Verify CLI surface only
+        run: ./node_modules/.bin/mcp-server-playwright --help | tee tranche-01-playwright-mcp-help.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tranche-01-playwright-mcp-evidence
+          path: |
+            tranche-01-playwright-mcp-dependencies.json
+            tranche-01-playwright-mcp-help.txt
