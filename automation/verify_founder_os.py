@@ -2,7 +2,8 @@
 """Validate Internet-Well Founder OS operating artifacts.
 
 Checks commands, playbooks, profiles, stacks, bundles, skills, output schemas,
-local links, registry references, and safety gates. Python 3.9+ only.
+curated repository candidates, local links, registry references, and safety gates.
+Python 3.9+ only.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CAPABILITY_FILE = ROOT / "capabilities" / "CAPABILITY-GRAPH.md"
+CATALOG_FILE = ROOT / "catalog" / "curated-repositories.json"
 REQUIRED_ROOT = ["AGENTS.md", "START-HERE.md", "FOUNDER-OS.md"]
 CONCEPTS = {
     "commands": [
@@ -59,6 +61,8 @@ CONCEPTS = {
 }
 HIGH_RISK_TERMS = {"legal", "finance", "trading", "security", "privacy", "healthcare", "authentication", "production"}
 REVIEW_TERMS = {"human review", "human-review", "qualified review", "competent review", "licensed counsel", "domain experts", "specialist review"}
+CATALOG_ROLES = {"production-tool", "platform", "framework", "reference-implementation", "agent-runtime", "research-tool", "first-party-fixture"}
+CATALOG_READINESS = {"production", "reference", "research", "experimental", "maintenance", "development"}
 
 
 def markdown_files(directory: str) -> list[Path]:
@@ -89,6 +93,45 @@ def validate_json(errors: list[str]) -> None:
                 errors.append(f"{path.relative_to(ROOT)}: missing $schema")
         except Exception as exc:
             errors.append(f"{path.relative_to(ROOT)}: invalid JSON: {exc}")
+
+
+def validate_catalog(errors: list[str]) -> None:
+    if not CATALOG_FILE.exists():
+        errors.append("missing catalog/curated-repositories.json")
+        return
+    try:
+        data = json.loads(CATALOG_FILE.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"catalog/curated-repositories.json: invalid JSON: {exc}")
+        return
+    repos = data.get("repositories")
+    if not isinstance(repos, list) or len(repos) < 50:
+        errors.append("catalog: expected at least 50 curated repository candidates")
+        return
+    seen: set[str] = set()
+    required = {"slug", "name", "url", "capabilities", "role", "license", "readiness", "risk", "recommendation"}
+    for index, repo in enumerate(repos):
+        if not isinstance(repo, dict):
+            errors.append(f"catalog entry {index}: must be an object")
+            continue
+        missing = sorted(required - set(repo))
+        if missing:
+            errors.append(f"catalog entry {index}: missing {', '.join(missing)}")
+            continue
+        slug = str(repo["slug"]).lower()
+        if slug in seen:
+            errors.append(f"catalog: duplicate slug {slug}")
+        seen.add(slug)
+        if repo["url"] != f"https://github.com/{repo['slug']}":
+            errors.append(f"catalog {repo['slug']}: URL does not match slug")
+        if not isinstance(repo["capabilities"], list) or not repo["capabilities"]:
+            errors.append(f"catalog {repo['slug']}: capabilities must be a non-empty list")
+        if repo["role"] not in CATALOG_ROLES:
+            errors.append(f"catalog {repo['slug']}: invalid role {repo['role']}")
+        if repo["readiness"] not in CATALOG_READINESS:
+            errors.append(f"catalog {repo['slug']}: invalid readiness {repo['readiness']}")
+        if str(repo["risk"]).startswith("high") and repo["role"] == "production-tool" and repo["recommendation"].startswith("default"):
+            errors.append(f"catalog {repo['slug']}: high-risk tool cannot be an unrestricted default")
 
 
 def validate_links(errors: list[str]) -> None:
@@ -135,6 +178,7 @@ def main() -> int:
         if path.name == "SKILL.md":
             check_concepts(path, "skills", errors)
     validate_json(errors)
+    validate_catalog(errors)
     validate_links(errors)
     validate_registry_refs(errors)
     validate_safety(errors)
@@ -143,7 +187,7 @@ def main() -> int:
             print(f"ERROR: {error}")
         print(f"Founder OS validation failed with {len(errors)} error(s)")
         return 1
-    print("OK: Founder OS structure, schemas, links, references, and safety gates are consistent")
+    print("OK: Founder OS structure, catalog, schemas, links, references, and safety gates are consistent")
     return 0
 
 
