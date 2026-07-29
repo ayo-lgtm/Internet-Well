@@ -1,0 +1,89 @@
+name: Verify anchor tranche 02
+
+on:
+  pull_request:
+    paths:
+      - "automation/verify_anchor_tranche_02.py"
+      - "evidence/intensive-verification/tranche-02.md"
+      - ".github/workflows/verify-anchor-tranche-02.yml"
+  workflow_dispatch:
+
+jobs:
+  security-tools-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prepare harmless fixtures
+        run: |
+          mkdir -p tranche-02/fixture
+          cat > tranche-02/fixture/app.py <<'PY'
+          import subprocess
+          def unsafe(user_input):
+              return subprocess.run(user_input, shell=True)
+          PY
+          cat > tranche-02/fixture/config.txt <<'TXT'
+          aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+          aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+          TXT
+          cat > tranche-02/fixture/package-lock.json <<'JSON'
+          {"name":"internet-well-security-fixture","version":"1.0.0","lockfileVersion":3,"requires":true,"packages":{"":{"name":"internet-well-security-fixture","version":"1.0.0"}}}
+          JSON
+      - name: Install exact standalone pins
+        run: |
+          set -euxo pipefail
+          mkdir -p "$HOME/bin" tranche-02/downloads
+          export PATH="$HOME/bin:$PATH"
+          curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.70.0/trivy_0.70.0_Linux-64bit.tar.gz -o tranche-02/downloads/trivy.tgz
+          tar -xzf tranche-02/downloads/trivy.tgz -C "$HOME/bin" trivy
+          curl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o tranche-02/downloads/gitleaks.tgz
+          tar -xzf tranche-02/downloads/gitleaks.tgz -C "$HOME/bin" gitleaks
+          curl -fsSL https://github.com/google/osv-scanner/releases/download/v2.3.8/osv-scanner_linux_amd64 -o "$HOME/bin/osv-scanner"
+          chmod +x "$HOME/bin/osv-scanner"
+          curl -fsSL https://github.com/anchore/syft/releases/download/v1.44.0/syft_1.44.0_linux_amd64.tar.gz -o tranche-02/downloads/syft.tgz
+          tar -xzf tranche-02/downloads/syft.tgz -C "$HOME/bin" syft
+          curl -fsSL https://github.com/anchore/grype/releases/download/v0.112.0/grype_0.112.0_linux_amd64.tar.gz -o tranche-02/downloads/grype.tgz
+          tar -xzf tranche-02/downloads/grype.tgz -C "$HOME/bin" grype
+          curl -fsSL https://github.com/sigstore/cosign/releases/download/v3.0.6/cosign-linux-amd64 -o "$HOME/bin/cosign"
+          chmod +x "$HOME/bin/cosign"
+          curl -fsSL https://github.com/trufflesecurity/trufflehog/releases/download/v3.95.2/trufflehog_3.95.2_linux_amd64.tar.gz -o tranche-02/downloads/trufflehog.tgz
+          tar -xzf tranche-02/downloads/trufflehog.tgz -C "$HOME/bin" trufflehog
+          python -m pip install --upgrade pip
+          python -m pip install "semgrep==1.162.0"
+      - name: Capture exact versions
+        run: |
+          export PATH="$HOME/bin:$PATH"
+          {
+            trivy --version
+            gitleaks version
+            osv-scanner --version
+            syft version
+            grype version
+            cosign version
+            semgrep --version
+            trufflehog --version
+            docker run --rm ghcr.io/zaproxy/zaproxy:2.17.0 zap.sh -version
+            docker run --rm ghcr.io/ossf/scorecard:v5.5.0 version
+          } | tee tranche-02/versions.txt
+      - name: Run harmless fixture checks
+        env:
+          GRYPE_DB_AUTO_UPDATE: "false"
+        run: |
+          export PATH="$HOME/bin:$PATH"
+          gitleaks detect --no-git --source tranche-02/fixture --report-format json --report-path tranche-02/gitleaks.json --exit-code 0
+          syft dir:tranche-02/fixture -o spdx-json=tranche-02/syft.spdx.json
+          grype sbom:tranche-02/syft.spdx.json -o json > tranche-02/grype.json || true
+          semgrep scan --config p/python --json tranche-02/fixture/app.py > tranche-02/semgrep.json
+          osv-scanner scan source -r tranche-02/fixture --format json > tranche-02/osv.json || true
+          cosign version > tranche-02/cosign-version.txt
+          trivy fs --scanners secret --skip-db-update --format json tranche-02/fixture > tranche-02/trivy.json || true
+          trufflehog filesystem tranche-02/fixture --no-verification --json > tranche-02/trufflehog.json || true
+      - name: Validate generated evidence
+        run: python automation/verify_anchor_tranche_02.py | tee tranche-02/results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tranche-02-security-evidence
+          path: tranche-02/
