@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "registry/**"
+      - "catalog/**"
       - "automation/**"
       - "schemas/**"
       - "commands/**"
@@ -14,6 +15,8 @@ on:
       - "bundles/**"
       - "skills/**"
       - "outputs/**"
+      - "evaluations/**"
+      - "connections/**"
       - "AGENTS.md"
       - "START-HERE.md"
       - "FOUNDER-OS.md"
@@ -21,6 +24,7 @@ on:
   pull_request:
     paths:
       - "registry/**"
+      - "catalog/**"
       - "automation/**"
       - "schemas/**"
       - "commands/**"
@@ -31,6 +35,8 @@ on:
       - "bundles/**"
       - "skills/**"
       - "outputs/**"
+      - "evaluations/**"
+      - "connections/**"
       - "AGENTS.md"
       - "START-HERE.md"
       - "FOUNDER-OS.md"
@@ -49,5 +55,7 @@ jobs:
         run: python3 automation/build_index.py --check
       - name: Validate Founder OS structure and safety gates
         run: python3 automation/verify_founder_os.py
-      - name: Compile Python validators
+      - name: Compile Python validators and engine
         run: python3 -m py_compile automation/*.py
+      - name: Run Founder OS engine regression tests
+        run: python3 -m unittest discover -s automation/tests -p 'test_*.py' -v
