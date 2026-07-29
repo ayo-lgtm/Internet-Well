@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-55 records as of 2026-07-23 — 42 approved, 12 approved-with-restrictions, 1 experimental. Tiers: 38×B, 17×C. Execution-tested: 22. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+56 records as of 2026-07-29 — 42 approved, 12 approved-with-restrictions, 2 experimental. Tiers: 38×B, 18×C. Execution-tested: 22. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -70,11 +70,12 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Business Model Canvas](product/business-model-canvas.md) | product | B | business-modeling | CC-BY-SA-3.0 | canonical single-page canvas (stable s… | n/a | n/a |
 | [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 
-## 🧪 experimental (1)
+## 🧪 experimental (2)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
+| [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
 
 ## Coverage
 
@@ -87,7 +88,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | legal-compliance | 4 |
 | marketing | 7 |
 | operations | 10 |
-| product | 6 |
+| product | 7 |
 | security | 10 |
 
 Known thin spots, held open honestly (see [PHASES.md](../PHASES.md)): PRD templates with real provenance, customer-success playbooks, keyword/rank tooling, forecasting beyond hledger budgets + Metabase.
