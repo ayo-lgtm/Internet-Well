@@ -16,10 +16,10 @@ CAPABILITY_FILE = ROOT / "capabilities" / "CAPABILITY-GRAPH.md"
 REQUIRED_ROOT = ["AGENTS.md", "START-HERE.md", "FOUNDER-OS.md"]
 CONCEPTS = {
     "commands": [
-        ("purpose", ["## purpose", "## goal"]),
+        ("purpose", ["## purpose", "## goal", "## use when"]),
         ("inputs", ["## inputs", "## required inputs"]),
         ("procedure", ["## procedure", "## workflow", "## steps"]),
-        ("output", ["## output", "## required outputs"]),
+        ("output", ["## output", "## required outputs", "## required result"]),
     ],
     "playbooks": [
         ("purpose", ["## purpose", "## goal"]),
@@ -29,16 +29,16 @@ CONCEPTS = {
         ("stop conditions", ["## stop conditions"]),
     ],
     "profiles": [
-        ("scope", ["## applies to", "## use this profile when"]),
+        ("scope", ["## applies to", "## use this profile when", "## apply when"]),
         ("capabilities", ["## required capabilities", "## baseline capabilities"]),
-        ("risk", ["## risk model", "## major risks", "## primary risks"]),
-        ("evidence", ["## completion evidence", "## definition of done"]),
+        ("risk", ["## risk model", "## major risks", "## primary risks", "## launch blockers"]),
+        ("evidence", ["## completion evidence", "## definition of done", "## launch blockers"]),
     ],
     "stacks": [
-        ("detection", ["## detection", "## detection signals"]),
-        ("controls", ["## required controls", "## baseline controls"]),
-        ("capabilities", ["## compatible capabilities", "## capability map"]),
-        ("verification", ["## verification", "## validation"]),
+        ("detection", ["## detection", "## detection signals", "## apply when"]),
+        ("controls", ["## required controls", "## baseline controls", "## mandatory controls"]),
+        ("capabilities", ["## compatible capabilities", "## capability map", "## baseline capabilities"]),
+        ("verification", ["## verification", "## validation", "## release gates"]),
     ],
     "bundles": [
         ("outcome", ["## outcome", "## purpose"]),
