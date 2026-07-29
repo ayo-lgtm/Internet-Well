@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internet-well.local/schemas/adoption-plan.schema.json",
+  "title": "Internet-Well Adoption Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["target_repository", "resource", "intended_role", "pin", "scope", "implementation_steps", "verification", "rollback", "approvals", "status"],
+  "properties": {
+    "target_repository": {"type": "string", "minLength": 1},
+    "resource": {"type": "string", "minLength": 1},
+    "registry_path": {"type": ["string", "null"]},
+    "intended_role": {"enum": ["production-dependency", "framework", "standard", "template", "reference-implementation", "agent-skill", "agent-runtime", "autonomous-system", "dataset-benchmark", "service-provider"]},
+    "pin": {"type": "string", "minLength": 1},
+    "scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "implementation_steps": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "verification": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "rollback": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "license_obligations": {"type": "array", "items": {"type": "string"}},
+    "data_flows": {"type": "array", "items": {"type": "string"}},
+    "approvals": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["proposed", "authorized", "in-progress", "verified", "blocked", "failed", "rolled-back"]},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "remaining_risks": {"type": "array", "items": {"type": "string"}}
+  }
+}
