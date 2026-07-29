@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internet-well.local/schemas/audit-report.schema.json",
+  "title": "Internet-Well Audit Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project", "playbook", "verdict", "core_value", "critical_journeys", "findings", "resource_selection", "verification", "human_review"],
+  "properties": {
+    "project": {"type": "string"},
+    "playbook": {"type": "string"},
+    "verdict": {"enum": ["proceed", "proceed-with-conditions", "hold", "stop", "insufficient-evidence"]},
+    "core_value": {"type": "object", "required": ["promise", "assessment"], "properties": {"promise": {"type": "string"}, "assessment": {"type": "string"}, "evidence": {"type": "array", "items": {"type": "string"}}}},
+    "critical_journeys": {"type": "array", "items": {"type": "object", "required": ["name", "status"], "properties": {"name": {"type": "string"}, "status": {"enum": ["pass", "fail", "blocked", "unverified"]}, "evidence": {"type": "array", "items": {"type": "string"}}}}},
+    "findings": {"type": "array", "items": {"type": "object", "required": ["title", "severity", "impact", "evidence", "recommendation"], "properties": {"title": {"type": "string"}, "severity": {"enum": ["critical", "high", "medium", "low", "informational"]}, "impact": {"type": "string"}, "evidence": {"type": "array", "items": {"type": "string"}}, "recommendation": {"type": "string"}}}},
+    "resource_selection": {"type": "array", "items": {"type": "string"}},
+    "verification": {"type": "array", "items": {"type": "string"}},
+    "human_review": {"type": "array", "items": {"type": "string"}},
+    "remaining_risks": {"type": "array", "items": {"type": "string"}}
+  }
+}

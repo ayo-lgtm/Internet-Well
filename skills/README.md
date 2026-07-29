@@ -1,32 +1,44 @@
-# Agent Skills
+# Internet-Well Agent Skills
 
-Packaged agent skills (prompt + procedure + tool bindings) that operate on
-this registry or implement its workflows. Skills follow the same lifecycle
-as registry records:
+Skills are executable operating procedures for agents. Registry records describe resources; skills tell an agent how to perform work safely and how to prove the result.
 
-- [`approved/`](approved/) — validated skills safe for routine agent use
-- [`experimental/`](experimental/) — under evaluation; human supervision
-  required on every run
-- [`deprecated/`](deprecated/) — superseded or failed skills, kept with
-  reasons (mirror of the rejected-records principle)
+## Lifecycle
 
-## Bar for approval
+- `approved/` — independently evaluated, prompt-injection reviewed, permission-bounded, reproducible, and human-reviewed.
+- `experimental/` — useful but not yet proven for unsupervised critical work.
+- `deprecated/` — preserved for migration and historical evidence; agents must not select them for new work.
 
-A skill entry requires everything a registry record requires (evidence,
-license of any embedded third-party content, `last_verified`) **plus**:
+No skill becomes approved from documentation or agent confidence alone.
 
-1. **Prompt-injection review** — the skill must state which untrusted
-   inputs it touches (web content, issue text, README text) and how
-   instructions embedded in them are neutralized.
-2. **Permission boundary** — explicit list of tools/credentials the skill
-   may use; anything mutating (sending, deleting, deploying, signing)
-   requires human approval in the loop.
-3. **Reproducible evaluation** — at least one documented eval run
-   (see `../evaluations/`) demonstrating the skill does what it claims.
+## Experimental operating core
 
-## Current state (honest)
+- `experimental/project-intelligence/SKILL.md` — inspect an authorized repository and produce an evidence-backed project assessment.
+- `experimental/resource-selector/SKILL.md` — choose the smallest compatible registry-backed resource bundle and document rejected alternatives.
+- `experimental/adoption-verifier/SKILL.md` — integrate an approved selection in reversible slices and verify real behavior.
 
-**No skills are approved yet.** The registry's workflows
-(`../workflows/`) are the human-readable precursors; packaging them as
-skills, with evals, is future work. Nothing will be listed here without
-meeting the bar above.
+Together they implement:
+
+```text
+inspect -> assess -> route -> select capabilities -> select resources
+-> obtain approval -> adopt -> verify -> report residual risk
+```
+
+## Approval requirements
+
+A skill may be promoted only after:
+
+1. explicit inputs and schema-valid outputs;
+2. clear read, write, external-action, and destructive-action boundaries;
+3. prompt-injection and untrusted-input review;
+4. representative fixture evaluations;
+5. adversarial and failure-path tests;
+6. real-project trials with fresh evidence;
+7. truthful handling of blocked, failed, and unverified work;
+8. reproducible evaluation transcripts;
+9. competent human review.
+
+The first end-to-end high-risk fixture is `evaluations/founder-os/lexura-scenario.md`.
+
+## Agent rule
+
+Never treat an experimental skill as production approval. Never set human-review status on behalf of a person. Never deploy, purchase, publish, communicate, trade, access production secrets, or perform destructive work merely because a skill describes how it could be done.

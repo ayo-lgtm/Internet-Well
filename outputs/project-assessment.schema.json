@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internet-Well Project Assessment",
+  "type": "object",
+  "required": ["project", "goal", "stage", "product_type", "stack", "risk_class", "critical_journeys", "evidence_gaps", "recommended_next_command"],
+  "properties": {
+    "project": {"type": "string"},
+    "goal": {"type": "string"},
+    "stage": {"enum": ["idea", "prototype", "beta", "pre-launch", "live", "scaling", "unknown"]},
+    "product_type": {"type": "array", "items": {"type": "string"}},
+    "stack": {"type": "array", "items": {"type": "string"}},
+    "hosting": {"type": "array", "items": {"type": "string"}},
+    "users": {"type": "array", "items": {"type": "string"}},
+    "jurisdictions": {"type": "array", "items": {"type": "string"}},
+    "data_classes": {"type": "array", "items": {"type": "string"}},
+    "risk_class": {"enum": ["low", "moderate", "high"]},
+    "critical_journeys": {"type": "array", "items": {"type": "string"}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "evidence_gaps": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "recommended_next_command": {"type": "string"},
+    "recommended_playbook": {"type": "string"}
+  },
+  "additionalProperties": true
+}
