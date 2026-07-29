@@ -13,10 +13,12 @@ User authentication, session management, credential and recovery protection, ten
 1. Preserve a functioning existing authentication system unless a documented requirement is unmet.
 2. Separate authentication requirements from authorization requirements.
 3. Prefer framework-native or existing-platform authentication for ordinary SaaS applications.
-4. Prefer database-native constraints and row-level security for simple tenant and ownership rules.
-5. Add a dedicated authorization engine only when the access graph cannot be expressed clearly and tested safely in the application/database layer.
-6. Add a full identity platform only when centralized federation, enterprise lifecycle, or multiple relying applications justify its operating burden.
-7. Use stable, patched releases and verify exact package or image pins before production adoption.
+4. Prefer Database-native authorization, constraints, and row-level security for simple tenant and ownership rules.
+5. Require deny-by-default behavior at every protected boundary.
+6. Add a dedicated authorization engine only when the access graph cannot be expressed clearly and tested safely in the application/database layer.
+7. Add a full identity platform only when centralized federation, enterprise lifecycle, or multiple relying applications justify its operating burden.
+8. Use stable, patched releases and verify exact package or image pins before production adoption.
+9. Do not infer authorization from successful authentication.
 
 ## Recommended resources
 
