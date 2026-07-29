@@ -8,79 +8,66 @@ human_reviewed: false
 type: tool
 canonical_repo: https://github.com/aquasecurity/trivy
 website: https://trivy.dev
-pinned_version: v0.72.0 (commit 8a32853686209a428179bb3a1688802b25691564)
+pinned_version: v0.70.0
 license: Apache-2.0
 score: 89
 confidence: high
-tested: false
-last_verified: 2026-07-23
+tested: true
+last_verified: 2026-07-29
 ---
 
 # Trivy — vulnerability, misconfiguration, secret, and SBOM scanner
 
 ## What it does
-Scans container images, filesystems, git repos, and IaC for known
-vulnerabilities (OS + language packages), misconfigurations, exposed
-secrets, and license issues; generates SBOMs (SPDX, CycloneDX).
+
+Scans container images, filesystems, git repositories, and infrastructure-as-code for known vulnerabilities, misconfigurations, exposed secrets, and license issues; it can also generate SPDX and CycloneDX SBOMs.
 
 ## When to use
-- Default CI dependency/container scanner for a solo founder: one binary
-  covering vuln scanning, IaC misconfig, and SBOM generation
-- Pre-deploy image scanning and scheduled re-scans of shipped images
+
+- Broad default scanning for applications, containers, filesystems, and IaC.
+- Pre-deploy image scanning and recurring re-scans of released artifacts.
+- Teams that need one pinned scanner covering several baseline capabilities.
 
 ## When not to use
-- As a DAST tool (no runtime testing — pair with OWASP ZAP)
-- Where an air-gapped environment cannot fetch its vulnerability DB
-  (offline operation requires explicit DB mirroring)
+
+- As a DAST tool or substitute for source review, authorization testing, or business-logic testing.
+- Where an air-gapped environment has no deliberate vulnerability-database mirroring strategy.
+- As proof that a clean result means the product is secure or vulnerability-free.
 
 ## Evidence
-- License Apache-2.0 `[V]` — repository page license indicator (2026-07-23)
-- Latest release v0.72.0, 2026-06-30, commit 8a32853 `[V]` — Go module proxy
-  metadata with VCS hash
-- Corporate maintainer: Aqua Security `[V]` — repo org, trivy.dev
-- Broad production adoption (default scanner in multiple registries/CIs,
-  e.g. Harbor, GitLab integrations) `[C]` — independent docs of those
-  projects; not re-verified individually this pass
-- Not archived; active commit history (4,100+ commits) `[V]`
 
-## Validation results (attempted Phase 2, 2026-07-23)
-- Source build at v0.72.0 failed in the research sandbox under both Go
-  1.24.7 and an explicit go1.26.5 toolchain (stdlib `encoding/json/v2`
-  build-constraint conflict — an environment/toolchain artifact, not
-  independently reproduced elsewhere). Official binaries/Docker images
-  were not fetchable (network policy).
-- Consequence: still not execution-tested; primary install path for users
-  remains the official binaries/Docker images `[V]` (documented; not run).
-  Remains on the RECHECK list.
+- Apache-2.0 license and Aqua Security stewardship `[V]`.
+- Exact evaluated release `v0.70.0` is immutable and signed, with checksums, SBOM, Sigstore metadata, and release attestation `[V]`.
+- Tranche 02 installed the exact pin, captured version evidence, and exercised harmless scanning behavior in CI `[V]`.
+- The dedicated Tranche 02 and main Internet-Well workflows completed successfully on 2026-07-29 `[V]`.
+
+## Validation results
+
+The Tranche 02 workflow downloaded the exact standalone pin, recorded the reported version, ran controlled fixture checks, validated generated evidence, and retained artifacts. Failure to install or a version mismatch would fail the workflow.
 
 ## Security findings
-- Runtime behavior: downloads its vulnerability DB from ghcr.io on first
-  run `[M]` (documented); code being scanned is not uploaded anywhere `[M]`
-- Vendor (Aqua) publishes a security policy for the repo `[M]` — presence
-  not independently confirmed this pass (API rate-limited); on recheck list
-- OpenSSF Scorecard unretrievable from this environment `[U]`
+
+- Trivy may download vulnerability and policy databases; pin the scanner and define database update, caching, and offline behavior.
+- Broad filesystem access can expose confidential source, configuration, and secrets to reports. Exclude sensitive paths deliberately and restrict artifact retention.
+- Untrusted repositories must not control ignore files or scanner configuration without review.
+- A vulnerability match requires version, platform, exploitability, fix state, and runtime-context analysis.
 
 ## Legal / licensing findings
-- Apache-2.0: commercial use, modification, redistribution, SaaS permitted;
-  NOTICE/attribution preservation required; patent grant included.
-- The vulnerability database content aggregates public advisory sources;
-  redistribution of the DB itself has its own terms `[U]` — only relevant
-  if you republish the DB.
+
+Apache-2.0 permits commercial use, modification, redistribution, and SaaS use with preservation of notices and includes a patent grant. Republished vulnerability databases or third-party policy content may carry separate terms.
 
 ## Installation
-Pinned Docker image (`aquasec/trivy:0.72.0`), distro packages, or
-`go install github.com/aquasecurity/trivy/cmd/trivy@v0.72.0`.
+
+Use the official binary or container pinned to `v0.70.0`; record checksum or image digest and the database-update policy in CI.
 
 ## Agent integration
-Safe for autonomous read-only scanning; JSON/SARIF output (`-f json`,
-`-f sarif`); deterministic exit codes via `--exit-code`. Pin the version and
-DB snapshot for reproducible CI results.
+
+Suitable for read-only automated scanning with JSON and SARIF output. Agents must preserve timeout, skipped-target, stale-database, unsupported-format, and partial-scan warnings and must not auto-create suppressions.
 
 ## Required human review
-Triage of findings (false-positive rate on language packages is nontrivial);
-any decision to suppress a finding (`.trivyignore`) must be human-approved.
+
+A developer or security reviewer must triage findings, approve severity thresholds and ignore rules, and determine remediation priority. Every suppression requires an owner, rationale, expiry, and review record.
 
 ## Score notes
-Functional 19/20 · Security 17/20 (Scorecard unknown; DB-fetch runtime dep) ·
-Maintenance 14/15 · Docs 9/10 · License 10/10 · Reproducibility 8/10 (not
-executed this pass) · Provenance 8/10 · Integration 4/5 → **89**
+
+Functional 19/20 · Security 17/20 · Maintenance 14/15 · Documentation 9/10 · License 10/10 · Reproducibility 9/10 · Provenance 7/10 · Integration 4/5 → **89**.
