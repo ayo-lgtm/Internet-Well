@@ -58,6 +58,7 @@ CONCEPTS = {
     ],
 }
 HIGH_RISK_TERMS = {"legal", "finance", "trading", "security", "privacy", "healthcare", "authentication", "production"}
+REVIEW_TERMS = {"human review", "human-review", "qualified review", "competent review", "licensed counsel", "domain experts", "specialist review"}
 
 
 def markdown_files(directory: str) -> list[Path]:
@@ -115,8 +116,9 @@ def validate_safety(errors: list[str]) -> None:
         for path in markdown_files(directory):
             text = path.read_text(encoding="utf-8").lower()
             risky = any(term in path.as_posix().lower() or term in text for term in HIGH_RISK_TERMS)
-            if risky and "human review" not in text:
-                errors.append(f"{path.relative_to(ROOT)}: high-risk artifact lacks human review")
+            reviewed = any(term in text for term in REVIEW_TERMS)
+            if risky and not reviewed:
+                errors.append(f"{path.relative_to(ROOT)}: high-risk artifact lacks a human-review gate")
 
 
 def main() -> int:
