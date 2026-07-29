@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internet-Well Resource Selection",
+  "type": "object",
+  "required": ["outcome", "capabilities", "selected_resources", "rejected_alternatives", "implementation_order", "verification_plan", "confidence"],
+  "properties": {
+    "outcome": {"type": "string"},
+    "capabilities": {"type": "array", "items": {"type": "string"}},
+    "selected_resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "registry_path", "reason"],
+        "properties": {
+          "name": {"type": "string"},
+          "registry_path": {"type": "string"},
+          "reason": {"type": "string"},
+          "tier": {"type": "string"},
+          "restrictions": {"type": "array", "items": {"type": "string"}},
+          "human_review": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "rejected_alternatives": {"type": "array", "items": {"type": "object"}},
+    "implementation_order": {"type": "array", "items": {"type": "string"}},
+    "verification_plan": {"type": "array", "items": {"type": "string"}},
+    "evidence_gaps": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"enum": ["low", "medium", "high"]}
+  },
+  "additionalProperties": true
+}
