@@ -1,23 +1,33 @@
 # Command: Adopt Resource
 
-## Preconditions
+## Purpose
 
-- A project assessment exists.
-- The resource selection is documented.
-- The founder authorized implementation.
-- License, privacy, cost, and infrastructure consequences are understood.
+Integrate an already selected and authorized resource into a target project in the smallest reversible slice and verify the real result.
+
+## Inputs
+
+- completed project assessment;
+- documented resource selection and intended role;
+- explicit implementation authorization;
+- exact resource pin;
+- target repository and allowed file scope;
+- acceptance criteria;
+- license, privacy, cost, infrastructure, and data-flow implications;
+- rollback conditions and required human approvals.
 
 ## Procedure
 
-1. Read the selected registry record and upstream installation guidance at the pinned version.
-2. Inspect the target repository's existing conventions and dependency boundaries.
-3. Define acceptance criteria and rollback conditions.
-4. Implement the smallest working integration.
-5. Add configuration, documentation, and tests needed to operate the resource safely.
-6. Verify through the target system's real interfaces.
-7. Record exact versions, commands, files changed, evidence, and unresolved risks.
-8. Do not claim success from installation alone.
+1. Read the selected registry record and upstream guidance at the pin.
+2. Recheck material upstream changes and open evidence debt.
+3. Inspect target conventions, current status, tests, CI, and dependency boundaries.
+4. Establish a focused baseline or failing check where practical.
+5. Implement the smallest coherent integration.
+6. Add only necessary configuration, documentation, and tests.
+7. Verify through the target system's real interfaces.
+8. Inspect the diff for secrets, unrelated work, permission changes, telemetry, network paths, and licensing files.
+9. Record exact versions, commands, exit status, files changed, evidence, failures, blocked checks, rollback, and residual risk.
+10. Stop before deployment, merge, purchase, account change, communication, or destructive action unless separately authorized.
 
-## Required result
+## Output
 
-Produce an adoption record containing the selected pin, configuration decisions, permission changes, data flows, costs, license obligations, verification commands, results, rollback steps, and remaining human review.
+Produce `outputs/adoption-plan.schema.json` compatible output containing the selected pin, intended role, scope, configuration decisions, permission changes, data flows, costs, license obligations, implementation steps, verification results, rollback, status, remaining risks, and human review.
