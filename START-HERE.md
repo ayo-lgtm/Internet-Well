@@ -1,77 +1,52 @@
-# Start Here
+# Start Here — Internet-Well Founder OS
 
-Internet-Well helps a founder or AI agent move from **a goal** to **a verified implementation plan**.
+Internet-Well is the Brain a founder or connected AI agent consults before selecting repositories, changing a product, launching, or automating high-impact work.
 
-Do not begin by searching for a tool. Begin by stating the outcome.
+## Ask for an outcome
 
-## Common starting requests
+Start with the result you need, not a tool name. Examples:
 
-- Build a new product.
-- Review an existing product.
-- Prepare a product for launch.
-- Improve security, privacy, accessibility, reliability, or compliance.
-- Select the right stack or infrastructure.
-- Add testing, monitoring, backups, documentation, marketing, or operations.
-- Investigate a failure or incident.
-- Simulate how stakeholders may react to a decision.
-- Find a proven open-source reference implementation for a capability.
+- Audit this product before launch.
+- Build this idea into a working product.
+- Select the right testing and security stack.
+- Review privacy, legal, accessibility, or AI risk.
+- Create an operating, marketing, or incident-response system.
+- Find a verified reference implementation for a capability.
+- Evaluate an autonomous agent or trading system without assuming its claims are true.
 
-## For founders
+## What the Brain needs
 
-Tell the agent:
+Provide the target repository or product, intended users, current stage, known stack, hosting, jurisdictions, data handled, critical business constraints, explicit exclusions, and what actions the agent may take.
 
-1. what you are building or changing;
-2. the target repository or product;
-3. the desired outcome;
-4. known stack and hosting;
-5. current stage: idea, prototype, beta, pre-launch, live, or scaling;
-6. users and jurisdictions;
-7. sensitive data or high-risk decisions involved;
-8. whether the agent may only recommend or may also implement.
+Missing facts should be discovered from authorized sources or marked unknown. They must not be invented.
 
-A minimal request can be:
+## Required first pass
 
-> Use Internet-Well to audit this repository for launch. Select the appropriate playbook and resources, explain your choices, implement only after authorization, and verify every change.
+1. Read `AGENTS.md`.
+2. Run the project-intelligence procedure in `skills/experimental/project-intelligence/SKILL.md`.
+3. Produce `outputs/project-assessment.schema.json` compatible output.
+4. Apply product profiles in `profiles/` and stack guides in `stacks/`.
+5. Select the applicable playbook from `playbooks/`.
+6. Map capability gaps using `capabilities/CAPABILITY-GRAPH.md`.
+7. Select the smallest compatible bundle from `bundles/`.
+8. Use the registry only after capabilities and restrictions are known.
+9. Produce a resource-selection record, rejected alternatives, approvals, implementation order, and verification plan.
+10. Obtain explicit authorization before writes or external actions.
 
-## For AI agents
+## Connected-agent prompt
 
-Read in this order:
+> Use Internet-Well at the current verified commit to assess this repository. Preserve all existing product decisions and explicit exclusions. Return the project assessment, critical journeys, risk class, selected profiles and playbooks, capability gaps, smallest compatible resource bundle, rejected alternatives, approvals, implementation order, and verification gates. Do not modify anything without authorization. Distinguish passed, failed, blocked, and unverified work.
 
-1. `AGENTS.md`
-2. `FOUNDER-OS.md`
-3. the applicable file under `commands/`
-4. the applicable playbook under `playbooks/`
-5. `capabilities/CAPABILITY-GRAPH.md`
-6. relevant product profiles and stack guides
-7. registry records for candidate resources
+For the complete request/response contract, use `connections/AGENT-PROTOCOL.md`.
 
-Do not start with `registry/INDEX.md` unless the goal and capability gaps are already defined.
+## After approval
 
-## Operating modes
+Use `skills/experimental/adoption-verifier/SKILL.md` to implement in small reversible slices. Verify real integrated behavior, not just installation. Record commands, exit status, evidence, rollback, residual risk, and human-review requirements.
 
-### Recommend
-Analyze and produce a selection and adoption plan. Do not modify a target repository.
+## High-risk boundaries
 
-### Implement
-After authorization, make scoped changes, run checks, and return verification evidence.
+Explicit approval and qualified review are required before production changes, deployments, purchases, account or billing changes, external communications, legal or medical conclusions, financial or trading activity, regulated-data processing, credential access, publishing, or destructive action.
 
-### Audit
-Inspect without changing the target. Produce findings prioritized by impact and confidence.
+## Honest promise
 
-### Monitor
-Recheck time-sensitive evidence, dependencies, incidents, releases, or external conditions on an approved cadence.
-
-## What a good result contains
-
-- concise project profile;
-- selected playbook and why;
-- capability gaps;
-- recommended bundle, not an unstructured tool list;
-- compatibility and license analysis;
-- implementation sequence;
-- verification results;
-- unresolved risks and required human review.
-
-## Current maturity
-
-The verified registry and evidence system are operational. The Founder OS execution layer is being expanded incrementally. Treat skills marked experimental as supervised procedures, not autonomous production authority.
+Internet-Well reduces avoidable mistakes and organizes expert-built resources into traceable workflows. It does not guarantee a bug-free launch, universal compliance, product-market fit, profit, virality, safe autonomous action, or accurate prediction.
