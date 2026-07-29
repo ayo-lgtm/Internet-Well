@@ -2,11 +2,11 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-56 records as of 2026-07-29 — 42 approved, 12 approved-with-restrictions, 2 experimental. Tiers: 38×B, 18×C. Execution-tested: 22. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+57 records as of 2026-07-29 — 43 approved, 12 approved-with-restrictions, 2 experimental. Tiers: 39×B, 18×C. Execution-tested: 24. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
-## ✅ approved (42)
+## ✅ approved (43)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
@@ -46,11 +46,12 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Gitleaks](security/gitleaks.md) | security | B | secrets-detection | MIT | v8.30.1 (commit 8d1f98c7967eb1e79cb44a… | 84 | ✅ |
 | [Grype](security/grype.md) | security | B | vulnerability-scanning | Apache-2.0 | v0.116.0 (commit 3b014b00097d43933e5cc… | 85 | – |
 | [OpenSSF Scorecard](security/openssf-scorecard.md) | security | B | supply-chain-security | Apache-2.0 | v5.5.0 (commit c395761df6afe1a69e476bc… | 84 | – |
+| [OSV-Scanner](security/osv-scanner.md) | security | B | dependency-vulnerability-scanning | Apache-2.0 | v2.3.8 | 86 | ✅ |
 | [OWASP Application Security Verification Standard (ASVS)](security/owasp-asvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v5.0.0 (May 2025) | n/a | n/a |
 | [OWASP MASVS (Mobile Application Security Verification Standard)](security/owasp-masvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v2.1.0 (2024-01-18) | n/a | n/a |
 | [OWASP Threat Dragon](security/owasp-threat-dragon.md) | security | C | threat-modeling | Apache-2.0 | v2.6.2 (2026-05-10) | 75 | – |
 | [Syft](security/syft.md) | security | B | sbom-generation | Apache-2.0 | v1.49.0 (commit 29fd7d0dec81cf03e0a119… | 86 | ✅ |
-| [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.72.0 (commit 8a32853686209a428179bb… | 89 | – |
+| [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.70.0 | 89 | ✅ |
 | [ZAP (Zed Attack Proxy)](security/zaproxy.md) | security | C | dast | Apache-2.0 | v2.17.0 (2025-12-15) | 85 | – |
 
 ## ⚠️ approved-with-restrictions (12)
@@ -89,6 +90,6 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | marketing | 7 |
 | operations | 10 |
 | product | 7 |
-| security | 10 |
+| security | 11 |
 
 Known thin spots, held open honestly (see [PHASES.md](../PHASES.md)): PRD templates with real provenance, customer-success playbooks, keyword/rank tooling, forecasting beyond hledger budgets + Metabase.
