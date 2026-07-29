@@ -35,10 +35,10 @@ CONCEPTS = {
         ("evidence", ["## completion evidence", "## definition of done", "## launch blockers"]),
     ],
     "stacks": [
-        ("detection", ["## detection", "## detection signals", "## apply when"]),
-        ("controls", ["## required controls", "## baseline controls", "## mandatory controls"]),
-        ("capabilities", ["## compatible capabilities", "## capability map", "## baseline capabilities"]),
-        ("verification", ["## verification", "## validation", "## release gates"]),
+        ("detection", ["## detection", "## detection signals", "## apply when", "## scope"]),
+        ("controls", ["## required controls", "## baseline controls", "## mandatory controls", "## required review areas"]),
+        ("capabilities", ["## compatible capabilities", "## capability map", "## baseline capabilities", "## selection guidance"]),
+        ("verification", ["## verification", "## validation", "## release gates", "## verification minimum"]),
     ],
     "bundles": [
         ("outcome", ["## outcome", "## purpose"]),
