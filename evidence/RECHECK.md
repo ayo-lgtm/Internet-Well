@@ -40,6 +40,18 @@ artifact and binaries were unfetchable — fully untested, see its record).
   handbook *content* carries an additional CC license statement anywhere
   on handbook.gitlab.com (page was unreachable this pass).
 
+## Items opened 2026-07-29
+
+- **MiroFish** (`registry/product/mirofish.md`): run an isolated execution
+  test at `v0.1.2`; inventory direct and transitive licenses, especially the
+  OASIS simulation dependency; map all external data flows and retention for
+  the configured LLM and Zep services; audit authentication, authorization,
+  tenancy, deletion, encryption, telemetry, and deployment defaults; evaluate
+  factual grounding and prediction calibration against a predetermined test
+  set; reconcile any newer release before promotion. Open-source counsel,
+  security/privacy review, and domain-expert review are required before any
+  hosted commercial or high-impact use.
+
 ### Closed in Phase 4 (2026-07-23)
 
 - ✅ Chatwoot GHSA-x288-jh8j-348c: patched in 4.9.0+ per the advisory —
@@ -80,6 +92,8 @@ artifact and binaries were unfetchable — fully untested, see its record).
 - Single-maintainer projects: gitleaks, pre-commit, uptime-kuma, listmonk,
   hledger — re-check activity each pass.
 - Plausible privacy claims — verify tracker network behavior empirically.
+- MiroFish release, OASIS dependency boundary, Zep requirements, external
+  model data flows, and grounding/calibration claims.
 
 ## Closed in Phase 2 (2026-07-23)
 
