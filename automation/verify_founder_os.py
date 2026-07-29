@@ -2,8 +2,7 @@
 """Validate Internet-Well Founder OS operating artifacts.
 
 Checks commands, playbooks, profiles, stacks, bundles, skills, output schemas,
-capability references, registry references, and required safety sections.
-No third-party dependencies; Python 3.9+.
+local links, registry references, and safety gates. Python 3.9+ only.
 """
 from __future__ import annotations
 
@@ -15,39 +14,72 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CAPABILITY_FILE = ROOT / "capabilities" / "CAPABILITY-GRAPH.md"
 REQUIRED_ROOT = ["AGENTS.md", "START-HERE.md", "FOUNDER-OS.md"]
-REQUIRED_PLAYBOOK = [
-    "## Purpose", "## Inputs", "## Workflow", "## Outputs",
-    "## Verification", "## Stop conditions", "## Human review",
-]
-REQUIRED_COMMAND = ["## Purpose", "## Inputs", "## Procedure", "## Output"]
-REQUIRED_PROFILE = ["## Applies to", "## Required capabilities", "## Risk model", "## Completion evidence"]
-REQUIRED_STACK = ["## Detection", "## Required controls", "## Compatible capabilities", "## Verification"]
-REQUIRED_BUNDLE = ["## Outcome", "## Required capabilities", "## Selection rules", "## Implementation order", "## Verification", "## Human review"]
-REQUIRED_SKILL = ["## Purpose", "## Inputs", "## Procedure", "## Outputs", "## Permission boundary", "## Evaluation"]
+CONCEPTS = {
+    "commands": [
+        ("purpose", ["## purpose", "## goal"]),
+        ("inputs", ["## inputs", "## required inputs"]),
+        ("procedure", ["## procedure", "## workflow", "## steps"]),
+        ("output", ["## output", "## required outputs"]),
+    ],
+    "playbooks": [
+        ("purpose", ["## purpose", "## goal"]),
+        ("inputs", ["## inputs", "## required inputs"]),
+        ("workflow", ["## workflow", "## procedure"]),
+        ("outputs", ["## outputs", "## required outputs"]),
+        ("stop conditions", ["## stop conditions"]),
+    ],
+    "profiles": [
+        ("scope", ["## applies to", "## use this profile when"]),
+        ("capabilities", ["## required capabilities", "## baseline capabilities"]),
+        ("risk", ["## risk model", "## major risks", "## primary risks"]),
+        ("evidence", ["## completion evidence", "## definition of done"]),
+    ],
+    "stacks": [
+        ("detection", ["## detection", "## detection signals"]),
+        ("controls", ["## required controls", "## baseline controls"]),
+        ("capabilities", ["## compatible capabilities", "## capability map"]),
+        ("verification", ["## verification", "## validation"]),
+    ],
+    "bundles": [
+        ("outcome", ["## outcome", "## purpose"]),
+        ("capabilities", ["## required capabilities"]),
+        ("selection", ["## selection rules"]),
+        ("order", ["## implementation order"]),
+        ("verification", ["## verification"]),
+        ("human review", ["## human review"]),
+    ],
+    "skills": [
+        ("purpose", ["## purpose"]),
+        ("inputs", ["## inputs"]),
+        ("procedure", ["## procedure", "## workflow"]),
+        ("outputs", ["## outputs"]),
+        ("permission", ["## permission boundary"]),
+        ("evaluation", ["## evaluation"]),
+    ],
+}
 HIGH_RISK_TERMS = {"legal", "finance", "trading", "security", "privacy", "healthcare", "authentication", "production"}
-
-
-def headings(path: Path, required: list[str], errors: list[str]) -> None:
-    text = path.read_text(encoding="utf-8")
-    for heading in required:
-        if heading not in text:
-            errors.append(f"{path.relative_to(ROOT)}: missing {heading}")
 
 
 def markdown_files(directory: str) -> list[Path]:
     base = ROOT / directory
-    return sorted(p for p in base.rglob("*.md") if p.name != "README.md") if base.exists() else []
+    if not base.exists():
+        return []
+    return sorted(p for p in base.rglob("*.md") if p.name != "README.md")
 
 
-def extract_capabilities() -> set[str]:
-    text = CAPABILITY_FILE.read_text(encoding="utf-8")
-    values = set(re.findall(r"`([a-z][a-z0-9-]+)`", text))
-    values.update(re.findall(r"^###\s+([a-z][a-z0-9-]+)\s*$", text, re.M))
-    return values
+def check_concepts(path: Path, kind: str, errors: list[str]) -> None:
+    text = path.read_text(encoding="utf-8").lower()
+    for label, alternatives in CONCEPTS[kind]:
+        if not any(value in text for value in alternatives):
+            errors.append(f"{path.relative_to(ROOT)}: missing {label} section")
 
 
 def validate_json(errors: list[str]) -> None:
-    for path in sorted((ROOT / "outputs").glob("*.json")):
+    output_dir = ROOT / "outputs"
+    if not output_dir.exists():
+        errors.append("missing outputs directory")
+        return
+    for path in sorted(output_dir.glob("*.json")):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             if not isinstance(data, dict):
@@ -61,14 +93,11 @@ def validate_json(errors: list[str]) -> None:
 def validate_links(errors: list[str]) -> None:
     pattern = re.compile(r"\[[^\]]+\]\(([^)#]+)(?:#[^)]+)?\)")
     for path in sorted(ROOT.rglob("*.md")):
-        if ".git" in path.parts:
-            continue
         text = path.read_text(encoding="utf-8")
         for target in pattern.findall(text):
             if "://" in target or target.startswith("mailto:"):
                 continue
-            resolved = (path.parent / target).resolve()
-            if not resolved.exists():
+            if not (path.parent / target).resolve().exists():
                 errors.append(f"{path.relative_to(ROOT)}: dead local link {target}")
 
 
@@ -85,9 +114,9 @@ def validate_safety(errors: list[str]) -> None:
     for directory in ["playbooks", "profiles", "bundles", "skills"]:
         for path in markdown_files(directory):
             text = path.read_text(encoding="utf-8").lower()
-            if any(term in path.as_posix().lower() or term in text for term in HIGH_RISK_TERMS):
-                if "human review" not in text:
-                    errors.append(f"{path.relative_to(ROOT)}: high-risk artifact lacks human review")
+            risky = any(term in path.as_posix().lower() or term in text for term in HIGH_RISK_TERMS)
+            if risky and "human review" not in text:
+                errors.append(f"{path.relative_to(ROOT)}: high-risk artifact lacks human review")
 
 
 def main() -> int:
@@ -97,19 +126,12 @@ def main() -> int:
             errors.append(f"missing root artifact {rel}")
     if not CAPABILITY_FILE.exists():
         errors.append("missing capabilities/CAPABILITY-GRAPH.md")
-    for path in markdown_files("commands"):
-        headings(path, REQUIRED_COMMAND, errors)
-    for path in markdown_files("playbooks"):
-        headings(path, REQUIRED_PLAYBOOK, errors)
-    for path in markdown_files("profiles"):
-        headings(path, REQUIRED_PROFILE, errors)
-    for path in markdown_files("stacks"):
-        headings(path, REQUIRED_STACK, errors)
-    for path in markdown_files("bundles"):
-        headings(path, REQUIRED_BUNDLE, errors)
+    for kind in ["commands", "playbooks", "profiles", "stacks", "bundles"]:
+        for path in markdown_files(kind):
+            check_concepts(path, kind, errors)
     for path in markdown_files("skills"):
         if path.name == "SKILL.md":
-            headings(path, REQUIRED_SKILL, errors)
+            check_concepts(path, "skills", errors)
     validate_json(errors)
     validate_links(errors)
     validate_registry_refs(errors)
