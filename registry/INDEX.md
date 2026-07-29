@@ -46,7 +46,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Gitleaks](security/gitleaks.md) | security | B | secrets-detection | MIT | v8.30.1 (commit 8d1f98c7967eb1e79cb44a… | 84 | ✅ |
 | [Grype](security/grype.md) | security | B | vulnerability-scanning | Apache-2.0 | v0.116.0 (commit 3b014b00097d43933e5cc… | 85 | – |
 | [OpenSSF Scorecard](security/openssf-scorecard.md) | security | B | supply-chain-security | Apache-2.0 | v5.5.0 (commit c395761df6afe1a69e476bc… | 84 | – |
-| [OSV-Scanner](security/osv-scanner.md) | security | B | dependency-vulnerability-scanning | Apache-2.0 | v2.3.8 | 86 | ✅ |
+| [OSV-Scanner](security/osv-scanner.md) | security | B | dependency-vulnerability-scanning | Apache-2.0 | v2.3.8 | 87 | ✅ |
 | [OWASP Application Security Verification Standard (ASVS)](security/owasp-asvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v5.0.0 (May 2025) | n/a | n/a |
 | [OWASP MASVS (Mobile Application Security Verification Standard)](security/owasp-masvs.md) | security | B | security-standard | CC-BY-SA-4.0 | v2.1.0 (2024-01-18) | n/a | n/a |
 | [OWASP Threat Dragon](security/owasp-threat-dragon.md) | security | C | threat-modeling | Apache-2.0 | v2.6.2 (2026-05-10) | 75 | – |
