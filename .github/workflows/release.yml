@@ -17,29 +17,62 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify tag and version alignment
-        if: startsWith(github.ref, 'refs/tags/')
+
+      - name: Verify version alignment
         run: |
-          TAG="${GITHUB_REF_NAME#v}"
-          test "$TAG" = "$(cat VERSION)"
-          grep -q "version = \"$TAG\"" pyproject.toml
-          grep -q "VERSION = \"$TAG\"" internet_well.py
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < VERSION)"
+          test -n "$VERSION"
+          grep -q "version = \"$VERSION\"" pyproject.toml
+          grep -q "VERSION = \"$VERSION\"" internet_well.py
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG="${GITHUB_REF_NAME#v}"
+            test "$TAG" = "$VERSION"
+          fi
+          echo "Aligned version: $VERSION"
+
+      - name: Compile Python
+        run: python3 -m py_compile internet_well.py automation/*.py automation/tests/*.py
+
       - name: Run verification
         run: |
-          python3 -m py_compile internet_well.py automation/founder_os_engine.py
-          python3 automation/verify.py
+          set -euo pipefail
+          python3 automation/verify_registry.py --max-age 90
+          python3 automation/build_index.py --check
+          python3 automation/verify_founder_os.py
+          python3 automation/verify_public_repo_hygiene.py
           python3 automation/verify_identity_authorization_bundle.py
-          python3 automation/report_verification_coverage.py --json /tmp/catalog-coverage.json
+          python3 automation/verify_vibe_coder_catalog.py
+          python3 automation/report_verification_coverage.py --check --output /tmp/catalog-coverage.json
+          python3 -m unittest discover -s automation/tests -p 'test_*.py' -v
+          python3 automation/test_vibe_integrations.py
+          python3 automation/test_ponytail_integration.py
+          python3 automation/test_screenshot_integrations.py
+
       - name: Build distributions
         run: |
           python3 -m pip install --upgrade pip build
           python3 -m build
+
       - name: Smoke-test wheel
         run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < VERSION)"
           python3 -m venv /tmp/internet-well-release
           /tmp/internet-well-release/bin/pip install dist/*.whl
-          /tmp/internet-well-release/bin/internet-well --version
+          /tmp/internet-well-release/bin/internet-well --version | grep -F "$VERSION"
+          export INTERNET_WELL_ROOT="$PWD"
           /tmp/internet-well-release/bin/internet-well docs . --provider generic --output /tmp/docs-manifest.json
+          /tmp/internet-well-release/bin/internet-well assess . --format json > /tmp/release-assess.json
+          /tmp/internet-well-release/bin/internet-well plan . --goal 'release smoke' --format markdown > /tmp/release-plan.md
+          /tmp/internet-well-release/bin/internet-well-integrations list > /tmp/integrations-list.json
+          test -s /tmp/docs-manifest.json
+          test -s /tmp/release-assess.json
+          test -s /tmp/release-plan.md
+          test -s /tmp/integrations-list.json
+          grep -q 'Preliminary static assessment only' /tmp/release-plan.md
+          grep -q '"report_classification": "private"' /tmp/release-assess.json
+
       - uses: actions/upload-artifact@v4
         with:
           name: internet-well-release-${{ github.ref_name }}
@@ -47,3 +80,6 @@ jobs:
             dist/*
             /tmp/catalog-coverage.json
             /tmp/docs-manifest.json
+            /tmp/release-assess.json
+            /tmp/release-plan.md
+            /tmp/integrations-list.json
