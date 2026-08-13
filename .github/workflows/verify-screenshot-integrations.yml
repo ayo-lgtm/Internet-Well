@@ -1,0 +1,48 @@
+name: Verify screenshot integrations
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile integration manager
+        run: python -m py_compile automation/screenshot_integrations.py automation/test_screenshot_integrations.py
+      - name: Run adapter tests
+        run: python automation/test_screenshot_integrations.py
+      - name: Build package
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Verify clean installed command
+        run: |
+          python -m venv /tmp/internet-well-screenshot-venv
+          /tmp/internet-well-screenshot-venv/bin/pip install dist/*.whl
+          cd /tmp
+          /tmp/internet-well-screenshot-venv/bin/internet-well-screenshot-integrations list > /tmp/screenshot-integrations.json
+          grep -q 'awesome-claude-skills' /tmp/screenshot-integrations.json
+          grep -q 'playwright-mcp' /tmp/screenshot-integrations.json
+          /tmp/internet-well-screenshot-venv/bin/internet-well-screenshot-integrations plan playwright-mcp --ref 0.0.42 > /tmp/playwright-plan.json
+          grep -q '@playwright/mcp@0.0.42' /tmp/playwright-plan.json
+      - name: Verify no floating refs in governed adapters
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('integrations/vibe/screenshot-resources.json').read_text())
+          for item in data['integrations']:
+              text=json.dumps(item).lower()
+              assert '@latest' not in text
+              assert item.get('pin_required') is True
+          print('Pinned screenshot integration policy passed.')
+          PY

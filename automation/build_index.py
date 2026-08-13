@@ -8,7 +8,6 @@ The index is fully generated — never hand-edit it. This removes the
 count-drift bug class the linter once caught in a hand-maintained index.
 """
 import argparse
-import datetime as dt
 import sys
 from pathlib import Path
 
@@ -41,6 +40,12 @@ def row(f):
             f"{pin} | {score} | {tested} |")
 
 
+def evidence_date(records):
+    """Use registry evidence, not wall-clock time, for reproducible output."""
+    dates = [f.get("last_verified", "") for f in records if f.get("last_verified")]
+    return max(dates) if dates else "unknown"
+
+
 def build():
     records = load_records()
     by_status = {}
@@ -56,7 +61,7 @@ def build():
               "**GENERATED FILE — do not hand-edit.** Rebuild with "
               "`python3 automation/build_index.py`.", "",
               f"{len(records)} records as of "
-              f"{dt.date.today().isoformat()} — "
+              f"{evidence_date(records)} — "
               + ", ".join(f"{len(v)} {k}" for k, v in sorted(
                   by_status.items()))
               + f". Tiers: " + ", ".join(

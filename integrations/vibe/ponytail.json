@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "ponytail",
+  "name": "Ponytail",
+  "catalog_slug": "DietrichGebert/ponytail",
+  "kind": "agent-skill-library",
+  "source": "https://github.com/DietrichGebert/ponytail",
+  "install_mode": "selective-copy",
+  "pin_required": true,
+  "license_review": "required-before-adoption",
+  "targets": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "jules",
+    "kiro",
+    "qoder",
+    "zed",
+    "devin",
+    "hermes",
+    "openclaw",
+    "generic-agents-md"
+  ],
+  "capabilities": [
+    "code-minimization",
+    "over-engineering-review",
+    "dependency-restraint",
+    "platform-reuse",
+    "technical-debt-tracking",
+    "implementation-audit"
+  ],
+  "skills": [
+    "ponytail",
+    "ponytail-review",
+    "ponytail-audit",
+    "ponytail-debt",
+    "ponytail-gain",
+    "ponytail-help"
+  ],
+  "approval_required": true,
+  "default_action": "inspect",
+  "quality_gates": [
+    "compare-against-no-skill-baseline",
+    "verify-no-required-functionality-is-removed",
+    "verify-security-controls-are-not-dismissed-as-complexity",
+    "verify-accessibility-and-compliance-work-is-preserved",
+    "review-generated-agents-md-rules",
+    "record-rollback-plan"
+  ],
+  "restrictions": [
+    "do-not-vendor-entire-repository-by-default",
+    "do-not-use-code-minimization-to-remove-required-controls",
+    "do-not-treat-upstream-benchmarks-as-independent-proof",
+    "exact-release-or-commit-required",
+    "human-review-required-before-project-rule-changes"
+  ],
+  "notes": "Use as a selective agent-discipline layer. It may challenge unnecessary code and dependencies, but it must not override product requirements, security, privacy, accessibility, legal, or reliability controls."
+}

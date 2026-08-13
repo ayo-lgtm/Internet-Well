@@ -1,0 +1,49 @@
+name: Build release artifacts
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify tag and version alignment
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          test "$TAG" = "$(cat VERSION)"
+          grep -q "version = \"$TAG\"" pyproject.toml
+          grep -q "VERSION = \"$TAG\"" internet_well.py
+      - name: Run verification
+        run: |
+          python3 -m py_compile internet_well.py automation/founder_os_engine.py
+          python3 automation/verify.py
+          python3 automation/verify_identity_authorization_bundle.py
+          python3 automation/report_verification_coverage.py --json /tmp/catalog-coverage.json
+      - name: Build distributions
+        run: |
+          python3 -m pip install --upgrade pip build
+          python3 -m build
+      - name: Smoke-test wheel
+        run: |
+          python3 -m venv /tmp/internet-well-release
+          /tmp/internet-well-release/bin/pip install dist/*.whl
+          /tmp/internet-well-release/bin/internet-well --version
+          /tmp/internet-well-release/bin/internet-well docs . --provider generic --output /tmp/docs-manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: internet-well-release-${{ github.ref_name }}
+          path: |
+            dist/*
+            /tmp/catalog-coverage.json
+            /tmp/docs-manifest.json

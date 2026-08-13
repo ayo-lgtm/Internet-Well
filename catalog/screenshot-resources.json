@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-08-12",
+  "status": "governed-candidates",
+  "purpose": "Resources newly identified from the August 2026 screenshot review. Existing screenshot resources already governed elsewhere are not duplicated here.",
+  "resources": [
+    {
+      "slug": "ComposioHQ/awesome-claude-skills",
+      "name": "Awesome Claude Skills",
+      "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "type": "curated-skill-library-and-discovery-index",
+      "capabilities": ["skill-discovery", "agent-skills", "claude-code", "codex", "cursor", "mcp-workflows", "app-automation"],
+      "license": "Apache-2.0",
+      "readiness": "discovery-and-selective-adoption",
+      "risk": "high-third-party-skill-supply-chain",
+      "recommendation": "use-as-curated-discovery-source-not-blanket-trust",
+      "restrictions": ["pin-exact-commit", "inspect-each-selected-skill", "review-scripts-hooks-and-tools", "review-per-skill-upstream-license", "do-not-copy-entire-repository-by-default", "credentials-and-connected-app-actions-require-explicit-approval"]
+    },
+    {
+      "slug": "microsoft/playwright-mcp",
+      "name": "Playwright MCP",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "type": "official-browser-mcp-runtime",
+      "capabilities": ["browser-automation", "mcp", "accessibility-snapshots", "persistent-browser-context", "web-testing"],
+      "license": "Apache-2.0",
+      "readiness": "production-candidate-with-containment",
+      "risk": "high-browser-session-and-credential-access",
+      "recommendation": "prefer-for-rich-persistent-mcp-browser-loops; compare-with-agent-browser-or-playwright-cli-for-token-efficiency",
+      "restrictions": ["pin-exact-package-version", "isolated-browser-profile", "hostname-allowlist", "no-state-changing-production-actions-without-approval", "protect-cookies-downloads-and-auth-state", "record-browser-actions"]
+    }
+  ],
+  "already_governed_from_attached_images": [
+    "anthropics/skills",
+    "vercel-labs/skills and skills.sh",
+    "vercel-labs/agent-browser",
+    "gsd-build/get-shit-done",
+    "Leonxlnx/taste-skill",
+    "blader/humanizer",
+    "jenna-russell/storyscope",
+    "DavidHDev/react-bits",
+    "Anime.js",
+    "Shader Gradient",
+    "Jitter",
+    "Refero",
+    "10x App Builder",
+    "Ponytail"
+  ]
+}

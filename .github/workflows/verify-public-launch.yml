@@ -1,0 +1,68 @@
+name: Verify public launch
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  public-launch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and install
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+          python -m pip install dist/*.whl
+      - name: Version alignment
+        run: |
+          test "$(cat VERSION)" = "0.3.0"
+          internet-well --version | grep '0.3.0'
+          grep -q 'version = "0.3.0"' pyproject.toml
+      - name: Privacy-safe assessment defaults
+        run: |
+          mkdir -p /tmp/iw-fixture
+          printf '{"scripts":{"test":"echo ok"}}' > /tmp/iw-fixture/package.json
+          printf 'PRIVATE=do-not-read' > /tmp/iw-fixture/.env
+          internet-well assess /tmp/iw-fixture > /tmp/assessment.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/assessment.json'))
+          assert p['metadata']['report_classification']=='private'
+          assert p['metadata']['path_redacted'] is True
+          assert p['metadata']['processing']=='local-only'
+          assert '/tmp/iw-fixture' not in json.dumps(p)
+          assert '.env' in p['sensitive_file_gate']['potential_sensitive_files_detected']
+          assert p['sensitive_file_gate']['contents_read'] is False
+          assert 'Preliminary static assessment only' in p['metadata']['notice']
+          PY
+      - name: Hosted provider requires consent
+        run: |
+          if internet-well docs /tmp/iw-fixture --provider codewiki >/tmp/docs.json 2>/tmp/docs.err; then
+            echo 'Hosted provider unexpectedly accepted without consent' >&2
+            exit 1
+          fi
+          grep -q 'provider-consent' /tmp/docs.err
+          internet-well docs /tmp/iw-fixture --provider codewiki --provider-consent >/tmp/docs-consented.json
+      - name: Report write guard
+        run: |
+          git init /tmp/iw-fixture
+          if internet-well assess /tmp/iw-fixture --output /tmp/iw-fixture/report.json 2>/tmp/write.err; then
+            echo 'In-repository report write unexpectedly succeeded' >&2
+            exit 1
+          fi
+          grep -q 'Refusing to write' /tmp/write.err
+          internet-well assess /tmp/iw-fixture --output /tmp/iw-fixture/report.json --allow-in-repo-output
+      - name: Public policy files
+        run: |
+          test -f SECURITY.md
+          test -f docs/PRIVACY-AND-DATA-HANDLING.md
+          grep -q 'Developer Preview' README.md
+          grep -q 'private' docs/PRIVACY-AND-DATA-HANDLING.md

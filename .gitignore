@@ -1,2 +1,38 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account.json
+secrets.json
+
+# Internet-Well local/private outputs
+.internet-well/
+reports/
+assessment*.json
+assessment*.md
+plan*.json
+plan*.md
+security-plan*.json
+security-plan*.md
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

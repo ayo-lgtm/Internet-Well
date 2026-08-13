@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "policy": "These adapters are supplemental to integrations/vibe/manifest.json. Planning is allowed without execution. Cloning or running third-party code requires an exact pin and explicit approval.",
+  "integrations": [
+    {
+      "id": "awesome-claude-skills",
+      "name": "ComposioHQ Awesome Claude Skills",
+      "catalog_slug": "ComposioHQ/awesome-claude-skills",
+      "kind": "curated-skill-library",
+      "source": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "install_mode": "selective-copy",
+      "pin_required": true,
+      "license_review": "Apache-2.0 plus per-linked-skill upstream review",
+      "targets": ["claude-code", "codex", "cursor", "generic-agent"],
+      "capabilities": ["skill-discovery", "agent-skills", "mcp-workflows", "app-automation"],
+      "approval_required": true,
+      "default_action": "inspect",
+      "quality_gates": ["source-provenance", "per-skill-license", "script-review", "tool-permission-review", "credential-scope", "network-behavior", "baseline-comparison"],
+      "notes": "Do not treat the 1000+ listed skills as equally trusted. Pin the repository, inspect the selected skill and any linked upstream source, then adopt only reviewed directories. Connected-app actions and API keys require separate explicit authorization."
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "Microsoft Playwright MCP",
+      "catalog_slug": "microsoft/playwright-mcp",
+      "kind": "browser-mcp-runtime",
+      "source": "https://github.com/microsoft/playwright-mcp",
+      "install_mode": "npx",
+      "command_template": ["npx", "-y", "@playwright/mcp@{ref}", "--help"],
+      "pin_required": true,
+      "license_review": "Apache-2.0",
+      "targets": ["mcp-client", "claude-code", "cursor", "vscode", "generic-agent"],
+      "capabilities": ["browser-automation", "accessibility-snapshots", "persistent-browser-context", "web-testing"],
+      "approval_required": true,
+      "containment_profile": "browser-high-risk",
+      "default_action": "plan",
+      "quality_gates": ["isolated-browser-profile", "hostname-allowlist", "credential-isolation", "download-control", "state-change-approval", "token-cost-comparison"],
+      "notes": "Prefer MCP when persistent browser state and rich introspection justify the context cost. For high-throughput coding-agent workflows, compare against Playwright CLI+Skills or Agent Browser before selecting it."
+    }
+  ]
+}
