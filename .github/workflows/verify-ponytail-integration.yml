@@ -1,0 +1,39 @@
+name: Verify Ponytail integration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and test
+        run: |
+          python3 -m py_compile automation/ponytail_integration.py automation/test_ponytail_integration.py
+          python3 automation/test_ponytail_integration.py
+      - name: Verify safe CLI behavior
+        run: |
+          python3 automation/ponytail_integration.py show > /tmp/ponytail.json
+          python3 automation/ponytail_integration.py plan --ref v4.8.4 > /tmp/ponytail-plan.json
+          if python3 automation/ponytail_integration.py plan --ref latest; then
+            echo "floating ref unexpectedly accepted"
+            exit 1
+          fi
+          if python3 automation/ponytail_integration.py install --ref v4.8.4; then
+            echo "installation unexpectedly ran without approval"
+            exit 1
+          fi
+      - name: Build and install package
+        run: |
+          python3 -m pip install --upgrade build
+          python3 -m build
+          python3 -m venv /tmp/iw-ponytail-venv
+          /tmp/iw-ponytail-venv/bin/pip install dist/*.whl
+          INTERNET_WELL_ROOT="$PWD" /tmp/iw-ponytail-venv/bin/internet-well-ponytail show > /tmp/installed-ponytail.json
+          INTERNET_WELL_ROOT="$PWD" /tmp/iw-ponytail-venv/bin/internet-well-ponytail plan --ref v4.8.4 > /tmp/installed-ponytail-plan.json

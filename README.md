@@ -1,118 +1,163 @@
 # Internet-Well — The Founder OS Brain
 
-Internet-Well helps founders and connected AI agents turn a goal into an evidence-backed plan, choose compatible open-source capabilities, implement them only with permission, and verify the integrated result.
+> **Developer Preview v0.3.0.** Internet-Well performs local, preliminary repository assessment and governed planning. It is not a penetration test, legal opinion, privacy certification, or production approval.
 
-It is designed to answer:
+Internet-Well helps founders and connected AI agents turn a product goal into an evidence-backed plan, choose compatible open-source capabilities, preserve explicit product decisions, and identify where qualified human review is required.
 
-- What does this product need now?
-- Which product, engineering, security, privacy, legal, accessibility, AI, infrastructure, marketing, finance, or operations capabilities are missing?
-- Which verified resources fit this exact product, stack, stage, risk, and business model?
-- Is a resource a production dependency, standard, template, reference implementation, agent runtime, or autonomous system?
-- How should selected resources be combined, adopted, verified, updated, and removed?
-- What can an AI agent do autonomously, and where is human review required?
-- Which existing working repository can inform a capability without being blindly copied?
+## Privacy-first by default
 
-## Start here
+Internet-Well does not upload source code or findings. The CLI runs locally, redacts absolute project and home-directory paths by default, classifies reports as `private`, identifies potentially sensitive filenames without reading their contents, and refuses to write reports inside the assessed Git repository unless explicitly authorized.
 
-- **Founders:** read [`START-HERE.md`](START-HERE.md).
-- **AI agents:** read [`AGENTS.md`](AGENTS.md) before taking any action.
-- **Architecture:** read [`FOUNDER-OS.md`](FOUNDER-OS.md).
-- **Task routing:** use [`commands/`](commands/README.md).
-- **End-to-end work:** choose from [`playbooks/`](playbooks/README.md).
-- **Reusable selections:** use [`bundles/`](bundles/).
-- **Product intelligence:** use [`profiles/`](profiles/).
-- **Stack intelligence:** use [`stacks/`](stacks/).
-- **Connected agents:** follow [`connections/AGENT-PROTOCOL.md`](connections/AGENT-PROTOCOL.md).
-- **Resource roles:** read [`REFERENCE-TYPES.md`](REFERENCE-TYPES.md).
+Private projects do not need to be published. Keep their reports in a separate private location and never commit confidential findings to this public repository. Read [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) before assessing proprietary, regulated, privileged, or personal data.
 
-Do **not** begin by randomly browsing the registry. Define the outcome, assess the project, identify capability gaps, select a playbook and bundle, and only then choose resources.
+## Install
+
+Use a tagged release or verified commit:
+
+```bash
+python3 -m pip install .
+internet-well --version
+internet-well-integrations list
+```
+
+## Five-minute local assessment
+
+Write private reports outside the assessed repository:
+
+```bash
+mkdir -p "$HOME/.internet-well/reports"
+
+internet-well assess /path/to/project \
+  --classification private \
+  --format markdown \
+  --output "$HOME/.internet-well/reports/assessment.md"
+
+internet-well plan /path/to/project \
+  --goal "prepare a safe public launch" \
+  --classification private \
+  --format markdown \
+  --output "$HOME/.internet-well/reports/plan.md"
+
+internet-well security /path/to/project \
+  --classification private \
+  --format markdown \
+  --output "$HOME/.internet-well/reports/security-plan.md"
+```
+
+Every output contains a preliminary-assessment notice, report classification, local-processing declaration, path-redaction status, and privacy gate.
+
+## CodeWiki and documentation providers
+
+The `docs` command generates a provider-neutral documentation manifest. Hosted CodeWiki use requires explicit consent after reviewing retention, model-training, access, deletion, subprocessors, data-residency, and incident terms:
+
+```bash
+internet-well docs /path/to/project \
+  --provider codewiki \
+  --provider-consent \
+  --classification private \
+  --output "$HOME/.internet-well/reports/docs-manifest.json"
+```
+
+Prefer a local or self-hosted documentation provider for confidential repositories. CodeWiki is a documentation and onboarding layer, not Internet-Well's security, compliance, legal, privacy, or launch authority.
+
+## Commands
+
+- `assess` — preliminary project, stack, risk, and capability assessment.
+- `plan` — evidence-backed resource and implementation planning.
+- `security` — preliminary security capability planning; not a penetration test.
+- `launch-review` — preliminary launch-readiness planning; not an approval.
+- `docs` — governed documentation manifest for CodeWiki-style systems.
+
+Important options:
+
+- `--classification private|internal|shareable` — defaults to `private`.
+- `--include-paths` — opt in to absolute local paths.
+- `--allow-in-repo-output` — override the default report-write protection.
+- `--provider-consent` — required for hosted CodeWiki.
+
+## Vibe Coder Intelligence
+
+Internet-Well includes a governed layer for portable agent skills, design resources, browser runtimes, long-running coding workflows, writing tools, component libraries, animation engines, and hosted app generators.
+
+The layer is now executable, not merely a catalog. Use:
+
+```bash
+internet-well-integrations list
+internet-well-integrations show agent-browser
+internet-well-integrations plan animejs --ref 4.0.0
+internet-well-integrations plan anthropic-skills --ref <exact-commit>
+```
+
+Execution requires explicit approval:
+
+```bash
+internet-well-integrations install animejs --ref 4.0.0 --approve
+```
+
+The manager rejects floating refs such as `latest`, `main`, `master`, and `HEAD`. It distinguishes selective skill adoption, package or CLI adapters, pinned reference implementations, and hosted-provider consent records.
+
+Start with:
+
+- [`catalog/vibe-coder-resources.json`](catalog/vibe-coder-resources.json) — machine-readable candidates and restrictions;
+- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — executable adapter contract for all 13 resources;
+- [`docs/EXECUTABLE-VIBE-INTEGRATIONS.md`](docs/EXECUTABLE-VIBE-INTEGRATIONS.md) — usage and approval boundaries;
+- [`bundles/vibe-coder-intelligence.md`](bundles/vibe-coder-intelligence.md) — selection and adoption rules;
+- [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — skill supply-chain controls.
+
+The integration manifest covers Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, and 10x App Builder.
+
+A marketplace position, social-media recommendation, star count, or install count is not approval. Skills and providers must be pinned, inspected, permission-bounded, compared against a no-skill baseline, tested in a fixture, and reviewed before critical use.
 
 ## Operating flow
 
 ```text
 Founder goal
-  -> project assessment
-  -> product and stack profile
-  -> data and risk classification
-  -> playbook selection
+  -> local project assessment
+  -> product, stack, data, and risk profile
   -> capability gap analysis
-  -> smallest compatible resource bundle
-  -> adoption plan
+  -> smallest compatible verified bundle
   -> explicit authorization
-  -> incremental implementation
-  -> integrated verification
-  -> decision record and continuous recheck
+  -> reversible implementation
+  -> runtime and integrated verification
+  -> human review where required
+  -> launch decision record
 ```
 
-## Example connected-agent request
+## What Internet-Well does not do
 
-> Use Internet-Well at the current verified commit to assess this repository. Preserve all existing product decisions. Return the project profile, critical journeys, capability gaps, selected playbooks, smallest compatible resource bundle, rejected alternatives, approvals, implementation order, and verification gates. Do not modify anything without authorization.
+Internet-Well cannot guarantee a bug-free launch, universal compliance, secure deployment under every configuration, successful product-market fit, profitability, virality, or accurate real-world prediction. Static assessment cannot prove runtime authorization, database isolation, exploit resistance, accessibility behavior, deployment correctness, or legal compliance.
 
-## Repository layers
+Use its output to guide deeper testing and qualified review—not to replace them.
 
-| Layer | Paths | Purpose |
-|---|---|---|
-| Agent entry and governance | `AGENTS.md`, `START-HERE.md`, `FOUNDER-OS.md` | Operating rules, authority, and architecture |
-| Task routing | `commands/`, `playbooks/` | Convert goals into professional workflows |
-| Decision intelligence | `capabilities/`, `profiles/`, `stacks/`, `bundles/`, `outputs/` | Profile projects and select compatible capability bundles |
-| Agent execution | `skills/experimental/` | Project intelligence, resource selection, adoption, and verification procedures |
-| Connection protocol | `connections/` | Contract for Codex and other agents working from another repository |
-| Resource taxonomy | `REFERENCE-TYPES.md` | Distinguish dependencies, standards, references, runtimes, and autonomous systems |
-| Verified knowledge | `registry/`, `evidence/`, `licenses/`, `evaluations/` | Establish what resources are trustworthy and under what restrictions |
-| Governance and automation | `schemas/`, `automation/`, `.github/workflows/`, `METHODOLOGY.md`, `PHASES.md` | Enforce evidence, freshness, schemas, links, safety gates, tiers, and reproducibility |
-| Rejections | `rejected/` | Preserve unsuitable candidates and reasons |
+## Repository map
 
-## Implemented product profiles
+- [`START-HERE.md`](START-HERE.md) — founder entry point.
+- [`AGENTS.md`](AGENTS.md) — mandatory agent operating contract.
+- [`FOUNDER-OS.md`](FOUNDER-OS.md) — architecture and operating model.
+- [`commands/`](commands/README.md) and [`playbooks/`](playbooks/README.md) — workflows.
+- [`bundles/`](bundles/) — reusable capability selections.
+- [`registry/`](registry/) — verified resources, limitations, licenses, and evidence.
+- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — governed executable integration adapters.
+- [`governance/HUMAN-REVIEW.md`](governance/HUMAN-REVIEW.md) — Tier A and reviewer controls.
+- [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — portable skill and marketplace controls.
+- [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) — privacy rules.
+- [`SECURITY.md`](SECURITY.md) — responsible disclosure.
 
-AI SaaS, legal tech, fintech, marketplaces, mobile apps, developer tools, internal enterprise tools, healthcare products, and autonomous agents.
-
-## Implemented stack guides
-
-Supabase, Next.js, React, Vercel, Railway, GitHub Actions, Python, Node.js, Docker, Cloudflare, AWS, and Lovable.
-
-## Implemented professional playbooks
-
-Full product build, existing-product audit, launch readiness, product-market fit, architecture review, security review, privacy and data governance, AI quality and safety, legal and compliance readiness, accessibility, incident response, operations and monitoring, infrastructure cost optimization, marketing, autonomous-agent readiness, open-source adoption, trading-system research, and decision simulation.
-
-## Implemented reusable bundles
-
-AI SaaS launch, legal-tech launch, secure Supabase, production Next.js, autonomous agent, accessibility baseline, observability baseline, privacy baseline, startup legal foundation, and full founder stack.
-
-## Executable operating skills
-
-- `skills/experimental/project-intelligence/` — inspect a repository and create an evidence-backed project assessment.
-- `skills/experimental/resource-selector/` — choose the smallest compatible verified resource bundle and document rejected alternatives.
-- `skills/experimental/adoption-verifier/` — integrate approved resources in reversible slices and prove the resulting behavior.
-
-They remain experimental until fixture and real-project evaluations justify promotion.
-
-## Machine-readable contracts
-
-`outputs/` contains schemas for project assessment, resource selection, adoption plans, audits, and launch verdicts. CI validates JSON, operating-artifact structure, local links, registry references, and high-risk human-review gates.
-
-## Lexura proof scenario
-
-`evaluations/founder-os/lexura-scenario.md` tests whether the Brain correctly routes a high-risk multilingual legal-tech AI product, preserves explicit founder exclusions, and avoids reintroducing rejected features or unsupported case-outcome claims.
-
-## Verified registry
-
-Internet-Well does not copy upstream repositories. Each record points to a pinned upstream release or commit and documents evidence, limitations, license obligations, testing status, security findings, and required human review.
-
-The registry is a decision input, not an install script. Popularity, expert reputation, stars, or score never override reproducibility, compatibility, risk, license, or restrictions.
-
-### Approval tiers
+## Evidence tiers
 
 | Tier | Meaning |
 |---|---|
-| A | Strong evidence, suitable license, strong posture, reproducibly tested, and competent human review |
+| A | Strong evidence plus qualified, conflict-disclosed human review |
 | B | Generally reliable with documented limitations or dependencies |
-| C | Promising or experimental; insufficient evidence for unsupervised critical use |
+| C | Promising or experimental; supervised critical use only |
 | D | Rejected, abandoned, unsafe, legally unsuitable, or unverifiable |
 
-## Honest limits
+Automation cannot assign Tier A.
 
-Internet-Well cannot guarantee a bug-free launch, universal compliance, secure deployment under every configuration, successful product-market fit, profitable trading, viral content, reliable autonomous money generation, or accurate real-world prediction. It reduces avoidable mistakes, makes decisions traceable, surfaces risks early, and identifies when qualified human review is required.
+## Public release posture
+
+Version `0.3.0` is suitable for supervised public developer use, local assessment of repositories the user is authorized to inspect, and governed third-party integration planning. It is not an autonomous modification authority or professional certification service.
 
 ## License
 
-Internet-Well's original registry and operating content is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Upstream resources retain their own licenses, recorded in each registry entry.
+Internet-Well's original registry and operating content is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Upstream resources retain their own licenses, recorded in each registry or integration entry.

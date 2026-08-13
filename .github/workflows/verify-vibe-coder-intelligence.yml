@@ -1,0 +1,33 @@
+name: Verify Vibe Coder Intelligence
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate catalog and governance
+        run: python3 automation/verify_vibe_coder_catalog.py
+      - name: Compile validator
+        run: python3 -m py_compile automation/verify_vibe_coder_catalog.py
+      - name: Validate JSON syntax
+        run: python3 -m json.tool catalog/vibe-coder-resources.json >/dev/null
+      - name: Confirm requested resources are documented
+        run: |
+          grep -q 'anthropics/skills' catalog/vibe-coder-resources.json
+          grep -q 'vercel-labs/agent-browser' catalog/vibe-coder-resources.json
+          grep -q 'gsd-build/get-shit-done' catalog/vibe-coder-resources.json
+          grep -q 'Leonxlnx/taste-skill' catalog/vibe-coder-resources.json
+          grep -q 'blader/humanizer' catalog/vibe-coder-resources.json
+          grep -q 'DavidHDev/react-bits' catalog/vibe-coder-resources.json
+          grep -q 'animejs/anime' catalog/vibe-coder-resources.json

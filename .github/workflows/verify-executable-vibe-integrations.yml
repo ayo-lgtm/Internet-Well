@@ -1,0 +1,52 @@
+name: Verify executable Vibe integrations
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile integration manager
+        run: python3 -m py_compile automation/vibe_integrations.py automation/test_vibe_integrations.py
+      - name: Run integration regression tests
+        run: python3 automation/test_vibe_integrations.py
+      - name: Verify safe CLI behavior
+        run: |
+          python3 automation/vibe_integrations.py list > /tmp/vibe-list.json
+          python3 automation/vibe_integrations.py show agent-browser > /tmp/agent-browser.json
+          python3 automation/vibe_integrations.py plan animejs --ref 4.0.0 > /tmp/anime-plan.json
+          python3 automation/vibe_integrations.py plan refero > /tmp/refero-plan.json
+          if python3 automation/vibe_integrations.py plan animejs --ref latest; then
+            echo "floating ref unexpectedly accepted"
+            exit 1
+          fi
+          if python3 automation/vibe_integrations.py install animejs --ref 4.0.0; then
+            echo "installation unexpectedly ran without approval"
+            exit 1
+          fi
+      - name: Build and install package
+        run: |
+          python3 -m pip install --upgrade build
+          python3 -m build
+          python3 -m venv /tmp/iw-venv
+          /tmp/iw-venv/bin/pip install dist/*.whl
+          INTERNET_WELL_ROOT="$PWD" /tmp/iw-venv/bin/internet-well-integrations list > /tmp/installed-list.json
+          INTERNET_WELL_ROOT="$PWD" /tmp/iw-venv/bin/internet-well-integrations plan anthropic-skills --ref abc1234 > /tmp/installed-plan.json
+      - name: Validate manifest coverage
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('integrations/vibe/manifest.json').read_text())
+          assert len(data['integrations']) == 13
+          assert all(x.get('approval_required') for x in data['integrations'])
+          assert all(x.get('source','').startswith('https://') for x in data['integrations'])
+          print('manifest coverage ok')
+          PY
