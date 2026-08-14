@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2026-08-02",
+  "generated_at": "2026-08-14",
   "status": "candidate-catalog",
   "policy": "Discovery and popularity are not approval. Every skill, repository, or hosted provider must pass provenance, license, permission, privacy, compatibility, and execution review before unsupervised use.",
   "resources": [
@@ -162,6 +162,19 @@
       "risk": "high-code-ownership-privacy-and-platform-compliance",
       "recommendation": "prototype-only-until-full-review",
       "restrictions": ["verify-provider-identity", "verify-code-ownership", "review-privacy", "review-app-store-compliance", "independent-security-review"]
+    },
+    {
+      "slug": "s1gmamale1/apple-design-skills",
+      "name": "Apple Design Skills",
+      "url": "https://github.com/s1gmamale1/apple-design-skills",
+      "type": "community-design-skill-family",
+      "capabilities": ["apple-hig-reasoning", "design-foundations", "liquid-glass-and-materials", "motion-and-springs", "web-scrollytelling", "interaction-design", "apple-os-surfaces", "accessibility-and-brand-tactics"],
+      "license": "MIT",
+      "verified_commit": "8a3fbea8b561405e5719d682ebd1d14c952aecd7",
+      "readiness": "supervised-production-candidate",
+      "risk": "medium-brand-copying-motion-and-accessibility",
+      "recommendation": "apple-interaction-design-candidate",
+      "restrictions": ["official-apple-hig-outranks-community-guidance", "exact-pin-required", "inspect-install-scripts", "do-not-redistribute-apple-copyrighted-media", "do-not-copy-apple-brand-assets-or-distinctive-expression", "test-accessibility-and-reduced-motion", "test-performance-gpu-and-battery", "baseline-comparison", "human-design-review"]
     }
   ]
 }
