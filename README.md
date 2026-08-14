@@ -79,7 +79,7 @@ Important options:
 
 ## Vibe Coder Intelligence
 
-Internet-Well includes a governed layer for portable agent skills, design resources, browser runtimes, long-running coding workflows, writing tools, component libraries, animation engines, hosted app generators, and code-minimization review skills.
+Internet-Well includes a governed layer for portable agent skills, design resources, browser runtimes, long-running coding workflows, writing tools, component libraries, animation engines, hosted app generators, Apple/HIG-inspired design reasoning, and code-minimization review skills.
 
 The layer is executable, not merely a catalog. Use:
 
@@ -90,6 +90,9 @@ internet-well-integrations plan animejs --ref 4.0.0
 internet-well-integrations plan anthropic-skills --ref <exact-commit>
 internet-well-ponytail show
 internet-well-ponytail plan --ref v4.8.4
+internet-well-apple-design show
+internet-well-apple-design list-skills
+internet-well-apple-design plan
 ```
 
 Execution requires explicit approval:
@@ -97,20 +100,36 @@ Execution requires explicit approval:
 ```bash
 internet-well-integrations install animejs --ref 4.0.0 --approve
 internet-well-ponytail install --ref v4.8.4 --approve
+internet-well-apple-design install \
+  --ref 8a3fbea8b561405e5719d682ebd1d14c952aecd7 \
+  --approve
 ```
 
-The managers reject floating refs such as `latest`, `main`, `master`, and `HEAD`. They distinguish selective skill adoption, package or CLI adapters, pinned reference implementations, and hosted-provider consent records.
+After separately reviewing a specific Apple design skill, it can be adopted selectively rather than installing the entire family into an agent environment:
+
+```bash
+internet-well-apple-design adopt apple-design-motion \
+  --target codex \
+  --approve
+```
+
+The managers reject floating refs such as `latest`, `main`, `master`, and `HEAD`. They distinguish selective skill adoption, package or CLI adapters, pinned reference implementations, and hosted-provider consent records. Apple Design Skills are a community interpretation layer; current official Apple Human Interface Guidelines and platform documentation outrank the skill family whenever they conflict.
 
 Start with:
 
 - [`catalog/vibe-coder-resources.json`](catalog/vibe-coder-resources.json) — machine-readable candidates and restrictions;
-- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — executable adapter contract for 14 governed resources;
+- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — core executable adapter contract;
 - [`integrations/vibe/ponytail.json`](integrations/vibe/ponytail.json) — Ponytail-specific adapter and safety contract;
+- [`integrations/vibe/apple-design-skills.json`](integrations/vibe/apple-design-skills.json) — Apple Design Skills source pin, skill inventory, and governance contract;
+- [`integrations/vibe/screenshot-resources.json`](integrations/vibe/screenshot-resources.json) — governed adapters for additional screenshot-discovered resources;
 - [`docs/EXECUTABLE-VIBE-INTEGRATIONS.md`](docs/EXECUTABLE-VIBE-INTEGRATIONS.md) — usage and approval boundaries;
+- [`docs/APPLE-DESIGN-SKILLS.md`](docs/APPLE-DESIGN-SKILLS.md) — Apple-design-specific authority, adoption, copyright, accessibility, and performance controls;
 - [`bundles/vibe-coder-intelligence.md`](bundles/vibe-coder-intelligence.md) — selection and adoption rules;
 - [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — skill supply-chain controls.
 
-The governed resource set covers Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, and Ponytail.
+The governed resource set includes Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, Ponytail, ComposioHQ Awesome Claude Skills, Microsoft Playwright MCP, and Apple Design Skills.
+
+Apple Design Skills is pinned initially to verified upstream commit `8a3fbea8b561405e5719d682ebd1d14c952aecd7` and is MIT-licensed. Its nine-skill family covers design foundations, materials, motion, web interaction, Apple OS surfaces, media-delivery reasoning, accessibility, and brand tactics. Internet-Well never runs its upstream install scripts automatically, never silently overwrites an existing skill, and prohibits copying Apple trademarks, copyrighted product media, trade dress, or distinctive protected expression.
 
 A marketplace position, social-media recommendation, star count, or install count is not approval. Skills and providers must be pinned, inspected, permission-bounded, compared against a no-skill baseline, tested in a fixture, and reviewed before critical use.
 
@@ -144,6 +163,7 @@ Use its output to guide deeper testing and qualified review—not to replace the
 - [`bundles/`](bundles/) — reusable capability selections.
 - [`registry/`](registry/) — verified resources, limitations, licenses, and evidence.
 - [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — governed executable integration adapters.
+- [`integrations/vibe/apple-design-skills.json`](integrations/vibe/apple-design-skills.json) — governed Apple Design Skills adapter contract.
 - [`governance/HUMAN-REVIEW.md`](governance/HUMAN-REVIEW.md) — Tier A and reviewer controls.
 - [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — portable skill and marketplace controls.
 - [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) — privacy rules.
