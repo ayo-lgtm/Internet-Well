@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "status": "governed-candidate",
+  "source": {
+    "repository": "s1gmamale1/apple-design-skills",
+    "url": "https://github.com/s1gmamale1/apple-design-skills",
+    "verified_commit": "8a3fbea8b561405e5719d682ebd1d14c952aecd7",
+    "license": "MIT",
+    "license_file": "LICENSE"
+  },
+  "integration": {
+    "id": "apple-design-skills",
+    "name": "Apple Design Skills",
+    "kind": "design-skill-family",
+    "install_mode": "selective-copy",
+    "pin_required": true,
+    "approval_required": true,
+    "default_action": "inspect",
+    "targets": ["claude-code", "codex", "generic-agent"],
+    "capabilities": [
+      "apple-hig-reasoning",
+      "design-foundations",
+      "liquid-glass-and-materials",
+      "motion-and-springs",
+      "web-scrollytelling",
+      "interaction-design",
+      "apple-os-surface-guidance",
+      "media-delivery-reasoning",
+      "accessibility-and-brand-tactics"
+    ],
+    "skills": [
+      "apple-design",
+      "apple-design-foundations",
+      "apple-design-materials",
+      "apple-design-motion",
+      "apple-design-web",
+      "apple-design-interaction",
+      "apple-design-os",
+      "apple-design-backend",
+      "apple-design-tactics"
+    ]
+  },
+  "governance": {
+    "authority_rule": "Apple's current official Human Interface Guidelines and platform documentation outrank this community skill family on platform requirements.",
+    "brand_rule": "Use the skills to derive interaction and design principles; do not copy Apple trademarks, trade dress, product imagery, videos, or distinctive protected expression.",
+    "asset_rule": "Do not import third-party copyrighted reference media. The upstream repository intentionally excludes Apple's copyrighted reference frames.",
+    "quality_gates": [
+      "keyboard-accessibility",
+      "screen-reader-semantics",
+      "prefers-reduced-motion",
+      "contrast-and-legibility",
+      "low-end-device-performance",
+      "gpu-and-battery-impact",
+      "responsive-layout",
+      "platform-native-behavior",
+      "brand-distinctiveness",
+      "official-HIG-conflict-check"
+    ],
+    "prohibited_uses": [
+      "claiming-apple-endorsement",
+      "copying-apple-brand-assets",
+      "copying-distinctive-apple-page-expression",
+      "bypassing-accessibility-for-cinematic-effects",
+      "treating-community-analysis-as-official-platform-requirement"
+    ],
+    "adoption_rule": "Adopt only reviewed skill directories into an agent skill directory. Never overwrite an existing skill silently."
+  }
+}
