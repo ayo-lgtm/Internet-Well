@@ -1,0 +1,62 @@
+name: Verify Apple Design Skills integration
+
+on:
+  push:
+    paths:
+      - 'integrations/vibe/apple-design-skills.json'
+      - 'automation/apple_design_integration.py'
+      - 'docs/APPLE-DESIGN-SKILLS.md'
+      - 'pyproject.toml'
+      - 'catalog/vibe-coder-resources.json'
+      - '.github/workflows/verify-apple-design-skills.yml'
+  pull_request:
+    paths:
+      - 'integrations/vibe/apple-design-skills.json'
+      - 'automation/apple_design_integration.py'
+      - 'docs/APPLE-DESIGN-SKILLS.md'
+      - 'pyproject.toml'
+      - 'catalog/vibe-coder-resources.json'
+      - '.github/workflows/verify-apple-design-skills.yml'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate manifest and adapter
+        run: |
+          python -m json.tool integrations/vibe/apple-design-skills.json >/dev/null
+          python -m py_compile automation/apple_design_integration.py
+          python automation/apple_design_integration.py show >/tmp/apple-design-show.json
+          python automation/apple_design_integration.py list-skills >/tmp/apple-design-skills.json
+          python automation/apple_design_integration.py plan --ref 8a3fbea8b561405e5719d682ebd1d14c952aecd7 >/tmp/apple-design-plan.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('integrations/vibe/apple-design-skills.json').read_text())
+          assert manifest['source']['repository'] == 's1gmamale1/apple-design-skills'
+          assert manifest['source']['verified_commit'] == '8a3fbea8b561405e5719d682ebd1d14c952aecd7'
+          assert manifest['source']['license'] == 'MIT'
+          assert len(manifest['integration']['skills']) == 9
+          assert manifest['integration']['pin_required'] is True
+          assert manifest['integration']['approval_required'] is True
+          assert 'official-HIG-conflict-check' in manifest['governance']['quality_gates']
+          plan = json.loads(Path('/tmp/apple-design-plan.json').read_text())
+          assert plan['approved'] is False
+          assert plan['execution'] == 'not-performed'
+          PY
+      - name: Verify floating refs and unapproved execution are blocked
+        run: |
+          if python automation/apple_design_integration.py plan --ref main; then exit 1; fi
+          if python automation/apple_design_integration.py install --ref 8a3fbea8b561405e5719d682ebd1d14c952aecd7; then exit 1; fi
+      - name: Build and clean-install package
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+          python -m venv /tmp/iw-apple-venv
+          /tmp/iw-apple-venv/bin/pip install dist/*.whl
+          /tmp/iw-apple-venv/bin/internet-well-apple-design show >/tmp/installed-apple.json
+          /tmp/iw-apple-venv/bin/internet-well-apple-design plan --ref 8a3fbea8b561405e5719d682ebd1d14c952aecd7 >/tmp/installed-apple-plan.json
