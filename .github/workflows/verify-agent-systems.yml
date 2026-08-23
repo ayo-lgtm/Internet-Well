@@ -1,0 +1,31 @@
+name: Verify governed agent systems
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify-agent-systems:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify manifest
+        run: python automation/verify_agent_system_integrations.py
+      - name: Build package
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Verify installed CLI
+        run: |
+          python -m venv /tmp/iw-agent-systems
+          /tmp/iw-agent-systems/bin/pip install dist/*.whl
+          /tmp/iw-agent-systems/bin/internet-well-agent-systems list >/tmp/agent-systems.json
+          /tmp/iw-agent-systems/bin/internet-well-agent-systems plan autonomous-loop >/tmp/autonomous-plan.json
+          if /tmp/iw-agent-systems/bin/internet-well-agent-systems install qwen38-uncensored --approve; then
+            echo 'restricted resource unexpectedly installed' >&2
+            exit 1
+          fi
