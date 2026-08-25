@@ -1,0 +1,100 @@
+name: Publish v0.3.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/release-request-v0.3.0'
+      - '.github/workflows/publish-v0.3.0.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify v0.3.0 version alignment
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < VERSION)"
+          test "$VERSION" = "0.3.0"
+          grep -q 'version = "0.3.0"' pyproject.toml
+          grep -q 'VERSION = "0.3.0"' internet_well.py
+
+      - name: Run release verification
+        run: |
+          set -euo pipefail
+          python3 -m py_compile internet_well.py automation/*.py automation/tests/*.py
+          python3 automation/verify_registry.py --max-age 90
+          python3 automation/build_index.py --check
+          python3 automation/verify_founder_os.py
+          python3 automation/verify_public_repo_hygiene.py
+          python3 automation/verify_identity_authorization_bundle.py
+          python3 automation/verify_vibe_coder_catalog.py
+          python3 automation/verify_agent_system_integrations.py
+          python3 automation/report_verification_coverage.py --check --output /tmp/catalog-coverage.json
+          python3 -m unittest discover -s automation/tests -p 'test_*.py' -v
+          python3 automation/test_vibe_integrations.py
+          python3 automation/test_ponytail_integration.py
+          python3 automation/test_screenshot_integrations.py
+
+      - name: Build distributions
+        run: |
+          python3 -m pip install --upgrade pip build
+          python3 -m build
+
+      - name: Smoke-test wheel
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/internet-well-v030
+          /tmp/internet-well-v030/bin/pip install dist/*.whl
+          /tmp/internet-well-v030/bin/internet-well --version | grep -F '0.3.0'
+          /tmp/internet-well-v030/bin/internet-well-integrations list >/tmp/integrations.json
+          /tmp/internet-well-v030/bin/internet-well-agent-systems list >/tmp/agent-systems.json
+          test -s /tmp/integrations.json
+          test -s /tmp/agent-systems.json
+
+      - name: Create immutable v0.3.0 tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --tags origin refs/tags/v0.3.0 >/dev/null 2>&1; then
+            echo 'v0.3.0 already exists; refusing to move it.'
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git tag -a v0.3.0 "$GITHUB_SHA" -m 'Internet-Well v0.3.0'
+          git push origin refs/tags/v0.3.0
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v0.3.0 dist/* \
+            --verify-tag \
+            --title 'Internet-Well v0.3.0' \
+            --notes-file - <<'EOF'
+          Internet-Well v0.3.0 is the first formal public release after the repository privacy purge and release-hardening program.
+
+          Highlights:
+          - governed executable integration framework with immutable pinning and approval gates;
+          - Anthropic/Vercel skill sources, Ponytail, Apple Design Skills, browser tooling, and curated design/developer resources;
+          - governed autonomous-agent systems including autonomous-loop, event-driven-autonomous-loop, flywheel, memory, agent-os, sentience-loop, cortex, megacycle, and fusion;
+          - restricted red-team-only handling for qwen38-uncensored; it is never auto-installed or auto-executed;
+          - Apache-2.0 software licensing, contributor/security controls, public-repository hygiene checks, and private-by-default assessment outputs;
+          - GitHub Support-sensitive-history purge completed and independently verified before release.
+
+          Release artifacts are built and smoke-tested from the tagged source.
+          EOF
