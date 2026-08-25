@@ -1,0 +1,24 @@
+name: Dispatch v0.3.0 release verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/verify-release-v0.3.0'
+      - '.github/workflows/dispatch-v0.3.0-verification.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch canonical release workflow against immutable tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run release.yml --repo "$GITHUB_REPOSITORY" --ref v0.3.0
+          echo 'Dispatched release.yml at v0.3.0'
