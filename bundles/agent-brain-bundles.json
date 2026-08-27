@@ -1,0 +1,70 @@
+{
+  "version": "0.4.0",
+  "policy": "Bundles are governed recommendations. They do not grant credentials, deploy code, place trades, or approve regulated/high-impact actions without explicit authorization and applicable human review.",
+  "bundles": [
+    {
+      "id": "autonomous-agent",
+      "goal_patterns": ["autonomous agent", "persistent agent", "finish tasks on its own", "keep working until done"],
+      "capabilities": ["persistent-agent-loop", "event-driven-execution", "agent-memory", "reward-learning", "orchestration"],
+      "preferred": ["event-driven-autonomous-loop", "autonomous-loop", "memory", "flywheel", "agent-os"],
+      "verification": ["restart-recovery", "bounded-loop", "kill-switch", "audit-log", "no-privilege-escalation"]
+    },
+    {
+      "id": "autonomous-trading-research",
+      "goal_patterns": ["autonomous trading", "trading research agent", "paper trading", "strategy research"],
+      "capabilities": ["persistent-agent-loop", "reward-learning", "agent-memory", "api-discovery", "orchestration"],
+      "preferred": ["event-driven-autonomous-loop", "autonomous-loop", "flywheel", "memory", "public-apis"],
+      "verification": ["paper-only-default", "position-and-loss-limits", "kill-switch", "replayable-decisions", "no-live-execution-without-separate-approval"],
+      "restriction": "This bundle is for research, simulation, and paper-trading architecture by default. Live trading requires separate broker authorization, risk controls, compliance review, and explicit deployment approval."
+    },
+    {
+      "id": "production-web-app",
+      "goal_patterns": ["production web app", "launch web app", "full stack app"],
+      "capabilities": ["browser-automation", "web-testing", "planning", "execution", "code-minimization"],
+      "preferred": ["playwright-mcp", "agent-browser", "get-shit-done", "ponytail"],
+      "verification": ["authz-tests", "e2e-tests", "accessibility", "performance", "security-review", "rollback"]
+    },
+    {
+      "id": "native-ios",
+      "goal_patterns": ["ios app", "swiftui", "apple design", "native iphone app"],
+      "capabilities": ["apple-hig-reasoning", "motion", "interaction-design", "accessibility"],
+      "preferred": ["apple-design-skills", "anthropic-skills"],
+      "verification": ["official-hig-check", "voiceover", "dynamic-type", "reduced-motion", "performance", "app-store-policy-review"]
+    },
+    {
+      "id": "legal-ai",
+      "goal_patterns": ["legal ai", "legal intake", "legal workflow", "attorney packet"],
+      "capabilities": ["document-workflows", "planning", "browser-automation", "api-discovery"],
+      "preferred": ["anthropic-skills", "playwright-mcp", "public-apis"],
+      "verification": ["upl-boundary", "source-citations", "abstention", "privacy", "access-control", "human-legal-review"]
+    },
+    {
+      "id": "uat-product-testing",
+      "goal_patterns": ["uat", "product testing", "test production", "user acceptance testing"],
+      "capabilities": ["browser-automation", "web-testing", "planning", "agent-memory"],
+      "preferred": ["playwright-mcp", "agent-browser", "memory"],
+      "verification": ["reproducible-scenarios", "screenshots-or-traces", "severity", "component-mapping", "regression-retest"]
+    },
+    {
+      "id": "research-agent",
+      "goal_patterns": ["research agent", "deep research", "evidence research"],
+      "capabilities": ["persistent-agent-loop", "agent-memory", "api-discovery", "browser-automation"],
+      "preferred": ["autonomous-loop", "memory", "public-apis", "playwright-mcp"],
+      "verification": ["source-quality", "citation-traceability", "freshness", "conflict-check", "stop-condition"]
+    },
+    {
+      "id": "memory-persistence",
+      "goal_patterns": ["agent memory", "persistent memory", "remember across sessions"],
+      "capabilities": ["agent-memory", "persistent-context", "restart-recovery"],
+      "preferred": ["memory", "event-driven-autonomous-loop"],
+      "verification": ["retention-policy", "data-minimization", "deletion", "secret-filtering", "restart-test"]
+    },
+    {
+      "id": "browser-automation",
+      "goal_patterns": ["browser automation", "web agent", "browser testing"],
+      "capabilities": ["browser-automation", "web-testing", "mcp-tools"],
+      "preferred": ["playwright-mcp", "agent-browser"],
+      "verification": ["isolated-profile", "hostname-allowlist", "credential-isolation", "download-control", "state-change-approval"]
+    }
+  ]
+}
