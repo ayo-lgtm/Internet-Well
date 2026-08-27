@@ -36,6 +36,7 @@ jobs:
           assert graph['version'] == '0.4.0'
           assert bundles['version'] == '0.4.0'
           PY
+          test -f docs/RELEASE-v0.4.0.md
 
       - name: Run complete release verification
         run: |
@@ -77,6 +78,7 @@ jobs:
 
       - name: Build distributions
         run: |
+          set -euo pipefail
           python3 -m pip install --upgrade pip build
           rm -rf dist build *.egg-info
           python3 -m build
@@ -96,26 +98,38 @@ jobs:
           test -s /tmp/brain-tools.json
           test -s /tmp/brain-evaluation.json
 
-      - name: Create immutable v0.4.0 tag
+      - name: Verify or create immutable v0.4.0 tag
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           if git ls-remote --exit-code --tags origin refs/tags/v0.4.0 >/dev/null 2>&1; then
-            echo 'v0.4.0 already exists; refusing to move it.'
-            exit 1
+            git fetch --force origin refs/tags/v0.4.0:refs/tags/v0.4.0
+            TAG_COMMIT="$(git rev-parse 'v0.4.0^{}')"
+            git show "$TAG_COMMIT:VERSION" | tr -d '[:space:]' | grep -Fx '0.4.0'
+            git show "$TAG_COMMIT:pyproject.toml" | grep -q 'version = "0.4.0"'
+            git show "$TAG_COMMIT:internet_well.py" | grep -q 'VERSION = "0.4.0"'
+            echo "Existing immutable v0.4.0 tag verified at $TAG_COMMIT"
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git tag -a v0.4.0 "$GITHUB_SHA" -m 'Internet-Well v0.4.0 — Agent Brain'
+            git push origin refs/tags/v0.4.0
           fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git tag -a v0.4.0 "$GITHUB_SHA" -m 'Internet-Well v0.4.0 — Agent Brain'
-          git push origin refs/tags/v0.4.0
 
-      - name: Publish GitHub Release
+      - name: Publish or repair GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release create v0.4.0 dist/* \
-            --verify-tag \
-            --title 'Internet-Well v0.4.0 — Agent Brain' \
-            --notes-file RELEASE_NOTES_v0.4.0.md
+          if gh release view v0.4.0 >/dev/null 2>&1; then
+            gh release upload v0.4.0 dist/* --clobber
+            gh release edit v0.4.0 \
+              --title 'Internet-Well v0.4.0 — Agent Brain' \
+              --notes-file docs/RELEASE-v0.4.0.md
+          else
+            gh release create v0.4.0 dist/* \
+              --verify-tag \
+              --title 'Internet-Well v0.4.0 — Agent Brain' \
+              --notes-file docs/RELEASE-v0.4.0.md
+          fi
