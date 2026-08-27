@@ -1,28 +1,182 @@
-# Internet-Well — The Founder OS Brain
+# Internet-Well — The Founder OS Agent Brain
 
-> **Developer Preview v0.3.0.** Internet-Well performs local, preliminary repository assessment and governed planning. It is not a penetration test, legal opinion, privacy certification, or production approval.
+> **Developer Preview v0.4.0.** Internet-Well is a privacy-first, evidence-backed decision layer for founders and connected AI agents. It performs local assessment, governed capability selection, implementation planning, structural evaluation, and supervised integration. It is not a penetration test, legal opinion, compliance certification, production approval, or autonomous authority to take high-impact actions.
 
-Internet-Well helps founders and connected AI agents turn a product goal into an evidence-backed plan, choose compatible open-source capabilities, preserve explicit product decisions, and identify where qualified human review is required.
+Internet-Well answers a higher-level question than a normal repository catalog: **given the outcome I want, what capability do I need, which governed resource is the best fit, why, under what restrictions, and how should it be verified?**
 
-## Privacy-first by default
+## v0.4 Agent Brain
 
-Internet-Well does not upload source code or findings. The CLI runs locally, redacts absolute project and home-directory paths by default, classifies reports as `private`, identifies potentially sensitive filenames without reading their contents, and refuses to write reports inside the assessed Git repository unless explicitly authorized.
+The v0.4 architecture adds a universal agent-facing brain over Internet-Well's existing repositories, skills, APIs, runtimes, and governance records.
 
-Private projects do not need to be published. Keep their reports in a separate private location and never commit confidential findings to this public repository. Public examples in this repository must be synthetic or derived only from intentionally public material. Read [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) before assessing proprietary, regulated, privileged, or personal data.
+```text
+Founder / Agent Goal
+        ↓
+Intent + capability decomposition
+        ↓
+Unified capability graph
+        ↓
+Evidence ranking + policy restrictions
+        ↓
+Repo / Skill / API / MCP / Runtime selection
+        ↓
+Composed bundle
+        ↓
+Implementation plan
+        ↓
+Evaluation + runtime verification
+        ↓
+Human approval where required
+```
+
+The machine-readable graph is `integrations/agent-brain/capability-graph.json`. Composed architectures are in `bundles/agent-brain-bundles.json`.
 
 ## Install
 
-Use a tagged release or verified commit:
+Use a tagged release or an explicitly reviewed commit:
 
 ```bash
 python3 -m pip install .
 internet-well --version
-internet-well-integrations list
+internet-well-brain list-tools
 ```
 
-## Five-minute local assessment
+## Connect an AI agent
 
-Write private reports outside the assessed repository:
+Internet-Well exposes a provider-neutral stdio server:
+
+```bash
+internet-well-brain serve
+```
+
+It supports MCP-style JSON-RPC methods for `initialize`, `tools/list`, `tools/call`, and `ping`. The server exposes:
+
+- `find_capability`
+- `recommend_stack`
+- `find_api`
+- `get_skill`
+- `plan_implementation`
+- `evaluate_bundle`
+
+A client launches it conceptually as:
+
+```json
+{
+  "command": "internet-well-brain",
+  "args": ["serve"]
+}
+```
+
+See [`docs/AGENT-BRAIN.md`](docs/AGENT-BRAIN.md) and [`integrations/agent-brain/mcp.json`](integrations/agent-brain/mcp.json).
+
+## Use the Brain directly
+
+```bash
+internet-well-brain find-capability "persistent autonomous agent"
+internet-well-brain recommend-stack "build a production legal AI intake app"
+internet-well-brain find-api "currency exchange data"
+internet-well-brain get-skill "Apple motion and accessibility"
+internet-well-brain plan "build an autonomous research agent"
+internet-well-brain evaluate
+```
+
+The router selects outcomes and capabilities before tools. If no exact composed bundle matches, it falls back to ranked capability candidates rather than inventing a stack.
+
+## Evidence ranking
+
+Every Agent Brain resource can carry evidence dimensions for:
+
+- provenance;
+- maintenance;
+- documentation;
+- license clarity;
+- security posture;
+- interoperability;
+- runtime evidence;
+- reversibility.
+
+Popularity, star count, marketplace position, and social-media attention are not approval criteria. Tier A remains human-controlled.
+
+## Composed bundles
+
+Internet-Well now includes governed bundles for:
+
+- autonomous agents;
+- autonomous trading research;
+- production web apps;
+- native iOS;
+- legal AI;
+- UAT/product testing;
+- research agents;
+- memory/persistence;
+- browser automation.
+
+The autonomous-trading bundle is research/simulation/paper-trading by default. Internet-Well does not grant broker credentials or live trading authority.
+
+## Evaluation laboratory
+
+Run:
+
+```bash
+internet-well-brain evaluate
+```
+
+The structural lab verifies that bundle resources resolve, restricted references are excluded from default bundles, evidence is present, and verification criteria exist. Product-specific runtime claims still require fixtures, staging, or production-equivalent testing.
+
+## Continuous upstream verification
+
+Internet-Well never silently changes immutable pins.
+
+```bash
+internet-well-upstreams
+internet-well-upstreams --network --output upstream-verification.json
+```
+
+A scheduled GitHub Actions workflow checks upstream reachability and produces an upgrade-candidate report. Any material upstream change still requires provenance, license, security, compatibility, fixture, and rollback review.
+
+## API discovery
+
+The governed `public-apis/public-apis` integration lets agents search for external capability providers without treating directory membership as permission or proof of free/unlimited access.
+
+```bash
+internet-well-api-discovery show
+internet-well-api-discovery install-source --approve
+internet-well-api-discovery find "currency"
+internet-well-api-discovery plan-use "Frankfurter"
+```
+
+Before adoption, verify provider identity, pricing/free tier, quotas, rate limits, authentication, TLS, terms, privacy, CORS, availability, and data quality. **Never use leaked, copied, or third-party credentials to avoid charges or limits.**
+
+## Autonomous agent systems
+
+Governed agent-system integrations include persistent loops, event-driven execution, adaptive reward selection, memory, orchestration, and related research resources. Use:
+
+```bash
+internet-well-agent-systems list
+internet-well-agent-systems show autonomous-loop
+internet-well-agent-systems plan flywheel
+internet-well-agent-systems install memory --approve
+```
+
+Restricted adversarial references such as `qwen38-uncensored` are reference-only and are excluded from default Agent Brain routing.
+
+## Vibe Coder Intelligence
+
+Internet-Well also includes governed integrations for Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, Ponytail, ComposioHQ Awesome Claude Skills, Microsoft Playwright MCP, and Apple Design Skills.
+
+Examples:
+
+```bash
+internet-well-integrations list
+internet-well-ponytail show
+internet-well-apple-design list-skills
+internet-well-apple-design plan
+```
+
+Apple Design Skills are a community interpretation layer. Current official Apple Human Interface Guidelines and platform documentation outrank community guidance when they conflict.
+
+## Privacy-first local assessment
+
+Internet-Well's original assessment functions remain available and operate locally by default:
 
 ```bash
 mkdir -p "$HOME/.internet-well/reports"
@@ -37,165 +191,42 @@ internet-well plan /path/to/project \
   --classification private \
   --format markdown \
   --output "$HOME/.internet-well/reports/plan.md"
-
-internet-well security /path/to/project \
-  --classification private \
-  --format markdown \
-  --output "$HOME/.internet-well/reports/security-plan.md"
 ```
 
-Every output contains a preliminary-assessment notice, report classification, local-processing declaration, path-redaction status, and privacy gate.
+Private reports should remain outside public repositories. Read [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) before assessing proprietary, regulated, privileged, or personal data.
 
-A synthetic public report example is available at [`examples/assessment-example.md`](examples/assessment-example.md). It does not describe a real private product or production environment.
+## Authority boundaries
 
-## CodeWiki and documentation providers
-
-The `docs` command generates a provider-neutral documentation manifest. Hosted CodeWiki use requires explicit consent after reviewing retention, model-training, access, deletion, subprocessors, data-residency, and incident terms:
-
-```bash
-internet-well docs /path/to/project \
-  --provider codewiki \
-  --provider-consent \
-  --classification private \
-  --output "$HOME/.internet-well/reports/docs-manifest.json"
-```
-
-Prefer a local or self-hosted documentation provider for confidential repositories. CodeWiki is a documentation and onboarding layer, not Internet-Well's security, compliance, legal, privacy, or launch authority.
-
-## Commands
-
-- `assess` — preliminary project, stack, risk, and capability assessment.
-- `plan` — evidence-backed resource and implementation planning.
-- `security` — preliminary security capability planning; not a penetration test.
-- `launch-review` — preliminary launch-readiness planning; not an approval.
-- `docs` — governed documentation manifest for CodeWiki-style systems.
-
-Important options:
-
-- `--classification private|internal|shareable` — defaults to `private`.
-- `--include-paths` — opt in to absolute local paths.
-- `--allow-in-repo-output` — override the default report-write protection.
-- `--provider-consent` — required for hosted CodeWiki.
-
-## Vibe Coder Intelligence
-
-Internet-Well includes a governed layer for portable agent skills, design resources, browser runtimes, long-running coding workflows, writing tools, component libraries, animation engines, hosted app generators, Apple/HIG-inspired design reasoning, and code-minimization review skills.
-
-The layer is executable, not merely a catalog. Use:
-
-```bash
-internet-well-integrations list
-internet-well-integrations show agent-browser
-internet-well-integrations plan animejs --ref 4.0.0
-internet-well-integrations plan anthropic-skills --ref <exact-commit>
-internet-well-ponytail show
-internet-well-ponytail plan --ref v4.8.4
-internet-well-apple-design show
-internet-well-apple-design list-skills
-internet-well-apple-design plan
-```
-
-Execution requires explicit approval:
-
-```bash
-internet-well-integrations install animejs --ref 4.0.0 --approve
-internet-well-ponytail install --ref v4.8.4 --approve
-internet-well-apple-design install \
-  --ref 8a3fbea8b561405e5719d682ebd1d14c952aecd7 \
-  --approve
-```
-
-After separately reviewing a specific Apple design skill, it can be adopted selectively rather than installing the entire family into an agent environment:
-
-```bash
-internet-well-apple-design adopt apple-design-motion \
-  --target codex \
-  --approve
-```
-
-The managers reject floating refs such as `latest`, `main`, `master`, and `HEAD`. They distinguish selective skill adoption, package or CLI adapters, pinned reference implementations, and hosted-provider consent records. Apple Design Skills are a community interpretation layer; current official Apple Human Interface Guidelines and platform documentation outrank the skill family whenever they conflict.
-
-Start with:
-
-- [`catalog/vibe-coder-resources.json`](catalog/vibe-coder-resources.json) — machine-readable candidates and restrictions;
-- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — core executable adapter contract;
-- [`integrations/vibe/ponytail.json`](integrations/vibe/ponytail.json) — Ponytail-specific adapter and safety contract;
-- [`integrations/vibe/apple-design-skills.json`](integrations/vibe/apple-design-skills.json) — Apple Design Skills source pin, skill inventory, and governance contract;
-- [`integrations/vibe/screenshot-resources.json`](integrations/vibe/screenshot-resources.json) — governed adapters for additional screenshot-discovered resources;
-- [`docs/EXECUTABLE-VIBE-INTEGRATIONS.md`](docs/EXECUTABLE-VIBE-INTEGRATIONS.md) — usage and approval boundaries;
-- [`docs/APPLE-DESIGN-SKILLS.md`](docs/APPLE-DESIGN-SKILLS.md) — Apple-design-specific authority, adoption, copyright, accessibility, and performance controls;
-- [`bundles/vibe-coder-intelligence.md`](bundles/vibe-coder-intelligence.md) — selection and adoption rules;
-- [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — skill supply-chain controls.
-
-The governed resource set includes Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, Ponytail, ComposioHQ Awesome Claude Skills, Microsoft Playwright MCP, and Apple Design Skills.
-
-Apple Design Skills is pinned initially to verified upstream commit `8a3fbea8b561405e5719d682ebd1d14c952aecd7` and is MIT-licensed. Its nine-skill family covers design foundations, materials, motion, web interaction, Apple OS surfaces, media-delivery reasoning, accessibility, and brand tactics. Internet-Well never runs its upstream install scripts automatically, never silently overwrites an existing skill, and prohibits copying Apple trademarks, copyrighted product media, trade dress, or distinctive protected expression.
-
-A marketplace position, social-media recommendation, star count, or install count is not approval. Skills and providers must be pinned, inspected, permission-bounded, compared against a no-skill baseline, tested in a fixture, and reviewed before critical use.
-
-## Operating flow
-
-```text
-Founder goal
-  -> local project assessment
-  -> product, stack, data, and risk profile
-  -> capability gap analysis
-  -> smallest compatible verified bundle
-  -> explicit authorization
-  -> reversible implementation
-  -> runtime and integrated verification
-  -> human review where required
-  -> launch decision record
-```
-
-## What Internet-Well does not do
-
-Internet-Well cannot guarantee a bug-free launch, universal compliance, secure deployment under every configuration, successful product-market fit, profitability, virality, or accurate real-world prediction. Static assessment cannot prove runtime authorization, database isolation, exploit resistance, accessibility behavior, deployment correctness, or legal compliance.
-
-Use its output to guide deeper testing and qualified review—not to replace them.
+Internet-Well can read, analyze, compare, rank, route, evaluate, and plan without granting itself authority to change external systems. Explicit authorization is required before installation, repository writes, deployments, infrastructure changes, credential use, purchases, account changes, external communications, destructive actions, live trading, or other state-changing operations. Qualified human review remains required where the risk, law, policy, or evidence tier demands it.
 
 ## Repository map
 
-- [`START-HERE.md`](START-HERE.md) — founder entry point.
+- [`START-HERE.md`](START-HERE.md) — founder and agent entry point.
 - [`AGENTS.md`](AGENTS.md) — mandatory agent operating contract.
 - [`FOUNDER-OS.md`](FOUNDER-OS.md) — architecture and operating model.
-- [`commands/`](commands/README.md) and [`playbooks/`](playbooks/README.md) — workflows.
-- [`bundles/`](bundles/) — reusable capability selections.
+- [`integrations/agent-brain/capability-graph.json`](integrations/agent-brain/capability-graph.json) — unified capability graph.
+- [`integrations/agent-brain/mcp.json`](integrations/agent-brain/mcp.json) — agent connection descriptor.
+- [`bundles/agent-brain-bundles.json`](bundles/agent-brain-bundles.json) — composed architectures.
+- [`docs/AGENT-BRAIN.md`](docs/AGENT-BRAIN.md) — Agent Brain usage and governance.
+- [`integrations/api-discovery/public-apis.json`](integrations/api-discovery/public-apis.json) — governed API-discovery source.
+- [`integrations/agent-systems/wassim-agent-systems.json`](integrations/agent-systems/wassim-agent-systems.json) — governed autonomous-agent systems.
+- [`integrations/vibe/`](integrations/vibe/) — governed skill/design/runtime integrations.
 - [`registry/`](registry/) — verified resources, limitations, licenses, and evidence.
-- [`integrations/vibe/manifest.json`](integrations/vibe/manifest.json) — governed executable integration adapters.
-- [`integrations/vibe/apple-design-skills.json`](integrations/vibe/apple-design-skills.json) — governed Apple Design Skills adapter contract.
-- [`governance/HUMAN-REVIEW.md`](governance/HUMAN-REVIEW.md) — Tier A and reviewer controls.
-- [`governance/AGENT-SKILL-SUPPLY-CHAIN.md`](governance/AGENT-SKILL-SUPPLY-CHAIN.md) — portable skill and marketplace controls.
-- [`docs/PRIVACY-AND-DATA-HANDLING.md`](docs/PRIVACY-AND-DATA-HANDLING.md) — privacy rules.
-- [`SECURITY.md`](SECURITY.md) — responsible disclosure.
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and public-data rules.
-- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) — community expectations.
+- [`governance/`](governance/) — human-review and supply-chain controls.
+- [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) — declarative intended `main` protection policy; GitHub repository settings remain the enforcement authority.
 
-## Evidence tiers
+## What Internet-Well does not guarantee
 
-| Tier | Meaning |
-|---|---|
-| A | Strong evidence plus qualified, conflict-disclosed human review |
-| B | Generally reliable with documented limitations or dependencies |
-| C | Promising or experimental; supervised critical use only |
-| D | Rejected, abandoned, unsafe, legally unsuitable, or unverifiable |
-
-Automation cannot assign Tier A.
-
-## Contributing
-
-Contributions are welcome. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before opening a pull request. Do not submit credentials, private repository findings, customer data, personal data, privileged material, or unpublished product assessments. Use synthetic fixtures for tests and documentation.
+Internet-Well cannot guarantee a bug-free launch, universal compliance, secure deployment under every configuration, profitability, virality, accurate market prediction, successful trading, or correct real-world outcomes. Static and structural evaluation cannot replace runtime testing, qualified professional review, or monitoring.
 
 ## Public release posture
 
-Version `0.3.0` is suitable for supervised public developer use, local assessment of repositories the user is authorized to inspect, and governed third-party integration planning. It is not an autonomous modification authority or professional certification service.
+Version `0.4.0` is intended for supervised public developer use, governed capability routing, agent/MCP planning integrations, local repository assessment, and evidence-backed third-party resource selection. It is not autonomous production modification authority or a professional certification service.
 
 ## License
 
-Internet-Well uses a split licensing model so software and non-software material are governed appropriately:
+Internet-Well uses a split licensing model:
 
-- **Software code and executable configuration:** Apache License 2.0. See [`LICENSE`](LICENSE). This software-specific license is the package license declared in `pyproject.toml`.
-- **Original documentation, registry prose, governance text, and other non-software content previously published as CC-BY-4.0:** those CC-BY-4.0 permissions are not revoked. Where a file or directory carries a more specific notice, that notice controls.
-- **Third-party resources and integrations:** retain their own upstream licenses and terms. Internet-Well's cataloging of a resource does not relicense that resource.
-
-The Apache-2.0 grant is an additional software-specific permission for Internet-Well's software; it does not narrow permissions already granted under CC-BY-4.0 for previously published material.
+- **Software code and executable configuration:** Apache License 2.0. See [`LICENSE`](LICENSE).
+- **Original documentation and governance prose previously published under CC-BY-4.0:** those permissions are not revoked; file-specific notices control where present.
+- **Third-party resources:** retain their own upstream licenses and terms. Cataloging or integrating a resource does not relicense it.
