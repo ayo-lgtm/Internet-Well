@@ -3,7 +3,7 @@ import subprocess
 import sys
 import unittest
 
-from automation import agent_brain
+from automation import agent_brain, upstream_verifier
 
 
 class AgentBrainTests(unittest.TestCase):
@@ -43,6 +43,14 @@ class AgentBrainTests(unittest.TestCase):
         payload = json.loads(proc.stdout.strip())
         self.assertEqual(payload["id"], 1)
         self.assertGreaterEqual(len(payload["result"]["tools"]), 6)
+
+    def test_upstream_verifier_is_non_mutating_by_default(self):
+        result = upstream_verifier.verify(network=False)
+        self.assertFalse(result["network_checked"])
+        self.assertIn("never silently updates", result["policy"].lower())
+        self.assertGreaterEqual(len(result["resources"]), 10)
+        self.assertTrue(all("checks" in row for row in result["resources"]))
+        self.assertFalse(any(row.get("upgrade_candidate", {}).get("automatic_update") for row in result["resources"]))
 
 
 if __name__ == "__main__":
