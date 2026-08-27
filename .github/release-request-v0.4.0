@@ -1,0 +1,5 @@
+Internet-Well v0.4.0 release request
+
+This marker intentionally triggers the dedicated v0.4.0 publication workflow after merge to main.
+
+Release scope: Agent Brain, governed capability graph, automatic routing, evidence ranking, evaluation lab, composed bundles, upstream verification, and release/governance hardening.
