@@ -1,0 +1,81 @@
+name: Verify API discovery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'automation/api_discovery.py'
+      - 'integrations/api-discovery/**'
+      - 'docs/API-DISCOVERY.md'
+      - 'pyproject.toml'
+      - '.github/workflows/verify-api-discovery.yml'
+  pull_request:
+    paths:
+      - 'automation/api_discovery.py'
+      - 'integrations/api-discovery/**'
+      - 'docs/API-DISCOVERY.md'
+      - 'pyproject.toml'
+      - '.github/workflows/verify-api-discovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate manifest and CLI
+        run: |
+          python -m json.tool integrations/api-discovery/public-apis.json >/dev/null
+          python -m automation.api_discovery show > /tmp/show.json
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/show.json'))
+          assert data['repository']=='public-apis/public-apis'
+          assert len(data['pin'])==40
+          assert data['trust_model']['catalog_listing_is_approval'] is False
+          assert data['selection_policy']['never_use_leaked_or_third_party_credentials'] is True
+          PY
+      - name: Test parser with synthetic catalog
+        run: |
+          cat > /tmp/catalog.md <<'EOF'
+          ### Currency Exchange
+          | API | Description | Auth | HTTPS | CORS |
+          |---|---|---|---|---|
+          | [Example FX](https://example.test) | Example currency rates | No | Yes | Yes |
+          | [Legacy FX](http://legacy.test) | Legacy currency rates | apiKey | No | No |
+          EOF
+          python -m automation.api_discovery find currency --catalog /tmp/catalog.md > /tmp/results.json
+          python - <<'PY'
+          import json
+          rows=json.load(open('/tmp/results.json'))
+          assert len(rows)==2
+          assert rows[0]['name']=='Example FX'
+          assert rows[0]['status']=='candidate-only'
+          assert rows[0]['requires_provider_verification'] is True
+          PY
+      - name: Verify use plan never authorizes API calls
+        run: |
+          python -m automation.api_discovery plan-use 'Example FX' > /tmp/plan.json
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/plan.json'))
+          assert data['approval']=='not-granted'
+          assert data['api_call']=='not-performed'
+          assert any('leaked' in rule.lower() for rule in data['hard_rules'])
+          PY
+      - name: Verify packaged installation
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+          python -m pip install dist/*.whl
+          internet-well-api-discovery show >/tmp/installed.json
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/installed.json'))
+          assert data['repository']=='public-apis/public-apis'
+          PY

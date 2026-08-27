@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "public-apis",
+  "kind": "api-discovery-source",
+  "source": "https://github.com/public-apis/public-apis.git",
+  "repository": "public-apis/public-apis",
+  "pin": "988c57be4616cc9507fd3e8c34adedba5387f079",
+  "default_branch": "master",
+  "license": "MIT",
+  "upstream_catalog": "README.md",
+  "purpose": "Discover candidate public APIs for capabilities before selecting a paid or proprietary provider.",
+  "trust_model": {
+    "catalog_listing_is_approval": false,
+    "catalog_listing_is_free_guarantee": false,
+    "catalog_listing_is_unlimited_guarantee": false,
+    "catalog_listing_is_terms_verification": false,
+    "internet_well_auto_calls_discovered_apis": false
+  },
+  "required_checks_before_use": [
+    "official provider ownership and documentation",
+    "authentication requirements and credential handling",
+    "HTTPS/TLS availability",
+    "current pricing, free-tier and quota limits",
+    "rate limits and retry policy",
+    "terms of service and license",
+    "data provenance and quality",
+    "privacy and data-retention implications",
+    "CORS/client exposure where relevant",
+    "current service availability and deprecation status"
+  ],
+  "selection_policy": {
+    "prefer_https": true,
+    "prefer_official_docs": true,
+    "prefer_documented_free_tier_when_cost_sensitive": true,
+    "require_human_review_for_credentials_or_sensitive_data": true,
+    "require_human_review_for_financial_health_legal_or_safety_critical_use": true,
+    "never_use_leaked_or_third_party_credentials": true
+  },
+  "execution": {
+    "mode": "discovery-only-by-default",
+    "clone_requires_approval": true,
+    "api_invocation_requires_separate_provider_authorization": true,
+    "floating_refs_forbidden": true
+  }
+}

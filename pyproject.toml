@@ -37,6 +37,7 @@ internet-well-ponytail = "automation.ponytail_integration:main"
 internet-well-screenshot-integrations = "automation.screenshot_integrations:main"
 internet-well-apple-design = "automation.apple_design_integration:main"
 internet-well-agent-systems = "automation.agent_system_integrations:main"
+internet-well-api-discovery = "automation.api_discovery:main"
 
 [tool.setuptools]
 py-modules = ["internet_well"]
@@ -48,3 +49,4 @@ include = ["automation*"]
 [tool.setuptools.data-files]
 "integrations/vibe" = ["integrations/vibe/manifest.json", "integrations/vibe/ponytail.json", "integrations/vibe/screenshot-resources.json", "integrations/vibe/apple-design-skills.json"]
 "integrations/agent-systems" = ["integrations/agent-systems/wassim-agent-systems.json"]
+"integrations/api-discovery" = ["integrations/api-discovery/public-apis.json"]
