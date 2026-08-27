@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "public-apis",
+      "name": "Public APIs",
+      "repository": "public-apis/public-apis",
+      "source": "https://github.com/public-apis/public-apis.git",
+      "pin": "988c57be4616cc9507fd3e8c34adedba5387f079",
+      "license": "MIT",
+      "role": "candidate API discovery",
+      "evidence_tier": "B",
+      "limitations": [
+        "Catalog membership does not prove current availability, safety, legality, pricing, or unlimited/free access.",
+        "Provider documentation and terms must be re-verified before adoption.",
+        "Internet-Well does not automatically invoke listed APIs."
+      ],
+      "governed_by": "integrations/api-discovery/public-apis.json"
+    }
+  ]
+}
