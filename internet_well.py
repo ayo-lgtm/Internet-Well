@@ -17,7 +17,7 @@ from typing import Any
 
 from automation import founder_os_engine as engine
 
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 REPORT_NOTICE = (
     "Preliminary static assessment only. No runtime penetration test, legal opinion, "
     "privacy certification, production approval, or guarantee has occurred."
