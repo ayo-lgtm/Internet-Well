@@ -1,10 +1,10 @@
-name: Publish v0.3.0
+name: Publish v0.4.0
 
 on:
   push:
     branches: [main]
     paths:
-      - '.github/release-request-v0.3.0'
+      - '.github/release-request-v0.4.0'
       - '.github/workflows/publish-v0.3.0.yml'
 
 permissions:
@@ -22,18 +22,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Verify v0.3.0 version alignment
+      - name: Verify v0.4.0 version alignment
         run: |
           set -euo pipefail
           VERSION="$(tr -d '[:space:]' < VERSION)"
-          test "$VERSION" = "0.3.0"
-          grep -q 'version = "0.3.0"' pyproject.toml
-          grep -q 'VERSION = "0.3.0"' internet_well.py
+          test "$VERSION" = "0.4.0"
+          grep -q 'version = "0.4.0"' pyproject.toml
+          grep -q 'VERSION = "0.4.0"' internet_well.py
+          grep -q '"version": "0.4.0"' integrations/agent-brain/capability-graph.json
+          grep -q '"version": "0.4.0"' bundles/agent-brain-bundles.json
 
       - name: Run release verification
         run: |
           set -euo pipefail
-          python3 -m py_compile internet_well.py automation/*.py automation/tests/*.py
+          python3 -m py_compile internet_well.py automation/*.py automation/tests/*.py tests/*.py
           python3 automation/verify_registry.py --max-age 90
           python3 automation/build_index.py --check
           python3 automation/verify_founder_os.py
@@ -43,58 +45,54 @@ jobs:
           python3 automation/verify_agent_system_integrations.py
           python3 automation/report_verification_coverage.py --check --output /tmp/catalog-coverage.json
           python3 -m unittest discover -s automation/tests -p 'test_*.py' -v
+          python3 -m unittest tests.test_agent_brain -v
           python3 automation/test_vibe_integrations.py
           python3 automation/test_ponytail_integration.py
           python3 automation/test_screenshot_integrations.py
 
       - name: Build distributions
         run: |
+          set -euo pipefail
           python3 -m pip install --upgrade pip build
+          rm -rf dist build *.egg-info
           python3 -m build
 
-      - name: Smoke-test wheel
+      - name: Smoke-test wheel and Agent Brain
         run: |
           set -euo pipefail
-          python3 -m venv /tmp/internet-well-v030
-          /tmp/internet-well-v030/bin/pip install dist/*.whl
-          /tmp/internet-well-v030/bin/internet-well --version | grep -F '0.3.0'
-          /tmp/internet-well-v030/bin/internet-well-integrations list >/tmp/integrations.json
-          /tmp/internet-well-v030/bin/internet-well-agent-systems list >/tmp/agent-systems.json
+          python3 -m venv /tmp/internet-well-v040
+          /tmp/internet-well-v040/bin/pip install dist/*.whl
+          /tmp/internet-well-v040/bin/internet-well --version | grep -F '0.4.0'
+          /tmp/internet-well-v040/bin/internet-well-integrations list >/tmp/integrations.json
+          /tmp/internet-well-v040/bin/internet-well-agent-systems list >/tmp/agent-systems.json
+          /tmp/internet-well-v040/bin/internet-well-brain list-tools >/tmp/brain-tools.json
+          /tmp/internet-well-v040/bin/internet-well-brain evaluate >/tmp/brain-evaluation.json
           test -s /tmp/integrations.json
           test -s /tmp/agent-systems.json
+          test -s /tmp/brain-tools.json
+          test -s /tmp/brain-evaluation.json
+          grep -q '"passed": true' /tmp/brain-evaluation.json
 
-      - name: Create immutable v0.3.0 tag
+      - name: Create immutable v0.4.0 tag
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if git ls-remote --exit-code --tags origin refs/tags/v0.3.0 >/dev/null 2>&1; then
-            echo 'v0.3.0 already exists; refusing to move it.'
+          if git ls-remote --exit-code --tags origin refs/tags/v0.4.0 >/dev/null 2>&1; then
+            echo 'v0.4.0 already exists; refusing to move it.'
             exit 1
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git tag -a v0.3.0 "$GITHUB_SHA" -m 'Internet-Well v0.3.0'
-          git push origin refs/tags/v0.3.0
+          git tag -a v0.4.0 "$GITHUB_SHA" -m 'Internet-Well v0.4.0 - Agent Brain'
+          git push origin refs/tags/v0.4.0
 
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release create v0.3.0 dist/* \
+          gh release create v0.4.0 dist/* \
             --verify-tag \
-            --title 'Internet-Well v0.3.0' \
-            --notes-file - <<'EOF'
-          Internet-Well v0.3.0 is the first formal public release after the repository privacy purge and release-hardening program.
-
-          Highlights:
-          - governed executable integration framework with immutable pinning and approval gates;
-          - Anthropic/Vercel skill sources, Ponytail, Apple Design Skills, browser tooling, and curated design/developer resources;
-          - governed autonomous-agent systems including autonomous-loop, event-driven-autonomous-loop, flywheel, memory, agent-os, sentience-loop, cortex, megacycle, and fusion;
-          - restricted red-team-only handling for qwen38-uncensored; it is never auto-installed or auto-executed;
-          - Apache-2.0 software licensing, contributor/security controls, public-repository hygiene checks, and private-by-default assessment outputs;
-          - GitHub Support-sensitive-history purge completed and independently verified before release.
-
-          Release artifacts are built and smoke-tested from the tagged source.
-          EOF
+            --title 'Internet-Well v0.4.0 - Agent Brain' \
+            --notes-file RELEASE_NOTES_v0.4.0.md
