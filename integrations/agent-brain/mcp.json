@@ -1,0 +1,28 @@
+{
+  "name": "internet-well-agent-brain",
+  "version": "0.4.0",
+  "transport": "stdio",
+  "command": "internet-well-brain",
+  "args": ["serve"],
+  "protocol": "MCP JSON-RPC subset",
+  "tools": [
+    "find_capability",
+    "recommend_stack",
+    "find_api",
+    "get_skill",
+    "plan_implementation",
+    "evaluate_bundle"
+  ],
+  "security": {
+    "network_access": "none-by-default",
+    "state_changes": "none",
+    "credential_access": "none",
+    "production_authority": "none",
+    "tier_a_assignment": "human-only"
+  },
+  "notes": [
+    "The server exposes planning and governed-selection tools only.",
+    "It does not install resources, deploy applications, place trades, or call discovered APIs.",
+    "Clients must separately invoke approved integration adapters for state-changing actions."
+  ]
+}
