@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile CLI and engine
-        run: python3 -m py_compile internet_well.py automation/founder_os_engine.py
+        run: python3 -m py_compile internet_well.py automation/founder_os_engine.py automation/agent_brain.py automation/upstream_verifier.py
       - name: Build package
         run: |
           python3 -m pip install --upgrade pip build
@@ -26,9 +26,11 @@ jobs:
         run: python3 -m pip install dist/*.whl
       - name: Verify version
         run: |
-          internet-well --version | grep -q '0.3.0'
-          test "$(cat VERSION)" = "0.3.0"
-          grep -q 'version = "0.3.0"' pyproject.toml
+          VERSION_EXPECTED="$(cat VERSION)"
+          test -n "$VERSION_EXPECTED"
+          printf '%s\n' "$VERSION_EXPECTED" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9.-]+)?$'
+          internet-well --version | grep -Fq "$VERSION_EXPECTED"
+          grep -Fq "version = \"$VERSION_EXPECTED\"" pyproject.toml
       - name: Exercise JSON assessment
         run: internet-well assess . --format json > /tmp/internet-well-assess.json
       - name: Exercise Markdown plan
@@ -39,6 +41,10 @@ jobs:
         run: internet-well launch-review . --format markdown > /tmp/internet-well-launch.md
       - name: Exercise consented CodeWiki manifest
         run: internet-well docs . --provider codewiki --provider-consent --format json > /tmp/internet-well-docs.json
+      - name: Exercise Agent Brain
+        run: |
+          internet-well-brain recommend-stack 'build a production web app' > /tmp/internet-well-brain.json
+          internet-well-brain evaluate > /tmp/internet-well-brain-eval.json
       - name: Validate productization artifacts
         run: |
           test -s /tmp/internet-well-assess.json
@@ -46,15 +52,22 @@ jobs:
           test -s /tmp/internet-well-security.json
           test -s /tmp/internet-well-launch.md
           test -s /tmp/internet-well-docs.json
+          test -s /tmp/internet-well-brain.json
+          test -s /tmp/internet-well-brain-eval.json
           grep -q 'Internet-Well Preliminary Implementation Plan' /tmp/internet-well-plan.md
           grep -q 'Preliminary static assessment only' /tmp/internet-well-launch.md
           grep -q '"provider": "codewiki"' /tmp/internet-well-docs.json
           grep -q '"provider_consent_recorded": true' /tmp/internet-well-docs.json
           grep -q '"report_classification": "private"' /tmp/internet-well-assess.json
+          grep -q '"bundle": "production-web-app"' /tmp/internet-well-brain.json
+          grep -q '"passed": true' /tmp/internet-well-brain-eval.json
           test -f docs/CODEWIKI-INTEGRATION.md
           test -f docs/PRIVACY-AND-DATA-HANDLING.md
+          test -f docs/AGENT-BRAIN.md
           test -f SECURITY.md
           test -f governance/HUMAN-REVIEW.md
           test -f governance/RELEASES.md
           test -f examples/assessment-example.md
+          test -f integrations/agent-brain/capability-graph.json
+          test -f integrations/agent-brain/mcp.json
           test ! -d assessments

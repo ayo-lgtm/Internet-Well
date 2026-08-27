@@ -23,9 +23,11 @@ jobs:
           python -m pip install dist/*.whl
       - name: Version alignment
         run: |
-          test "$(cat VERSION)" = "0.3.0"
-          internet-well --version | grep '0.3.0'
-          grep -q 'version = "0.3.0"' pyproject.toml
+          VERSION_EXPECTED="$(cat VERSION)"
+          test -n "$VERSION_EXPECTED"
+          printf '%s\n' "$VERSION_EXPECTED" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9.-]+)?$'
+          internet-well --version | grep -F "$VERSION_EXPECTED"
+          grep -Fq "version = \"$VERSION_EXPECTED\"" pyproject.toml
       - name: Privacy-safe assessment defaults
         run: |
           mkdir -p /tmp/iw-fixture

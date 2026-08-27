@@ -1,0 +1,37 @@
+name: Verify upstream resources
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-upstreams:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package
+        run: python -m pip install .
+      - name: Generate network-aware upstream report
+        run: internet-well-upstreams --network --output upstream-verification.json
+      - name: Validate policy and report shape
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('upstream-verification.json'))
+          assert 'never silently updates' in p['policy'].lower()
+          assert len(p['resources']) >= 10
+          assert all('checks' in r for r in p['resources'])
+          print('Upstream verification report validated')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: internet-well-upstream-verification
+          path: upstream-verification.json
+          retention-days: 30

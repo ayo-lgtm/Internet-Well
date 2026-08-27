@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "internet-well"
-version = "0.3.0"
-description = "Privacy-first, evidence-backed Founder OS for local repository assessment and governed implementation planning."
+version = "0.4.0"
+description = "Privacy-first, evidence-backed Founder OS and governed Agent Brain for capability selection, implementation planning, and supervised automation."
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 authors = [{name = "Internet-Well contributors"}]
-keywords = ["founder-os", "software-assessment", "security", "privacy", "ai-governance", "open-source"]
+keywords = ["founder-os", "agent-brain", "mcp", "capability-graph", "software-assessment", "security", "privacy", "ai-governance", "open-source"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Environment :: Console",
@@ -38,6 +38,8 @@ internet-well-screenshot-integrations = "automation.screenshot_integrations:main
 internet-well-apple-design = "automation.apple_design_integration:main"
 internet-well-agent-systems = "automation.agent_system_integrations:main"
 internet-well-api-discovery = "automation.api_discovery:main"
+internet-well-brain = "automation.agent_brain:main"
+internet-well-upstreams = "automation.upstream_verifier:main"
 
 [tool.setuptools]
 py-modules = ["internet_well"]
@@ -50,3 +52,5 @@ include = ["automation*"]
 "integrations/vibe" = ["integrations/vibe/manifest.json", "integrations/vibe/ponytail.json", "integrations/vibe/screenshot-resources.json", "integrations/vibe/apple-design-skills.json"]
 "integrations/agent-systems" = ["integrations/agent-systems/wassim-agent-systems.json"]
 "integrations/api-discovery" = ["integrations/api-discovery/public-apis.json"]
+"integrations/agent-brain" = ["integrations/agent-brain/capability-graph.json", "integrations/agent-brain/mcp.json"]
+"bundles" = ["bundles/agent-brain-bundles.json"]
