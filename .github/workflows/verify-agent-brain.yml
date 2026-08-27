@@ -1,0 +1,51 @@
+name: Verify Agent Brain
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  agent-brain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package
+        run: python -m pip install .
+      - name: Run Agent Brain tests
+        run: python -m unittest tests.test_agent_brain -v
+      - name: Run structural evaluation lab
+        run: internet-well-brain evaluate > /tmp/agent-brain-evaluation.json
+      - name: Verify all bundles passed
+        run: python - <<'PY'
+          import json
+          data=json.load(open('/tmp/agent-brain-evaluation.json'))
+          assert data['passed'], json.dumps(data, indent=2)
+          assert len(data['bundles']) >= 9
+          print('Agent Brain evaluation passed')
+          PY
+      - name: Verify MCP tools surface
+        run: |
+          internet-well-brain list-tools > /tmp/tools.json
+          python - <<'PY'
+          import json
+          tools=json.load(open('/tmp/tools.json'))
+          names={t['name'] for t in tools}
+          required={'find_capability','recommend_stack','find_api','get_skill','plan_implementation','evaluate_bundle'}
+          assert required <= names
+          print('MCP tool surface verified')
+          PY
+      - name: Verify clean package data
+        run: |
+          python - <<'PY'
+          from automation.agent_brain import graph, bundles
+          assert graph()['version'] == '0.4.0'
+          assert bundles()['version'] == '0.4.0'
+          print('Packaged graph and bundles resolved')
+          PY
