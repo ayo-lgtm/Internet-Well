@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "0.4.0",
+  "status": "governed-capability-graph",
+  "policy": "This graph is a decision aid, not autonomous approval. Tier A remains human-controlled. Popularity never substitutes for provenance, licensing, security, compatibility, or runtime evidence.",
+  "ranking_weights": {
+    "provenance": 0.18,
+    "maintenance": 0.14,
+    "documentation": 0.10,
+    "license_clarity": 0.10,
+    "security_posture": 0.16,
+    "interoperability": 0.12,
+    "runtime_evidence": 0.14,
+    "reversibility": 0.06
+  },
+  "nodes": [
+    {
+      "id": "autonomous-loop",
+      "kind": "repository",
+      "source": "https://github.com/Wassimyounes01/autonomous-loop",
+      "capabilities": ["persistent-agent-loop", "task-selection", "reward-learning", "crash-recovery"],
+      "restrictions": ["no-live-trading-authority-by-default", "explicit-stop-conditions", "bounded-credentials"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 78, "license_clarity": 70, "security_posture": 68, "interoperability": 90, "runtime_evidence": 76, "reversibility": 88}
+    },
+    {
+      "id": "event-driven-autonomous-loop",
+      "kind": "repository",
+      "source": "https://github.com/Wassimyounes01/event-driven-autonomous-loop",
+      "capabilities": ["event-driven-execution", "continuous-progress", "persistent-queue", "restart-recovery"],
+      "restrictions": ["bounded-backlog", "rate-limits", "explicit-kill-switch"],
+      "evidence": {"provenance": 78, "maintenance": 70, "documentation": 76, "license_clarity": 70, "security_posture": 68, "interoperability": 88, "runtime_evidence": 74, "reversibility": 88}
+    },
+    {
+      "id": "flywheel",
+      "kind": "repository",
+      "source": "https://github.com/Wassimyounes01/flywheel",
+      "capabilities": ["reward-learning", "bandit-selection", "adaptive-routing"],
+      "restrictions": ["reward-function-review", "no-unbounded-self-modification", "retain-audit-log"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 74, "license_clarity": 70, "security_posture": 70, "interoperability": 86, "runtime_evidence": 78, "reversibility": 86}
+    },
+    {
+      "id": "memory",
+      "kind": "repository",
+      "source": "https://github.com/Wassimyounes01/memory",
+      "capabilities": ["agent-memory", "persistent-context", "experience-retention"],
+      "restrictions": ["data-minimization", "retention-policy", "do-not-store-secrets-or-sensitive-data-by-default"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 72, "license_clarity": 70, "security_posture": 72, "interoperability": 86, "runtime_evidence": 72, "reversibility": 86}
+    },
+    {
+      "id": "agent-os",
+      "kind": "repository",
+      "source": "https://github.com/Wassimyounes01/agent-os",
+      "capabilities": ["agent-kernel", "capability-registry", "orchestration"],
+      "restrictions": ["least-privilege-tools", "explicit-capability-allowlist", "human-approval-for-state-changing-actions"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 75, "license_clarity": 70, "security_posture": 70, "interoperability": 88, "runtime_evidence": 72, "reversibility": 84}
+    },
+    {
+      "id": "public-apis",
+      "kind": "api-discovery-source",
+      "source": "https://github.com/public-apis/public-apis",
+      "pin": "988c57be4616cc9507fd3e8c34adedba5387f079",
+      "capabilities": ["api-discovery", "external-data-capability", "provider-shortlisting"],
+      "restrictions": ["listing-is-not-approval", "verify-pricing-and-quota", "verify-terms-and-privacy", "never-use-leaked-credentials"],
+      "evidence": {"provenance": 92, "maintenance": 90, "documentation": 88, "license_clarity": 90, "security_posture": 78, "interoperability": 92, "runtime_evidence": 80, "reversibility": 94}
+    },
+    {
+      "id": "agent-browser",
+      "kind": "runtime",
+      "source": "https://github.com/vercel-labs/agent-browser",
+      "capabilities": ["browser-automation", "web-testing", "accessibility-tree"],
+      "restrictions": ["isolated-profile", "hostname-allowlist", "no-production-actions-without-approval", "protect-cookies-and-downloads"],
+      "evidence": {"provenance": 88, "maintenance": 88, "documentation": 86, "license_clarity": 80, "security_posture": 72, "interoperability": 88, "runtime_evidence": 84, "reversibility": 82}
+    },
+    {
+      "id": "playwright-mcp",
+      "kind": "mcp-runtime",
+      "source": "https://github.com/microsoft/playwright-mcp",
+      "capabilities": ["browser-automation", "mcp-tools", "web-testing"],
+      "restrictions": ["isolated-profile", "hostname-allowlist", "credential-isolation", "approval-for-state-changing-actions"],
+      "evidence": {"provenance": 96, "maintenance": 92, "documentation": 90, "license_clarity": 92, "security_posture": 82, "interoperability": 94, "runtime_evidence": 88, "reversibility": 88}
+    },
+    {
+      "id": "apple-design-skills",
+      "kind": "skill-family",
+      "source": "https://github.com/s1gmamale1/apple-design-skills",
+      "pin": "8a3fbea8b561405e5719d682ebd1d14c952aecd7",
+      "capabilities": ["apple-hig-reasoning", "motion", "interaction-design", "accessibility", "materials"],
+      "restrictions": ["official-apple-hig-outranks-community-guidance", "do-not-copy-protected-expression", "test-reduced-motion-and-accessibility"],
+      "evidence": {"provenance": 82, "maintenance": 82, "documentation": 88, "license_clarity": 92, "security_posture": 78, "interoperability": 86, "runtime_evidence": 74, "reversibility": 92}
+    },
+    {
+      "id": "anthropic-skills",
+      "kind": "skill-library",
+      "source": "https://github.com/anthropics/skills",
+      "capabilities": ["agent-skills", "skill-authoring", "document-workflows"],
+      "restrictions": ["review-license-per-skill", "review-allowed-tools", "pin-exact-source"],
+      "evidence": {"provenance": 96, "maintenance": 92, "documentation": 92, "license_clarity": 82, "security_posture": 84, "interoperability": 92, "runtime_evidence": 88, "reversibility": 90}
+    },
+    {
+      "id": "get-shit-done",
+      "kind": "workflow-system",
+      "source": "https://github.com/gsd-build/get-shit-done",
+      "capabilities": ["spec-driven-development", "long-running-agent-work", "planning", "execution"],
+      "restrictions": ["never-skip-permissions", "preserve-human-approval", "verify-each-milestone"],
+      "evidence": {"provenance": 82, "maintenance": 82, "documentation": 86, "license_clarity": 90, "security_posture": 72, "interoperability": 86, "runtime_evidence": 78, "reversibility": 86}
+    },
+    {
+      "id": "ponytail",
+      "kind": "code-quality-skill",
+      "capabilities": ["code-minimization", "simplification", "review"],
+      "restrictions": ["preserve-behavior", "tests-required", "no-silent-semantic-change"],
+      "evidence": {"provenance": 80, "maintenance": 78, "documentation": 80, "license_clarity": 84, "security_posture": 84, "interoperability": 82, "runtime_evidence": 76, "reversibility": 92}
+    },
+    {
+      "id": "qwen38-uncensored",
+      "kind": "restricted-reference",
+      "source": "https://github.com/Wassimyounes01/qwen38-uncensored",
+      "capabilities": ["adversarial-evaluation-reference"],
+      "restrictions": ["reference-only", "no-auto-install", "no-auto-execute", "authorized-red-team-use-only"],
+      "evidence": {"provenance": 70, "maintenance": 60, "documentation": 62, "license_clarity": 60, "security_posture": 30, "interoperability": 60, "runtime_evidence": 54, "reversibility": 90}
+    }
+  ]
+}
