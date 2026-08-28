@@ -1,3 +1,5 @@
+import json
+import re
 import unittest
 from automation import agent_reliability as ar
 
@@ -74,6 +76,17 @@ class AgentReliabilityTests(unittest.TestCase):
         self.assertEqual(0, result['completed'])
         self.assertEqual(0.0, result['reliability_rate'])
         self.assertTrue(all(r['status'] == 'NOT_RUN' for r in result['results']))
+
+    def test_production_agent_sources_are_pinned_and_governed(self):
+        source_path = ar._resolve(ar.POLICY_REL).parent / 'production-agent-sources.json'
+        data = json.loads(source_path.read_text(encoding='utf-8'))
+        self.assertEqual('0.5.0', data['version'])
+        self.assertEqual(4, len(data['sources']))
+        by_id = {x['id']: x for x in data['sources']}
+        self.assertEqual({'openai-agents-python', 'arize-phoenix', 'langfuse', 'promptfoo'}, set(by_id))
+        self.assertTrue(all(re.fullmatch(r'[0-9a-f]{40}', x['pin']) for x in data['sources']))
+        self.assertIn('authorized-targets-only', by_id['promptfoo']['restrictions'])
+        self.assertIn('trace-data-boundary-required', by_id['openai-agents-python']['restrictions'])
 
 
 if __name__ == '__main__':
