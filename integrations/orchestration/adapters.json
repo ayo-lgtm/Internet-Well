@@ -1,0 +1,14 @@
+{
+  "version": "0.6.0",
+  "policy": "Adapters describe execution surfaces. They never grant credentials, permissions, or production-write authority. Every state-changing operation requires explicit scope, least privilege, rollback, and reliability verification.",
+  "adapters": [
+    {"id":"github","capabilities":["repository-read","branch-write","pull-request","ci-status"],"state_changing":true,"approval":"required-for-protected-or-production-branch"},
+    {"id":"vercel","capabilities":["deployment-inspection","preview-deploy","production-deploy"],"state_changing":true,"approval":"required-for-production-deploy"},
+    {"id":"railway","capabilities":["service-inspection","deploy","logs"],"state_changing":true,"approval":"required-for-production-deploy"},
+    {"id":"supabase","capabilities":["schema-read","sql","migration","edge-functions","auth-config"],"state_changing":true,"approval":"required-for-schema-data-or-auth-write"},
+    {"id":"browser","capabilities":["navigate","inspect","test-ui"],"state_changing":false,"approval":"required-before-external-account-mutation"},
+    {"id":"ollama","capabilities":["local-model-runtime","private-inference"],"state_changing":false,"approval":"model-download-and-resource-use-reviewed"},
+    {"id":"mcp","capabilities":["tool-discovery","tool-invocation"],"state_changing":"depends-on-tool","approval":"inherit-tool-risk-and-scope"},
+    {"id":"design","capabilities":["ui-ux-guidance","design-system","screenshot-analysis","visual-validation"],"state_changing":false,"approval":"implementation-still-follows-target-repository-policy"}
+  ]
+}

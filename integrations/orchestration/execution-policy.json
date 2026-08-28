@@ -1,0 +1,31 @@
+{
+  "version": "0.6.0",
+  "lifecycle": ["intake", "plan", "select", "authorize", "execute", "verify", "recover", "complete"],
+  "default_mode": "plan-only-until-authorized",
+  "risk_tiers": {
+    "A": {"human_approval_required": true, "max_retries": 1},
+    "B": {"human_approval_required": false, "max_retries": 2},
+    "C": {"human_approval_required": false, "max_retries": 3}
+  },
+  "hard_stops": [
+    "missing_execution_authority",
+    "missing_required_approval",
+    "secret_or_credential_exposure",
+    "production_write_without_explicit_scope",
+    "regulated_or_high-impact_action_without_review",
+    "verifier_fail",
+    "rollback_unavailable_for_state_change"
+  ],
+  "recovery_rules": {
+    "retry_only_when_reversible": true,
+    "require_new_evidence_after_retry": true,
+    "never_retry_policy_violation_automatically": true,
+    "persist_failure_as_regression": true
+  },
+  "state": {
+    "format": "json",
+    "checkpoint_after_every_stage": true,
+    "resume_requires_integrity_check": true
+  },
+  "completion_rule": "A task is complete only when observable success criteria are satisfied and the independent reliability verifier returns PASS, or HUMAN_REVIEW followed by recorded approval."
+}
