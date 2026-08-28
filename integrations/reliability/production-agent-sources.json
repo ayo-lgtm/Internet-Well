@@ -1,0 +1,43 @@
+{
+  "version": "0.5.0",
+  "policy": "These projects are verified upstream references or capability candidates for production-agent runtime, observability, evaluation, and security testing. Inclusion is not approval to deploy, transmit private traces, or run adversarial tests against systems without authorization.",
+  "sources": [
+    {
+      "id": "openai-agents-python",
+      "repository": "openai/openai-agents-python",
+      "branch": "main",
+      "pin": "89c02c828ee8510fe9a84ee6675608193aa13b02",
+      "kind": "agent-runtime-and-tracing",
+      "capabilities": ["agent-runtime", "tool-orchestration", "handoffs", "guardrails", "tracing"],
+      "restrictions": ["provider-credentials-remain-external", "trace-data-boundary-required", "no-production-write-authority-by-default"]
+    },
+    {
+      "id": "arize-phoenix",
+      "repository": "Arize-ai/phoenix",
+      "branch": "main",
+      "pin": "0e3b2c2ae55b671cdc523363ea18bcc7e6ae6c31",
+      "kind": "agent-observability-and-evals",
+      "capabilities": ["otel-tracing", "agent-observability", "evaluation", "trace-analysis", "pii-evaluation"],
+      "restrictions": ["do-not-export-private-traces-without-approval", "redact-sensitive-payloads", "evaluator-results-are-evidence-not-absolute-truth"]
+    },
+    {
+      "id": "langfuse",
+      "repository": "langfuse/langfuse",
+      "branch": "main",
+      "pin": "f6e56cbb6c6c001805e90c263efca995a3fd33ba",
+      "kind": "llm-observability-and-evals",
+      "capabilities": ["llm-tracing", "session-observability", "evaluation", "prompt-management", "cost-and-latency-observability"],
+      "restrictions": ["self-host-or-provider-choice-requires-data-review", "protect-prompts-and-user-content", "do-not-treat-observability-as-authorization"]
+    },
+    {
+      "id": "promptfoo",
+      "repository": "promptfoo/promptfoo",
+      "branch": "main",
+      "pin": "3d676805ca5cf40f5a4e92d65db21836cb7391a3",
+      "kind": "agent-evaluation-and-security-testing",
+      "capabilities": ["model-evaluation", "prompt-regression", "red-team-testing", "security-testing", "ci-gating"],
+      "restrictions": ["authorized-targets-only", "red-team-tests-must-remain-bounded", "do-not-send-sensitive-production-data-to-unapproved-providers", "human-review-for-high-risk-findings"]
+    }
+  ],
+  "selection_rule": "Internet-Well may recommend these only after the normal evidence model verifies license, maintenance, security posture, interoperability, runtime fit, data handling, and reversibility for the intended deployment."
+}
