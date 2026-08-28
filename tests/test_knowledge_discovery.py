@@ -12,8 +12,17 @@ SECRET = '''## Security\n- [Example scanner](https://example.com/scanner) - Netw
 class KnowledgeDiscoveryTests(unittest.TestCase):
     def test_sources_are_immutable_pinned(self):
         data = kd.registry()
-        self.assertEqual(4, len(data['sources']))
+        self.assertEqual(10, len(data['sources']))
         self.assertTrue(all(len(x['pin']) == 40 for x in data['sources']))
+        ids = {x['id'] for x in data['sources']}
+        self.assertTrue({'free-for-dev','awesome-mcp-servers','awesome-llm-apps','ollama','scrapling','open-design'} <= ids)
+
+    def test_executable_sources_have_restrictions(self):
+        sources = {x['id']: x for x in kd.registry()['sources']}
+        for source_id in ['ollama', 'scrapling', 'open-design']:
+            self.assertEqual('executable-capability', sources[source_id]['mode'])
+            self.assertTrue(sources[source_id]['restrictions'])
+        self.assertIn('no-unverified-mcp-execution', sources['awesome-mcp-servers']['restrictions'])
 
     def test_source_routing(self):
         self.assertEqual('awesome-selfhosted', kd.plan('find a self-hosted open source alternative to analytics')['sources'][0]['source'])
