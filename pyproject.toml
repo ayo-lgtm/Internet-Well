@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "internet-well"
-version = "0.5.0"
+version = "0.4.0"
 description = "Privacy-first, evidence-backed Founder OS and governed Agent Brain with structured discovery, reliability evaluation, trajectory tracing, and supervised automation."
 readme = "README.md"
 requires-python = ">=3.9"
