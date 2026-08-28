@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "policy": "Curated lists are discovery and knowledge-index sources, never automatic approval. Every downstream project, command, technique, dependency, license, security property, compatibility claim, and maintenance state must be independently verified before recommendation or execution.",
+  "sources": [
+    {
+      "id": "awesome-selfhosted",
+      "repository": "awesome-selfhosted/awesome-selfhosted",
+      "branch": "master",
+      "pin": "602ef0b0fbbde215554020719b1fbeea02516d25",
+      "kind": "self-hosted-software-catalog",
+      "extract": ["category", "project", "description", "homepage", "source_repository", "license", "deployment_stack"],
+      "capabilities": ["self-hosted-discovery", "saas-alternative-discovery", "infrastructure-discovery", "privacy-preserving-deployment-options"]
+    },
+    {
+      "id": "book-of-secret-knowledge",
+      "repository": "trimstray/the-book-of-secret-knowledge",
+      "branch": "master",
+      "pin": "7d37069a361d3fd9f214480755f7969744e866fa",
+      "kind": "technical-reference-index",
+      "extract": ["section", "resource", "description", "url", "resource_type", "risk_class"],
+      "capabilities": ["technical-reference-discovery", "sysops-reference", "devops-reference", "networking-reference", "security-reference", "cli-reference"],
+      "restrictions": ["reference-not-instruction", "no-automatic-command-execution", "authorized-security-use-only", "classify-risk-before-routing", "high-risk-techniques-require-human-approval"]
+    },
+    {
+      "id": "awesome-go",
+      "repository": "avelino/awesome-go",
+      "branch": "main",
+      "pin": "656dcbece073847dedaf5737805cdfe9ae6ccb63",
+      "kind": "go-ecosystem-catalog",
+      "extract": ["category", "project", "description", "repository", "library_or_tool"],
+      "capabilities": ["go-library-discovery", "go-framework-discovery", "go-tool-discovery", "architecture-option-discovery"]
+    },
+    {
+      "id": "awesome-python",
+      "repository": "vinta/awesome-python",
+      "branch": "master",
+      "pin": "15b057c832a55b8d42d3b64e12677ecd631b0474",
+      "kind": "python-ecosystem-catalog",
+      "extract": ["category", "subcategory", "project", "description", "repository", "library_or_tool"],
+      "capabilities": ["python-library-discovery", "python-framework-discovery", "python-tool-discovery", "ai-library-discovery", "architecture-option-discovery"]
+    }
+  ],
+  "verification": {
+    "required_before_recommendation": ["resolve-upstream-project", "verify-license", "verify-maintenance", "verify-security-posture", "verify-documentation", "verify-platform-compatibility", "check-deprecation-or-archive", "score-with-agent-brain-evidence-model"],
+    "required_before_execution": ["explicit-execution-authority", "dependency-review", "secret-and-credential-boundary", "sandbox-or-staging-first", "rollback-plan", "runtime-verification"]
+  }
+}
