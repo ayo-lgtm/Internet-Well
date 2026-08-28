@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install test dependency
+        run: python3 -m pip install pytest
       - name: Compile orchestration layer
         run: python3 -m py_compile automation/execution_orchestrator.py
       - name: Run orchestration tests
