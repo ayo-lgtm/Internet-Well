@@ -1,0 +1,95 @@
+{
+  "id": "probo",
+  "name": "Probo",
+  "repository": "getprobo/probo",
+  "source": "https://github.com/getprobo/probo",
+  "pin": "bdb350aa88e60f3664caab6f41a665edd7729298",
+  "license": "MIT",
+  "classification": "governed-grc-readiness-engine",
+  "capabilities": [
+    "soc2-readiness",
+    "grc-workflows",
+    "control-management",
+    "evidence-management",
+    "policy-management",
+    "risk-management",
+    "vendor-risk",
+    "access-review",
+    "audit-handoff"
+  ],
+  "supported_use": {
+    "soc2_type_i": "readiness-and-evidence-preparation",
+    "soc2_type_ii": "readiness-and-operating-evidence-preparation",
+    "attestation": "independent-cpa-required"
+  },
+  "authority_boundary": "Internet-Well and Probo may organize readiness work and evidence. They do not issue a SOC 2 report, provide CPA attestation, or certify compliance.",
+  "required_human_review": [
+    "scope-and-trust-services-criteria",
+    "control-owner-approval",
+    "exceptions-and-remediation",
+    "auditor-evidence-request-response",
+    "independent-cpa-examination-and-report"
+  ],
+  "evidence_contract": {
+    "required_fields": [
+      "control_id",
+      "control_objective",
+      "owner",
+      "status",
+      "evidence_items",
+      "collection_period",
+      "source_system",
+      "collected_at",
+      "reviewer",
+      "exceptions"
+    ],
+    "rules": [
+      "preserve-source-provenance",
+      "do-not-fabricate-evidence",
+      "do-not-mark-controls-effective-without-evidence",
+      "exclude-live-secrets-from-export",
+      "redact-unnecessary-personal-data",
+      "retain-auditor-traceability"
+    ]
+  },
+  "auditor_handoff": {
+    "target": "independent-licensed-cpa-firm",
+    "preferred_scope_for-low-cost-startup-path": "SOC 2 Type I, Security Trust Services Criteria only, unless business requirements require additional criteria",
+    "package": [
+      "system-description",
+      "scope-and-boundaries",
+      "control-matrix",
+      "policies",
+      "risk-register",
+      "vendor-register",
+      "access-review-evidence",
+      "change-management-evidence",
+      "security-monitoring-evidence",
+      "incident-response-evidence",
+      "control-evidence-index",
+      "exceptions-and-remediation-log"
+    ],
+    "auditor_selection_checks": [
+      "licensed-cpa-firm",
+      "aicpa-peer-review-status",
+      "accepts-customer-managed-grc-evidence",
+      "fixed-fee-or-clear-fee-schedule",
+      "no-mandatory-commercial-grc-subscription",
+      "report-issuance-included",
+      "timeline-and-evidence-format-confirmed-in-writing"
+    ]
+  },
+  "restrictions": [
+    "no-compliance-guarantee",
+    "no-self-attestation",
+    "no-automatic-control-effectiveness-claim",
+    "no-automatic-evidence-submission-to-auditor",
+    "no-credential-use-without-explicit-authorization",
+    "no-production-connection-without-explicit-authorization"
+  ],
+  "upstream_monitoring": {
+    "immutable_pin": true,
+    "review_before_upgrade": true,
+    "check": ["license", "security-advisories", "breaking-changes", "data-model-changes", "export-compatibility"]
+  }
+}
