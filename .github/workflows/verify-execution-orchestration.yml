@@ -1,0 +1,43 @@
+name: Verify Execution Orchestration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  execution-orchestration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile orchestration layer
+        run: python3 -m py_compile automation/execution_orchestrator.py
+      - name: Run orchestration tests
+        run: python3 -m pytest -q tests/test_execution_orchestrator.py
+      - name: Build and install package
+        run: |
+          python3 -m pip install --upgrade pip build
+          python3 -m build
+          python3 -m pip install dist/*.whl
+      - name: Verify packaged CLI and policy
+        run: |
+          internet-well-orchestrate new 'verify a production web app' --criterion app_verified --out /tmp/task.json > /tmp/new.json
+          internet-well-orchestrate select /tmp/task.json design browser --out /tmp/task.json > /tmp/select.json
+          internet-well-orchestrate control-plane /tmp/task.json > /tmp/control.json
+          grep -q '"stage": "select"' /tmp/control.json
+          grep -q '"design"' /tmp/control.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('integrations/orchestration/execution-policy.json').read_text())
+          a=json.loads(Path('integrations/orchestration/adapters.json').read_text())
+          assert p['version']=='0.6.0'
+          ids={x['id'] for x in a['adapters']}
+          assert {'github','vercel','railway','supabase','browser','ollama','mcp','design'} <= ids
+          PY
