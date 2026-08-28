@@ -24,7 +24,7 @@
       "id": "langfuse",
       "repository": "langfuse/langfuse",
       "branch": "main",
-      "pin": "6dd490393a404a3e249ed82d6061d58c2f2cd721",
+      "pin": "f6e56cbb6c6c001805e90c263efca995a3fd33ba",
       "kind": "llm-observability-and-evals",
       "capabilities": ["llm-tracing", "session-observability", "evaluation", "prompt-management", "cost-and-latency-observability"],
       "restrictions": ["self-host-or-provider-choice-requires-data-review", "protect-prompts-and-user-content", "do-not-treat-observability-as-authorization"]
@@ -33,7 +33,7 @@
       "id": "promptfoo",
       "repository": "promptfoo/promptfoo",
       "branch": "main",
-      "pin": "2c45764ca1daf4587c83d68b940ba0eb14cb7ac4",
+      "pin": "3d676805ca5cf40f5a4e92d65db21836cb7391a3",
       "kind": "agent-evaluation-and-security-testing",
       "capabilities": ["model-evaluation", "prompt-regression", "red-team-testing", "security-testing", "ci-gating"],
       "restrictions": ["authorized-targets-only", "red-team-tests-must-remain-bounded", "do-not-send-sensitive-production-data-to-unapproved-providers", "human-review-for-high-risk-findings"]
