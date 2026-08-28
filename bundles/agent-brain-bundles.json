@@ -39,6 +39,14 @@
       "verification": ["upl-boundary", "source-citations", "abstention", "privacy", "access-control", "human-legal-review"]
     },
     {
+      "id": "soc2-readiness",
+      "goal_patterns": ["soc 2", "soc2", "soc 2 type i", "soc2 type i", "soc 2 readiness", "grc", "audit readiness", "probo"],
+      "capabilities": ["soc2-readiness", "grc-workflows", "control-management", "evidence-management", "policy-management", "risk-management", "vendor-risk", "access-review", "audit-handoff"],
+      "preferred": ["probo"],
+      "verification": ["scope-approved", "trust-services-criteria-confirmed", "control-owners-assigned", "evidence-provenance", "exceptions-reviewed", "no-secrets-in-export", "auditor-accepts-probo-evidence", "licensed-independent-cpa", "report-issuance-included"],
+      "restriction": "This bundle prepares SOC 2 readiness and an auditor evidence handoff. Internet-Well and Probo do not grant SOC 2, issue a SOC 2 report, or replace the independent CPA examination."
+    },
+    {
       "id": "uat-product-testing",
       "goal_patterns": ["uat", "product testing", "test production", "user acceptance testing"],
       "capabilities": ["browser-automation", "web-testing", "planning", "agent-memory"],
