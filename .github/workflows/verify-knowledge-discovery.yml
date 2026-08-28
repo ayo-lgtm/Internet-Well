@@ -28,7 +28,9 @@ jobs:
           import json
           sources=json.load(open('/tmp/sources.json'))
           plan=json.load(open('/tmp/plan.json'))
-          assert len(sources['sources']) == 4
+          assert len(sources['sources']) == 10
+          ids={x['id'] for x in sources['sources']}
+          assert {'free-for-dev','awesome-mcp-servers','awesome-llm-apps','ollama','scrapling','open-design'} <= ids
           assert plan['sources'][0]['source'] == 'awesome-selfhosted'
           assert plan['execution'] == 'not-performed'
           PY
@@ -37,7 +39,13 @@ jobs:
           python3 - <<'PY'
           import json
           d=json.load(open('integrations/knowledge/structured-sources.json'))
-          book=next(x for x in d['sources'] if x['id']=='book-of-secret-knowledge')
+          by={x['id']:x for x in d['sources']}
+          book=by['book-of-secret-knowledge']
           assert 'no-automatic-command-execution' in book['restrictions']
           assert 'authorized-security-use-only' in book['restrictions']
+          assert 'no-unverified-mcp-execution' in by['awesome-mcp-servers']['restrictions']
+          assert 'anti-bot-bypass-not-default' in by['scrapling']['restrictions']
+          for source_id in ['ollama','scrapling','open-design']:
+              assert by[source_id]['mode'] == 'executable-capability'
+              assert by[source_id]['restrictions']
           PY

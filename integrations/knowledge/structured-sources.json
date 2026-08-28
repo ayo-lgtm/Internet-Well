@@ -1,47 +1,22 @@
 {
-  "version": "1.0",
-  "policy": "Curated lists are discovery and knowledge-index sources, never automatic approval. Every downstream project, command, technique, dependency, license, security property, compatibility claim, and maintenance state must be independently verified before recommendation or execution.",
+  "version": "2.0",
+  "policy": "Curated lists are discovery sources, never automatic approval. Executable upstreams are capability candidates, never automatic execution authority. Every downstream project, command, dependency, model, MCP server, technique, license, security property, compatibility claim, maintenance state, and external-service term must be independently verified before recommendation or execution.",
   "sources": [
-    {
-      "id": "awesome-selfhosted",
-      "repository": "awesome-selfhosted/awesome-selfhosted",
-      "branch": "master",
-      "pin": "602ef0b0fbbde215554020719b1fbeea02516d25",
-      "kind": "self-hosted-software-catalog",
-      "extract": ["category", "project", "description", "homepage", "source_repository", "license", "deployment_stack"],
-      "capabilities": ["self-hosted-discovery", "saas-alternative-discovery", "infrastructure-discovery", "privacy-preserving-deployment-options"]
-    },
-    {
-      "id": "book-of-secret-knowledge",
-      "repository": "trimstray/the-book-of-secret-knowledge",
-      "branch": "master",
-      "pin": "7d37069a361d3fd9f214480755f7969744e866fa",
-      "kind": "technical-reference-index",
-      "extract": ["section", "resource", "description", "url", "resource_type", "risk_class"],
-      "capabilities": ["technical-reference-discovery", "sysops-reference", "devops-reference", "networking-reference", "security-reference", "cli-reference"],
-      "restrictions": ["reference-not-instruction", "no-automatic-command-execution", "authorized-security-use-only", "classify-risk-before-routing", "high-risk-techniques-require-human-approval"]
-    },
-    {
-      "id": "awesome-go",
-      "repository": "avelino/awesome-go",
-      "branch": "main",
-      "pin": "656dcbece073847dedaf5737805cdfe9ae6ccb63",
-      "kind": "go-ecosystem-catalog",
-      "extract": ["category", "project", "description", "repository", "library_or_tool"],
-      "capabilities": ["go-library-discovery", "go-framework-discovery", "go-tool-discovery", "architecture-option-discovery"]
-    },
-    {
-      "id": "awesome-python",
-      "repository": "vinta/awesome-python",
-      "branch": "master",
-      "pin": "15b057c832a55b8d42d3b64e12677ecd631b0474",
-      "kind": "python-ecosystem-catalog",
-      "extract": ["category", "subcategory", "project", "description", "repository", "library_or_tool"],
-      "capabilities": ["python-library-discovery", "python-framework-discovery", "python-tool-discovery", "ai-library-discovery", "architecture-option-discovery"]
-    }
+    {"id":"awesome-selfhosted","repository":"awesome-selfhosted/awesome-selfhosted","branch":"master","pin":"602ef0b0fbbde215554020719b1fbeea02516d25","kind":"self-hosted-software-catalog","mode":"discovery","extract":["category","project","description","homepage","source_repository","license","deployment_stack"],"capabilities":["self-hosted-discovery","saas-alternative-discovery","infrastructure-discovery","privacy-preserving-deployment-options"]},
+    {"id":"book-of-secret-knowledge","repository":"trimstray/the-book-of-secret-knowledge","branch":"master","pin":"7d37069a361d3fd9f214480755f7969744e866fa","kind":"technical-reference-index","mode":"reference","extract":["section","resource","description","url","resource_type","risk_class"],"capabilities":["technical-reference-discovery","sysops-reference","devops-reference","networking-reference","security-reference","cli-reference"],"restrictions":["reference-not-instruction","no-automatic-command-execution","authorized-security-use-only","classify-risk-before-routing","high-risk-techniques-require-human-approval"]},
+    {"id":"awesome-go","repository":"avelino/awesome-go","branch":"main","pin":"656dcbece073847dedaf5737805cdfe9ae6ccb63","kind":"go-ecosystem-catalog","mode":"discovery","extract":["category","project","description","repository","library_or_tool"],"capabilities":["go-library-discovery","go-framework-discovery","go-tool-discovery","architecture-option-discovery"]},
+    {"id":"awesome-python","repository":"vinta/awesome-python","branch":"master","pin":"15b057c832a55b8d42d3b64e12677ecd631b0474","kind":"python-ecosystem-catalog","mode":"discovery","extract":["category","subcategory","project","description","repository","library_or_tool"],"capabilities":["python-library-discovery","python-framework-discovery","python-tool-discovery","ai-library-discovery","architecture-option-discovery"]},
+    {"id":"free-for-dev","repository":"ripienaar/free-for-dev","branch":"master","pin":"9e2b400f663b737ba4dccbf080e6943fac84acb3","kind":"developer-free-tier-catalog","mode":"discovery","extract":["category","service","description","homepage","free_tier","limits","hosting_model"],"capabilities":["free-tier-discovery","developer-service-discovery","cost-optimization","infrastructure-option-discovery"],"restrictions":["free-tier-claims-require-current-provider-verification","do-not-treat-listing-as-endorsement"]},
+    {"id":"awesome-mcp-servers","repository":"punkpeye/awesome-mcp-servers","branch":"main","pin":"c1e7baea0df1d6dbb01c142bc3c5cf3887c28f21","kind":"mcp-server-catalog","mode":"discovery","extract":["category","server","description","repository","transport","runtime","auth","data_access","risk_class"],"capabilities":["mcp-discovery","agent-tool-discovery","integration-discovery"],"restrictions":["verify-each-server-independently","least-privilege-before-connection","human-approval-for-write-or-sensitive-data-access","no-unverified-mcp-execution"]},
+    {"id":"awesome-llm-apps","repository":"Shubhamsaboo/awesome-llm-apps","branch":"main","pin":"11a4bc330e4b0b1509577db4581c5cfbcf6ea6a0","kind":"llm-agent-rag-template-library","mode":"template-discovery","extract":["category","template","description","path","providers","frameworks","dependencies","execution_pattern"],"capabilities":["llm-app-template-discovery","rag-pattern-discovery","agent-pattern-discovery","mcp-pattern-discovery","voice-agent-pattern-discovery"],"restrictions":["templates-require-dependency-and-secret-review","no-copy-to-production-without-tests","verify-provider-cost-and-data-boundaries"]},
+    {"id":"ollama","repository":"ollama/ollama","branch":"main","pin":"f96e7aa0513b9973a0ccc71be414c2ecb9d65b1a","kind":"local-model-runtime","mode":"executable-capability","extract":["runtime","supported_models","api_surface","platforms","hardware_requirements","deployment_options"],"capabilities":["local-llm-inference","private-model-runtime","open-model-execution","local-ai-development"],"restrictions":["model-license-is-separate-from-runtime-license","model-provenance-required","resource-budget-required","network-exposure-requires-auth-and-hardening"]},
+    {"id":"scrapling","repository":"D4Vinci/Scrapling","branch":"main","pin":"458e2a2ac909b3235747ebcdb312b93a1080a10a","kind":"web-extraction-framework","mode":"executable-capability","extract":["fetcher","parser","crawler","mcp_surface","browser_requirements","proxy_support","risk_class"],"capabilities":["web-extraction","adaptive-parsing","crawling","agent-web-content-extraction","mcp-web-extraction"],"restrictions":["respect-authorization-terms-robots-and-privacy-law","anti-bot-bypass-not-default","no-captcha-or-access-control-bypass-for-unauthorized-access","rate-limit-and-identify-where-appropriate","sensitive-targets-require-human-approval"]},
+    {"id":"open-design","repository":"nexu-io/open-design","branch":"main","pin":"a554d017c8fa12d8913354ba6cf792d26d0c3b54","kind":"agentic-design-workspace","mode":"executable-capability","extract":["skills","design_systems","plugins","agent_adapters","artifact_types","export_formats","sandbox_model"],"capabilities":["agentic-design","ui-ux-workflow","design-system-application","prototype-generation","artifact-generation","design-to-code-handoff"],"restrictions":["sandbox-first","review-third-party-plugins-and-skills","brand-assets-require-rights-review","human-review-before-production-design-handoff"]}
   ],
+  "normalization": {"record_key":"canonical_upstream_url_or_source_scoped_name","deduplicate_by":["canonical_upstream_url","normalized_name_and_owner"],"retain_provenance":["source_id","source_pin","source_section","source_path"],"index_fields":["name","description","category","capabilities","language","runtime","license","hosting_model","risk_class"]},
   "verification": {
-    "required_before_recommendation": ["resolve-upstream-project", "verify-license", "verify-maintenance", "verify-security-posture", "verify-documentation", "verify-platform-compatibility", "check-deprecation-or-archive", "score-with-agent-brain-evidence-model"],
-    "required_before_execution": ["explicit-execution-authority", "dependency-review", "secret-and-credential-boundary", "sandbox-or-staging-first", "rollback-plan", "runtime-verification"]
+    "required_before_recommendation":["resolve-upstream-project","verify-license","verify-maintenance","verify-security-posture","verify-documentation","verify-platform-compatibility","check-deprecation-or-archive","score-with-agent-brain-evidence-model"],
+    "required_before_execution":["explicit-execution-authority","dependency-review","secret-and-credential-boundary","sandbox-or-staging-first","rollback-plan","runtime-verification"],
+    "refresh_policy":"Detect upstream changes on schedule; generate a review diff; never silently move a trusted pin or promote newly discovered software to executable status."
   }
 }
