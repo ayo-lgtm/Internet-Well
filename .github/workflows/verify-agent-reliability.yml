@@ -18,30 +18,38 @@ jobs:
           python-version: '3.12'
       - name: Run Agent Reliability tests
         run: python3 -m unittest tests.test_agent_reliability -v
-      - name: Verify policy and benchmark contracts
+      - name: Verify policy, benchmark, and production-source contracts
         run: |
           python3 - <<'PY'
-          import json
+          import json, re
           b=json.load(open('integrations/reliability/benchmarks.json'))
           p=json.load(open('integrations/reliability/reliability-policy.json'))
+          s=json.load(open('integrations/reliability/production-agent-sources.json'))
           assert b['version'] == '0.5.0'
           assert len(b['scenarios']) >= 8
           assert set(p['statuses']) == {'PASS','FAIL','HUMAN_REVIEW'}
           assert 'fabricated_verification' in p['hard_failures']
           assert 'production_deployment' in p['human_review_triggers']
+          assert {x['id'] for x in s['sources']} == {'openai-agents-python','arize-phoenix','langfuse','promptfoo'}
+          assert all(re.fullmatch(r'[0-9a-f]{40}', x['pin']) for x in s['sources'])
           PY
-      - name: Verify packaged CLI
+      - name: Verify packaged CLI and reliability data
         run: |
           python3 -m pip install .
           internet-well-reliability scenarios > /tmp/scenarios.json
           internet-well-reliability trace-new 'reliability smoke test' > /tmp/trace.json
           python3 - <<'PY'
-          import json
+          import json, pathlib, sys
           scenarios=json.load(open('/tmp/scenarios.json'))
           trace=json.load(open('/tmp/trace.json'))
           assert len(scenarios['scenarios']) >= 8
           assert trace['final_state'] == 'running'
           assert trace['trace_id']
+          candidates=[
+              pathlib.Path(sys.prefix)/'integrations/reliability/production-agent-sources.json',
+              pathlib.Path(sys.base_prefix)/'integrations/reliability/production-agent-sources.json',
+          ]
+          assert any(p.is_file() for p in candidates), candidates
           PY
       - name: Prove self-report cannot bypass gate
         run: |
