@@ -1,0 +1,57 @@
+name: Verify Probo compliance integration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate manifest
+        run: |
+          python3 - <<'PY'
+          import json, re
+          data=json.load(open('integrations/compliance/probo.json'))
+          assert data['repository'] == 'getprobo/probo'
+          assert re.fullmatch(r'[0-9a-f]{40}', data['pin'])
+          assert data['license'] == 'MIT'
+          assert data['supported_use']['attestation'] == 'independent-cpa-required'
+          assert 'no-self-attestation' in data['restrictions']
+          PY
+      - name: Run focused tests
+        run: |
+          python3 -m unittest tests.test_probo_compliance -v
+      - name: Verify Agent Brain routes SOC 2
+        run: |
+          python3 -m pip install .
+          internet-well-brain recommend-stack 'SOC 2 Type I readiness with Probo and CPA audit handoff' > /tmp/route.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/route.json'))
+          text=json.dumps(data)
+          assert 'soc2' in text.lower() or 'probo' in text.lower(), text
+          PY
+      - name: Verify packaged compliance CLI
+        run: |
+          internet-well-compliance show > /tmp/probo.json
+          internet-well-compliance soc2-readiness > /tmp/readiness.json
+          internet-well-compliance auditor-handoff --company 'Example Co' > /tmp/handoff.json
+          python3 - <<'PY'
+          import json
+          manifest=json.load(open('/tmp/probo.json'))
+          readiness=json.load(open('/tmp/readiness.json'))
+          handoff=json.load(open('/tmp/handoff.json'))
+          assert manifest['pin'] == 'bdb350aa88e60f3664caab6f41a665edd7729298'
+          assert readiness['attestation_authority'] == 'independent-licensed-cpa-firm'
+          assert handoff['submission'] == 'not-performed'
+          assert handoff['attestation'] == 'not-performed'
+          PY
