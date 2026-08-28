@@ -64,6 +64,15 @@
       "evidence": {"provenance": 92, "maintenance": 90, "documentation": 88, "license_clarity": 90, "security_posture": 78, "interoperability": 92, "runtime_evidence": 80, "reversibility": 94}
     },
     {
+      "id": "probo",
+      "kind": "grc-readiness-engine",
+      "source": "https://github.com/getprobo/probo",
+      "pin": "bdb350aa88e60f3664caab6f41a665edd7729298",
+      "capabilities": ["soc2-readiness", "grc-workflows", "control-management", "evidence-management", "policy-management", "risk-management", "vendor-risk", "access-review", "audit-handoff"],
+      "restrictions": ["independent-cpa-required", "no-compliance-guarantee", "no-self-attestation", "no-automatic-control-effectiveness-claim", "no-auditor-submission-without-explicit-authorization", "protect-confidential-audit-evidence"],
+      "evidence": {"provenance": 94, "maintenance": 92, "documentation": 88, "license_clarity": 96, "security_posture": 84, "interoperability": 90, "runtime_evidence": 84, "reversibility": 90}
+    },
+    {
       "id": "agent-browser",
       "kind": "runtime",
       "source": "https://github.com/vercel-labs/agent-browser",
