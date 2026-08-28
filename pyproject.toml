@@ -41,6 +41,7 @@ internet-well-api-discovery = "automation.api_discovery:main"
 internet-well-brain = "automation.agent_brain:main"
 internet-well-upstreams = "automation.upstream_verifier:main"
 internet-well-compliance = "automation.probo_compliance:main"
+internet-well-knowledge = "automation.knowledge_discovery:main"
 
 [tool.setuptools]
 py-modules = ["internet_well"]
@@ -54,5 +55,6 @@ include = ["automation*"]
 "integrations/agent-systems" = ["integrations/agent-systems/wassim-agent-systems.json"]
 "integrations/api-discovery" = ["integrations/api-discovery/public-apis.json"]
 "integrations/compliance" = ["integrations/compliance/probo.json"]
+"integrations/knowledge" = ["integrations/knowledge/structured-sources.json"]
 "integrations/agent-brain" = ["integrations/agent-brain/capability-graph.json", "integrations/agent-brain/mcp.json"]
 "bundles" = ["bundles/agent-brain-bundles.json"]
