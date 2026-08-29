@@ -43,6 +43,7 @@ internet-well-upstreams = "automation.upstream_verifier:main"
 internet-well-compliance = "automation.probo_compliance:main"
 internet-well-knowledge = "automation.knowledge_discovery:main"
 internet-well-reliability = "automation.agent_reliability:main"
+internet-well-orchestrator = "automation.execution_orchestrator:main"
 internet-well-orchestrate = "automation.execution_orchestrator:main"
 
 [tool.setuptools]
@@ -59,6 +60,6 @@ include = ["automation*"]
 "integrations/compliance" = ["integrations/compliance/probo.json"]
 "integrations/knowledge" = ["integrations/knowledge/structured-sources.json"]
 "integrations/reliability" = ["integrations/reliability/benchmarks.json", "integrations/reliability/reliability-policy.json", "integrations/reliability/production-agent-sources.json"]
-"integrations/orchestration" = ["integrations/orchestration/execution-policy.json", "integrations/orchestration/adapters.json"]
+"integrations/orchestration" = ["integrations/orchestration/orchestration-policy.json", "integrations/orchestration/adapters.json"]
 "integrations/agent-brain" = ["integrations/agent-brain/capability-graph.json", "integrations/agent-brain/mcp.json"]
 "bundles" = ["bundles/agent-brain-bundles.json"]
