@@ -16,30 +16,50 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install test dependency
-        run: python3 -m pip install pytest
       - name: Compile orchestration layer
         run: python3 -m py_compile automation/execution_orchestrator.py
-      - name: Run orchestration tests
-        run: python3 -m pytest -q tests/test_execution_orchestrator.py
+      - name: Run orchestration unit tests
+        run: python3 -m unittest tests.test_execution_orchestrator -v
       - name: Build and install package
         run: |
           python3 -m pip install --upgrade pip build
           python3 -m build
           python3 -m pip install dist/*.whl
-      - name: Verify packaged CLI and policy
+      - name: Verify packaged CLI, durable state, and adapters
         run: |
-          internet-well-orchestrate new 'verify a production web app' --criterion app_verified --out /tmp/task.json > /tmp/new.json
-          internet-well-orchestrate select /tmp/task.json design browser --out /tmp/task.json > /tmp/select.json
-          internet-well-orchestrate control-plane /tmp/task.json > /tmp/control.json
-          grep -q '"stage": "select"' /tmp/control.json
-          grep -q '"design"' /tmp/control.json
+          export STATE_DIR="$(mktemp -d)"
+          internet-well-orchestrator --state-dir "$STATE_DIR" start 'design a polished accessible dashboard' --plan-only > /tmp/task.json
+          TASK_ID="$(python3 - <<'PY'
+          import json
+          print(json.load(open('/tmp/task.json'))['task_id'])
+          PY
+          )"
+          internet-well-orchestrator --state-dir "$STATE_DIR" status "$TASK_ID" > /tmp/status.json
+          internet-well-orchestrator --state-dir "$STATE_DIR" next "$TASK_ID" > /tmp/next.json
+          internet-well-orchestrator --state-dir "$STATE_DIR" control-plane > /tmp/control.json
+          internet-well-orchestrator adapters > /tmp/adapters.json
+          grep -q '"checkpoint": "planning-complete"' /tmp/status.json
+          grep -q '"recommendation": "run-independent-verification"' /tmp/next.json
+          grep -q '"task_count": 1' /tmp/control.json
           python3 - <<'PY'
           import json
           from pathlib import Path
-          p=json.loads(Path('integrations/orchestration/execution-policy.json').read_text())
+          p=json.loads(Path('integrations/orchestration/orchestration-policy.json').read_text())
           a=json.loads(Path('integrations/orchestration/adapters.json').read_text())
           assert p['version']=='0.6.0'
+          assert p['state']['credentials_persisted'] is False
           ids={x['id'] for x in a['adapters']}
-          assert {'github','vercel','railway','supabase','browser','ollama','mcp','design'} <= ids
+          assert ids == {'github','vercel','railway','supabase','browser','ollama','mcp','design'}
+          design=next(x for x in a['adapters'] if x['id']=='design')
+          assert {'open-design','apple-design-skills','playwright-mcp'} <= set(design['resources'])
+          assert 'apply-design-to-code' in design['state_changing_actions']
           PY
+      - name: Verify package data and public version consistency
+        run: |
+          VERSION_EXPECTED="$(cat VERSION)"
+          internet-well --version | grep -Fq "$VERSION_EXPECTED"
+          grep -Fq "version = \"$VERSION_EXPECTED\"" pyproject.toml
+          test -f docs/EXECUTION-ORCHESTRATION.md
+          test -f integrations/orchestration/orchestration-policy.json
+          test -f integrations/orchestration/adapters.json
+          test ! -f integrations/orchestration/execution-policy.json
