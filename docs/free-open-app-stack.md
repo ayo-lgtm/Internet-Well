@@ -2,6 +2,10 @@
 
 Internet Well should prefer capable open-source software and durable free tiers when selecting infrastructure, while treating “free” as a constraint rather than evidence of quality. Every candidate still needs license, security, maintenance, privacy, operational and fit review.
 
+## User and agent navigation
+
+Use the capability checklist below for backend requirements. For applications intended to install directly from the web without App Store/Google Play distribution, use **[Storeless App / PWA Production Framework](storeless-pwa-framework.md)**. It covers Home Screen installation, iPhone guidance, Web Push/VAPID, service workers, badges, deep links, offline/update behavior, iOS capability detection, guided fallbacks, open-source resources and production verification.
+
 ## Resources received for evaluation
 
 ### Discovery directories
@@ -13,6 +17,14 @@ Internet Well should prefer capable open-source software and durable free tiers 
 ### Runtime/model infrastructure
 
 - `ollama/ollama` — local/open-model runtime option. Useful where local inference, privacy, development without per-request API fees, or provider independence matters. Model licenses and hardware requirements remain separate constraints.
+
+### Storeless/PWA infrastructure
+
+- `pwa-builder/PWABuilder` — MIT-licensed PWA tooling and maintained install-experience components. Use for validation, install UX and cross-platform PWA guidance.
+- `pwa-builder/pwa-starter` — production-oriented PWA starter/reference for greenfield apps; do not rewrite an existing application merely to adopt it.
+- `serwist/serwist` — service-worker/PWA tooling for modern JavaScript applications; evaluate current version/license when selected.
+- `web-push-libs/web-push` — standards-based Node.js Web Push/VAPID server library. Prefer a language-appropriate sibling when the backend is not Node.js.
+- See `docs/storeless-pwa-framework.md` for the complete installation, notification, iOS fallback and verification workflow.
 
 ### Web data extraction
 
@@ -147,7 +159,7 @@ This is a living checklist. New stages supplied by maintainers should be added a
 14. Secrets and configuration management
 15. Logging, metrics, tracing and alerting
 16. Background jobs, queues and retries where required
-17. Email, Web Push/PWA notifications and other messaging where required
+17. Email, Web Push/PWA notifications and other messaging where required — for storeless/mobile-web apps use `docs/storeless-pwa-framework.md`
 18. Security headers, CORS/CSRF/session controls as applicable
 19. Dependency, secret and vulnerability scanning
 20. Backup, restore and disaster-recovery expectations
