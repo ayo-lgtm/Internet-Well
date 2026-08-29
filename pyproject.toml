@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "internet-well"
 version = "0.4.0"
-description = "Privacy-first, evidence-backed Founder OS and governed Agent Brain with structured discovery, reliability evaluation, closed-loop execution orchestration, trajectory tracing, and supervised automation."
+description = "Privacy-first, evidence-backed Founder OS and governed Agent Brain with structured discovery, reliability evaluation, closed-loop execution orchestration, autonomous engineering team planning, trajectory tracing, and supervised automation."
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 authors = [{name = "Internet-Well contributors"}]
-keywords = ["founder-os", "agent-brain", "agent-evals", "execution-orchestration", "tracing", "mcp", "capability-graph", "software-assessment", "security", "privacy", "ai-governance", "open-source"]
+keywords = ["founder-os", "agent-brain", "agent-evals", "execution-orchestration", "autonomous-engineering", "tracing", "mcp", "capability-graph", "software-assessment", "security", "privacy", "ai-governance", "open-source"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Environment :: Console",
@@ -45,6 +45,7 @@ internet-well-knowledge = "automation.knowledge_discovery:main"
 internet-well-reliability = "automation.agent_reliability:main"
 internet-well-orchestrator = "automation.execution_orchestrator:main"
 internet-well-orchestrate = "automation.execution_orchestrator:main"
+internet-well-engineering = "automation.autonomous_engineering:main"
 
 [tool.setuptools]
 py-modules = ["internet_well"]

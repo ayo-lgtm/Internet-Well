@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-60 records as of 2026-07-29 — 43 approved, 15 approved-with-restrictions, 2 experimental. Tiers: 42×B, 18×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+62 records as of 2026-08-29 — 43 approved, 16 approved-with-restrictions, 3 experimental. Tiers: 42×B, 20×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -54,7 +54,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.70.0 | 89 | ✅ |
 | [ZAP (Zed Attack Proxy)](security/zaproxy.md) | security | C | dast | Apache-2.0 | v2.17.0 (2025-12-15) | 85 | – |
 
-## ⚠️ approved-with-restrictions (15)
+## ⚠️ approved-with-restrictions (16)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
@@ -70,14 +70,16 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Twenty](operations/twenty.md) | operations | C | crm | AGPL-3.0 (core); files marked "@license Enterprise" under Twenty Commercial License | v2.23.0 (2026-07-22) | 76 | – |
 | [Business Model Canvas](product/business-model-canvas.md) | product | B | business-modeling | CC-BY-SA-3.0 | canonical single-page canvas (stable s… | n/a | n/a |
 | [Cosign](security/cosign.md) | security | B | artifact-signing-attestation | Apache-2.0 | v3.0.6 | 86 | ✅ |
+| [FingerprintJS](security/fingerprintjs.md) | security | C | browser-fingerprinting-abuse-prevention | MIT | v5.2.0 | 78 | – |
 | [OWASP ZAP](security/owasp-zap.md) | security | B | dast | Apache-2.0 | v2.17.0 | 84 | ✅ |
 | [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 | [TruffleHog](security/trufflehog.md) | security | B | verified-secret-detection | AGPL-3.0-only | v3.95.2 | 80 | ✅ |
 
-## 🧪 experimental (2)
+## 🧪 experimental (3)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
+| [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
 | [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
 
@@ -86,13 +88,13 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | Category | Records |
 |---|---|
 | design | 3 |
-| engineering | 10 |
+| engineering | 11 |
 | finance | 2 |
 | launch-maintenance | 3 |
 | legal-compliance | 4 |
 | marketing | 7 |
 | operations | 10 |
 | product | 7 |
-| security | 14 |
+| security | 15 |
 
 Known thin spots, held open honestly (see [PHASES.md](../PHASES.md)): PRD templates with real provenance, customer-success playbooks, keyword/rank tooling, forecasting beyond hledger budgets + Metabase.

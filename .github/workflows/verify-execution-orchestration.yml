@@ -17,9 +17,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile orchestration layer
-        run: python3 -m py_compile automation/execution_orchestrator.py
+        run: |
+          python3 -m py_compile automation/execution_orchestrator.py
+          python3 -m py_compile automation/autonomous_engineering.py
       - name: Run orchestration unit tests
-        run: python3 -m unittest tests.test_execution_orchestrator -v
+        run: |
+          python3 -m unittest tests.test_execution_orchestrator -v
+          python3 -m unittest tests.test_autonomous_engineering -v
       - name: Build and install package
         run: |
           python3 -m pip install --upgrade pip build
@@ -38,9 +42,11 @@ jobs:
           internet-well-orchestrator --state-dir "$STATE_DIR" next "$TASK_ID" > /tmp/next.json
           internet-well-orchestrator --state-dir "$STATE_DIR" control-plane > /tmp/control.json
           internet-well-orchestrator adapters > /tmp/adapters.json
+          internet-well-engineering graph 'launch a secure production UI with authentication' > /tmp/team-graph.json
           grep -q '"checkpoint": "planning-complete"' /tmp/status.json
           grep -q '"recommendation": "run-independent-verification"' /tmp/next.json
           grep -q '"task_count": 1' /tmp/control.json
+          grep -q '"role": "verifier"' /tmp/team-graph.json
           python3 - <<'PY'
           import json
           from pathlib import Path
@@ -60,6 +66,8 @@ jobs:
           internet-well --version | grep -Fq "$VERSION_EXPECTED"
           grep -Fq "version = \"$VERSION_EXPECTED\"" pyproject.toml
           test -f docs/EXECUTION-ORCHESTRATION.md
+          test -f docs/AUTONOMOUS-ENGINEERING-SYSTEM.md
           test -f integrations/orchestration/orchestration-policy.json
           test -f integrations/orchestration/adapters.json
+          test -f registry/security/fingerprintjs.md
           test ! -f integrations/orchestration/execution-policy.json
