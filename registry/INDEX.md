@@ -79,7 +79,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
-| [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; re… | 72 | – |
+| [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
 | [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
 
