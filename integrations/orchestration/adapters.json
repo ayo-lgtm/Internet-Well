@@ -1,14 +1,95 @@
 {
   "version": "0.6.0",
-  "policy": "Adapters describe execution surfaces. They never grant credentials, permissions, or production-write authority. Every state-changing operation requires explicit scope, least privilege, rollback, and reliability verification.",
+  "policy": "Adapters describe host execution surfaces. They never grant credentials, permissions, or production-write authority. Read-only and state-changing actions are declared separately; state-changing actions require explicit approval and are re-verified after execution.",
   "adapters": [
-    {"id":"github","capabilities":["repository-read","branch-write","pull-request","ci-status"],"state_changing":true,"approval":"required-for-protected-or-production-branch"},
-    {"id":"vercel","capabilities":["deployment-inspection","preview-deploy","production-deploy"],"state_changing":true,"approval":"required-for-production-deploy"},
-    {"id":"railway","capabilities":["service-inspection","deploy","logs"],"state_changing":true,"approval":"required-for-production-deploy"},
-    {"id":"supabase","capabilities":["schema-read","sql","migration","edge-functions","auth-config"],"state_changing":true,"approval":"required-for-schema-data-or-auth-write"},
-    {"id":"browser","capabilities":["navigate","inspect","test-ui"],"state_changing":false,"approval":"required-before-external-account-mutation"},
-    {"id":"ollama","capabilities":["local-model-runtime","private-inference"],"state_changing":false,"approval":"model-download-and-resource-use-reviewed"},
-    {"id":"mcp","capabilities":["tool-discovery","tool-invocation"],"state_changing":"depends-on-tool","approval":"inherit-tool-risk-and-scope"},
-    {"id":"design","capabilities":["ui-ux-guidance","design-system","screenshot-analysis","visual-validation"],"state_changing":false,"approval":"implementation-still-follows-target-repository-policy"}
+    {
+      "id": "github",
+      "name": "GitHub",
+      "keywords": ["github", "repository", "repo", "branch", "pull request", "code", "ci"],
+      "capabilities": ["repository-read", "branch-write", "pull-request", "ci-status", "code-change"],
+      "read_only_actions": ["inspect-repository", "read-file", "read-pr", "read-ci"],
+      "state_changing_actions": ["create-branch", "write-file", "open-pr", "merge-pr"],
+      "host_contract": "connected-github-adapter",
+      "credential_boundary": "host-managed GitHub connection; no tokens in task state",
+      "execution_boundary": "repository mutations execute only through the connected host adapter"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "keywords": ["vercel", "deployment", "preview", "production deploy", "frontend hosting"],
+      "capabilities": ["deployment-inspection", "preview-deploy", "production-deploy", "deployment-logs"],
+      "read_only_actions": ["inspect-project", "inspect-deployment", "read-logs"],
+      "state_changing_actions": ["create-preview-deployment", "promote-production", "change-environment"],
+      "host_contract": "connected-vercel-adapter",
+      "credential_boundary": "host-managed Vercel authorization",
+      "execution_boundary": "production promotion requires recorded action approval"
+    },
+    {
+      "id": "railway",
+      "name": "Railway",
+      "keywords": ["railway", "service", "backend deploy", "container", "logs"],
+      "capabilities": ["service-inspection", "deploy", "logs", "service-configuration"],
+      "read_only_actions": ["inspect-project", "inspect-service", "read-logs"],
+      "state_changing_actions": ["deploy-service", "change-variables", "restart-service"],
+      "host_contract": "connected-railway-adapter",
+      "credential_boundary": "host-managed Railway authorization",
+      "execution_boundary": "deployment and configuration writes require recorded approval"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "keywords": ["supabase", "database", "postgres", "schema", "sql", "migration", "edge function", "auth"],
+      "capabilities": ["schema-read", "sql", "migration", "edge-functions", "auth-config"],
+      "read_only_actions": ["inspect-schema", "query-readonly", "inspect-auth"],
+      "state_changing_actions": ["execute-sql-write", "apply-migration", "deploy-edge-function", "change-auth-config"],
+      "host_contract": "connected-supabase-adapter",
+      "credential_boundary": "host-managed Supabase connection; service-role material must never enter task state",
+      "execution_boundary": "schema, data, function, and auth writes require explicit action approval"
+    },
+    {
+      "id": "browser",
+      "name": "Browser Automation",
+      "keywords": ["browser", "website", "web test", "ui test", "accessibility", "playwright", "navigate"],
+      "capabilities": ["navigate", "inspect", "test-ui", "accessibility-snapshot", "external-form-interaction"],
+      "read_only_actions": ["navigate", "inspect-page", "run-ui-test", "accessibility-snapshot"],
+      "state_changing_actions": ["submit-form", "change-external-account", "purchase-or-book"],
+      "host_contract": "browser-or-playwright-adapter",
+      "credential_boundary": "browser credentials remain in isolated host/browser context",
+      "execution_boundary": "external account or transactional mutations require explicit approval"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "keywords": ["ollama", "local llm", "local model", "private inference", "model runtime"],
+      "capabilities": ["local-model-runtime", "private-inference", "model-management"],
+      "read_only_actions": ["list-models", "inspect-runtime", "run-local-inference"],
+      "state_changing_actions": ["pull-model", "delete-model", "expose-network-service"],
+      "host_contract": "local-ollama-adapter",
+      "credential_boundary": "local runtime; model/provider credentials remain host managed",
+      "execution_boundary": "model downloads and network exposure require resource/license/security review"
+    },
+    {
+      "id": "mcp",
+      "name": "MCP Tool Host",
+      "keywords": ["mcp", "model context protocol", "tool server", "agent tool"],
+      "capabilities": ["tool-discovery", "tool-invocation", "external-system-integration"],
+      "read_only_actions": ["discover-tools", "invoke-readonly-tool"],
+      "state_changing_actions": ["invoke-state-changing-tool"],
+      "host_contract": "connected-mcp-client",
+      "credential_boundary": "credentials stay with the MCP host/server boundary",
+      "execution_boundary": "risk and authorization are inherited from the concrete downstream tool"
+    },
+    {
+      "id": "design",
+      "name": "Design and UI/UX",
+      "keywords": ["design", "ui", "ux", "prototype", "interaction", "accessibility", "design system", "frontend"],
+      "capabilities": ["ui-ux-guidance", "design-system", "prototype", "screenshot-analysis", "visual-validation", "accessibility-review", "design-to-code-handoff"],
+      "read_only_actions": ["inspect-design-resources", "create-design-plan", "evaluate-ui", "accessibility-review"],
+      "state_changing_actions": ["write-design-artifact", "apply-design-to-code"],
+      "host_contract": "design-tool-or-agent-adapter",
+      "credential_boundary": "design-tool accounts and assets remain host managed",
+      "execution_boundary": "production design handoff follows target repository approval and verification policy",
+      "resources": ["open-design", "apple-design-skills", "playwright-mcp"]
+    }
   ]
 }
