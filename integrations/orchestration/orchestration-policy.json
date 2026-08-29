@@ -1,0 +1,59 @@
+{
+  "version": "0.6.0",
+  "lifecycle": [
+    "intake",
+    "planning",
+    "discovery",
+    "execution-queue",
+    "approval",
+    "execution",
+    "recovery",
+    "verification",
+    "release"
+  ],
+  "default_mode": "plan-and-queue; external execution requires a host adapter and state-changing actions require explicit approval",
+  "risk_tiers": {
+    "A": {
+      "human_release_review": true,
+      "description": "Production, regulated, consequential, security-sensitive, legal/compliance, credential-bearing, or destructive work."
+    },
+    "B": {
+      "human_release_review": false,
+      "description": "Reversible, non-production work that still requires evidence-backed verification."
+    }
+  },
+  "recovery": {
+    "max_retries_per_action": 2,
+    "allow_read_only_auto_retry": true,
+    "state_changing_retry_requires_fresh_approval": true,
+    "never_auto_retry": [
+      "policy-violation",
+      "unauthorized-state-change",
+      "secret-exposure",
+      "fabricated-verification"
+    ],
+    "rule": "Retry only the smallest reversible corrective action and require new evidence after each retry."
+  },
+  "hard_stops": [
+    "missing-required-approval",
+    "credential-material-in-persisted-payload",
+    "unauthorized-state-change",
+    "secret-exposure",
+    "fabricated-verification",
+    "required-test-failure",
+    "rollback-unavailable-for-consequential-write"
+  ],
+  "state": {
+    "default_store": "local-json",
+    "atomic_write": true,
+    "checkpoint_after_mutation": true,
+    "credentials_persisted": false,
+    "sanitized_before_persistence": true
+  },
+  "execution_boundary": {
+    "orchestrator": "creates plans, queues actions, records approvals, emits host dispatch manifests, records results, coordinates recovery, and runs verification",
+    "host": "invokes connected execution tools using its own authorization and credential boundary",
+    "credential_rule": "The task store may contain a non-secret credential reference identifier but must never contain credentials, tokens, passwords, secrets, or private keys."
+  },
+  "completion_rule": "A task is complete only when observable success criteria are satisfied and the independent reliability verifier returns PASS, or returns HUMAN_REVIEW followed by recorded human release approval."
+}
