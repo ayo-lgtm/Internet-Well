@@ -55,6 +55,11 @@ class ReleaseHardeningTests(unittest.TestCase):
         self.assertIn("fetch-depth: 0", workflow)
         self.assertIn("verify_git_history_hygiene.py", workflow)
 
+    def test_agent_brain_ci_derives_current_version(self):
+        workflow = (ROOT / ".github/workflows/verify-agent-brain.yml").read_text()
+        self.assertIn("Path('VERSION').read_text().strip()", workflow)
+        self.assertNotIn("graph()['version']=='0.4.0'", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()

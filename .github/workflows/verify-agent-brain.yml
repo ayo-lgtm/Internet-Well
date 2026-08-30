@@ -29,4 +29,4 @@ jobs:
           internet-well-brain list-tools > /tmp/tools.json
           python -c "import json; tools=json.load(open('/tmp/tools.json')); names={t['name'] for t in tools}; required={'find_capability','recommend_stack','find_api','get_skill','plan_implementation','evaluate_bundle'}; assert required <= names; print('MCP tool surface verified')"
       - name: Verify clean package data
-        run: python -c "from automation.agent_brain import graph,bundles; assert graph()['version']=='0.4.0'; assert bundles()['version']=='0.4.0'; print('Packaged graph and bundles resolved')"
+        run: python -c "from pathlib import Path; from automation.agent_brain import graph,bundles; expected=Path('VERSION').read_text().strip(); assert graph()['version']==expected; assert bundles()['version']==expected; print('Packaged graph and bundles resolved')"
