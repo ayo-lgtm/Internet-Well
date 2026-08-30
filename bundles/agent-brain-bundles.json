@@ -25,6 +25,14 @@
       "verification": ["authz-tests", "e2e-tests", "accessibility", "performance", "security-review", "rollback"]
     },
     {
+      "id": "brand-design-system",
+      "goal_patterns": ["brand identity", "brand system", "logo and app icon", "logo app icons typography colors and design tokens", "design tokens", "typography and color system", "component design system", "favicon and pwa icons"],
+      "capabilities": ["brand-system", "logo-production", "interface-iconography", "typography", "color-system", "design-tokens", "design-token-transformation", "component-documentation"],
+      "preferred": ["brand-yml", "design-tokens-format", "style-dictionary", "lucide", "fontsource", "color-js", "svgo", "storybook"],
+      "verification": ["brand-brief-approved", "trademark-and-asset-rights-review", "non-placeholder-logo-and-icon-assets", "favicon-pwa-manifest-runtime-check", "typography-license-and-glyph-coverage", "wcag-and-forced-colors", "semantic-token-fixtures", "component-state-coverage", "device-and-browser-review", "human-release-approval"],
+      "restriction": "This bundle creates and governs a brand/design system; it does not establish trademark availability, originality, accessibility conformance, or permission to use third-party assets without separate human review."
+    },
+    {
       "id": "native-ios",
       "goal_patterns": ["ios app", "swiftui", "apple design", "native iphone app"],
       "capabilities": ["apple-hig-reasoning", "motion", "interaction-design", "accessibility"],

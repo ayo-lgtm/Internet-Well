@@ -16,6 +16,21 @@ ROOT = Path(__file__).resolve().parent.parent
 CAPABILITY_FILE = ROOT / "capabilities" / "CAPABILITY-GRAPH.md"
 CATALOG_FILE = ROOT / "catalog" / "curated-repositories.json"
 REQUIRED_ROOT = ["AGENTS.md", "START-HERE.md", "FOUNDER-OS.md"]
+REQUIRED_SURFACES = {
+    "commands": ("*.md",),
+    "playbooks": ("*.md",),
+    "capabilities": ("*.md",),
+    "profiles": ("*.md",),
+    "stacks": ("*.md",),
+    "bundles": ("*.md", "*.json"),
+    "skills": ("*.md",),
+    "outputs": ("*.json",),
+    "integrations": ("*.json",),
+    "governance": ("*.md", "*.json"),
+    "evaluations": ("*.md", "*.json"),
+    "evidence": ("*.md", "*.json"),
+    "connections": ("*.md", "*.json"),
+}
 CONCEPTS = {
     "commands": [
         ("purpose", ["## purpose", "## goal", "## use when"]),
@@ -70,6 +85,25 @@ def markdown_files(directory: str) -> list[Path]:
     if not base.exists():
         return []
     return sorted(p for p in base.rglob("*.md") if p.name != "README.md")
+
+
+def validate_surface_coverage(errors: list[str], root: Path = ROOT) -> None:
+    """Prevent an entire Founder-OS operating surface from going empty."""
+    for directory, patterns in REQUIRED_SURFACES.items():
+        base = root / directory
+        files = []
+        if base.exists():
+            for pattern in patterns:
+                files.extend(
+                    path
+                    for path in base.rglob(pattern)
+                    if path.is_file() and path.name != "README.md"
+                )
+        if not files:
+            errors.append(
+                f"{directory}: required Founder OS surface is empty; add a "
+                "governed artifact or explicitly revise the operating model"
+            )
 
 
 def check_concepts(path: Path, kind: str, errors: list[str]) -> None:
@@ -171,6 +205,7 @@ def main() -> int:
             errors.append(f"missing root artifact {rel}")
     if not CAPABILITY_FILE.exists():
         errors.append("missing capabilities/CAPABILITY-GRAPH.md")
+    validate_surface_coverage(errors)
     for kind in ["commands", "playbooks", "profiles", "stacks", "bundles"]:
         for path in markdown_files(kind):
             check_concepts(path, kind, errors)

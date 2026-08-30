@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "policy": "Replace every placeholder and approve only after visual, accessibility, manifest, and device checks.",
+  "assets": [
+    {"id": "logo-primary", "path": "assets/brand/logo-primary.svg", "purpose": "primary lockup", "status": "placeholder"},
+    {"id": "logo-dark", "path": "assets/brand/logo-primary-dark.svg", "purpose": "dark-surface lockup", "status": "placeholder"},
+    {"id": "brand-mark", "path": "assets/brand/mark.svg", "purpose": "standalone mark", "status": "placeholder"},
+    {"id": "favicon-svg", "path": "public/favicon.svg", "purpose": "scalable browser favicon", "status": "placeholder"},
+    {"id": "favicon-ico", "path": "public/favicon.ico", "sizes": [16, 32], "purpose": "legacy browser favicon", "status": "placeholder"},
+    {"id": "apple-touch", "path": "public/apple-touch-icon.png", "width": 180, "height": 180, "purpose": "Apple touch icon", "status": "placeholder"},
+    {"id": "pwa-192", "path": "public/icon-192.png", "width": 192, "height": 192, "purpose": "PWA icon", "status": "placeholder"},
+    {"id": "pwa-512", "path": "public/icon-512.png", "width": 512, "height": 512, "purpose": "PWA icon", "status": "placeholder"},
+    {"id": "pwa-maskable", "path": "public/icon-maskable-512.png", "width": 512, "height": 512, "purpose": "maskable PWA icon", "status": "placeholder"},
+    {"id": "social-card", "path": "public/social-card.png", "width": 1200, "height": 630, "purpose": "social preview", "status": "placeholder"}
+  ]
+}

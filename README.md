@@ -96,6 +96,11 @@ Every Agent Brain resource can carry evidence dimensions for:
 
 Popularity, star count, marketplace position, and social-media attention are not approval criteria. Tier A remains human-controlled.
 
+Coverage is enforced without catalog padding: every registry category and
+every major Founder-OS operating surface must remain non-empty in CI. The
+generated registry index reports category counts and continues to disclose
+thin spots until evidence-backed resources satisfy the validation methodology.
+
 ## Composed bundles
 
 Internet-Well now includes governed bundles for:
@@ -174,6 +179,25 @@ internet-well-apple-design plan
 
 Apple Design Skills are a community interpretation layer. Current official Apple Human Interface Guidelines and platform documentation outrank community guidance when they conflict.
 
+## Brand and design systems
+
+Internet-Well now routes brand-identity and design-system goals through a
+complete governed bundle rather than treating accessibility tools as a brand
+guide. The bundle covers brand source-of-truth, logo/vector production,
+favicons and app icons, color, typography, interface iconography, DTCG design
+tokens, cross-platform token generation, and component documentation.
+
+```bash
+internet-well-brain recommend-stack "build a brand identity with logo, app icons, typography, color, and design tokens"
+internet-well-brain find-capability "interface iconography"
+internet-well-brain find-capability "design token transformation"
+```
+
+Start with [`docs/BRAND-SYSTEM.md`](docs/BRAND-SYSTEM.md) and the neutral
+[`templates/brand-system/`](templates/brand-system/) handoff. Brand,
+trademark, asset-rights, accessibility, and final release decisions remain
+human-controlled.
+
 ## Privacy-first local assessment
 
 Internet-Well's original assessment functions remain available and operate locally by default:
@@ -208,6 +232,8 @@ Internet-Well can read, analyze, compare, rank, route, evaluate, and plan withou
 - [`integrations/agent-brain/mcp.json`](integrations/agent-brain/mcp.json) — agent connection descriptor.
 - [`bundles/agent-brain-bundles.json`](bundles/agent-brain-bundles.json) — composed architectures.
 - [`docs/AGENT-BRAIN.md`](docs/AGENT-BRAIN.md) — Agent Brain usage and governance.
+- [`docs/BRAND-SYSTEM.md`](docs/BRAND-SYSTEM.md) — brand, logo, icon, color, typography, token, and component acceptance contract.
+- [`templates/brand-system/`](templates/brand-system/) — neutral brand.yml, DTCG token, and asset-manifest starters.
 - [`integrations/api-discovery/public-apis.json`](integrations/api-discovery/public-apis.json) — governed API-discovery source.
 - [`integrations/agent-systems/wassim-agent-systems.json`](integrations/agent-systems/wassim-agent-systems.json) — governed autonomous-agent systems.
 - [`integrations/vibe/`](integrations/vibe/) — governed skill/design/runtime integrations.

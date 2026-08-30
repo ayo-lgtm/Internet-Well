@@ -2,17 +2,24 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-62 records as of 2026-08-29 — 43 approved, 16 approved-with-restrictions, 3 experimental. Tiers: 42×B, 20×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+70 records as of 2026-08-30 — 50 approved, 17 approved-with-restrictions, 3 experimental. Tiers: 49×B, 21×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
-## ✅ approved (43)
+## ✅ approved (50)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
 | [axe-core](design/axe-core.md) | design | B | accessibility-testing | MPL-2.0 | 4.12.1 (npm, published 2026-06-10) | 88 | ✅ |
+| [brand.yml](design/brand-yml.md) | design | C | brand-system-source | MIT | py/v0.2.0 (commit 6ec390fd4b741b550bd7… | 79 | – |
+| [Color.js](design/color-js.md) | design | B | color-science | MIT | v0.7.1 (published 2026-07-24) | 83 | – |
+| [Design Tokens Format Module 2025.10](design/design-tokens-format.md) | design | B | design-token-standard | W3C-20150513 | 2025.10 stable report (published 2025-… | n/a | n/a |
 | [GOV.UK Frontend (GOV.UK Design System)](design/govuk-frontend.md) | design | B | design-system | MIT | 6.4.0 (npm, published 2026-07-16) | 85 | ✅ |
+| [Lucide](design/lucide.md) | design | B | interface-iconography | ISC AND MIT | 1.37.0 (published 2026-08-29) | 84 | – |
 | [Penpot](design/penpot.md) | design | C | design-tool | MPL-2.0 | 2.17.0 (2026-07-22) | 80 | – |
+| [Storybook](design/storybook.md) | design | B | component-documentation | MIT | v10.5.10 (published 2026-08-20) | 88 | – |
+| [Style Dictionary](design/style-dictionary.md) | design | B | design-token-transformation | Apache-2.0 | v5.5.2 (published 2026-08-19) | 86 | – |
+| [SVGO](design/svgo.md) | design | B | logo-vector-optimization | MIT | v4.1.0 (commit 5765cbe4e0a930dca648c6b… | 87 | – |
 | [FastAPI](engineering/fastapi.md) | engineering | B | backend-api-framework | MIT | 0.139.2 (PyPI, published 2026-07-16) | 87 | ✅ |
 | [Inspect AI](engineering/inspect-ai.md) | engineering | B | llm-evaluation | MIT | 0.3.249 (PyPI, published 2026-07-21) | 84 | ✅ |
 | [OWASP Top 10 for LLM Applications / GenAI Security Project](engineering/owasp-llm-top10.md) | engineering | B | ai-security-standard | CC-BY-SA-4.0 | v2.0 list (2024-11-18 release; project… | n/a | n/a |
@@ -54,10 +61,11 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.70.0 | 89 | ✅ |
 | [ZAP (Zed Attack Proxy)](security/zaproxy.md) | security | C | dast | Apache-2.0 | v2.17.0 (2025-12-15) | 85 | – |
 
-## ⚠️ approved-with-restrictions (16)
+## ⚠️ approved-with-restrictions (17)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
+| [Fontsource](design/fontsource.md) | design | B | typography-delivery | MIT (tooling; font licenses vary by package) | core-v0.3.0 (commit 83e7147eefa88fa7de… | 82 | – |
 | [Metabase (Open Source edition)](finance/metabase.md) | finance | C | business-intelligence | AGPL-3.0 (OSS edition); commercial editions under Metabase Commercial License in same repo | v0.63.1 OSS (release "63.1", 2026-07-2… | 80 | – |
 | [Renovate](launch-maintenance/renovate.md) | launch-maintenance | C | dependency-updates | AGPL-3.0-only | 43.278.3 (npm, published 2026-07-22) | 82 | – |
 | [Documenso](legal-compliance/documenso.md) | legal-compliance | C | e-signature | AGPL-3.0 (root LICENSE); packages/ee enterprise directory present — audit before use | v2.15.0 (2026-07-21) | 76 | – |
@@ -87,7 +95,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 
 | Category | Records |
 |---|---|
-| design | 3 |
+| design | 11 |
 | engineering | 11 |
 | finance | 2 |
 | launch-maintenance | 3 |
@@ -96,5 +104,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | operations | 10 |
 | product | 7 |
 | security | 15 |
+
+Coverage policy: every governed category must retain at least one evidence-backed record; CI fails if a category becomes empty. Counts show breadth, not adequacy, and must never be padded with weak entries.
 
 Known thin spots, held open honestly (see [PHASES.md](../PHASES.md)): PRD templates with real provenance, customer-success playbooks, keyword/rank tooling, forecasting beyond hledger budgets + Metabase.

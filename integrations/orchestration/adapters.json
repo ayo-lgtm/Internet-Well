@@ -82,14 +82,14 @@
     {
       "id": "design",
       "name": "Design and UI/UX",
-      "keywords": ["design", "ui", "ux", "prototype", "interaction", "accessibility", "design system", "frontend"],
-      "capabilities": ["ui-ux-guidance", "design-system", "prototype", "screenshot-analysis", "visual-validation", "accessibility-review", "design-to-code-handoff"],
+      "keywords": ["design", "ui", "ux", "prototype", "interaction", "accessibility", "design system", "brand", "logo", "icon", "typography", "color", "design tokens", "frontend"],
+      "capabilities": ["ui-ux-guidance", "brand-system", "logo-production", "interface-iconography", "typography", "color-system", "design-tokens", "component-documentation", "design-system", "prototype", "screenshot-analysis", "visual-validation", "accessibility-review", "design-to-code-handoff"],
       "read_only_actions": ["inspect-design-resources", "create-design-plan", "evaluate-ui", "accessibility-review"],
       "state_changing_actions": ["write-design-artifact", "apply-design-to-code"],
       "host_contract": "design-tool-or-agent-adapter",
       "credential_boundary": "design-tool accounts and assets remain host managed",
       "execution_boundary": "production design handoff follows target repository approval and verification policy",
-      "resources": ["open-design", "apple-design-skills", "playwright-mcp"]
+      "resources": ["open-design", "apple-design-skills", "brand-yml", "design-tokens-format", "style-dictionary", "lucide", "fontsource", "color-js", "svgo", "storybook", "playwright-mcp"]
     }
   ]
 }

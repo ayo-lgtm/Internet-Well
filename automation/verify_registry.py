@@ -26,6 +26,7 @@ Exit codes: 0 clean · 1 schema/consistency errors · 2 stale entries only.
 No third-party dependencies (Python 3.9+).
 """
 import argparse
+from collections import Counter
 import datetime as dt
 import json
 import re
@@ -45,6 +46,16 @@ CATEGORIES = {"engineering", "security", "product", "design",
               "legal-compliance", "marketing", "finance", "operations",
               "launch-maintenance"}
 SENSITIVE = {"security", "legal-compliance", "finance"}
+
+
+def validate_category_coverage(counts, errors):
+    """Require every governed registry category to retain at least one record."""
+    for category in sorted(CATEGORIES):
+        if counts.get(category, 0) < 1:
+            errors.append(
+                f"registry category {category!r} is empty; add an evidence-backed "
+                "record or explicitly revise the registry taxonomy"
+            )
 
 
 def parse_front_matter(text, path):
@@ -96,6 +107,7 @@ def main():
     today = dt.date.today()
     errors, stale = [], []
     stats, tiers = {}, {}
+    category_counts = Counter()
 
     for path in records:
         rel = path.relative_to(REGISTRY).as_posix()
@@ -130,6 +142,9 @@ def main():
             errors.append(f"{rel}: not linked from INDEX.md")
         stats[fields.get("status")] = stats.get(fields.get("status"), 0) + 1
         tiers[fields.get("tier")] = tiers.get(fields.get("tier"), 0) + 1
+        category_counts[fields.get("category")] += 1
+
+    validate_category_coverage(category_counts, errors)
 
     for link in re.findall(r"\]\((\w[\w./-]+\.md)\)", index_text):
         if link.startswith(".."):
@@ -138,12 +153,16 @@ def main():
             errors.append(f"INDEX.md: dead link {link}")
 
     report = {"records": len(records), "by_status": stats,
+              "by_category": dict(sorted(category_counts.items())),
               "by_tier": tiers, "errors": errors, "stale": stale,
               "max_age_days": args.max_age, "run_date": today.isoformat()}
     if args.json:
         print(json.dumps(report, indent=2))
     else:
-        print(f"{len(records)} records — {stats} — tiers {tiers}")
+        print(
+            f"{len(records)} records — {stats} — tiers {tiers} — "
+            f"categories {dict(sorted(category_counts.items()))}"
+        )
         for e in errors:
             print(f"ERROR: {e}")
         for s in stale:

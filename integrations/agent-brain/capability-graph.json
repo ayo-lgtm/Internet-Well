@@ -98,6 +98,78 @@
       "evidence": {"provenance": 82, "maintenance": 82, "documentation": 88, "license_clarity": 92, "security_posture": 78, "interoperability": 86, "runtime_evidence": 74, "reversibility": 92}
     },
     {
+      "id": "brand-yml",
+      "kind": "brand-system-standard",
+      "source": "https://github.com/posit-dev/brand-yml",
+      "pin": "6ec390fd4b741b550bd732254c8def90bf50c4a4",
+      "capabilities": ["brand-system", "brand-source-of-truth", "logo-variants", "brand-color", "brand-typography"],
+      "restrictions": ["human-brand-approval", "asset-rights-review", "trademark-clearance-required", "referenced-assets-keep-own-licenses"],
+      "evidence": {"provenance": 84, "maintenance": 84, "documentation": 90, "license_clarity": 92, "security_posture": 78, "interoperability": 82, "runtime_evidence": 66, "reversibility": 94}
+    },
+    {
+      "id": "design-tokens-format",
+      "kind": "design-token-standard",
+      "source": "https://www.designtokens.org/TR/2025.10/format/",
+      "pin": "2025.10",
+      "capabilities": ["design-tokens", "token-interchange", "semantic-tokens", "cross-platform-design-system"],
+      "restrictions": ["pin-stable-report-not-draft", "verify-transformer-compatibility", "human-semantic-review"],
+      "evidence": {"provenance": 96, "maintenance": 88, "documentation": 90, "license_clarity": 90, "security_posture": 88, "interoperability": 96, "runtime_evidence": 74, "reversibility": 96}
+    },
+    {
+      "id": "style-dictionary",
+      "kind": "design-token-build-system",
+      "source": "https://github.com/style-dictionary/style-dictionary",
+      "pin": "v5.5.2",
+      "capabilities": ["design-token-transformation", "design-tokens", "css-tokens", "ios-tokens", "android-tokens"],
+      "restrictions": ["review-custom-transforms", "fixture-test-generated-output", "dtcg-2025.10-support-incomplete", "approval-before-overwrite"],
+      "evidence": {"provenance": 90, "maintenance": 94, "documentation": 94, "license_clarity": 96, "security_posture": 82, "interoperability": 96, "runtime_evidence": 82, "reversibility": 92}
+    },
+    {
+      "id": "lucide",
+      "kind": "interface-icon-library",
+      "source": "https://github.com/lucide-icons/lucide",
+      "pin": "1.37.0",
+      "capabilities": ["interface-iconography", "svg-icons", "accessible-icon-controls"],
+      "restrictions": ["not-for-brand-logos", "accessible-name-for-icon-controls", "text-for-critical-actions", "preserve-license-notices"],
+      "evidence": {"provenance": 86, "maintenance": 96, "documentation": 90, "license_clarity": 90, "security_posture": 86, "interoperability": 94, "runtime_evidence": 82, "reversibility": 96}
+    },
+    {
+      "id": "fontsource",
+      "kind": "typography-delivery",
+      "source": "https://github.com/fontsource/fontsource",
+      "pin": "83e7147eefa88fa7de66336b81c96650fe62de6c",
+      "capabilities": ["typography", "self-hosted-fonts", "font-subsetting", "webfont-delivery"],
+      "restrictions": ["review-each-font-license", "verify-glyph-coverage", "measure-loading", "define-local-fallbacks"],
+      "evidence": {"provenance": 86, "maintenance": 90, "documentation": 90, "license_clarity": 76, "security_posture": 84, "interoperability": 92, "runtime_evidence": 76, "reversibility": 90}
+    },
+    {
+      "id": "color-js",
+      "kind": "color-science-library",
+      "source": "https://github.com/color-js/color.js",
+      "pin": "v0.7.1",
+      "capabilities": ["color-system", "color-conversion", "contrast-calculation", "gamut-mapping"],
+      "restrictions": ["not-accessibility-proof", "rendered-contrast-tests-required", "do-not-rely-on-color-alone", "test-wide-gamut-fallbacks"],
+      "evidence": {"provenance": 92, "maintenance": 90, "documentation": 90, "license_clarity": 96, "security_posture": 84, "interoperability": 90, "runtime_evidence": 76, "reversibility": 94}
+    },
+    {
+      "id": "svgo",
+      "kind": "vector-asset-tool",
+      "source": "https://github.com/svg/svgo",
+      "pin": "5765cbe4e0a930dca648c6b81d335b1522cd7375",
+      "capabilities": ["logo-production", "svg-optimization", "favicon-vector", "vector-assets"],
+      "restrictions": ["not-a-logo-generator", "not-a-security-sanitizer", "preserve-vector-master", "visual-diff-required"],
+      "evidence": {"provenance": 88, "maintenance": 94, "documentation": 90, "license_clarity": 96, "security_posture": 82, "interoperability": 94, "runtime_evidence": 84, "reversibility": 94}
+    },
+    {
+      "id": "storybook",
+      "kind": "component-workshop",
+      "source": "https://github.com/storybookjs/storybook",
+      "pin": "v10.5.10",
+      "capabilities": ["component-documentation", "design-system", "component-states", "interaction-testing", "visual-testing"],
+      "restrictions": ["not-production-parity-proof", "synthetic-data-only", "scan-static-output", "application-e2e-tests-still-required"],
+      "evidence": {"provenance": 94, "maintenance": 96, "documentation": 96, "license_clarity": 96, "security_posture": 82, "interoperability": 94, "runtime_evidence": 88, "reversibility": 90}
+    },
+    {
       "id": "anthropic-skills",
       "kind": "skill-library",
       "source": "https://github.com/anthropics/skills",

@@ -1,0 +1,52 @@
+meta:
+  name: "Replace with product name"
+  link: "https://example.com"
+
+logo:
+  images:
+    primary: "assets/brand/logo-primary.svg"
+    primary-dark: "assets/brand/logo-primary-dark.svg"
+    mark: "assets/brand/mark.svg"
+  small: mark
+  medium: primary
+  large: primary
+
+color:
+  palette:
+    brand-primary: "#2457D6"
+    brand-secondary: "#6D3AC6"
+    neutral-050: "#F7F8FA"
+    neutral-900: "#151A23"
+    success: "#18794E"
+    warning: "#8A5A00"
+    danger: "#B42318"
+  foreground: neutral-900
+  background: neutral-050
+  primary: brand-primary
+  secondary: brand-secondary
+  success: success
+  warning: warning
+  danger: danger
+
+typography:
+  fonts:
+    - family: "Replace Sans"
+      source: file
+      files:
+        - path: "assets/fonts/replace-sans-regular.woff2"
+          weight: 400
+          style: normal
+        - path: "assets/fonts/replace-sans-semibold.woff2"
+          weight: 600
+          style: normal
+  base:
+    family: "Replace Sans"
+    weight: 400
+    line-height: 1.5
+  headings:
+    family: "Replace Sans"
+    weight: 600
+    line-height: 1.2
+  monospace:
+    family: "ui-monospace"
+

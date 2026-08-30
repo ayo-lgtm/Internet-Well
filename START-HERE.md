@@ -16,6 +16,8 @@ Examples:
 - Select the right testing and security stack.
 - Review privacy, legal, accessibility, or AI risk.
 - Create a UAT or production-testing system.
+- Create a complete brand system with logo, app icons, color, typography,
+  design tokens, and component documentation.
 - Find a verified reference implementation for a capability.
 
 ## Fastest path: ask the Agent Brain
@@ -34,6 +36,7 @@ For a specific capability:
 internet-well-brain find-capability "persistent agent memory"
 internet-well-brain find-api "currency exchange data"
 internet-well-brain get-skill "Apple motion accessibility"
+internet-well-brain recommend-stack "build a brand identity and design system"
 ```
 
 Connected agents can launch the stdio server:

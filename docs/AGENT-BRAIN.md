@@ -87,6 +87,7 @@ Current bundles include:
 - autonomous agent;
 - autonomous trading research;
 - production web app;
+- brand/design system;
 - native iOS;
 - legal AI;
 - UAT/product testing;
@@ -95,6 +96,16 @@ Current bundles include:
 - browser automation.
 
 If no exact bundle matches, the router falls back to capability ranking rather than inventing a stack.
+
+### Brand/design-system boundary
+
+The `brand-design-system` bundle composes brand.yml, the stable DTCG token
+format, Style Dictionary, Lucide, Fontsource, Color.js, SVGO, and Storybook.
+It covers the full implementation surface but does not establish originality,
+trademark availability, font or asset rights, accessibility conformance, or
+production approval. Follow [`BRAND-SYSTEM.md`](BRAND-SYSTEM.md), replace all
+starter values, test generated outputs and production manifests, and retain a
+named human approver.
 
 ## Evaluation laboratory
 

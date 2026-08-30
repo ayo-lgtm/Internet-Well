@@ -99,6 +99,10 @@ def build():
     for cat in sorted(CATEGORIES):
         coverage.append(f"| {cat} | {counts.get(cat, 0)} |")
     coverage += ["",
+                 "Coverage policy: every governed category must retain at "
+                 "least one evidence-backed record; CI fails if a category "
+                 "becomes empty. Counts show breadth, not adequacy, and must "
+                 "never be padded with weak entries.", "",
                  "Known thin spots, held open honestly (see "
                  "[PHASES.md](../PHASES.md)): PRD templates with real "
                  "provenance, customer-success playbooks, keyword/rank "

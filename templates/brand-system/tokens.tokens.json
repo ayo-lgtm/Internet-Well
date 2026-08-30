@@ -1,0 +1,84 @@
+{
+  "color": {
+    "$type": "color",
+    "brand": {
+      "primary": {
+        "$description": "Replace with the approved primary brand color.",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.141, 0.341, 0.839],
+          "alpha": 1,
+          "hex": "#2457D6"
+        }
+      }
+    },
+    "neutral": {
+      "050": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.969, 0.973, 0.98],
+          "alpha": 1,
+          "hex": "#F7F8FA"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.082, 0.102, 0.137],
+          "alpha": 1,
+          "hex": "#151A23"
+        }
+      }
+    },
+    "background": {
+      "canvas": {"$value": "{color.neutral.050}"}
+    },
+    "text": {
+      "primary": {"$value": "{color.neutral.900}"},
+      "link": {"$value": "{color.brand.primary}"}
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "100": {"$value": {"value": 4, "unit": "px"}},
+    "200": {"$value": {"value": 8, "unit": "px"}},
+    "300": {"$value": {"value": 12, "unit": "px"}},
+    "400": {"$value": {"value": 16, "unit": "px"}},
+    "600": {"$value": {"value": 24, "unit": "px"}},
+    "800": {"$value": {"value": 32, "unit": "px"}}
+  },
+  "radius": {
+    "$type": "dimension",
+    "control": {"$value": {"value": 8, "unit": "px"}},
+    "surface": {"$value": {"value": 12, "unit": "px"}}
+  },
+  "typography": {
+    "$type": "typography",
+    "body": {
+      "$value": {
+        "fontFamily": "Replace Sans",
+        "fontSize": {"value": 16, "unit": "px"},
+        "fontWeight": 400,
+        "letterSpacing": {"value": 0, "unit": "px"},
+        "lineHeight": 1.5
+      }
+    },
+    "heading": {
+      "$value": {
+        "fontFamily": "Replace Sans",
+        "fontSize": {"value": 32, "unit": "px"},
+        "fontWeight": 600,
+        "letterSpacing": {"value": -0.4, "unit": "px"},
+        "lineHeight": 1.2
+      }
+    }
+  },
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "fast": {"$value": {"value": 120, "unit": "ms"}},
+      "normal": {"$value": {"value": 200, "unit": "ms"}}
+    }
+  }
+}
+
