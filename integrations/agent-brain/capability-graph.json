@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "status": "governed-capability-graph",
   "policy": "This graph is a decision aid, not autonomous approval. Tier A remains human-controlled. Popularity never substitutes for provenance, licensing, security, compatibility, or runtime evidence.",
   "ranking_weights": {

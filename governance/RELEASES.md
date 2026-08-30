@@ -25,6 +25,8 @@ A release may be tagged only when:
 7. open evidence debts and known limitations remain visible;
 8. no automation has assigned Tier A;
 9. any security-sensitive failure is resolved rather than waived silently.
+10. the tracked tree and complete reachable Git history pass credential hygiene checks;
+11. package metadata and included license notices match the documented licensing scope.
 
 ## Release artifacts
 
@@ -46,7 +48,7 @@ Each release should include:
 - **deprecated:** retained temporarily with a replacement path;
 - **removed:** no longer supported.
 
-Version `0.2.0` remains **preview**. It is suitable for supervised assessment and planning, not unsupervised production modification.
+Version `0.5.0` remains **preview**. It is suitable for supervised assessment and planning, not unsupervised production modification.
 
 ## Re-release triggers
 

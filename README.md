@@ -1,6 +1,6 @@
 # Internet-Well — The Founder OS Agent Brain
 
-> **Developer Preview v0.4.0.** Internet-Well is a privacy-first, evidence-backed decision layer for founders and connected AI agents. It performs local assessment, governed capability selection, implementation planning, structural evaluation, and supervised integration. It is not a penetration test, legal opinion, compliance certification, production approval, or autonomous authority to take high-impact actions.
+> **Developer Preview v0.5.0.** Internet-Well is a privacy-first, evidence-backed decision layer for founders and connected AI agents. It performs local assessment, governed capability selection, implementation planning, structural evaluation, and supervised integration. It is not a penetration test, legal opinion, compliance certification, production approval, or autonomous authority to take high-impact actions.
 
 Internet-Well answers a higher-level question than a normal repository catalog: **given the outcome I want, what capability do I need, which governed resource is the best fit, why, under what restrictions, and how should it be verified?**
 
@@ -247,12 +247,12 @@ Internet-Well cannot guarantee a bug-free launch, universal compliance, secure d
 
 ## Public release posture
 
-Version `0.4.0` is intended for supervised public developer use, governed capability routing, agent/MCP planning integrations, local repository assessment, and evidence-backed third-party resource selection. It is not autonomous production modification authority or a professional certification service.
+Version `0.5.0` is intended for supervised public developer use, governed capability routing, agent/MCP planning integrations, local repository assessment, and evidence-backed third-party resource selection. It is not autonomous production modification authority or a professional certification service.
 
 ## License
 
-Internet-Well uses a split licensing model:
+Internet-Well uses an explicit split licensing model. See [`LICENSES.md`](LICENSES.md) for the controlling path-by-path scope:
 
 - **Software code and executable configuration:** Apache License 2.0. See [`LICENSE`](LICENSE).
-- **Original documentation and governance prose previously published under CC-BY-4.0:** those permissions are not revoked; file-specific notices control where present.
+- **Original documentation, registry descriptions, and governance prose:** CC-BY-4.0. See [`LICENSE-CONTENT`](LICENSE-CONTENT).
 - **Third-party resources:** retain their own upstream licenses and terms. Cataloging or integrating a resource does not relicense it.

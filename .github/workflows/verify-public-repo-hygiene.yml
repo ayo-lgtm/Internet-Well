@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Verify public tree hygiene
         run: python3 automation/verify_public_repo_hygiene.py
+      - name: Verify complete Git history hygiene
+        run: python3 automation/verify_git_history_hygiene.py

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "internet-well"
-version = "0.4.0"
+version = "0.5.0"
 description = "Privacy-first, evidence-backed Founder OS and governed Agent Brain with structured discovery, reliability evaluation, closed-loop execution orchestration, autonomous engineering team planning, trajectory tracing, and supervised automation."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -50,6 +50,7 @@ internet-well-engineering = "automation.autonomous_engineering:main"
 [tool.setuptools]
 py-modules = ["internet_well"]
 include-package-data = true
+license-files = ["LICENSE", "LICENSE-CONTENT", "LICENSES.md"]
 
 [tool.setuptools.packages.find]
 include = ["automation*"]

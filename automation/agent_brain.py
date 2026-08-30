@@ -289,7 +289,7 @@ def serve_stdio() -> int:
             method = req.get("method")
             params = req.get("params") or {}
             if method == "initialize":
-                result = {"protocolVersion": params.get("protocolVersion", "2025-06-18"), "capabilities": {"tools": {"listChanged": False}}, "serverInfo": {"name": "internet-well-agent-brain", "version": "0.4.0"}}
+                result = {"protocolVersion": params.get("protocolVersion", "2025-06-18"), "capabilities": {"tools": {"listChanged": False}}, "serverInfo": {"name": "internet-well-agent-brain", "version": "0.5.0"}}
                 response = {"jsonrpc": "2.0", "id": request_id, "result": result}
             elif method == "notifications/initialized":
                 continue

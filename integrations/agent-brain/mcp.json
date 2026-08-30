@@ -1,6 +1,6 @@
 {
   "name": "internet-well-agent-brain",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "transport": "stdio",
   "command": "internet-well-brain",
   "args": ["serve"],

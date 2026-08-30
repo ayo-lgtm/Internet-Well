@@ -8,14 +8,14 @@
     {"type": "non_fast_forward"},
     {"type": "pull_request", "parameters": {"required_approving_review_count": 1, "dismiss_stale_reviews_on_push": true, "require_code_owner_review": false, "require_last_push_approval": false, "required_review_thread_resolution": true}},
     {"type": "required_status_checks", "parameters": {"strict_required_status_checks_policy": true, "do_not_enforce_on_create": false, "required_status_checks": [
-      {"context": "Verify Internet-Well"},
-      {"context": "Verify public repository hygiene"},
-      {"context": "Verify public launch"},
-      {"context": "Verify productization"},
-      {"context": "Verify identity and authorization"},
-      {"context": "Verify governed agent systems"},
-      {"context": "Verify API discovery"},
-      {"context": "Verify Agent Brain"}
+      {"context": "registry"},
+      {"context": "hygiene"},
+      {"context": "public-launch"},
+      {"context": "productization"},
+      {"context": "evidence-contract"},
+      {"context": "verify-agent-systems"},
+      {"context": "api-discovery"},
+      {"context": "agent-brain"}
     ]}}
   ],
   "note": "Declarative repository copy of the intended GitHub ruleset. GitHub repository settings remain the enforcement authority and must be applied through an authorized admin channel."

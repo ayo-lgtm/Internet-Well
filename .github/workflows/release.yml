@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -41,6 +43,7 @@ jobs:
           python3 automation/build_index.py --check
           python3 automation/verify_founder_os.py
           python3 automation/verify_public_repo_hygiene.py
+          python3 automation/verify_git_history_hygiene.py
           python3 automation/verify_identity_authorization_bundle.py
           python3 automation/verify_vibe_coder_catalog.py
           python3 automation/report_verification_coverage.py --check --output /tmp/catalog-coverage.json

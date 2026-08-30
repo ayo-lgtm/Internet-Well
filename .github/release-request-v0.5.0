@@ -1,0 +1,4 @@
+Internet-Well v0.5.0 release request
+
+Publish the current reviewed main commit as the immutable v0.5.0 tag and
+GitHub Release after the full release verification job passes.

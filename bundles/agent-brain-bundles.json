@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "policy": "Bundles are governed recommendations. They do not grant credentials, deploy code, place trades, or approve regulated/high-impact actions without explicit authorization and applicable human review.",
   "bundles": [
     {

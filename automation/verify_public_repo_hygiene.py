@@ -62,10 +62,25 @@ def main() -> int:
             if pattern.search(text):
                 problems.append(f"possible {label} in {rel}")
 
-    required = ["README.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
+    required = [
+        "README.md",
+        "SECURITY.md",
+        "CONTRIBUTING.md",
+        "CODE_OF_CONDUCT.md",
+        "LICENSE",
+        "LICENSE-CONTENT",
+        "LICENSES.md",
+    ]
     for required_path in required:
         if not (ROOT / required_path).is_file():
             problems.append(f"missing public repository document: {required_path}")
+
+    scope_path = ROOT / "LICENSES.md"
+    if scope_path.is_file():
+        scope = scope_path.read_text(encoding="utf-8")
+        for required_scope in ("Apache License 2.0", "CC-BY-4.0", "Third-party"):
+            if required_scope not in scope:
+                problems.append(f"LICENSES.md does not define {required_scope} scope")
 
     if problems:
         print("Public repository hygiene verification failed:")
