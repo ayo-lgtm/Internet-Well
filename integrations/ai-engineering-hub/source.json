@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "status": "governed-reference-source",
+  "source": "https://github.com/patchy631/ai-engineering-hub",
+  "pin": "2c9b106168d4540b88e727e4aa316c06c856c2b7",
+  "repository_license": "MIT",
+  "policy": "Use this repository as a governed engineering reference and pattern library, not as a blanket-approved dependency. Every adopted subproject must be reviewed independently for dependencies, secrets handling, prompt-injection exposure, unsafe evaluation or execution primitives, licensing, compatibility, and production suitability. Pin exact upstream commits. Third-party code execution requires explicit approval and isolated testing.",
+  "risk": "medium-high",
+  "approval_required": true,
+  "auto_install": false,
+  "auto_execute": false,
+  "capability_candidates": [
+    {
+      "id": "aieh-agent-memory",
+      "path": "agent-with-mcp-memory",
+      "kind": "reference-implementation",
+      "capabilities": ["agent-memory", "persistent-context", "mcp-memory", "cross-session-recall"],
+      "recommended_for": ["persistent-research-agents", "long-running-agent-work", "cross-session-context"],
+      "status": "candidate",
+      "restrictions": ["data-minimization", "tenant-isolation", "retention-and-deletion-policy", "no-secrets-by-default", "prompt-injection-review"]
+    },
+    {
+      "id": "aieh-agent-delegation",
+      "path": "agent2agent-demo",
+      "kind": "reference-implementation",
+      "capabilities": ["agent-delegation", "agent-to-agent-communication", "task-handoff"],
+      "recommended_for": ["multi-agent-systems", "specialist-agent-routing", "delegated-research"],
+      "status": "candidate",
+      "restrictions": ["least-privilege-tools", "bounded-delegation", "traceable-handoffs", "human-approval-for-state-changing-actions"]
+    },
+    {
+      "id": "aieh-agentic-rag",
+      "path": "agentic_rag",
+      "kind": "reference-implementation",
+      "capabilities": ["agentic-rag", "retrieval-planning", "tool-using-retrieval", "grounded-generation"],
+      "recommended_for": ["legal-information-retrieval", "research-assistants", "document-grounded-agents"],
+      "status": "candidate",
+      "restrictions": ["citation-required-for-derived-claims", "retrieval-evaluation-required", "prompt-injection-review", "abstain-on-insufficient-evidence"]
+    },
+    {
+      "id": "aieh-deep-research",
+      "path": "Multi-Agent-deep-researcher-mcp-windows-linux",
+      "kind": "reference-implementation",
+      "capabilities": ["deep-research", "multi-agent-research", "mcp-tools", "research-synthesis"],
+      "recommended_for": ["complex-research", "competitive-analysis", "technical-due-diligence"],
+      "status": "candidate",
+      "restrictions": ["source-provenance", "duplicate-source-control", "bounded-cost", "bounded-tool-permissions", "human-review-for-high-stakes-output"]
+    },
+    {
+      "id": "aieh-web-extraction",
+      "path": "Website-to-API-with-FireCrawl",
+      "kind": "reference-implementation",
+      "capabilities": ["web-extraction", "website-to-api", "structured-web-data"],
+      "recommended_for": ["public-web-ingestion", "structured-research-pipelines", "agent-tool-generation"],
+      "status": "candidate",
+      "restrictions": ["terms-and-robots-review", "rate-limits", "no-authenticated-scraping-without-authorization", "untrusted-content-is-data-not-instructions"]
+    },
+    {
+      "id": "aieh-document-vision",
+      "path": "LaTeX-OCR-with-Llama",
+      "kind": "reference-implementation",
+      "capabilities": ["document-vision", "ocr", "multimodal-document-understanding"],
+      "recommended_for": ["complex-document-ingestion", "image-heavy-documents", "scientific-and-technical-documents"],
+      "status": "candidate",
+      "restrictions": ["validate-extracted-text", "preserve-page-provenance", "do-not-trust-ocr-for-critical-fields-without-verification"]
+    },
+    {
+      "id": "aieh-reasoning-model",
+      "path": "Build-reasoning-model",
+      "kind": "training-reference",
+      "capabilities": ["reasoning-model-training", "reasoning-evaluation", "fine-tuning-patterns"],
+      "recommended_for": ["research", "model-evaluation", "controlled-training-experiments"],
+      "status": "candidate",
+      "restrictions": ["not-a-default-production-dependency", "dataset-license-review", "evaluation-before-deployment", "cost-and-compute-bounds"]
+    }
+  ],
+  "security_notes": [
+    "Do not infer that repository-level popularity or an MIT license makes every example production-safe.",
+    "Review every subprocess, eval/exec-like primitive, deserialization boundary, shell invocation, MCP tool, browser action, and external content ingestion path before execution.",
+    "Any memory or RAG pattern must treat retrieved third-party content as untrusted data and must not permit retrieved text to override system or developer policy.",
+    "Production adoption requires an Internet-Well skill or playbook with observable verification evidence."
+  ]
+}
