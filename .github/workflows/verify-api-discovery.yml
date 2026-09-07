@@ -10,12 +10,6 @@ on:
       - 'pyproject.toml'
       - '.github/workflows/verify-api-discovery.yml'
   pull_request:
-    paths:
-      - 'automation/api_discovery.py'
-      - 'integrations/api-discovery/**'
-      - 'docs/API-DISCOVERY.md'
-      - 'pyproject.toml'
-      - '.github/workflows/verify-api-discovery.yml'
 
 permissions:
   contents: read
