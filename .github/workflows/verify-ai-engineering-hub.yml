@@ -1,0 +1,36 @@
+name: Verify AI Engineering Hub Integration
+
+on:
+  pull_request:
+    paths:
+      - 'integrations/ai-engineering-hub/**'
+      - 'skills/experimental/persistent-agent-memory/**'
+      - 'skills/experimental/agentic-rag/**'
+      - 'skills/experimental/deep-research-orchestration/**'
+      - 'skills/experimental/agent-delegation/**'
+      - 'automation/verify_ai_engineering_hub_integration.py'
+      - '.github/workflows/verify-ai-engineering-hub.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'integrations/ai-engineering-hub/**'
+      - 'skills/experimental/persistent-agent-memory/**'
+      - 'skills/experimental/agentic-rag/**'
+      - 'skills/experimental/deep-research-orchestration/**'
+      - 'skills/experimental/agent-delegation/**'
+      - 'automation/verify_ai_engineering_hub_integration.py'
+      - '.github/workflows/verify-ai-engineering-hub.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify governed source and derived skills
+        run: python automation/verify_ai_engineering_hub_integration.py
