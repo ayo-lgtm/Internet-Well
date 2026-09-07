@@ -16,7 +16,16 @@ No skill becomes approved from documentation or agent confidence alone.
 - `experimental/resource-selector/SKILL.md` — choose the smallest compatible registry-backed resource bundle and document rejected alternatives.
 - `experimental/adoption-verifier/SKILL.md` — integrate an approved selection in reversible slices and verify real behavior.
 
-Together they implement:
+## Experimental capability skills
+
+- `experimental/persistent-agent-memory/SKILL.md` — add durable agent memory with provenance, isolation, deletion, and injection resistance.
+- `experimental/agentic-rag/SKILL.md` — implement retrieval planning, grounding, citation, abstention, and adversarial retrieval controls.
+- `experimental/deep-research-orchestration/SKILL.md` — coordinate bounded multi-source or multi-agent research with reproducible evidence.
+- `experimental/agent-delegation/SKILL.md` — hand work between specialist agents without expanding authority or accepting unsupported completion claims.
+
+The first reference source used to derive these capability procedures is the governed `patchy631/ai-engineering-hub` integration at `integrations/ai-engineering-hub/source.json`. The upstream repository is a pattern library, not blanket production approval; exact pins, independent subproject review, and Internet-Well verification remain mandatory.
+
+Together the skill system implements:
 
 ```text
 inspect -> assess -> route -> select capabilities -> select resources
