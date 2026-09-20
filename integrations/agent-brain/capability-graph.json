@@ -199,6 +199,24 @@
       "capabilities": ["adversarial-evaluation-reference"],
       "restrictions": ["reference-only", "no-auto-install", "no-auto-execute", "authorized-red-team-use-only"],
       "evidence": {"provenance": 70, "maintenance": 60, "documentation": 62, "license_clarity": 60, "security_posture": 30, "interoperability": 60, "runtime_evidence": 54, "reversibility": 90}
+    },
+    {
+      "id": "places-to-post-your-startup",
+      "kind": "distribution-source",
+      "source": "https://github.com/mmccaff/PlacesToPostYourStartup",
+      "pin": "1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d73",
+      "capabilities": ["startup-launch-distribution", "launch-channel-discovery", "community-launch", "directory-discovery"],
+      "restrictions": ["listing-is-not-approval", "revalidate-each-destination", "respect-platform-rules", "no-bulk-posting", "human-approval-before-external-submission"],
+      "evidence": {"provenance": 86, "maintenance": 80, "documentation": 78, "license_clarity": 98, "security_posture": 86, "interoperability": 88, "runtime_evidence": 70, "reversibility": 98}
+    },
+    {
+      "id": "openmontage",
+      "kind": "agentic-video-production-system",
+      "source": "https://github.com/calesthio/OpenMontage",
+      "pin": "08e2151fa02de28a5d6a312b3d575692bf147ad7",
+      "capabilities": ["agentic-video-production", "video-production-pipeline", "media-generation", "production-checkpoints", "render-verification", "budget-governance"],
+      "restrictions": ["external-pinned-boundary", "agpl-review", "paid-provider-approval", "credential-isolation", "media-rights-review", "human-approval-before-publish"],
+      "evidence": {"provenance": 86, "maintenance": 86, "documentation": 92, "license_clarity": 96, "security_posture": 64, "interoperability": 88, "runtime_evidence": 58, "reversibility": 82}
     }
   ]
 }

@@ -15,6 +15,8 @@ No skill becomes approved from documentation or agent confidence alone.
 - `experimental/project-intelligence/SKILL.md` — inspect an authorized repository and produce an evidence-backed project assessment.
 - `experimental/resource-selector/SKILL.md` — choose the smallest compatible registry-backed resource bundle and document rejected alternatives.
 - `experimental/adoption-verifier/SKILL.md` — integrate an approved selection in reversible slices and verify real behavior.
+- `experimental/launch-distribution/SKILL.md` — turn a launch objective into a verified destination plan; no external posting without separate approval.
+- `experimental/video-production/SKILL.md` — supervise pinned OpenMontage-based media production with licensing, cost, rights, and publish gates.
 
 Together they implement:
 
