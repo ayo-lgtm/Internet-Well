@@ -41,7 +41,7 @@ Plan and supervise video-production work using the pinned OpenMontage integratio
 9. Keep a decision log containing providers considered, selected provider, fallbacks, estimated/actual cost, approvals, failures, and final verification evidence.
 10. Return the finished artifact only after the relevant gates pass; otherwise return the failed gate and remediation path.
 
-## Output
+## Outputs
 Return:
 - selected production approach and why;
 - exact upstream pin;
@@ -54,6 +54,14 @@ Return:
 - residual risks;
 - publish approval status.
 
+## Permission boundary
+
+This skill may plan and, when separately authorized, supervise execution within the approved local/project scope. It cannot spend money, use provider credentials, upload confidential media, clone or generate a real person's likeness or voice, publish externally, modify production systems, or accept new license obligations without the corresponding explicit authorization.
+
+## Human review
+
+Human review is mandatory before paid-provider use, confidential-media processing, material rights or consent decisions, public claims, use of a real person's likeness or voice, and final publication. AGPL deployment implications must be reviewed before modifying or network-deploying covered OpenMontage code.
+
 ## Prohibited shortcuts
 - No vendoring OpenMontage into Internet-Well.
 - No floating `main`/`latest` pin.
@@ -65,3 +73,7 @@ Return:
 
 ## Verification
 Record the exact pin, commands executed, providers called, costs incurred, approvals captured, and post-render checks. If execution was not performed, say so explicitly.
+
+## Evaluation
+
+Pass when the exact upstream pin is recorded, the AGPL boundary is preserved, provider and budget decisions are auditable, required rights/consent and accessibility gates are completed, and the render passes post-production verification before release. Fail when generation completion is treated as proof of quality, costs or credentials are used without authorization, rights review is skipped, or publication occurs without human approval.
