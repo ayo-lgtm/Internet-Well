@@ -363,7 +363,8 @@
         "post-render-review",
         "human-approval-before-external-submission",
         "measure-qualified-outcomes"
-      ]
+      ],
+      "restriction": "Launch-channel listings require current destination verification. OpenMontage remains an external pinned AGPL integration. External posting, publishing, paid-provider use, credential use, and media-rights decisions require separate approval."
     }
   ]
 }
