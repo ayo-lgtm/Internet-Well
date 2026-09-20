@@ -6,8 +6,8 @@
   "ranking_weights": {
     "provenance": 0.18,
     "maintenance": 0.14,
-    "documentation": 0.1,
-    "license_clarity": 0.1,
+    "documentation": 0.10,
+    "license_clarity": 0.10,
     "security_posture": 0.16,
     "interoperability": 0.12,
     "runtime_evidence": 0.14,
@@ -18,655 +18,205 @@
       "id": "autonomous-loop",
       "kind": "repository",
       "source": "https://github.com/Wassimyounes01/autonomous-loop",
-      "capabilities": [
-        "persistent-agent-loop",
-        "task-selection",
-        "reward-learning",
-        "crash-recovery"
-      ],
-      "restrictions": [
-        "no-live-trading-authority-by-default",
-        "explicit-stop-conditions",
-        "bounded-credentials"
-      ],
-      "evidence": {
-        "provenance": 78,
-        "maintenance": 72,
-        "documentation": 78,
-        "license_clarity": 70,
-        "security_posture": 68,
-        "interoperability": 90,
-        "runtime_evidence": 76,
-        "reversibility": 88
-      }
+      "capabilities": ["persistent-agent-loop", "task-selection", "reward-learning", "crash-recovery"],
+      "restrictions": ["no-live-trading-authority-by-default", "explicit-stop-conditions", "bounded-credentials"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 78, "license_clarity": 70, "security_posture": 68, "interoperability": 90, "runtime_evidence": 76, "reversibility": 88}
     },
     {
       "id": "event-driven-autonomous-loop",
       "kind": "repository",
       "source": "https://github.com/Wassimyounes01/event-driven-autonomous-loop",
-      "capabilities": [
-        "event-driven-execution",
-        "continuous-progress",
-        "persistent-queue",
-        "restart-recovery"
-      ],
-      "restrictions": [
-        "bounded-backlog",
-        "rate-limits",
-        "explicit-kill-switch"
-      ],
-      "evidence": {
-        "provenance": 78,
-        "maintenance": 70,
-        "documentation": 76,
-        "license_clarity": 70,
-        "security_posture": 68,
-        "interoperability": 88,
-        "runtime_evidence": 74,
-        "reversibility": 88
-      }
+      "capabilities": ["event-driven-execution", "continuous-progress", "persistent-queue", "restart-recovery"],
+      "restrictions": ["bounded-backlog", "rate-limits", "explicit-kill-switch"],
+      "evidence": {"provenance": 78, "maintenance": 70, "documentation": 76, "license_clarity": 70, "security_posture": 68, "interoperability": 88, "runtime_evidence": 74, "reversibility": 88}
     },
     {
       "id": "flywheel",
       "kind": "repository",
       "source": "https://github.com/Wassimyounes01/flywheel",
-      "capabilities": [
-        "reward-learning",
-        "bandit-selection",
-        "adaptive-routing"
-      ],
-      "restrictions": [
-        "reward-function-review",
-        "no-unbounded-self-modification",
-        "retain-audit-log"
-      ],
-      "evidence": {
-        "provenance": 78,
-        "maintenance": 72,
-        "documentation": 74,
-        "license_clarity": 70,
-        "security_posture": 70,
-        "interoperability": 86,
-        "runtime_evidence": 78,
-        "reversibility": 86
-      }
+      "capabilities": ["reward-learning", "bandit-selection", "adaptive-routing"],
+      "restrictions": ["reward-function-review", "no-unbounded-self-modification", "retain-audit-log"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 74, "license_clarity": 70, "security_posture": 70, "interoperability": 86, "runtime_evidence": 78, "reversibility": 86}
     },
     {
       "id": "memory",
       "kind": "repository",
       "source": "https://github.com/Wassimyounes01/memory",
-      "capabilities": [
-        "agent-memory",
-        "persistent-context",
-        "experience-retention"
-      ],
-      "restrictions": [
-        "data-minimization",
-        "retention-policy",
-        "do-not-store-secrets-or-sensitive-data-by-default"
-      ],
-      "evidence": {
-        "provenance": 78,
-        "maintenance": 72,
-        "documentation": 72,
-        "license_clarity": 70,
-        "security_posture": 72,
-        "interoperability": 86,
-        "runtime_evidence": 72,
-        "reversibility": 86
-      }
+      "capabilities": ["agent-memory", "persistent-context", "experience-retention"],
+      "restrictions": ["data-minimization", "retention-policy", "do-not-store-secrets-or-sensitive-data-by-default"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 72, "license_clarity": 70, "security_posture": 72, "interoperability": 86, "runtime_evidence": 72, "reversibility": 86}
     },
     {
       "id": "agent-os",
       "kind": "repository",
       "source": "https://github.com/Wassimyounes01/agent-os",
-      "capabilities": [
-        "agent-kernel",
-        "capability-registry",
-        "orchestration"
-      ],
-      "restrictions": [
-        "least-privilege-tools",
-        "explicit-capability-allowlist",
-        "human-approval-for-state-changing-actions"
-      ],
-      "evidence": {
-        "provenance": 78,
-        "maintenance": 72,
-        "documentation": 75,
-        "license_clarity": 70,
-        "security_posture": 70,
-        "interoperability": 88,
-        "runtime_evidence": 72,
-        "reversibility": 84
-      }
+      "capabilities": ["agent-kernel", "capability-registry", "orchestration"],
+      "restrictions": ["least-privilege-tools", "explicit-capability-allowlist", "human-approval-for-state-changing-actions"],
+      "evidence": {"provenance": 78, "maintenance": 72, "documentation": 75, "license_clarity": 70, "security_posture": 70, "interoperability": 88, "runtime_evidence": 72, "reversibility": 84}
     },
     {
       "id": "public-apis",
       "kind": "api-discovery-source",
       "source": "https://github.com/public-apis/public-apis",
       "pin": "988c57be4616cc9507fd3e8c34adedba5387f079",
-      "capabilities": [
-        "api-discovery",
-        "external-data-capability",
-        "provider-shortlisting"
-      ],
-      "restrictions": [
-        "listing-is-not-approval",
-        "verify-pricing-and-quota",
-        "verify-terms-and-privacy",
-        "never-use-leaked-credentials"
-      ],
-      "evidence": {
-        "provenance": 92,
-        "maintenance": 90,
-        "documentation": 88,
-        "license_clarity": 90,
-        "security_posture": 78,
-        "interoperability": 92,
-        "runtime_evidence": 80,
-        "reversibility": 94
-      }
+      "capabilities": ["api-discovery", "external-data-capability", "provider-shortlisting"],
+      "restrictions": ["listing-is-not-approval", "verify-pricing-and-quota", "verify-terms-and-privacy", "never-use-leaked-credentials"],
+      "evidence": {"provenance": 92, "maintenance": 90, "documentation": 88, "license_clarity": 90, "security_posture": 78, "interoperability": 92, "runtime_evidence": 80, "reversibility": 94}
     },
     {
       "id": "probo",
       "kind": "grc-readiness-engine",
       "source": "https://github.com/getprobo/probo",
       "pin": "bdb350aa88e60f3664caab6f41a665edd7729298",
-      "capabilities": [
-        "soc2-readiness",
-        "grc-workflows",
-        "control-management",
-        "evidence-management",
-        "policy-management",
-        "risk-management",
-        "vendor-risk",
-        "access-review",
-        "audit-handoff"
-      ],
-      "restrictions": [
-        "independent-cpa-required",
-        "no-compliance-guarantee",
-        "no-self-attestation",
-        "no-automatic-control-effectiveness-claim",
-        "no-auditor-submission-without-explicit-authorization",
-        "protect-confidential-audit-evidence"
-      ],
-      "evidence": {
-        "provenance": 94,
-        "maintenance": 92,
-        "documentation": 88,
-        "license_clarity": 96,
-        "security_posture": 84,
-        "interoperability": 90,
-        "runtime_evidence": 84,
-        "reversibility": 90
-      }
+      "capabilities": ["soc2-readiness", "grc-workflows", "control-management", "evidence-management", "policy-management", "risk-management", "vendor-risk", "access-review", "audit-handoff"],
+      "restrictions": ["independent-cpa-required", "no-compliance-guarantee", "no-self-attestation", "no-automatic-control-effectiveness-claim", "no-auditor-submission-without-explicit-authorization", "protect-confidential-audit-evidence"],
+      "evidence": {"provenance": 94, "maintenance": 92, "documentation": 88, "license_clarity": 96, "security_posture": 84, "interoperability": 90, "runtime_evidence": 84, "reversibility": 90}
     },
     {
       "id": "agent-browser",
       "kind": "runtime",
       "source": "https://github.com/vercel-labs/agent-browser",
-      "capabilities": [
-        "browser-automation",
-        "web-testing",
-        "accessibility-tree"
-      ],
-      "restrictions": [
-        "isolated-profile",
-        "hostname-allowlist",
-        "no-production-actions-without-approval",
-        "protect-cookies-and-downloads"
-      ],
-      "evidence": {
-        "provenance": 88,
-        "maintenance": 88,
-        "documentation": 86,
-        "license_clarity": 80,
-        "security_posture": 72,
-        "interoperability": 88,
-        "runtime_evidence": 84,
-        "reversibility": 82
-      }
+      "capabilities": ["browser-automation", "web-testing", "accessibility-tree"],
+      "restrictions": ["isolated-profile", "hostname-allowlist", "no-production-actions-without-approval", "protect-cookies-and-downloads"],
+      "evidence": {"provenance": 88, "maintenance": 88, "documentation": 86, "license_clarity": 80, "security_posture": 72, "interoperability": 88, "runtime_evidence": 84, "reversibility": 82}
     },
     {
       "id": "playwright-mcp",
       "kind": "mcp-runtime",
       "source": "https://github.com/microsoft/playwright-mcp",
-      "capabilities": [
-        "browser-automation",
-        "mcp-tools",
-        "web-testing"
-      ],
-      "restrictions": [
-        "isolated-profile",
-        "hostname-allowlist",
-        "credential-isolation",
-        "approval-for-state-changing-actions"
-      ],
-      "evidence": {
-        "provenance": 96,
-        "maintenance": 92,
-        "documentation": 90,
-        "license_clarity": 92,
-        "security_posture": 82,
-        "interoperability": 94,
-        "runtime_evidence": 88,
-        "reversibility": 88
-      }
+      "capabilities": ["browser-automation", "mcp-tools", "web-testing"],
+      "restrictions": ["isolated-profile", "hostname-allowlist", "credential-isolation", "approval-for-state-changing-actions"],
+      "evidence": {"provenance": 96, "maintenance": 92, "documentation": 90, "license_clarity": 92, "security_posture": 82, "interoperability": 94, "runtime_evidence": 88, "reversibility": 88}
     },
     {
       "id": "apple-design-skills",
       "kind": "skill-family",
       "source": "https://github.com/s1gmamale1/apple-design-skills",
       "pin": "8a3fbea8b561405e5719d682ebd1d14c952aecd7",
-      "capabilities": [
-        "apple-hig-reasoning",
-        "motion",
-        "interaction-design",
-        "accessibility",
-        "materials"
-      ],
-      "restrictions": [
-        "official-apple-hig-outranks-community-guidance",
-        "do-not-copy-protected-expression",
-        "test-reduced-motion-and-accessibility"
-      ],
-      "evidence": {
-        "provenance": 82,
-        "maintenance": 82,
-        "documentation": 88,
-        "license_clarity": 92,
-        "security_posture": 78,
-        "interoperability": 86,
-        "runtime_evidence": 74,
-        "reversibility": 92
-      }
+      "capabilities": ["apple-hig-reasoning", "motion", "interaction-design", "accessibility", "materials"],
+      "restrictions": ["official-apple-hig-outranks-community-guidance", "do-not-copy-protected-expression", "test-reduced-motion-and-accessibility"],
+      "evidence": {"provenance": 82, "maintenance": 82, "documentation": 88, "license_clarity": 92, "security_posture": 78, "interoperability": 86, "runtime_evidence": 74, "reversibility": 92}
     },
     {
       "id": "brand-yml",
       "kind": "brand-system-standard",
       "source": "https://github.com/posit-dev/brand-yml",
       "pin": "6ec390fd4b741b550bd732254c8def90bf50c4a4",
-      "capabilities": [
-        "brand-system",
-        "brand-source-of-truth",
-        "logo-variants",
-        "brand-color",
-        "brand-typography"
-      ],
-      "restrictions": [
-        "human-brand-approval",
-        "asset-rights-review",
-        "trademark-clearance-required",
-        "referenced-assets-keep-own-licenses"
-      ],
-      "evidence": {
-        "provenance": 84,
-        "maintenance": 84,
-        "documentation": 90,
-        "license_clarity": 92,
-        "security_posture": 78,
-        "interoperability": 82,
-        "runtime_evidence": 66,
-        "reversibility": 94
-      }
+      "capabilities": ["brand-system", "brand-source-of-truth", "logo-variants", "brand-color", "brand-typography"],
+      "restrictions": ["human-brand-approval", "asset-rights-review", "trademark-clearance-required", "referenced-assets-keep-own-licenses"],
+      "evidence": {"provenance": 84, "maintenance": 84, "documentation": 90, "license_clarity": 92, "security_posture": 78, "interoperability": 82, "runtime_evidence": 66, "reversibility": 94}
     },
     {
       "id": "design-tokens-format",
       "kind": "design-token-standard",
       "source": "https://www.designtokens.org/TR/2025.10/format/",
       "pin": "2025.10",
-      "capabilities": [
-        "design-tokens",
-        "token-interchange",
-        "semantic-tokens",
-        "cross-platform-design-system"
-      ],
-      "restrictions": [
-        "pin-stable-report-not-draft",
-        "verify-transformer-compatibility",
-        "human-semantic-review"
-      ],
-      "evidence": {
-        "provenance": 96,
-        "maintenance": 88,
-        "documentation": 90,
-        "license_clarity": 90,
-        "security_posture": 88,
-        "interoperability": 96,
-        "runtime_evidence": 74,
-        "reversibility": 96
-      }
+      "capabilities": ["design-tokens", "token-interchange", "semantic-tokens", "cross-platform-design-system"],
+      "restrictions": ["pin-stable-report-not-draft", "verify-transformer-compatibility", "human-semantic-review"],
+      "evidence": {"provenance": 96, "maintenance": 88, "documentation": 90, "license_clarity": 90, "security_posture": 88, "interoperability": 96, "runtime_evidence": 74, "reversibility": 96}
     },
     {
       "id": "style-dictionary",
       "kind": "design-token-build-system",
       "source": "https://github.com/style-dictionary/style-dictionary",
       "pin": "v5.5.2",
-      "capabilities": [
-        "design-token-transformation",
-        "design-tokens",
-        "css-tokens",
-        "ios-tokens",
-        "android-tokens"
-      ],
-      "restrictions": [
-        "review-custom-transforms",
-        "fixture-test-generated-output",
-        "dtcg-2025.10-support-incomplete",
-        "approval-before-overwrite"
-      ],
-      "evidence": {
-        "provenance": 90,
-        "maintenance": 94,
-        "documentation": 94,
-        "license_clarity": 96,
-        "security_posture": 82,
-        "interoperability": 96,
-        "runtime_evidence": 82,
-        "reversibility": 92
-      }
+      "capabilities": ["design-token-transformation", "design-tokens", "css-tokens", "ios-tokens", "android-tokens"],
+      "restrictions": ["review-custom-transforms", "fixture-test-generated-output", "dtcg-2025.10-support-incomplete", "approval-before-overwrite"],
+      "evidence": {"provenance": 90, "maintenance": 94, "documentation": 94, "license_clarity": 96, "security_posture": 82, "interoperability": 96, "runtime_evidence": 82, "reversibility": 92}
     },
     {
       "id": "lucide",
       "kind": "interface-icon-library",
       "source": "https://github.com/lucide-icons/lucide",
       "pin": "1.37.0",
-      "capabilities": [
-        "interface-iconography",
-        "svg-icons",
-        "accessible-icon-controls"
-      ],
-      "restrictions": [
-        "not-for-brand-logos",
-        "accessible-name-for-icon-controls",
-        "text-for-critical-actions",
-        "preserve-license-notices"
-      ],
-      "evidence": {
-        "provenance": 86,
-        "maintenance": 96,
-        "documentation": 90,
-        "license_clarity": 90,
-        "security_posture": 86,
-        "interoperability": 94,
-        "runtime_evidence": 82,
-        "reversibility": 96
-      }
+      "capabilities": ["interface-iconography", "svg-icons", "accessible-icon-controls"],
+      "restrictions": ["not-for-brand-logos", "accessible-name-for-icon-controls", "text-for-critical-actions", "preserve-license-notices"],
+      "evidence": {"provenance": 86, "maintenance": 96, "documentation": 90, "license_clarity": 90, "security_posture": 86, "interoperability": 94, "runtime_evidence": 82, "reversibility": 96}
     },
     {
       "id": "fontsource",
       "kind": "typography-delivery",
       "source": "https://github.com/fontsource/fontsource",
       "pin": "83e7147eefa88fa7de66336b81c96650fe62de6c",
-      "capabilities": [
-        "typography",
-        "self-hosted-fonts",
-        "font-subsetting",
-        "webfont-delivery"
-      ],
-      "restrictions": [
-        "review-each-font-license",
-        "verify-glyph-coverage",
-        "measure-loading",
-        "define-local-fallbacks"
-      ],
-      "evidence": {
-        "provenance": 86,
-        "maintenance": 90,
-        "documentation": 90,
-        "license_clarity": 76,
-        "security_posture": 84,
-        "interoperability": 92,
-        "runtime_evidence": 76,
-        "reversibility": 90
-      }
+      "capabilities": ["typography", "self-hosted-fonts", "font-subsetting", "webfont-delivery"],
+      "restrictions": ["review-each-font-license", "verify-glyph-coverage", "measure-loading", "define-local-fallbacks"],
+      "evidence": {"provenance": 86, "maintenance": 90, "documentation": 90, "license_clarity": 76, "security_posture": 84, "interoperability": 92, "runtime_evidence": 76, "reversibility": 90}
     },
     {
       "id": "color-js",
       "kind": "color-science-library",
       "source": "https://github.com/color-js/color.js",
       "pin": "v0.7.1",
-      "capabilities": [
-        "color-system",
-        "color-conversion",
-        "contrast-calculation",
-        "gamut-mapping"
-      ],
-      "restrictions": [
-        "not-accessibility-proof",
-        "rendered-contrast-tests-required",
-        "do-not-rely-on-color-alone",
-        "test-wide-gamut-fallbacks"
-      ],
-      "evidence": {
-        "provenance": 92,
-        "maintenance": 90,
-        "documentation": 90,
-        "license_clarity": 96,
-        "security_posture": 84,
-        "interoperability": 90,
-        "runtime_evidence": 76,
-        "reversibility": 94
-      }
+      "capabilities": ["color-system", "color-conversion", "contrast-calculation", "gamut-mapping"],
+      "restrictions": ["not-accessibility-proof", "rendered-contrast-tests-required", "do-not-rely-on-color-alone", "test-wide-gamut-fallbacks"],
+      "evidence": {"provenance": 92, "maintenance": 90, "documentation": 90, "license_clarity": 96, "security_posture": 84, "interoperability": 90, "runtime_evidence": 76, "reversibility": 94}
     },
     {
       "id": "svgo",
       "kind": "vector-asset-tool",
       "source": "https://github.com/svg/svgo",
       "pin": "5765cbe4e0a930dca648c6b81d335b1522cd7375",
-      "capabilities": [
-        "logo-production",
-        "svg-optimization",
-        "favicon-vector",
-        "vector-assets"
-      ],
-      "restrictions": [
-        "not-a-logo-generator",
-        "not-a-security-sanitizer",
-        "preserve-vector-master",
-        "visual-diff-required"
-      ],
-      "evidence": {
-        "provenance": 88,
-        "maintenance": 94,
-        "documentation": 90,
-        "license_clarity": 96,
-        "security_posture": 82,
-        "interoperability": 94,
-        "runtime_evidence": 84,
-        "reversibility": 94
-      }
+      "capabilities": ["logo-production", "svg-optimization", "favicon-vector", "vector-assets"],
+      "restrictions": ["not-a-logo-generator", "not-a-security-sanitizer", "preserve-vector-master", "visual-diff-required"],
+      "evidence": {"provenance": 88, "maintenance": 94, "documentation": 90, "license_clarity": 96, "security_posture": 82, "interoperability": 94, "runtime_evidence": 84, "reversibility": 94}
     },
     {
       "id": "storybook",
       "kind": "component-workshop",
       "source": "https://github.com/storybookjs/storybook",
       "pin": "v10.5.10",
-      "capabilities": [
-        "component-documentation",
-        "design-system",
-        "component-states",
-        "interaction-testing",
-        "visual-testing"
-      ],
-      "restrictions": [
-        "not-production-parity-proof",
-        "synthetic-data-only",
-        "scan-static-output",
-        "application-e2e-tests-still-required"
-      ],
-      "evidence": {
-        "provenance": 94,
-        "maintenance": 96,
-        "documentation": 96,
-        "license_clarity": 96,
-        "security_posture": 82,
-        "interoperability": 94,
-        "runtime_evidence": 88,
-        "reversibility": 90
-      }
+      "capabilities": ["component-documentation", "design-system", "component-states", "interaction-testing", "visual-testing"],
+      "restrictions": ["not-production-parity-proof", "synthetic-data-only", "scan-static-output", "application-e2e-tests-still-required"],
+      "evidence": {"provenance": 94, "maintenance": 96, "documentation": 96, "license_clarity": 96, "security_posture": 82, "interoperability": 94, "runtime_evidence": 88, "reversibility": 90}
     },
     {
       "id": "anthropic-skills",
       "kind": "skill-library",
       "source": "https://github.com/anthropics/skills",
-      "capabilities": [
-        "agent-skills",
-        "skill-authoring",
-        "document-workflows"
-      ],
-      "restrictions": [
-        "review-license-per-skill",
-        "review-allowed-tools",
-        "pin-exact-source"
-      ],
-      "evidence": {
-        "provenance": 96,
-        "maintenance": 92,
-        "documentation": 92,
-        "license_clarity": 82,
-        "security_posture": 84,
-        "interoperability": 92,
-        "runtime_evidence": 88,
-        "reversibility": 90
-      }
+      "capabilities": ["agent-skills", "skill-authoring", "document-workflows"],
+      "restrictions": ["review-license-per-skill", "review-allowed-tools", "pin-exact-source"],
+      "evidence": {"provenance": 96, "maintenance": 92, "documentation": 92, "license_clarity": 82, "security_posture": 84, "interoperability": 92, "runtime_evidence": 88, "reversibility": 90}
     },
     {
       "id": "get-shit-done",
       "kind": "workflow-system",
       "source": "https://github.com/gsd-build/get-shit-done",
-      "capabilities": [
-        "spec-driven-development",
-        "long-running-agent-work",
-        "planning",
-        "execution"
-      ],
-      "restrictions": [
-        "never-skip-permissions",
-        "preserve-human-approval",
-        "verify-each-milestone"
-      ],
-      "evidence": {
-        "provenance": 82,
-        "maintenance": 82,
-        "documentation": 86,
-        "license_clarity": 90,
-        "security_posture": 72,
-        "interoperability": 86,
-        "runtime_evidence": 78,
-        "reversibility": 86
-      }
+      "capabilities": ["spec-driven-development", "long-running-agent-work", "planning", "execution"],
+      "restrictions": ["never-skip-permissions", "preserve-human-approval", "verify-each-milestone"],
+      "evidence": {"provenance": 82, "maintenance": 82, "documentation": 86, "license_clarity": 90, "security_posture": 72, "interoperability": 86, "runtime_evidence": 78, "reversibility": 86}
     },
     {
       "id": "ponytail",
       "kind": "code-quality-skill",
-      "capabilities": [
-        "code-minimization",
-        "simplification",
-        "review"
-      ],
-      "restrictions": [
-        "preserve-behavior",
-        "tests-required",
-        "no-silent-semantic-change"
-      ],
-      "evidence": {
-        "provenance": 80,
-        "maintenance": 78,
-        "documentation": 80,
-        "license_clarity": 84,
-        "security_posture": 84,
-        "interoperability": 82,
-        "runtime_evidence": 76,
-        "reversibility": 92
-      }
+      "capabilities": ["code-minimization", "simplification", "review"],
+      "restrictions": ["preserve-behavior", "tests-required", "no-silent-semantic-change"],
+      "evidence": {"provenance": 80, "maintenance": 78, "documentation": 80, "license_clarity": 84, "security_posture": 84, "interoperability": 82, "runtime_evidence": 76, "reversibility": 92}
     },
     {
       "id": "qwen38-uncensored",
       "kind": "restricted-reference",
       "source": "https://github.com/Wassimyounes01/qwen38-uncensored",
-      "capabilities": [
-        "adversarial-evaluation-reference"
-      ],
-      "restrictions": [
-        "reference-only",
-        "no-auto-install",
-        "no-auto-execute",
-        "authorized-red-team-use-only"
-      ],
-      "evidence": {
-        "provenance": 70,
-        "maintenance": 60,
-        "documentation": 62,
-        "license_clarity": 60,
-        "security_posture": 30,
-        "interoperability": 60,
-        "runtime_evidence": 54,
-        "reversibility": 90
-      }
+      "capabilities": ["adversarial-evaluation-reference"],
+      "restrictions": ["reference-only", "no-auto-install", "no-auto-execute", "authorized-red-team-use-only"],
+      "evidence": {"provenance": 70, "maintenance": 60, "documentation": 62, "license_clarity": 60, "security_posture": 30, "interoperability": 60, "runtime_evidence": 54, "reversibility": 90}
     },
     {
       "id": "places-to-post-your-startup",
       "kind": "distribution-source",
       "source": "https://github.com/mmccaff/PlacesToPostYourStartup",
       "pin": "1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d73",
-      "capabilities": [
-        "startup-launch-distribution",
-        "launch-channel-discovery",
-        "community-launch",
-        "directory-discovery"
-      ],
-      "restrictions": [
-        "listing-is-not-approval",
-        "revalidate-each-destination",
-        "respect-platform-rules",
-        "no-bulk-posting",
-        "human-approval-before-external-submission"
-      ],
-      "evidence": {
-        "provenance": 86,
-        "maintenance": 80,
-        "documentation": 78,
-        "license_clarity": 98,
-        "security_posture": 86,
-        "interoperability": 88,
-        "runtime_evidence": 70,
-        "reversibility": 98
-      }
+      "capabilities": ["startup-launch-distribution", "launch-channel-discovery", "community-launch", "directory-discovery"],
+      "restrictions": ["listing-is-not-approval", "revalidate-each-destination", "respect-platform-rules", "no-bulk-posting", "human-approval-before-external-submission"],
+      "evidence": {"provenance": 86, "maintenance": 80, "documentation": 78, "license_clarity": 98, "security_posture": 86, "interoperability": 88, "runtime_evidence": 70, "reversibility": 98}
     },
     {
       "id": "openmontage",
       "kind": "agentic-video-production-system",
       "source": "https://github.com/calesthio/OpenMontage",
       "pin": "08e2151fa02de28a5d6a312b3d575692bf147ad7",
-      "capabilities": [
-        "agentic-video-production",
-        "video-production-pipeline",
-        "media-generation",
-        "production-checkpoints",
-        "render-verification",
-        "budget-governance"
-      ],
-      "restrictions": [
-        "external-pinned-boundary",
-        "agpl-review",
-        "paid-provider-approval",
-        "credential-isolation",
-        "media-rights-review",
-        "human-approval-before-publish"
-      ],
-      "evidence": {
-        "provenance": 86,
-        "maintenance": 86,
-        "documentation": 92,
-        "license_clarity": 96,
-        "security_posture": 64,
-        "interoperability": 88,
-        "runtime_evidence": 58,
-        "reversibility": 82
-      }
+      "capabilities": ["agentic-video-production", "video-production-pipeline", "media-generation", "production-checkpoints", "render-verification", "budget-governance"],
+      "restrictions": ["external-pinned-boundary", "agpl-review", "paid-provider-approval", "credential-isolation", "media-rights-review", "human-approval-before-publish"],
+      "evidence": {"provenance": 86, "maintenance": 86, "documentation": 92, "license_clarity": 96, "security_posture": 64, "interoperability": 88, "runtime_evidence": 58, "reversibility": 82}
     }
   ]
 }
