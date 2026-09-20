@@ -9,13 +9,10 @@ on:
       - 'docs/API-DISCOVERY.md'
       - 'pyproject.toml'
       - '.github/workflows/verify-api-discovery.yml'
+  # Branch protection requires the api-discovery status on every PR.
+  # Run unconditionally for PRs so path filtering cannot leave the required
+  # check permanently in the "expected" state.
   pull_request:
-    paths:
-      - 'automation/api_discovery.py'
-      - 'integrations/api-discovery/**'
-      - 'docs/API-DISCOVERY.md'
-      - 'pyproject.toml'
-      - '.github/workflows/verify-api-discovery.yml'
 
 permissions:
   contents: read
