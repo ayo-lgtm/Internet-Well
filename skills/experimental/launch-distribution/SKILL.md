@@ -36,7 +36,7 @@ Turn a product launch objective into a verified, human-reviewable distribution p
 9. Define measurement: referral source, qualified traffic, signup/activation, conversion, retained usage, and qualitative feedback.
 10. Present the plan for human approval. External submissions remain separate state-changing actions.
 
-## Output
+## Outputs
 Return:
 - launch objective and audience;
 - verified destination matrix;
@@ -48,6 +48,14 @@ Return:
 - explicit approval points;
 - evidence date for each destination.
 
+## Permission boundary
+
+This skill may research and prepare a launch plan. It cannot create accounts, submit forms, post content, purchase placement, send messages, upload assets, disclose confidential information, or otherwise act on an external platform without separate explicit authorization.
+
+## Human review
+
+A person must approve the destination shortlist and each external submission or account action. Legal, privacy, or brand review is required where the launch includes regulated claims, endorsements, contests, comparative advertising, personal data, or protected marks.
+
 ## Prohibited shortcuts
 - No bulk posting.
 - No spam, astroturfing, fake reviews, fake engagement, sockpuppets, or undisclosed paid promotion.
@@ -57,3 +65,7 @@ Return:
 
 ## Verification
 A successful run proves that each selected destination was independently rechecked and that no external submission occurred without authorization. Record failed or blocked destination checks rather than silently dropping them.
+
+## Evaluation
+
+Pass when every selected destination has current primary-source verification, the plan separates discovery from execution, rejected candidates are explained, measurement is defined, and external actions remain approval-gated. Fail when an upstream listing is treated as current approval, destination rules are not checked, or the workflow performs bulk or unauthorized posting.
