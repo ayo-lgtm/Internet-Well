@@ -4,83 +4,366 @@
   "bundles": [
     {
       "id": "autonomous-agent",
-      "goal_patterns": ["autonomous agent", "persistent agent", "finish tasks on its own", "keep working until done"],
-      "capabilities": ["persistent-agent-loop", "event-driven-execution", "agent-memory", "reward-learning", "orchestration"],
-      "preferred": ["event-driven-autonomous-loop", "autonomous-loop", "memory", "flywheel", "agent-os"],
-      "verification": ["restart-recovery", "bounded-loop", "kill-switch", "audit-log", "no-privilege-escalation"]
+      "goal_patterns": [
+        "autonomous agent",
+        "persistent agent",
+        "finish tasks on its own",
+        "keep working until done"
+      ],
+      "capabilities": [
+        "persistent-agent-loop",
+        "event-driven-execution",
+        "agent-memory",
+        "reward-learning",
+        "orchestration"
+      ],
+      "preferred": [
+        "event-driven-autonomous-loop",
+        "autonomous-loop",
+        "memory",
+        "flywheel",
+        "agent-os"
+      ],
+      "verification": [
+        "restart-recovery",
+        "bounded-loop",
+        "kill-switch",
+        "audit-log",
+        "no-privilege-escalation"
+      ]
     },
     {
       "id": "autonomous-trading-research",
-      "goal_patterns": ["autonomous trading", "trading research agent", "paper trading", "strategy research"],
-      "capabilities": ["persistent-agent-loop", "reward-learning", "agent-memory", "api-discovery", "orchestration"],
-      "preferred": ["event-driven-autonomous-loop", "autonomous-loop", "flywheel", "memory", "public-apis"],
-      "verification": ["paper-only-default", "position-and-loss-limits", "kill-switch", "replayable-decisions", "no-live-execution-without-separate-approval"],
+      "goal_patterns": [
+        "autonomous trading",
+        "trading research agent",
+        "paper trading",
+        "strategy research"
+      ],
+      "capabilities": [
+        "persistent-agent-loop",
+        "reward-learning",
+        "agent-memory",
+        "api-discovery",
+        "orchestration"
+      ],
+      "preferred": [
+        "event-driven-autonomous-loop",
+        "autonomous-loop",
+        "flywheel",
+        "memory",
+        "public-apis"
+      ],
+      "verification": [
+        "paper-only-default",
+        "position-and-loss-limits",
+        "kill-switch",
+        "replayable-decisions",
+        "no-live-execution-without-separate-approval"
+      ],
       "restriction": "This bundle is for research, simulation, and paper-trading architecture by default. Live trading requires separate broker authorization, risk controls, compliance review, and explicit deployment approval."
     },
     {
       "id": "production-web-app",
-      "goal_patterns": ["production web app", "launch web app", "full stack app"],
-      "capabilities": ["browser-automation", "web-testing", "planning", "execution", "code-minimization"],
-      "preferred": ["playwright-mcp", "agent-browser", "get-shit-done", "ponytail"],
-      "verification": ["authz-tests", "e2e-tests", "accessibility", "performance", "security-review", "rollback"]
+      "goal_patterns": [
+        "production web app",
+        "launch web app",
+        "full stack app"
+      ],
+      "capabilities": [
+        "browser-automation",
+        "web-testing",
+        "planning",
+        "execution",
+        "code-minimization"
+      ],
+      "preferred": [
+        "playwright-mcp",
+        "agent-browser",
+        "get-shit-done",
+        "ponytail"
+      ],
+      "verification": [
+        "authz-tests",
+        "e2e-tests",
+        "accessibility",
+        "performance",
+        "security-review",
+        "rollback"
+      ]
     },
     {
       "id": "brand-design-system",
-      "goal_patterns": ["brand identity", "brand system", "logo and app icon", "logo app icons typography colors and design tokens", "design tokens", "typography and color system", "component design system", "favicon and pwa icons"],
-      "capabilities": ["brand-system", "logo-production", "interface-iconography", "typography", "color-system", "design-tokens", "design-token-transformation", "component-documentation"],
-      "preferred": ["brand-yml", "design-tokens-format", "style-dictionary", "lucide", "fontsource", "color-js", "svgo", "storybook"],
-      "verification": ["brand-brief-approved", "trademark-and-asset-rights-review", "non-placeholder-logo-and-icon-assets", "favicon-pwa-manifest-runtime-check", "typography-license-and-glyph-coverage", "wcag-and-forced-colors", "semantic-token-fixtures", "component-state-coverage", "device-and-browser-review", "human-release-approval"],
+      "goal_patterns": [
+        "brand identity",
+        "brand system",
+        "logo and app icon",
+        "logo app icons typography colors and design tokens",
+        "design tokens",
+        "typography and color system",
+        "component design system",
+        "favicon and pwa icons"
+      ],
+      "capabilities": [
+        "brand-system",
+        "logo-production",
+        "interface-iconography",
+        "typography",
+        "color-system",
+        "design-tokens",
+        "design-token-transformation",
+        "component-documentation"
+      ],
+      "preferred": [
+        "brand-yml",
+        "design-tokens-format",
+        "style-dictionary",
+        "lucide",
+        "fontsource",
+        "color-js",
+        "svgo",
+        "storybook"
+      ],
+      "verification": [
+        "brand-brief-approved",
+        "trademark-and-asset-rights-review",
+        "non-placeholder-logo-and-icon-assets",
+        "favicon-pwa-manifest-runtime-check",
+        "typography-license-and-glyph-coverage",
+        "wcag-and-forced-colors",
+        "semantic-token-fixtures",
+        "component-state-coverage",
+        "device-and-browser-review",
+        "human-release-approval"
+      ],
       "restriction": "This bundle creates and governs a brand/design system; it does not establish trademark availability, originality, accessibility conformance, or permission to use third-party assets without separate human review."
     },
     {
       "id": "native-ios",
-      "goal_patterns": ["ios app", "swiftui", "apple design", "native iphone app"],
-      "capabilities": ["apple-hig-reasoning", "motion", "interaction-design", "accessibility"],
-      "preferred": ["apple-design-skills", "anthropic-skills"],
-      "verification": ["official-hig-check", "voiceover", "dynamic-type", "reduced-motion", "performance", "app-store-policy-review"]
+      "goal_patterns": [
+        "ios app",
+        "swiftui",
+        "apple design",
+        "native iphone app"
+      ],
+      "capabilities": [
+        "apple-hig-reasoning",
+        "motion",
+        "interaction-design",
+        "accessibility"
+      ],
+      "preferred": [
+        "apple-design-skills",
+        "anthropic-skills"
+      ],
+      "verification": [
+        "official-hig-check",
+        "voiceover",
+        "dynamic-type",
+        "reduced-motion",
+        "performance",
+        "app-store-policy-review"
+      ]
     },
     {
       "id": "legal-ai",
-      "goal_patterns": ["legal ai", "legal intake", "legal workflow", "attorney packet"],
-      "capabilities": ["document-workflows", "planning", "browser-automation", "api-discovery"],
-      "preferred": ["anthropic-skills", "playwright-mcp", "public-apis"],
-      "verification": ["upl-boundary", "source-citations", "abstention", "privacy", "access-control", "human-legal-review"]
+      "goal_patterns": [
+        "legal ai",
+        "legal intake",
+        "legal workflow",
+        "attorney packet"
+      ],
+      "capabilities": [
+        "document-workflows",
+        "planning",
+        "browser-automation",
+        "api-discovery"
+      ],
+      "preferred": [
+        "anthropic-skills",
+        "playwright-mcp",
+        "public-apis"
+      ],
+      "verification": [
+        "upl-boundary",
+        "source-citations",
+        "abstention",
+        "privacy",
+        "access-control",
+        "human-legal-review"
+      ]
     },
     {
       "id": "soc2-readiness",
-      "goal_patterns": ["soc 2", "soc2", "soc 2 type i", "soc2 type i", "soc 2 readiness", "grc", "audit readiness", "probo"],
-      "capabilities": ["soc2-readiness", "grc-workflows", "control-management", "evidence-management", "policy-management", "risk-management", "vendor-risk", "access-review", "audit-handoff"],
-      "preferred": ["probo"],
-      "verification": ["scope-approved", "trust-services-criteria-confirmed", "control-owners-assigned", "evidence-provenance", "exceptions-reviewed", "no-secrets-in-export", "auditor-accepts-probo-evidence", "licensed-independent-cpa", "report-issuance-included"],
+      "goal_patterns": [
+        "soc 2",
+        "soc2",
+        "soc 2 type i",
+        "soc2 type i",
+        "soc 2 readiness",
+        "grc",
+        "audit readiness",
+        "probo"
+      ],
+      "capabilities": [
+        "soc2-readiness",
+        "grc-workflows",
+        "control-management",
+        "evidence-management",
+        "policy-management",
+        "risk-management",
+        "vendor-risk",
+        "access-review",
+        "audit-handoff"
+      ],
+      "preferred": [
+        "probo"
+      ],
+      "verification": [
+        "scope-approved",
+        "trust-services-criteria-confirmed",
+        "control-owners-assigned",
+        "evidence-provenance",
+        "exceptions-reviewed",
+        "no-secrets-in-export",
+        "auditor-accepts-probo-evidence",
+        "licensed-independent-cpa",
+        "report-issuance-included"
+      ],
       "restriction": "This bundle prepares SOC 2 readiness and an auditor evidence handoff. Internet-Well and Probo do not grant SOC 2, issue a SOC 2 report, or replace the independent CPA examination."
     },
     {
       "id": "uat-product-testing",
-      "goal_patterns": ["uat", "product testing", "test production", "user acceptance testing"],
-      "capabilities": ["browser-automation", "web-testing", "planning", "agent-memory"],
-      "preferred": ["playwright-mcp", "agent-browser", "memory"],
-      "verification": ["reproducible-scenarios", "screenshots-or-traces", "severity", "component-mapping", "regression-retest"]
+      "goal_patterns": [
+        "uat",
+        "product testing",
+        "test production",
+        "user acceptance testing"
+      ],
+      "capabilities": [
+        "browser-automation",
+        "web-testing",
+        "planning",
+        "agent-memory"
+      ],
+      "preferred": [
+        "playwright-mcp",
+        "agent-browser",
+        "memory"
+      ],
+      "verification": [
+        "reproducible-scenarios",
+        "screenshots-or-traces",
+        "severity",
+        "component-mapping",
+        "regression-retest"
+      ]
     },
     {
       "id": "research-agent",
-      "goal_patterns": ["research agent", "deep research", "evidence research"],
-      "capabilities": ["persistent-agent-loop", "agent-memory", "api-discovery", "browser-automation"],
-      "preferred": ["autonomous-loop", "memory", "public-apis", "playwright-mcp"],
-      "verification": ["source-quality", "citation-traceability", "freshness", "conflict-check", "stop-condition"]
+      "goal_patterns": [
+        "research agent",
+        "deep research",
+        "evidence research"
+      ],
+      "capabilities": [
+        "persistent-agent-loop",
+        "agent-memory",
+        "api-discovery",
+        "browser-automation"
+      ],
+      "preferred": [
+        "autonomous-loop",
+        "memory",
+        "public-apis",
+        "playwright-mcp"
+      ],
+      "verification": [
+        "source-quality",
+        "citation-traceability",
+        "freshness",
+        "conflict-check",
+        "stop-condition"
+      ]
     },
     {
       "id": "memory-persistence",
-      "goal_patterns": ["agent memory", "persistent memory", "remember across sessions"],
-      "capabilities": ["agent-memory", "persistent-context", "restart-recovery"],
-      "preferred": ["memory", "event-driven-autonomous-loop"],
-      "verification": ["retention-policy", "data-minimization", "deletion", "secret-filtering", "restart-test"]
+      "goal_patterns": [
+        "agent memory",
+        "persistent memory",
+        "remember across sessions"
+      ],
+      "capabilities": [
+        "agent-memory",
+        "persistent-context",
+        "restart-recovery"
+      ],
+      "preferred": [
+        "memory",
+        "event-driven-autonomous-loop"
+      ],
+      "verification": [
+        "retention-policy",
+        "data-minimization",
+        "deletion",
+        "secret-filtering",
+        "restart-test"
+      ]
     },
     {
       "id": "browser-automation",
-      "goal_patterns": ["browser automation", "web agent", "browser testing"],
-      "capabilities": ["browser-automation", "web-testing", "mcp-tools"],
-      "preferred": ["playwright-mcp", "agent-browser"],
-      "verification": ["isolated-profile", "hostname-allowlist", "credential-isolation", "download-control", "state-change-approval"]
+      "goal_patterns": [
+        "browser automation",
+        "web agent",
+        "browser testing"
+      ],
+      "capabilities": [
+        "browser-automation",
+        "web-testing",
+        "mcp-tools"
+      ],
+      "preferred": [
+        "playwright-mcp",
+        "agent-browser"
+      ],
+      "verification": [
+        "isolated-profile",
+        "hostname-allowlist",
+        "credential-isolation",
+        "download-control",
+        "state-change-approval"
+      ]
+    },
+    {
+      "id": "product-launch-campaign",
+      "goal_patterns": [
+        "launch my startup",
+        "launch a product",
+        "product launch",
+        "startup distribution",
+        "launch campaign",
+        "make a launch video"
+      ],
+      "capabilities": [
+        "startup-launch-distribution",
+        "launch-channel-discovery",
+        "agentic-video-production",
+        "marketing-analytics"
+      ],
+      "preferred": [
+        "places-to-post-your-startup",
+        "openmontage"
+      ],
+      "verification": [
+        "destination-revalidation",
+        "platform-rule-check",
+        "claims-review",
+        "media-rights-and-consent",
+        "budget-approval",
+        "post-render-review",
+        "human-approval-before-external-submission",
+        "measure-qualified-outcomes"
+      ]
     }
   ]
 }
