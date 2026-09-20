@@ -12,17 +12,8 @@
       "install_mode": "selective-copy",
       "pin_required": true,
       "license_review": "per-skill",
-      "targets": [
-        "claude-code",
-        "codex",
-        "cursor",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "skill-authoring",
-        "document-workflows",
-        "mcp-generation"
-      ],
+      "targets": ["claude-code", "codex", "cursor", "generic-agent"],
+      "capabilities": ["skill-authoring", "document-workflows", "mcp-generation"],
       "approval_required": true,
       "default_action": "inspect",
       "notes": "Copy only selected, reviewed skill directories. Do not vendor the full repository by default."
@@ -34,24 +25,11 @@
       "kind": "skill-installer",
       "source": "https://github.com/vercel-labs/skills",
       "install_mode": "npx",
-      "command_template": [
-        "npx",
-        "skills",
-        "add",
-        "{source}@{ref}"
-      ],
+      "command_template": ["npx", "skills", "add", "{source}@{ref}"],
       "pin_required": true,
       "license_review": "required",
-      "targets": [
-        "claude-code",
-        "codex",
-        "cursor",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "skill-discovery",
-        "skill-installation"
-      ],
+      "targets": ["claude-code", "codex", "cursor", "generic-agent"],
+      "capabilities": ["skill-discovery", "skill-installation"],
       "approval_required": true,
       "default_action": "plan",
       "notes": "Marketplace discovery is not verification. Inspect the selected skill before installation."
@@ -63,22 +41,11 @@
       "kind": "browser-runtime",
       "source": "https://github.com/vercel-labs/agent-browser",
       "install_mode": "npx",
-      "command_template": [
-        "npx",
-        "agent-browser@{ref}",
-        "--help"
-      ],
+      "command_template": ["npx", "agent-browser@{ref}", "--help"],
       "pin_required": true,
       "license_review": "required",
-      "targets": [
-        "local-cli",
-        "agent-runtime"
-      ],
-      "capabilities": [
-        "browser-automation",
-        "accessibility-tree",
-        "web-testing"
-      ],
+      "targets": ["local-cli", "agent-runtime"],
+      "capabilities": ["browser-automation", "accessibility-tree", "web-testing"],
       "approval_required": true,
       "containment_profile": "browser-high-risk",
       "default_action": "plan",
@@ -93,20 +60,11 @@
       "install_mode": "git-reference",
       "pin_required": true,
       "license_review": "required",
-      "targets": [
-        "claude-code",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "spec-driven-development",
-        "context-engineering",
-        "planning"
-      ],
+      "targets": ["claude-code", "generic-agent"],
+      "capabilities": ["spec-driven-development", "context-engineering", "planning"],
       "approval_required": true,
       "default_action": "inspect",
-      "forbidden_flags": [
-        "--dangerously-skip-permissions"
-      ],
+      "forbidden_flags": ["--dangerously-skip-permissions"],
       "notes": "Internet-Well permission and evidence rules override upstream workflow instructions."
     },
     {
@@ -118,25 +76,11 @@
       "install_mode": "selective-copy",
       "pin_required": true,
       "license_review": "required",
-      "targets": [
-        "claude-code",
-        "codex",
-        "cursor",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "frontend-design",
-        "image-to-code",
-        "design-systems"
-      ],
+      "targets": ["claude-code", "codex", "cursor", "generic-agent"],
+      "capabilities": ["frontend-design", "image-to-code", "design-systems"],
       "approval_required": true,
       "default_action": "inspect",
-      "quality_gates": [
-        "accessibility",
-        "reduced-motion",
-        "performance",
-        "brand-preservation"
-      ],
+      "quality_gates": ["accessibility", "reduced-motion", "performance", "brand-preservation"],
       "notes": "Experimental design assistance; not proof of good design."
     },
     {
@@ -148,23 +92,11 @@
       "install_mode": "selective-copy",
       "pin_required": true,
       "license_review": "required",
-      "targets": [
-        "claude-code",
-        "codex",
-        "cursor",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "editorial-review",
-        "voice-calibration"
-      ],
+      "targets": ["claude-code", "codex", "cursor", "generic-agent"],
+      "capabilities": ["editorial-review", "voice-calibration"],
       "approval_required": true,
       "default_action": "inspect",
-      "prohibited_uses": [
-        "authorship-deception",
-        "fabricated-experience",
-        "plagiarism-concealment"
-      ],
+      "prohibited_uses": ["authorship-deception", "fabricated-experience", "plagiarism-concealment"],
       "notes": "Professional and legal writing remains subject to human responsibility and review."
     },
     {
@@ -176,13 +108,8 @@
       "install_mode": "git-reference",
       "pin_required": true,
       "license_review": "blocking-until-confirmed",
-      "targets": [
-        "product-research"
-      ],
-      "capabilities": [
-        "product-storytelling",
-        "narrative-context"
-      ],
+      "targets": ["product-research"],
+      "capabilities": ["product-storytelling", "narrative-context"],
       "approval_required": true,
       "default_action": "inspect",
       "notes": "No code adoption until repository identity and license are confirmed."
@@ -196,24 +123,11 @@
       "install_mode": "selective-copy",
       "pin_required": true,
       "license_review": "commons-clause-review",
-      "targets": [
-        "react",
-        "nextjs"
-      ],
-      "capabilities": [
-        "react-components",
-        "animation",
-        "interactive-ui"
-      ],
+      "targets": ["react", "nextjs"],
+      "capabilities": ["react-components", "animation", "interactive-ui"],
       "approval_required": true,
       "default_action": "inspect",
-      "quality_gates": [
-        "keyboard",
-        "screen-reader",
-        "reduced-motion",
-        "bundle-size",
-        "gpu-cost"
-      ],
+      "quality_gates": ["keyboard", "screen-reader", "reduced-motion", "bundle-size", "gpu-cost"],
       "notes": "Adopt individual components only after license and quality review."
     },
     {
@@ -223,30 +137,14 @@
       "kind": "package",
       "source": "https://github.com/juliangarnier/anime",
       "install_mode": "npm",
-      "command_template": [
-        "npm",
-        "install",
-        "animejs@{ref}"
-      ],
+      "command_template": ["npm", "install", "animejs@{ref}"],
       "pin_required": true,
       "license_review": "MIT",
-      "targets": [
-        "web",
-        "react",
-        "nextjs"
-      ],
-      "capabilities": [
-        "web-animation",
-        "svg-animation",
-        "timelines"
-      ],
+      "targets": ["web", "react", "nextjs"],
+      "capabilities": ["web-animation", "svg-animation", "timelines"],
       "approval_required": true,
       "default_action": "plan",
-      "quality_gates": [
-        "reduced-motion",
-        "main-thread-performance",
-        "low-end-device-test"
-      ],
+      "quality_gates": ["reduced-motion", "main-thread-performance", "low-end-device-test"],
       "notes": "Install only when a dedicated animation engine is justified."
     },
     {
@@ -258,22 +156,12 @@
       "install_mode": "provider",
       "pin_required": false,
       "license_review": "provider-terms-required",
-      "targets": [
-        "design-prototype"
-      ],
-      "capabilities": [
-        "animated-gradients",
-        "webgl-backgrounds"
-      ],
+      "targets": ["design-prototype"],
+      "capabilities": ["animated-gradients", "webgl-backgrounds"],
       "approval_required": true,
       "provider_consent_required": true,
       "default_action": "provider-review",
-      "quality_gates": [
-        "static-fallback",
-        "reduced-motion",
-        "gpu-cost",
-        "battery-impact"
-      ]
+      "quality_gates": ["static-fallback", "reduced-motion", "gpu-cost", "battery-impact"]
     },
     {
       "id": "jitter",
@@ -284,13 +172,8 @@
       "install_mode": "provider",
       "pin_required": false,
       "license_review": "provider-terms-required",
-      "targets": [
-        "motion-design"
-      ],
-      "capabilities": [
-        "motion-design",
-        "video-export"
-      ],
+      "targets": ["motion-design"],
+      "capabilities": ["motion-design", "video-export"],
       "approval_required": true,
       "provider_consent_required": true,
       "default_action": "provider-review",
@@ -305,20 +188,12 @@
       "install_mode": "provider",
       "pin_required": false,
       "license_review": "provider-terms-required",
-      "targets": [
-        "design-research"
-      ],
-      "capabilities": [
-        "design-inspiration",
-        "design-system-analysis"
-      ],
+      "targets": ["design-research"],
+      "capabilities": ["design-inspiration", "design-system-analysis"],
       "approval_required": true,
       "provider_consent_required": true,
       "default_action": "provider-review",
-      "prohibited_uses": [
-        "copy-protected-branding",
-        "copy-distinctive-expression"
-      ],
+      "prohibited_uses": ["copy-protected-branding", "copy-distinctive-expression"],
       "notes": "Extract general design principles and record inspiration sources."
     },
     {
@@ -330,24 +205,12 @@
       "install_mode": "provider",
       "pin_required": false,
       "license_review": "provider-terms-required",
-      "targets": [
-        "ios-prototype"
-      ],
-      "capabilities": [
-        "ios-generation",
-        "app-store-assets"
-      ],
+      "targets": ["ios-prototype"],
+      "capabilities": ["ios-generation", "app-store-assets"],
       "approval_required": true,
       "provider_consent_required": true,
       "default_action": "provider-review",
-      "quality_gates": [
-        "code-ownership",
-        "exportability",
-        "privacy",
-        "security",
-        "app-store-compliance",
-        "deletion-rights"
-      ]
+      "quality_gates": ["code-ownership", "exportability", "privacy", "security", "app-store-compliance", "deletion-rights"]
     },
     {
       "id": "places-to-post-your-startup",
@@ -358,26 +221,11 @@
       "install_mode": "git-reference",
       "pin_required": true,
       "license_review": "CC0-1.0",
-      "targets": [
-        "product-marketing",
-        "founder-ops",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "startup-launch-distribution",
-        "launch-channel-discovery",
-        "community-launch",
-        "directory-discovery"
-      ],
+      "targets": ["product-marketing", "founder-ops", "generic-agent"],
+      "capabilities": ["startup-launch-distribution", "launch-channel-discovery", "community-launch", "directory-discovery"],
       "approval_required": true,
       "default_action": "inspect",
-      "restrictions": [
-        "listing-is-not-approval",
-        "revalidate-each-destination",
-        "no-bulk-posting",
-        "respect-platform-rules",
-        "human-approval-before-external-submission"
-      ],
+      "restrictions": ["listing-is-not-approval", "revalidate-each-destination", "no-bulk-posting", "respect-platform-rules", "human-approval-before-external-submission"],
       "notes": "Use the pinned directory only to generate candidates. Revalidate every third-party destination before selection or posting."
     },
     {
@@ -389,29 +237,12 @@
       "install_mode": "git-reference",
       "pin_required": true,
       "license_review": "AGPL-3.0-only",
-      "targets": [
-        "coding-agent",
-        "marketing-production",
-        "generic-agent"
-      ],
-      "capabilities": [
-        "agentic-video-production",
-        "video-production-pipeline",
-        "media-generation",
-        "render-verification",
-        "production-checkpoints",
-        "budget-governance"
-      ],
+      "targets": ["coding-agent", "marketing-production", "generic-agent"],
+      "capabilities": ["agentic-video-production", "video-production-pipeline", "media-generation", "render-verification", "production-checkpoints", "budget-governance"],
       "approval_required": true,
       "default_action": "inspect",
       "containment_profile": "media-production-high-risk",
-      "restrictions": [
-        "external-pinned-boundary",
-        "agpl-review-before-modification-or-deployment",
-        "explicit-approval-for-paid-providers",
-        "protect-media-and-credentials",
-        "human-approval-before-publish"
-      ],
+      "restrictions": ["external-pinned-boundary", "agpl-review-before-modification-or-deployment", "explicit-approval-for-paid-providers", "protect-media-and-credentials", "human-approval-before-publish"],
       "notes": "Do not vendor OpenMontage into Internet-Well. Keep it at an external pinned boundary and independently review provider, media-rights, credential, cost, and publishing risks."
     }
   ]
