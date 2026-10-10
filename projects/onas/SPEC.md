@@ -2,7 +2,7 @@
 
 Status: draft for review by Dr Wale (founder and builder) · 2026-10-10
 Launch market: Nigeria (Android first)
-Companion documents: [`LEGAL-ISSUES.md`](LEGAL-ISSUES.md) (counsel register), [`assessment.json`](assessment.json) (machine-readable project assessment)
+Companion documents: [`LEGAL-ISSUES.md`](LEGAL-ISSUES.md) (counsel register), [`project-profile.json`](project-profile.json) (machine-readable project assessment)
 
 ## 1. What ONAS is
 

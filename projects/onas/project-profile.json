@@ -1,0 +1,61 @@
+{
+  "project": "ONAS",
+  "goal": "Habit-building RPG mobile app where real-world quests level up a stylized Hero; later phases add commitment stakes, sponsored quests, and a cosmetic marketplace once legally cleared.",
+  "stage": "prototype",
+  "product_type": [
+    "consumer-mobile-app",
+    "gamified-habit-tracker"
+  ],
+  "stack": [
+    "not yet chosen: production repo ayo-lgtm/ONAS is empty; proposed Expo (React Native) with a managed Postgres/auth backend",
+    "design prototype B: React 19 + Vite + Tailwind 4 (Figma Make)"
+  ],
+  "hosting": [
+    "unknown"
+  ],
+  "users": [
+    "adults in Nigeria building habits"
+  ],
+  "jurisdictions": [
+    "Nigeria (launch)",
+    "no operating entity confirmed; Design A policy text naming California is likely template boilerplate (LEGAL-ISSUES L0)"
+  ],
+  "data_classes": [
+    "account email and password hash",
+    "display name and username",
+    "profile picture (device-only today)",
+    "habit and quest activity",
+    "planned: selfies (sensitive under NDPA/GAID)",
+    "planned: health data via Health Connect",
+    "planned: payment and KYC data (BVN/NIN)"
+  ],
+  "risk_class": "high",
+  "critical_journeys": [
+    "sign up and age gate",
+    "complete a quest and see Hero level up",
+    "keep progress across devices",
+    "upload selfie and generate Hero",
+    "delete account and data",
+    "future: stake, verify, settle, pay out"
+  ],
+  "constraints": [
+    "no real-money feature before its LEGAL-ISSUES row is cleared",
+    "Android first; low-end devices",
+    "progress must become server-authoritative before any money feature",
+    "Dr Wale builds with AI coding agents; independent security review required before money or selfie features"
+  ],
+  "evidence_gaps": [
+    "no production codebase yet",
+    "rights to the Design A template and the Hero/Nova art unconfirmed",
+    "final tab structure and visual target undecided",
+    "no retention data yet",
+    "no offerwall payout quotes for Nigerian traffic",
+    "regulatory classification of stakes under Lagos law undetermined"
+  ],
+  "confidence": "medium",
+  "recommended_next_command": "Dr Wale confirms the stack and visual target, then scaffold the app in ayo-lgtm/ONAS and implement SPEC Phase 1 item 1 (server-authoritative progress).",
+  "recommended_playbook": "playbooks/full-product-build.md; playbooks/legal-compliance-readiness.md; playbooks/privacy-data-governance.md",
+  "observed_from": "Design A: first prototype screen recording built on a third-party template (2026-10-10); Design B: Figma Make home screen and brand board",
+  "founder": "Dr Wale",
+  "counsel": "licensed Nigerian lawyer, sibling of the founder (assisting)"
+}
