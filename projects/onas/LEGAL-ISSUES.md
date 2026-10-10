@@ -1,6 +1,7 @@
 # ONAS — Legal Issues Register
 
-Status: open · prepared 2026-10-10 for review by the founder (licensed Nigerian counsel)
+Status: open · prepared 2026-10-10 for review by counsel: a licensed Nigerian lawyer assisting the founder, Dr Wale, who is their sibling
+Independence note: because counsel is a family member, the founder may want independent review of the highest-stakes items (L1, L2) before relying on them.
 Scope: Nigeria launch, Android first. This register describes product flows precisely and lists the questions they raise. It contains no legal conclusions; the **Counsel conclusion** fields are for counsel to complete.
 
 Background facts gathered (verify before relying on them):
@@ -16,12 +17,12 @@ Status values: **Open** · **In analysis** · **Cleared** (feature may be built 
 ## L0 — Entity, governing law, and in-app statements
 **Status:** Open · **Blocks:** public launch
 
-**Facts:** The in-app policy suite (v1.0.0, effective 2026-10-09) states "ONAS is registered in California, United States" and "intended worldwide for adults 18+, California registration". The launch market is Nigeria, and the founder is in Nigeria.
+**Facts:** The first prototype (Design A, built on a third-party template) includes a policy suite (v1.0.0, effective 2026-10-09), likely template boilerplate, which states "ONAS is registered in California, United States" and "intended worldwide for adults 18+, California registration". The launch market is Nigeria. No operating entity has been confirmed.
 
 **Questions:**
 1. Which entity operates ONAS for Nigerian users (CAC-registered Nigerian company, US parent, or both)?
 2. Governing law and dispute forum for Nigerian users.
-3. Do the in-app policies need to be reissued before Play listing to reflect the operating entity and NDPA?
+3. Should the policy suite be redrafted from scratch rather than adapted from the template, so that before Play listing it reflects the operating entity and NDPA?
 4. Should "worldwide" availability be narrowed to Nigeria until each market is reviewed?
 
 **Counsel conclusion:**
@@ -195,4 +196,4 @@ Status values: **Open** · **In analysis** · **Cleared** (feature may be built 
 | L7 | Open | | |
 | L8 | Open | | |
 
-Recommended outside input despite in-house counsel: a gaming-licensing specialist (or informal LSLGA engagement) on L1, and an independent technical security review before any money or selfie feature ships.
+Recommended outside input in addition to counsel: a gaming-licensing specialist (or informal LSLGA engagement) on L1, and an independent technical security review before any money or selfie feature ships.

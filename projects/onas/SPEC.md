@@ -1,6 +1,6 @@
 # ONAS — Product Spec v1
 
-Status: draft for founder review · 2026-10-10
+Status: draft for review by Dr Wale (founder and builder) · 2026-10-10
 Launch market: Nigeria (Android first)
 Companion documents: [`LEGAL-ISSUES.md`](LEGAL-ISSUES.md) (counsel register), [`assessment.json`](assessment.json) (machine-readable project assessment)
 
@@ -8,7 +8,14 @@ Companion documents: [`LEGAL-ISSUES.md`](LEGAL-ISSUES.md) (counsel register), [`
 
 A habit app built as a real-life RPG. Users complete real-world quests, their Hero levels up, and streaks unlock cosmetics. The long-term vision adds three money features (stakes, sponsored quests, a player marketplace). This spec deliberately ships the game **without money first**, proves retention, and adds each money feature only after counsel clears it in `LEGAL-ISSUES.md`.
 
-## 2. What is already built (observed from the 2026-10-10 screen recording)
+## 2. Design references so far
+
+There is no production codebase yet; `ayo-lgtm/ONAS` is an empty repository. Two design references exist:
+
+- **Design A: first prototype (screen recording, 2026-10-10).** Dr Wale's first design, built on top of a template someone else made. It runs on Android but is a prototype, not the app. Treat its behavior and copy as a starting point, not as decisions already made.
+- **Design B: Figma Make home screen** (React/Vite prototype). Brand board: ring symbol and ONAS wordmark, tagline "Healthy habits, brighter days", Iris Purple `#7C4DFF` (primary) and Pulse Teal `#00E0C6` (highlights). **Nova** (illustrated, curly hair, teal hoodie with the ONAS symbol) is the reference for the avatar art style. Only Home is designed; other tabs are placeholders.
+
+### Design A, as observed
 
 | Area | Observed state |
 |---|---|
@@ -23,28 +30,31 @@ A habit app built as a real-life RPG. Users complete real-world quests, their He
 | Storage | **Hero progress is device-only.** Clearing app data loses it; deleting the hosted account does not erase it |
 | Legal & Privacy Center | Policy suite 1.0.0 effective 2026-10-09, ~24 policies tagged current / mixed / future; data requests by email to data@onas.io; public pages at onas.io not yet published |
 
-### Inconsistencies to resolve before public launch
+### Issues to resolve before public launch
 
-1. **Entity and jurisdiction.** The in-app policy states "ONAS is registered in California, United States" and "intended worldwide for adults 18+". The launch market is Nigeria. → `LEGAL-ISSUES.md` L0.
+1. **Entity and jurisdiction.** The prototype's policy text (probably template boilerplate) states "ONAS is registered in California, United States" and "intended worldwide for adults 18+". The launch market is Nigeria. → `LEGAL-ISSUES.md` L0.
 2. **Device-only progress.** Users lose streaks when they change phones, and no money feature can ever rely on device state. → Phase 1, item 1.
 3. **Self-reported quests.** Acceptable for a no-money game; not acceptable as the basis for stakes. → Section 5.
 4. **No selfie avatar yet.** The core differentiator is not built; the current profile photo is explicitly "not a playable Hero". → Phase 1, item 2, and L5.
 5. **Policy URLs not live.** Google Play requires a reachable privacy policy URL before listing.
 6. **"PLAY · GROW · EARN" tagline** appears on Earn and Shop while the app pays nothing. Counsel and Play review may read "Earn" as an earnings claim. → L7.
 7. **18+ age gate** is stated in policy but was not seen in the recorded sign-up flow. Unverified.
+8. **Navigation differs between designs.** A: Hero, Quests, Earn, Social, Shop. B: Home, Quests, Avatar, Social, Profile. Dr Wale to choose.
+9. **Gems in Design B can be bought ("+"), earned from quests, and gifted to other users.** Purchasable value that moves between users falls under L4, not only Phase 2. Simplest fix: gifts are cosmetic items, or purchased Gems cannot be gifted.
+10. **"ELEVATE TO EARN"** (Design B) raises the same L7 question as "PLAY · GROW · EARN".
 
-### Unknown — founder to confirm
+### Open decisions for Dr Wale
 
-- Framework (Expo/React Native, Flutter, native?), backend/auth provider behind the "ONAS Auth project", and where the source lives.
-- Whether an iOS build exists.
-- Who generated the starter Hero art and under what license (policy 22 says ONAS-owned; confirm assignment).
+- Stack for the production app (Section 4 proposes one) and whether any Design A code is reused.
+- Which design is the visual target (B recommended) and the final tab structure.
+- Rights to the template used for Design A and to the Hero and Nova art: who made them, and under what license or assignment.
 
 ## 3. Phase plan
 
 Each phase has an exit gate. Do not start a money phase until its `LEGAL-ISSUES.md` rows are marked **Cleared** by counsel.
 
-### Phase 0 — Current build (done)
-Local-only RPG habit loop with honest "not offered" screens.
+### Phase 0 — Design (in progress)
+Design A prototype and Design B home screen exist. Remaining: pick the visual target, design the other core screens, set up the production repository.
 
 ### Phase 1 — Retention MVP (no money)
 1. **Server-authoritative progress.** Move XP, quests, streaks and achievements to the backend with row-level access control; device keeps an offline cache that syncs. Required for phone changes and for every later phase.
@@ -56,7 +66,7 @@ Local-only RPG habit loop with honest "not offered" screens.
 7. **Publish policies** at onas.io/terms, /privacy, /delete-account; add an 18+ (or counsel-set) age gate at sign-up.
 8. **Ship to Google Play internal → closed testing** in Nigeria.
 
-**Exit gate:** founder sets numeric targets *before* testing starts for D1, D7 and D30 retention, median streak length, and percent of quests with evidence attached. Phase 2 starts only if the targets are met.
+**Exit gate:** Dr Wale sets numeric targets *before* testing starts for D1, D7 and D30 retention, median streak length, and percent of quests with evidence attached. Phase 2 starts only if the targets are met.
 
 ### Phase 2 — Cosmetics shop (first revenue, lowest regulatory weight)
 Gems purchasable only via Google Play Billing, spendable only on cosmetics, never withdrawable or transferable. No user-to-user trading yet. Clears L7 and the Play policy row.
@@ -70,9 +80,9 @@ Only after L3, L8 cleared and a real network has quoted Nigerian-traffic payouts
 ### Phase 5 — Player marketplace
 Only after L4 cleared. Items stay off-chain.
 
-## 4. Proposed architecture (to confirm against the existing codebase)
+## 4. Proposed architecture (to confirm with Dr Wale)
 
-- **Client:** existing app; Android first. Server-side image generation keeps low-end devices fast.
+- **Client:** new app in `ayo-lgtm/ONAS`, for example Expo (React Native); Android first. Server-side image generation keeps low-end devices fast.
 - **Backend:** managed Postgres + auth + storage + server functions (for example Supabase), with row-level security on every user table. Keep the existing auth project if it already provides these.
 - **AI avatar:** an image-generation provider contracted not to train on or retain user images; cross-border transfer basis per L5.
 - **Payments (Phase 2):** Google Play Billing. **(Phase 3+):** a CBN-licensed payment service provider; ONAS stores references, never card or bank credentials.
