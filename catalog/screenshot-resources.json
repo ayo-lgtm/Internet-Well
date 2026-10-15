@@ -56,7 +56,7 @@
       "readiness": "selective-adoption",
       "risk": "high-paid-provider-and-credentials",
       "recommendation": "install-single-skills-not-whole-bundle",
-      "restrictions": ["pin-exact-commit", "review-before-install", "inspect-every-SKILL.md-and-script", "no-credentials-without-approval", "requires-scenario-account-and-mcp", "paid-generation-approve-spend"],
+      "restrictions": ["pin-exact-commit", "review-before-install", "inspect-every-SKILL.md-and-script", "no-credentials-without-approval", "requires-scenario-account-and-mcp", "paid-generation-approve-spend", "dcc-expert-skills-run-unauthenticated-localhost-code-exec-bridges-single-user-host-only"],
       "verification": "primary-source read-only (shallow clone: license file, manifests, README); not executed",
       "notes": "151 SKILL.md files; vendor-authored for Scenario's paid platform."
     },

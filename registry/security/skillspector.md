@@ -63,8 +63,14 @@ in `catalog/screenshot-resources.json`.
   set. OSV.dev returned 403 through this environment's egress proxy, so SC4
   used the bundled fallback list; dependency-CVE results are therefore
   incomplete.
-- Results for the skill candidates are recorded in
-  `evaluations/skillspector-intake-2026-10-15.md`.
+- Scanned 13 skill candidates; results and spot-checks are in
+  [evaluations/skillspector-intake-2026-10-15.md](../../evaluations/skillspector-intake-2026-10-15.md).
+  Repository-level scans saturated: 12 of 13 scored 100 / `DO_NOT_INSTALL`,
+  8 of 13 reached 0% full coverage because of runtime, size, and
+  executable-content limits, and spot-checked HIGH findings were mostly
+  documentation or prompt-text false positives. It did surface one real
+  issue (unauthenticated localhost code-exec bridges in Scenario's DCC
+  skills). Scan individual skill directories rather than whole repositories.
 - Not yet done: matched-baseline comparison against manual review, false-
   positive rate measurement, and LLM-pass evaluation.
 
