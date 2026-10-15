@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-70 records as of 2026-08-30 — 50 approved, 17 approved-with-restrictions, 3 experimental. Tiers: 49×B, 21×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+71 records as of 2026-10-15 — 50 approved, 17 approved-with-restrictions, 4 experimental. Tiers: 49×B, 22×C. Execution-tested: 27. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -83,13 +83,14 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 | [TruffleHog](security/trufflehog.md) | security | B | verified-secret-detection | AGPL-3.0-only | v3.95.2 | 80 | ✅ |
 
-## 🧪 experimental (3)
+## 🧪 experimental (4)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
 | [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
 | [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
+| [REA (Reverse Engineer Anything)](security/rea.md) | security | C | reverse-engineering | MIT (REA itself); bundled third_party submodules carry their own licenses — see THIRD_PARTY_NOTICES.md | rea-agents 6.5.0 (npm, tag rea-agents-… | n/a | – |
 
 ## Coverage
 
@@ -103,7 +104,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | marketing | 7 |
 | operations | 10 |
 | product | 7 |
-| security | 15 |
+| security | 16 |
 
 Coverage policy: every governed category must retain at least one evidence-backed record; CI fails if a category becomes empty. Counts show breadth, not adequacy, and must never be padded with weak entries.
 
