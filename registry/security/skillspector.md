@@ -71,6 +71,11 @@ in `catalog/screenshot-resources.json`.
   documentation or prompt-text false positives. It did surface one real
   issue (unauthenticated localhost code-exec bridges in Scenario's DCC
   skills). Scan individual skill directories rather than whole repositories.
+- Per-skill follow-up (274 skill directories, same flags): scores become
+  usable (most awesome-seedance and linkedin-skills skills return `SAFE` with
+  complete coverage), but only 83 of 270 tabulated scans completed fully, two
+  skills timed out at 600 s, and every new HIGH/CRITICAL finding spot-checked
+  was a false positive, a coverage gap, or expected behaviour.
 - Not yet done: matched-baseline comparison against manual review, false-
   positive rate measurement, and LLM-pass evaluation.
 
