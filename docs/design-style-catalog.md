@@ -47,3 +47,7 @@ A design brief should capture:
 ## Agent rule
 
 When a user has not chosen a style, recommend 2–3 candidates based on product purpose and explain the trade-off in plain language. For trust-sensitive products, prioritize usability, accessibility and established interaction patterns over visual novelty. Never infer that a visual style changes the product's security, legal, privacy or accessibility requirements.
+
+## Privately supplied UI frameworks
+
+For an optional catalogue of locally purchased UI examples, see [private design frameworks](private-design-frameworks.md). Only names, categories, package-root names, and archive identity hashes are published. Source and media remain private, require separately established rights, and are not automatically approved dependencies.

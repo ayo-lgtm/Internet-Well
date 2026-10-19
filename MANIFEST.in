@@ -1,0 +1,5 @@
+# Private purchased source/media and audit evidence are never distribution data.
+prune .internet-well
+prune private-frameworks
+prune private-framework-reports
+prune purchased-design-sources

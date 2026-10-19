@@ -36,3 +36,8 @@ security-plan*.md
 .DS_Store
 .idea/
 .vscode/
+
+# Purchased design frameworks: private inputs, assets, and audit reports
+private-frameworks/
+private-framework-reports/
+purchased-design-sources/
