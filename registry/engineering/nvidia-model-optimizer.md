@@ -77,7 +77,8 @@ release tooling) and an MCP server.
   runs commands on remote hosts over multiplexed SSH, and evaluation skills
   read `HF_TOKEN` and cloud keys from the environment. Treat these as
   credential- and remote-execution-bearing; approval required per use.
-- SkillSpector per-skill results: see Validation results.
+- SkillSpector per-skill results: 3 skills flagged `DO_NOT_INSTALL`; see
+  Validation results.
 
 ## Evidence
 - License Apache-2.0 `[V]` — LICENSE at tag 0.47.0
@@ -115,6 +116,36 @@ release tooling) and an MCP server.
 - This proves the API works end to end on the pinned release. It does **not**
   prove speedups, memory savings, or accuracy on a real LLM, which require GPU
   runs with a task-specific baseline.
+
+### SkillSpector scan of the bundled plugin skills (2026-10-19)
+`skillspector scan <skill-dir> --no-llm -f json` (SkillSpector 2.12.0, same
+sandbox and OSV caveat as `registry/security/skillspector.md`) on each of the
+18 directories in `plugins/modelopt/skills/` at tag 0.47.0:
+
+| Result | Skills |
+|---|---|
+| `DO_NOT_INSTALL` (score 100) | `common` (7 HIGH, 71% coverage), `deployment` (5 HIGH), `evaluation` (36 HIGH, 83% coverage) |
+| `CAUTION` with a HIGH | `ptq` (1), `accessing-mlflow` (1) |
+| `CAUTION`, no HIGH | 12 others |
+| `SAFE`, complete | `eagle3-validate` |
+
+Only `eagle3-validate` reported complete analysis; the rest were partial.
+Spot-checks of the HIGH findings:
+- **Real:** `accessing-mlflow/SKILL.md:76` tells the agent to run
+  `curl -LsSf https://astral.sh/uv/install.sh | sh`. That is a piped remote installer,
+  which is prohibited by default. Install `uv` from a pinned package instead.
+- **Real but expected:** `common/credentials.md` and `environment-setup.md`
+  read `~/.docker/config.json` (registry names only) and cluster configs.
+  `ptq` and `common` launch Slurm jobs over SSH using `~/.ssh/id_rsa` by default.
+  `evaluation` handles AWS, HF, and MLflow credentials. These are credential-bearing
+  workflows and need approval per use.
+- **False positive:** the `deployment` SC2 hits are `curl` calls to
+  `http://localhost:<port>` health and completion endpoints of the
+  locally launched server.
+
+Verdict: the plugin is not adoptable as-is. Individual skills (e.g. `ptq`,
+`eagle3-validate`) may be adopted after a pinned-commit review that
+removes the `@main` MCP launch and piped installers.
 
 ## Installation (only after explicit authorization)
 `pip install "nvidia-modelopt[hf]==0.47.0"` (or `[all]` for ONNX and
