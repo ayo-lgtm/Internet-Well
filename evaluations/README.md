@@ -47,3 +47,11 @@ Failed/blocked attempts, preserved for honesty:
 - Server-class deployments (Grafana, Penpot, Chatwoot, Twenty,
   Plausible, Umami, listmonk, ZAP, Prometheus, Uptime Kuma, Metabase,
   EspoCRM, Documenso, Threat Dragon): Docker daemon unavailable.
+
+## Agent-skill intake scans
+
+- [SkillSpector intake scan — 2026-10-15](skillspector-intake-2026-10-15.md):
+  static (`--no-llm`) scan of 13 skill candidates. Twelve repository-level
+  scans saturated at 100 / `DO_NOT_INSTALL`, most with partial coverage;
+  manual spot-checks found mostly false positives and one real issue
+  (unauthenticated localhost code-exec bridges in Scenario's DCC skills).

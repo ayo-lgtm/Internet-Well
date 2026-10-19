@@ -19,6 +19,13 @@ class AgentBrainTests(unittest.TestCase):
         self.assertIn("autonomous-loop", ids)
         self.assertIn("event-driven-autonomous-loop", ids)
 
+    def test_product_launch_routes(self):
+        result = agent_brain.recommend_stack("launch my startup with a launch video")
+        self.assertEqual(result["bundle"], "product-launch-campaign")
+        ids = {x["id"] for x in result["preferred_resources"]}
+        self.assertEqual(ids, {"places-to-post-your-startup", "openmontage"})
+        self.assertIn("external", result["restriction"].lower())
+
     def test_trading_bundle_is_research_bounded(self):
         result = agent_brain.recommend_stack("autonomous trading research agent")
         self.assertEqual(result["bundle"], "autonomous-trading-research")

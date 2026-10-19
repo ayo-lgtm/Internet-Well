@@ -166,7 +166,7 @@ Restricted adversarial references such as `qwen38-uncensored` are reference-only
 
 ## Vibe Coder Intelligence
 
-Internet-Well also includes governed integrations for Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, Ponytail, ComposioHQ Awesome Claude Skills, Microsoft Playwright MCP, and Apple Design Skills.
+Internet-Well also includes governed integrations for Anthropic Agent Skills, skills.sh, Agent Browser, Get Shit Done, Taste Skill, Humanizer, Storyscope, React Bits, Anime.js, Shader Gradient, Jitter, Refero, 10x App Builder, Ponytail, ComposioHQ Awesome Claude Skills, Microsoft Playwright MCP, Apple Design Skills, Places To Post Your Startup, and OpenMontage.
 
 Examples:
 
@@ -175,9 +175,13 @@ internet-well-integrations list
 internet-well-ponytail show
 internet-well-apple-design list-skills
 internet-well-apple-design plan
+internet-well-integrations show places-to-post-your-startup
+internet-well-integrations show openmontage
 ```
 
 Apple Design Skills are a community interpretation layer. Current official Apple Human Interface Guidelines and platform documentation outrank community guidance when they conflict.
+
+Startup distribution and agentic video production are governed separately: the launch directory is a candidate source whose destinations must be revalidated, while OpenMontage remains an external pinned AGPL integration. See [`docs/LAUNCH-DISTRIBUTION-VIDEO.md`](docs/LAUNCH-DISTRIBUTION-VIDEO.md).
 
 ## Brand and design systems
 
