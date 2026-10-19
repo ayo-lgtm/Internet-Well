@@ -23,6 +23,8 @@ jobs:
           python3 automation/vibe_integrations.py show agent-browser > /tmp/agent-browser.json
           python3 automation/vibe_integrations.py plan animejs --ref 4.0.0 > /tmp/anime-plan.json
           python3 automation/vibe_integrations.py plan refero > /tmp/refero-plan.json
+          python3 automation/vibe_integrations.py plan places-to-post-your-startup --ref 1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d73 > /tmp/startup-distribution-plan.json
+          python3 automation/vibe_integrations.py plan openmontage --ref 08e2151fa02de28a5d6a312b3d575692bf147ad7 > /tmp/openmontage-plan.json
           if python3 automation/vibe_integrations.py plan animejs --ref latest; then
             echo "floating ref unexpectedly accepted"
             exit 1
@@ -45,7 +47,7 @@ jobs:
           import json
           from pathlib import Path
           data=json.loads(Path('integrations/vibe/manifest.json').read_text())
-          assert len(data['integrations']) == 13
+          assert len(data['integrations']) == 15
           assert all(x.get('approval_required') for x in data['integrations'])
           assert all(x.get('source','').startswith('https://') for x in data['integrations'])
           print('manifest coverage ok')

@@ -211,6 +211,39 @@
       "provider_consent_required": true,
       "default_action": "provider-review",
       "quality_gates": ["code-ownership", "exportability", "privacy", "security", "app-store-compliance", "deletion-rights"]
+    },
+    {
+      "id": "places-to-post-your-startup",
+      "name": "Places To Post Your Startup",
+      "catalog_slug": "mmccaff/PlacesToPostYourStartup",
+      "kind": "launch-distribution-source",
+      "source": "https://github.com/mmccaff/PlacesToPostYourStartup",
+      "install_mode": "git-reference",
+      "pin_required": true,
+      "license_review": "CC0-1.0",
+      "targets": ["product-marketing", "founder-ops", "generic-agent"],
+      "capabilities": ["startup-launch-distribution", "launch-channel-discovery", "community-launch", "directory-discovery"],
+      "approval_required": true,
+      "default_action": "inspect",
+      "restrictions": ["listing-is-not-approval", "revalidate-each-destination", "no-bulk-posting", "respect-platform-rules", "human-approval-before-external-submission"],
+      "notes": "Use the pinned directory only to generate candidates. Revalidate every third-party destination before selection or posting."
+    },
+    {
+      "id": "openmontage",
+      "name": "OpenMontage",
+      "catalog_slug": "calesthio/OpenMontage",
+      "kind": "agentic-video-production-system",
+      "source": "https://github.com/calesthio/OpenMontage",
+      "install_mode": "git-reference",
+      "pin_required": true,
+      "license_review": "AGPL-3.0-only",
+      "targets": ["coding-agent", "marketing-production", "generic-agent"],
+      "capabilities": ["agentic-video-production", "video-production-pipeline", "media-generation", "render-verification", "production-checkpoints", "budget-governance"],
+      "approval_required": true,
+      "default_action": "inspect",
+      "containment_profile": "media-production-high-risk",
+      "restrictions": ["external-pinned-boundary", "agpl-review-before-modification-or-deployment", "explicit-approval-for-paid-providers", "protect-media-and-credentials", "human-approval-before-publish"],
+      "notes": "Do not vendor OpenMontage into Internet-Well. Keep it at an external pinned boundary and independently review provider, media-rights, credential, cost, and publishing risks."
     }
   ]
 }

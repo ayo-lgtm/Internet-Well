@@ -15,8 +15,9 @@ Product thesis, users, evidence, brand, channels, assets, pricing, analytics, co
 3. Choose the smallest channel set based on audience access and founder capacity.
 4. Create a message architecture, content system, editorial cadence, conversion paths, and measurement plan.
 5. Review consent, tracking, deliverability, platform rules, accessibility, endorsements, and claims.
-6. Select registry resources for analytics, email, CRM, content operations, SEO, experimentation, and privacy only where needed.
-7. Run bounded experiments with precommitted metrics and stop rules.
+6. Select registry resources for analytics, email, CRM, content operations, SEO, experimentation, privacy, launch-channel discovery, and media production only where needed. For startup launch distribution, use `registry/marketing/places-to-post-your-startup.md` only as a candidate source and revalidate each destination. For substantial video work, route through `registry/marketing/openmontage.md` and `skills/experimental/video-production/SKILL.md`; keep OpenMontage at its pinned external AGPL boundary.
+7. Build channel-specific asset requirements. Use `skills/experimental/launch-distribution/SKILL.md` for a verified first-wave/second-wave plan. External posting, paid promotion, account actions, and publishing require separate approval.
+8. Run bounded experiments with precommitted metrics and stop rules.
 
 ## Outputs
 
