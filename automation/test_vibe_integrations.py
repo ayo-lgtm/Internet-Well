@@ -17,9 +17,9 @@ from automation import vibe_integrations as vi
 def main() -> None:
     data = vi.load_manifest()
     items = data["integrations"]
-    assert len(items) == 13
+    assert len(items) == 15
     ids = {item["id"] for item in items}
-    assert len(ids) == 13
+    assert len(ids) == 15
 
     for item in items:
         summary = vi.integration_summary(item)
@@ -39,6 +39,16 @@ def main() -> None:
     agent_browser = vi.find_integration("agent-browser")
     browser_plan = vi.plan(agent_browser, "0.1.0", None)
     assert browser_plan["integration"]["kind"] == "browser-runtime"
+
+    places = vi.find_integration("places-to-post-your-startup")
+    places_plan = vi.plan(places, "1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d73", None)
+    assert places_plan["integration"]["kind"] == "launch-distribution-source"
+    assert places_plan["planned_checkout"][-1] == "1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d73"
+
+    openmontage = vi.find_integration("openmontage")
+    openmontage_plan = vi.plan(openmontage, "08e2151fa02de28a5d6a312b3d575692bf147ad7", None)
+    assert openmontage_plan["integration"]["kind"] == "agentic-video-production-system"
+    assert openmontage_plan["planned_checkout"][-1] == "08e2151fa02de28a5d6a312b3d575692bf147ad7"
 
     with tempfile.TemporaryDirectory() as tmp:
         dest = Path(tmp) / "skill-source"

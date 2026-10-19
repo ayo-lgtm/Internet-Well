@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-72 records as of 2026-10-15 — 50 approved, 17 approved-with-restrictions, 5 experimental. Tiers: 49×B, 23×C. Execution-tested: 28. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+74 records as of 2026-10-15 — 50 approved, 18 approved-with-restrictions, 6 experimental. Tiers: 50×B, 24×C. Execution-tested: 28. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -61,7 +61,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Trivy](security/trivy.md) | security | B | dependency-scanning-sbom | Apache-2.0 | v0.70.0 | 89 | ✅ |
 | [ZAP (Zed Attack Proxy)](security/zaproxy.md) | security | C | dast | Apache-2.0 | v2.17.0 (2025-12-15) | 85 | – |
 
-## ⚠️ approved-with-restrictions (17)
+## ⚠️ approved-with-restrictions (18)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
@@ -70,6 +70,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Renovate](launch-maintenance/renovate.md) | launch-maintenance | C | dependency-updates | AGPL-3.0-only | 43.278.3 (npm, published 2026-07-22) | 82 | – |
 | [Documenso](legal-compliance/documenso.md) | legal-compliance | C | e-signature | AGPL-3.0 (root LICENSE); packages/ee enterprise directory present — audit before use | v2.15.0 (2026-07-21) | 76 | – |
 | [listmonk](marketing/listmonk.md) | marketing | C | email-newsletter | AGPL-3.0 | v6.2.0 (2026-06-26) | 79 | – |
+| [Places To Post Your Startup](marketing/places-to-post-your-startup.md) | marketing | B | launch-distribution | CC0-1.0 | 1941a95f344d90ea5ffe2e0b4c25ffa92dfd3d… | 79 | n/a |
 | [Plausible Analytics (Community Edition)](marketing/plausible-ce.md) | marketing | C | web-analytics | AGPL-3.0-or-later (JS tracker snippet MIT) | v3.2.1 (2026-05-15) | 81 | – |
 | [Scrapy](marketing/scrapy.md) | marketing | B | data-collection | BSD-3-Clause | 2.17.0 (PyPI, published 2026-07-07) | 84 | ✅ |
 | [Chatwoot](operations/chatwoot.md) | operations | C | customer-support | MIT (core); enterprise/ directory under proprietary enterprise license | v4.16.0 (2026-07-18) | 80 | – |
@@ -83,12 +84,13 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 | [TruffleHog](security/trufflehog.md) | security | B | verified-secret-detection | AGPL-3.0-only | v3.95.2 | 80 | ✅ |
 
-## 🧪 experimental (5)
+## 🧪 experimental (6)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
 | [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
+| [OpenMontage](marketing/openmontage.md) | marketing | C | agentic-video-production | AGPL-3.0-only | 08e2151fa02de28a5d6a312b3d575692bf147a… | 77 | – |
 | [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
 | [REA (Reverse Engineer Anything)](security/rea.md) | security | C | reverse-engineering | MIT (REA itself); bundled third_party submodules carry their own licenses — see THIRD_PARTY_NOTICES.md | rea-agents 6.5.0 (npm, tag rea-agents-… | n/a | – |
 | [SkillSpector](security/skillspector.md) | security | C | agent-skill-security-scanning | Apache-2.0 | v2.12.0 (tag commit c7958a3268d9498644… | n/a | ✅ |
@@ -102,7 +104,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | finance | 2 |
 | launch-maintenance | 3 |
 | legal-compliance | 4 |
-| marketing | 7 |
+| marketing | 9 |
 | operations | 10 |
 | product | 7 |
 | security | 17 |

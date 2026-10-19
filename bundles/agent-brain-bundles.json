@@ -81,6 +81,14 @@
       "capabilities": ["browser-automation", "web-testing", "mcp-tools"],
       "preferred": ["playwright-mcp", "agent-browser"],
       "verification": ["isolated-profile", "hostname-allowlist", "credential-isolation", "download-control", "state-change-approval"]
+    },
+    {
+      "id": "product-launch-campaign",
+      "goal_patterns": ["launch my startup", "launch a product", "product launch", "startup distribution", "launch campaign", "make a launch video"],
+      "capabilities": ["startup-launch-distribution", "launch-channel-discovery", "agentic-video-production", "marketing-analytics"],
+      "preferred": ["places-to-post-your-startup", "openmontage"],
+      "verification": ["destination-revalidation", "platform-rule-check", "claims-review", "media-rights-and-consent", "budget-approval", "post-render-review", "human-approval-before-external-submission", "measure-qualified-outcomes"],
+      "restriction": "Launch-channel listings require current destination verification. OpenMontage remains an external pinned AGPL integration. External posting, publishing, paid-provider use, credential use, and media-rights decisions require separate approval."
     }
   ]
 }

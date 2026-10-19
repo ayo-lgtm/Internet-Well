@@ -1,0 +1,920 @@
+{
+  "version": "1.0.0",
+  "id": "code-xr-private",
+  "description": "Discovery metadata only. Purchased source and media are not included.",
+  "policy": "Requires independently obtained private source and user review. No warranty, automatic execution, public redistribution permission, or production approval. Archive hashes identify inputs, not security certification.",
+  "frameworks": [
+    {
+      "id": "01-dashboard-v12",
+      "name": "dashboard v12",
+      "category": "dashboard",
+      "archive_sha256": "d7eaf66d13f62f3b8b40913c6f1a241674ac13179d586353bfc3ff0030cf0992",
+      "package_roots": [
+        "dashboard v12"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "02-particleanimation",
+      "name": "particleAnimation",
+      "category": "animation-ui",
+      "archive_sha256": "2a734bc1c868dd5198a15cbf7e3ff6d75f61b613ca46151746302e4ae6f55de2",
+      "package_roots": [
+        "particleAnimation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "03-payment-v2",
+      "name": "payment v2",
+      "category": "payment-ui",
+      "archive_sha256": "a56c25c635825a26f2d412bb180e9900001d2c754c2c3944059ba75b2ce5847f",
+      "package_roots": [
+        "payment v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "04-payment-page",
+      "name": "Payment Page",
+      "category": "payment-ui",
+      "archive_sha256": "506da3a87e47c8841498a2f99b4e986924ba7c477937e0772464fd16d78f8b04",
+      "package_roots": [
+        "Payment Page"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "05-login-v3",
+      "name": "Login v3",
+      "category": "authentication-ui",
+      "archive_sha256": "ad0c17c40e8e38495b43acb17f487293cd56de36fed98d35ff14203d11664a73",
+      "package_roots": [
+        "Login v3"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "06-price-cards",
+      "name": "price cards",
+      "category": "cards-carousel",
+      "archive_sha256": "0cb50f0731f4762da4e9f1f15416695c3221f9ae591bb347f035112686d5c923",
+      "package_roots": [
+        "price cards"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "07-svg-animations",
+      "name": "svg animations",
+      "category": "animation-ui",
+      "archive_sha256": "d0d1dcacef3fc61a2348e5ab6564dba6e9ab6b23608c15445ebe45dfabedec2f",
+      "package_roots": [
+        "svg animations"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "08-glassy-login-forms",
+      "name": "glassy login forms",
+      "category": "authentication-ui",
+      "archive_sha256": "bd55d7a0adc1e92e57e966f299c9dd44d34dd909c67e0be5e0447c75e3209d84",
+      "package_roots": [
+        "glassy login forms"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "09-animated-otp-verification-pacman",
+      "name": "Animated-otp-Verification pacman",
+      "category": "authentication-ui",
+      "archive_sha256": "1b2ac98000debd102a7a1ee61d757605ac54cb153aa9a802b52a8e1cf73cfc7e",
+      "package_roots": [
+        "Animated-otp-Verification v7"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "10-animated-otp-verification-v7",
+      "name": "Animated-otp-Verification v7",
+      "category": "authentication-ui",
+      "archive_sha256": "23e305a0c90e0e54b25ee78ff961b81e74391391df30ee49414c2a795e9499ed",
+      "package_roots": [
+        "Animated-otp-Verification v7"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "11-macbook-scrool",
+      "name": "Macbook Scrool",
+      "category": "animation-ui",
+      "archive_sha256": "c36ee1fae072ec0f51c36a722e65b4eac6fc0aa3e6581f6a288f5e10b4e06976",
+      "package_roots": [
+        "Macbook Scrool"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "12-upload-animation-v2",
+      "name": "upload animation v2",
+      "category": "upload-ui",
+      "archive_sha256": "d1230b914423d134b90025e1ead62e05d6b9dffd7fa87b905b30ebe1e04b1db4",
+      "package_roots": [
+        "upload animation v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "13-glassy-otp-v2",
+      "name": "glassy otp v2",
+      "category": "authentication-ui",
+      "archive_sha256": "773018699d53e425b5153f4c3a20957c30ee2b9eeb588458c117a69a4b87de9c",
+      "package_roots": [
+        "glassy otp v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "14-cart-animation",
+      "name": "cart animation",
+      "category": "commerce-ui",
+      "archive_sha256": "1bc675b0ba0549d1cf22bd9d02ea40ab1cd83761f888063914334ee82f641822",
+      "package_roots": [
+        "cart animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "15-animated-otp-verification-2nd-link",
+      "name": "Animated-otp-Verification 2nd link",
+      "category": "authentication-ui",
+      "archive_sha256": "3d8e7a5445099e32412f7e3de2f5c03a908693df3aac62e527a7c6e4b3ad7481",
+      "package_roots": [
+        "Animated-otp-Verification"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "16-otp-verification-v3",
+      "name": "OTP-verification-v3",
+      "category": "authentication-ui",
+      "archive_sha256": "34f7f1b795f19350c9dde614950f29b2db5e568ad6b30c926133f77d924458a1",
+      "package_roots": [
+        "OTP-verification-v3"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "17-man-login",
+      "name": "man login",
+      "category": "authentication-ui",
+      "archive_sha256": "6d098a882d23aaeb26a92e03956775e826cc7fe87ebd799cc4a117516bd4b895",
+      "package_roots": [
+        "man login"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "18-fly-to-cart-animation",
+      "name": "fly-to-cart animation",
+      "category": "commerce-ui",
+      "archive_sha256": "125fff602069f70026636574ea19390eee9ebc1c2b31cb86aa071ab51b3dcd85",
+      "package_roots": [
+        "fly-to-cart animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "19-login-page-v2",
+      "name": "login page v2",
+      "category": "authentication-ui",
+      "archive_sha256": "505cb57c3d0493e1eb9b8f0803124e2a2c12863d4377dca7e7d247bf89310f4f",
+      "package_roots": [
+        "login page v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "20-otp-v4",
+      "name": "otp v4",
+      "category": "authentication-ui",
+      "archive_sha256": "d97c82386c3820e2b829009376bb99b80b6ee862732b9ed136a63542504c68ee",
+      "package_roots": [
+        "otp v4"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "21-animated-otp-verification",
+      "name": "Animated-otp-Verification",
+      "category": "authentication-ui",
+      "archive_sha256": "3c2b86f6f4b4e28fe686fded9339b5fc280b64064701a69c2926c8d9fae7f60a",
+      "package_roots": [
+        "Animated-otp-Verification"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "22-payment-animation-v4",
+      "name": "payment animation v4",
+      "category": "payment-ui",
+      "archive_sha256": "45a163754b6481800125568e3d0092849fff899ae4053355e1df3dd00c513d7b",
+      "package_roots": [
+        "payment animation v4"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "23-navgation-tabs",
+      "name": "navgation tabs",
+      "category": "navigation",
+      "archive_sha256": "29ea86d51746fb9b6c864300786e49dd6b8d9ed39c270dadcb1d170f9bfc454c",
+      "package_roots": [
+        "navgation tabs"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "24-upload-button",
+      "name": "upload button ",
+      "category": "upload-ui",
+      "archive_sha256": "7e473b9d00bb92ad56d119736c2c0064254cfecacffe28bcdc8a107b2e23f7bc",
+      "package_roots": [
+        "upload button "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "25-copy-of-login-form-v7",
+      "name": "Copy of login form v7",
+      "category": "authentication-ui",
+      "archive_sha256": "2b470c6a2360ce87efac13497eacf01d84309072fa85cab6172aaff9daff2915",
+      "package_roots": [
+        "login form v7"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "26-new-cart-feature",
+      "name": "new cart feature",
+      "category": "commerce-ui",
+      "archive_sha256": "2a85f4a7ee264f558b95c0c58c18d4385ba144b315fcdc61b29c157ff8efe028",
+      "package_roots": [
+        "cart animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "27-login-v5",
+      "name": "login v5",
+      "category": "authentication-ui",
+      "archive_sha256": "47f5af49f9e8a534f7f418beb8429598bccd9ab0e7cb66038cf28129f464ddf3",
+      "package_roots": [
+        "login v4"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "28-otp-v6",
+      "name": "otp v6",
+      "category": "authentication-ui",
+      "archive_sha256": "dea7307c0d56fd3a52cb8115ff9037feca4a24c9bbe8c0dbf6a0cf6e64e6f85e",
+      "package_roots": [
+        "otp v6"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "29-navigation-tabs-v3",
+      "name": "navigation tabs v3",
+      "category": "navigation",
+      "archive_sha256": "9163f4f71a11775a78cf6c842110039dfd96d54fc174aabaa2bfb6cacb206ba4",
+      "package_roots": [
+        "navigation tabs v3"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "30-loginv4",
+      "name": "loginv4",
+      "category": "authentication-ui",
+      "archive_sha256": "bfb76543decba8442ad500e96d3ff256fad28cc612cb2a33026f7351660499fa",
+      "package_roots": [
+        "loginv4"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "31-navigation-tabs-v4",
+      "name": "navigation tabs v4",
+      "category": "navigation",
+      "archive_sha256": "03da1ba92b30ab8d2161d540a4949604aa5014ea226ab7aac2f6a4242e7fa928",
+      "package_roots": [
+        "navigation tabs v4"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "32-naviagtion-bars-v2",
+      "name": "naviagtion bars v2",
+      "category": "navigation",
+      "archive_sha256": "828ca212e1aac9905ea230c2e38aa3a50f9ef72309f269357f78594cfe9281c0",
+      "package_roots": [
+        "naviagtion bars v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "33-carousel-ui",
+      "name": "Carousel UI",
+      "category": "cards-carousel",
+      "archive_sha256": "0eb472591d83696577db84b42838f8627db6e62add29a0d21c6fe00bf0f87426",
+      "package_roots": [
+        "Carousel UI"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "34-mascot-otp",
+      "name": "mascot otp",
+      "category": "authentication-ui",
+      "archive_sha256": "3353cd53ff704881755d75acadc47c106cc593b46ffdcbf3d60aa8f1be2f8646",
+      "package_roots": [
+        "mascot otp"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "35-login-page",
+      "name": "login page",
+      "category": "authentication-ui",
+      "archive_sha256": "285b94c083c5f80c4fba01ef8d7a0dac39de999b31848b7bf14237f7ecd3f9e7",
+      "package_roots": [
+        "login page"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "36-liquid-otp-v2",
+      "name": "liquid otp v2",
+      "category": "authentication-ui",
+      "archive_sha256": "640ceec458cd33a68b46178d8b33398ab9074657f7bb189128c052e52b162aba",
+      "package_roots": [
+        "liquid otp v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "37-cards-design",
+      "name": "cards design ",
+      "category": "cards-carousel",
+      "archive_sha256": "7fb5082eb9de988c02183fd0eeab940552272383880658c58c62e9c25a68476c",
+      "package_roots": [
+        "cards design "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "38-login-forms",
+      "name": "login forms ",
+      "category": "authentication-ui",
+      "archive_sha256": "eeda76fe8317fca740dc212b18cd6d75e313c49d03375e87579bdd554022063d",
+      "package_roots": [
+        "login forms "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "39-payment-checkout-v3",
+      "name": "payment checkout v3",
+      "category": "payment-ui",
+      "archive_sha256": "f527742c329214a110158cdccb89f294721f61ec78e381080f77fb59806e8eea",
+      "package_roots": [
+        "payment checkout v3"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "40-lamp-login-animation",
+      "name": "lamp login animation",
+      "category": "authentication-ui",
+      "archive_sha256": "f43d383de24409ff6d43d41ae6f7f8a79a034e3dd67f7375a94842f16e90efda",
+      "package_roots": [
+        "lamp login animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "41-animated-otp-verification-v10",
+      "name": "Animated-otp-Verification v10",
+      "category": "authentication-ui",
+      "archive_sha256": "e5900db45cce6284257aee5b58f4d9b0017d69aa1ddf7de51ad6ae48b3969ee9",
+      "package_roots": [
+        "Animated-otp-Verification"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "42-contact-us",
+      "name": "contact us",
+      "category": "animation-ui",
+      "archive_sha256": "25a4f917252c032e4f776bbfff64c3ba598093a8415c9be67e1294ab1913a9c4",
+      "package_roots": [
+        "contact us"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "43-glassy-payment-checkout",
+      "name": "glassy payment checkout",
+      "category": "payment-ui",
+      "archive_sha256": "c3a324fa6e9f54f334db347d87ad15104b066960cc5c9b47cc1ea37f3fc589f4",
+      "package_roots": [
+        "glassy payment checkout"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "44-loginpagev8",
+      "name": "loginpagev8",
+      "category": "authentication-ui",
+      "archive_sha256": "8a1cfeb528627945460461ec01e8f58dee79ba38dd19a31c45f41b45c741433b",
+      "package_roots": [
+        "loginpagev8"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "45-apple-dock",
+      "name": "Apple dock",
+      "category": "navigation",
+      "archive_sha256": "5336397740a90e760839e98a5133407442f3de5489043187b22adaba4f9740c1",
+      "package_roots": [
+        "Apple dock"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "46-hanging-cards-ui",
+      "name": "hanging cards ui",
+      "category": "cards-carousel",
+      "archive_sha256": "c9a67f1b2de2e4bd5d116d8a2cdaf8c23b30ed30ec2d20ca7fec681ae280cf2a",
+      "package_roots": [
+        "hanging cards ui"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "47-dashboard-v3",
+      "name": "dashboard v3",
+      "category": "dashboard",
+      "archive_sha256": "1323190b19456d362507cad41e46652ff4fcac1db24441b9edb7c886f772c5d7",
+      "package_roots": [
+        "dashboard v3"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "48-car-rentel-website",
+      "name": "car rentel website",
+      "category": "website-template",
+      "archive_sha256": "5bc0d5068546396db76dab7745939779dc0a922a09591e38f6827aad7ae33e59",
+      "package_roots": [
+        "car rentel website"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "49-lamp-login-rar",
+      "name": "lamp login.rar",
+      "category": "authentication-ui",
+      "archive_sha256": "d611e1852e9048eaf722c3ed22b9cef019b1faa1d43a41b5ab0c1660b03c4e40",
+      "package_roots": [
+        "lamp login-expanded"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "50-navigation-tabs-v5",
+      "name": "navigation tabs v5",
+      "category": "navigation",
+      "archive_sha256": "b2c7ea0f33280c190a2c0acd290aec9ade33e5d510727a17fe3b3aa46ee536f5",
+      "package_roots": [
+        "navigation tabs v5"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "51-animated-search-bar",
+      "name": "animated search bar",
+      "category": "animation-ui",
+      "archive_sha256": "5e3c9f5eb361d7c1f436d6b3e7a51b1714433e84f9af96b2dd97e83202908ccb",
+      "package_roots": [
+        "animated search bar"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "52-apple-type-navbar",
+      "name": "apple type navbar",
+      "category": "navigation",
+      "archive_sha256": "82b032b0b8df8db666e639c22f14bc99e113f5bae2d16fd6cdce34567373ef51",
+      "package_roots": [
+        "apple type navbar"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "53-otp-v9",
+      "name": "otp v9",
+      "category": "authentication-ui",
+      "archive_sha256": "58a86c5766f9619c2a57aa12eb8ee652841f01aae9f4330ed741552741a630da",
+      "package_roots": [
+        "otp v9"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "54-dashbords",
+      "name": "dashbords",
+      "category": "dashboard",
+      "archive_sha256": "777121fd410d73690effee148b04a05809c95f27fac7a9d54819bda1be51465d",
+      "package_roots": [
+        "dashbords"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "55-apple-style-navbar-v2",
+      "name": "apple style navbar v2",
+      "category": "navigation",
+      "archive_sha256": "78829407b13b0d4a20ecc2f1614a8a3c249526bbec5aa0ef536d85c7d458861a",
+      "package_roots": [
+        "apple style navbar v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "56-animated-otp-verification",
+      "name": "Animated-otp-Verification",
+      "category": "authentication-ui",
+      "archive_sha256": "35ba83aa3c0a3505b705937a174fa19bd978bae10b26f9cdf326e5d7deb9ddf2",
+      "package_roots": [
+        "Animated-otp-Verification"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "57-glassy-dashbord",
+      "name": "glassy dashbord",
+      "category": "dashboard",
+      "archive_sha256": "5c3f320f39106fa91887a98652ee152474331b294949cfcdcbeb58348f4cc550",
+      "package_roots": [
+        "glassy dashbord"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "58-glassy-otp-animation",
+      "name": "glassy otp animation",
+      "category": "authentication-ui",
+      "archive_sha256": "ed4b5e700597417a3dcd81e550a6d552788e8a39d83a499fbed02a77bb6a0156",
+      "package_roots": [
+        "glassy otp animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "59-lamp-login",
+      "name": "lamp login",
+      "category": "authentication-ui",
+      "archive_sha256": "4794cc7c571f8200af3159322a39bd155274049d0b6061d9820430425970a2e4",
+      "package_roots": [
+        "New folder"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "60-apple-dock",
+      "name": "Apple dock",
+      "category": "navigation",
+      "archive_sha256": "81a9ac8f26b3cef1ae4e70ad7c8634d2308422f324cef457a19415bf796416d3",
+      "package_roots": [
+        "Apple dock"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "61-mobile-payment",
+      "name": "mobile payment ",
+      "category": "payment-ui",
+      "archive_sha256": "6257f80143013348d913b5a80c17cc3080c0e2793badead050375ffd4bd44222",
+      "package_roots": [
+        "mobile payment "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "62-glassy-crm-dashbord",
+      "name": "glassy crm dashbord",
+      "category": "dashboard",
+      "archive_sha256": "d0b2ae5de87483172f1b7d94bfb2a30e98235dfeba2b68c09d05177376da083c",
+      "package_roots": [
+        "glassy crm dashbord"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "63-chats-app-ui",
+      "name": "chats app ui",
+      "category": "animation-ui",
+      "archive_sha256": "d75092ea60a1453744f245207985495dd3ed75f1b1635a1987a82d3181489a41",
+      "package_roots": [
+        "chats app ui"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "64-dashbords-v8",
+      "name": "dashbords v8",
+      "category": "dashboard",
+      "archive_sha256": "5a3a67662b7a3c6604ff5f2b274901fd693226f5eb5220e637d1b9eb1fec2845",
+      "package_roots": [
+        "dashbords v8"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "65-liquidotp",
+      "name": "liquidotp",
+      "category": "authentication-ui",
+      "archive_sha256": "ac2fc75e51c6693609dd8d1466130e0a6948e7c0d37950a1a016de2a64efac20",
+      "package_roots": [
+        "liquidotp"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "66-navigation-tabs-v10",
+      "name": "navigation tabs v10 ",
+      "category": "navigation",
+      "archive_sha256": "3cac4501c43e960203b1ca7e7fe20a8a4390e14593424e16a8dca71905a40586",
+      "package_roots": [
+        "navigation tabs v10 "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "67-dashbordv10",
+      "name": "dashbordv10",
+      "category": "dashboard",
+      "archive_sha256": "77890ab17eb00da2b3deee834f156fd5fd7d1cd996f4bedacfe72f51800d9798",
+      "package_roots": [
+        "dashbordv10"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "68-basketball-upload-animation",
+      "name": "basketball upload animation",
+      "category": "upload-ui",
+      "archive_sha256": "22df3d9b3d18d36cfbdbc3206eaa6e83f2d7328ee96e9ecae28ef685c4167c25",
+      "package_roots": [
+        "basketball upload animation"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "69-dashbordv11",
+      "name": "dashbordv11",
+      "category": "dashboard",
+      "archive_sha256": "a6a9fa479785818dad268c01ec9b2b214943f98471515ee5b970fd03e3905e30",
+      "package_roots": [
+        "dashbordv11"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "70-dashboard-v5",
+      "name": "dashboard v5",
+      "category": "dashboard",
+      "archive_sha256": "42cba5405513fb0a032da39dc995c78a83e156a4bc336f73a8635dca31b3dd2f",
+      "package_roots": [
+        "dashboard v5"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "71-cart-feature-v2",
+      "name": "cart feature v2",
+      "category": "commerce-ui",
+      "archive_sha256": "34374084a5c39555a3ac13bce3a214cbb7b2998adda9ad2b68a01a54202d1b04",
+      "package_roots": [
+        "cart feature v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "72-glassy-navbar",
+      "name": "glassy navbar",
+      "category": "navigation",
+      "archive_sha256": "e27ffbba42e2c53f99ae85a1a01939c8a6efe6e9f5b927f64ccea2ad33163f2a",
+      "package_roots": [
+        "glassy navbar"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "73-sidebar-ui",
+      "name": "sidebar ui ",
+      "category": "navigation",
+      "archive_sha256": "b4efde601e1c243fab7fac01660337812c3d907b453961c1c40ecf2401dd3a0b",
+      "package_roots": [
+        "sidebar ui "
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "74-galssy-login-page-v2",
+      "name": "galssy login page v2",
+      "category": "authentication-ui",
+      "archive_sha256": "1b38142ee4b27e1079f3d8fb4f5fcfa4a2e1d303988379175fd0afd6b8e5c7a2",
+      "package_roots": [
+        "galssy login page v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "75-dashbord-v7",
+      "name": "dashbord v7",
+      "category": "dashboard",
+      "archive_sha256": "60805a5205846711f4581bfa411e5b68dccf8193cbdd45d71b615fdc9db1c615",
+      "package_roots": [
+        "dashbord v7"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    },
+    {
+      "id": "76-dashbord-v2",
+      "name": "dashbord v2",
+      "category": "dashboard",
+      "archive_sha256": "75ae8ec14960ed2d86b457bdedb639dd4a7d337d8b833218a37ac1d77cfb9876",
+      "package_roots": [
+        "dashbord v2"
+      ],
+      "availability": "user-provided-private-source",
+      "review_status": "conditional; consult private review; not production-approved",
+      "redistribution": "not-established"
+    }
+  ]
+}

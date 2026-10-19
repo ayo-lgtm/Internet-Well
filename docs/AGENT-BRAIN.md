@@ -93,7 +93,8 @@ Current bundles include:
 - UAT/product testing;
 - research agent;
 - memory/persistence;
-- browser automation.
+- browser automation;
+- product launch campaign.
 
 If no exact bundle matches, the router falls back to capability ranking rather than inventing a stack.
 
@@ -106,6 +107,18 @@ trademark availability, font or asset rights, accessibility conformance, or
 production approval. Follow [`BRAND-SYSTEM.md`](BRAND-SYSTEM.md), replace all
 starter values, test generated outputs and production manifests, and retain a
 named human approver.
+
+### Product-launch boundary
+
+The `product-launch-campaign` bundle combines a CC0 launch-channel discovery
+source with the external pinned OpenMontage video-production system. Channel
+listings are candidates, not approvals: revalidate current platform rules and
+submission requirements before use. OpenMontage remains outside Internet-Well
+at its pinned AGPL-3.0 boundary. Paid-provider calls, credential use, media
+rights/consent decisions, and external publishing each require the applicable
+approval.
+
+See [`LAUNCH-DISTRIBUTION-VIDEO.md`](LAUNCH-DISTRIBUTION-VIDEO.md).
 
 ## Evaluation laboratory
 

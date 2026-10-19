@@ -46,6 +46,7 @@ internet-well-reliability = "automation.agent_reliability:main"
 internet-well-orchestrator = "automation.execution_orchestrator:main"
 internet-well-orchestrate = "automation.execution_orchestrator:main"
 internet-well-engineering = "automation.autonomous_engineering:main"
+internet-well-design-frameworks = "automation.private_design_frameworks:main"
 
 [tool.setuptools]
 py-modules = ["internet_well"]
@@ -65,3 +66,5 @@ include = ["automation*"]
 "integrations/orchestration" = ["integrations/orchestration/orchestration-policy.json", "integrations/orchestration/adapters.json"]
 "integrations/agent-brain" = ["integrations/agent-brain/capability-graph.json", "integrations/agent-brain/mcp.json"]
 "bundles" = ["bundles/agent-brain-bundles.json"]
+
+"integrations/design-frameworks" = ["integrations/design-frameworks/code-xr-private.json"]
