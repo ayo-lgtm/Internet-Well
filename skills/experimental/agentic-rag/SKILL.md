@@ -22,7 +22,7 @@ Implement retrieval-augmented generation in which an agent can decide when and h
 5. Define retrieval triggers so the agent can distinguish questions answerable from current context from those requiring retrieval.
 6. Implement query rewriting or decomposition only when it demonstrably improves retrieval and remains traceable.
 7. Rank and filter retrieval results using relevance and source-quality thresholds; reject insufficient evidence.
-8. Require grounded answers to cite the supporting source span or source identifier where the product supports citation.
+8. Require every derived claim to cite a supporting source span or source identifier. When the product cannot emit a citation, reject or withhold the derived claim.
 9. Add abstention and clarification behavior when evidence is missing, contradictory, stale, outside scope, or below confidence thresholds.
 10. Test adversarial corpus content, prompt injection, stale documents, conflicting sources, empty retrieval, irrelevant top-k results, duplicate chunks, and access-control boundaries.
 11. Benchmark retrieval and answer quality with representative fixtures before and after adoption.

@@ -16,11 +16,11 @@ Delegate work between specialist agents without creating unbounded authority, hi
 ## Procedure
 
 1. Decompose the objective only where specialist delegation improves quality, parallelism, or verification.
-2. Define each delegated task with explicit scope, inputs, outputs, non-goals, deadline or stopping rule, and acceptance criteria.
+2. Define each delegated task with explicit scope, inputs, outputs, non-goals, deadline or stopping rule, and acceptance criteria. The parent must enforce a maximum wall time and tool-call or cost budget for every specialist, including non-recursive ones, and cancel the task when a limit is reached.
 3. Pass the minimum data and permissions required. Do not inherit all parent-agent credentials or tools by default.
 4. Require every handoff to identify the delegating agent, receiving agent, task, allowed tools, and expected artifact or evidence.
 5. Prevent recursive or circular delegation unless explicitly bounded by depth and budget.
-6. Require receiving agents to return evidence, status, uncertainty, and blocked conditions rather than a bare success signal.
+6. Require receiving agents to return evidence, status, an explicit terminal outcome (including `timed_out` or `cancelled` when a limit was reached), uncertainty, and blocked conditions rather than a bare success signal.
 7. Verify delegated outputs at the parent or reviewer layer before treating the overall task as complete.
 8. Keep state-changing actions human-gated when the target project requires approval.
 9. Log delegation decisions and rejected agent choices so routing can be audited.
