@@ -424,6 +424,22 @@
       "recommendation": "use-only-on-documents-you-have-rights-to",
       "restrictions": ["pin-exact-commit", "review-before-install", "respect-viewer-terms-and-drm", "browser-extension-permissions-review"],
       "verification": "primary-source read-only (shallow clone: license file, manifests, README); not executed"
+    },
+    {
+      "slug": "google-research/harness2",
+      "name": "Harness\u00b2 (recursive agent harnessing)",
+      "url": "https://github.com/google-research/harness2",
+      "type": "agent-harness-optimization-framework",
+      "capabilities": ["agent-harness-optimization", "prompt-and-skill-refinement", "agent-evaluation", "benchmarking", "opencode-executor", "codex-executor"],
+      "license": "Apache-2.0",
+      "pinned_commit": "1cfe254e8d25b15f37048c3730134686abe60335",
+      "observed": "2026-10-19",
+      "readiness": "research-framework",
+      "risk": "high-unsandboxed-agent-execution",
+      "recommendation": "evaluate-offline-demo-only; run-model-backed-benchmarks-in-isolated-container",
+      "restrictions": ["pin-exact-commit", "review-before-install", "executor-network-unrestricted-by-default", "codex-executor-runs-with-sandbox-disabled", "isolated-vm-or-container-only", "no-production-credentials", "vertex-ai-costs-approve-spend", "not-an-officially-supported-google-product"],
+      "verification": "primary-source read-only (shallow clone: LICENSE, pyproject, README); not executed",
+      "notes": "Google Research release (paper arXiv 2610.14224). Core package has no runtime dependencies; optional [bridge] pulls litellm proxy. harness2-demo runs without model credentials. Model-backed runs need Vertex AI, Node 20+, and Docker for WorkBuddy-Bench."
     }
   ],
   "already_governed_from_attached_images": ["anthropics/skills", "vercel-labs/skills and skills.sh", "vercel-labs/agent-browser", "gsd-build/get-shit-done", "Leonxlnx/taste-skill", "blader/humanizer", "jenna-russell/storyscope", "DavidHDev/react-bits", "Anime.js", "Shader Gradient", "Jitter", "Refero", "10x App Builder", "Ponytail"],
