@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-74 records as of 2026-10-15 — 50 approved, 18 approved-with-restrictions, 6 experimental. Tiers: 50×B, 24×C. Execution-tested: 28. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+75 records as of 2026-10-23 — 50 approved, 18 approved-with-restrictions, 7 experimental. Tiers: 50×B, 25×C. Execution-tested: 28. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -84,13 +84,14 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | [Semgrep CE (Community Edition)](security/semgrep.md) | security | B | sast | LGPL-2.1-only (engine); official rules are NOT open source — Semgrep Rules License v1.0 | 1.171.0 (PyPI, published 2026-07-22) | 78 | ✅ |
 | [TruffleHog](security/trufflehog.md) | security | B | verified-secret-detection | AGPL-3.0-only | v3.95.2 | 80 | ✅ |
 
-## 🧪 experimental (6)
+## 🧪 experimental (7)
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
 | [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
 | [OpenMontage](marketing/openmontage.md) | marketing | C | agentic-video-production | AGPL-3.0-only | 08e2151fa02de28a5d6a312b3d575692bf147a… | 77 | – |
+| [Omarchy Meeting Recorder](operations/omarchy-meeting-recorder.md) | operations | C | local-meeting-transcription | MIT | 5d098eb39de870f9d56933566bcde589c33b6d… | 58 | – |
 | [MiroFish](product/mirofish.md) | product | C | multi-agent-decision-simulation | AGPL-3.0-only | v0.1.2 (released 2026-03-07) | 62 | – |
 | [REA (Reverse Engineer Anything)](security/rea.md) | security | C | reverse-engineering | MIT (REA itself); bundled third_party submodules carry their own licenses — see THIRD_PARTY_NOTICES.md | rea-agents 6.5.0 (npm, tag rea-agents-… | n/a | – |
 | [SkillSpector](security/skillspector.md) | security | C | agent-skill-security-scanning | Apache-2.0 | v2.12.0 (tag commit c7958a3268d9498644… | n/a | ✅ |
@@ -105,7 +106,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 | launch-maintenance | 3 |
 | legal-compliance | 4 |
 | marketing | 9 |
-| operations | 10 |
+| operations | 11 |
 | product | 7 |
 | security | 17 |
 
