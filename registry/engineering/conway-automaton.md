@@ -10,9 +10,9 @@ canonical_repo: https://github.com/Conway-Research/automaton
 website: https://conway.tech
 pinned_version: d8f816881fd24b6f5e3d616e59edec387a447667 (2026-08-26; package 0.2.1)
 license: MIT
-score: 51
+score: 53
 confidence: medium
-tested: false
+tested: true
 last_verified: 2026-10-25
 ---
 
@@ -43,13 +43,23 @@ Read-only study, or an authorized offline safety evaluation, of how a long-runni
   - x402 payments: $1 maximum, allowlist `conway.tech`;
   - inference: $500 per day;
   - human confirmation: only above $10.
-- Policy rules cover authority, command safety, financial limits, path protection, rate limits and validation (`src/agent/policy-rules/`) [V]. The tests include security, injection, financial and replication suites. CI runs typecheck and tests on Node 20/22 [V]. A CI step exits 0 when vitest hangs (exit code 124), so a green CI run is weaker evidence than it looks [V]. None of these tests were run here [U].
+- Policy rules cover authority, command safety, financial limits, path protection, rate limits and validation (`src/agent/policy-rules/`) [V]. The tests include security, injection, financial and replication suites. CI runs typecheck and tests on Node 20/22 [V]. A CI step exits 0 when vitest hangs (exit code 124), so a green CI run is weaker evidence than it looks [V]. The local run confirmed that this masks a real hang (see Validation results) [V].
 - The creator CLI has `status`, `logs`, `fund` and `send` commands. No dedicated stop, kill or lineage-termination command was found [V]. Other shutdown paths were not verified [U].
 - `scripts/automaton.sh` is a `curl | sh` installer. It clones the repository into `/opt/automaton` when run as root, or into `~/.automaton/runtime` otherwise [V].
 - Contributor concentration: most of the recent shallow history is by a single maintainer [V]. The full history, release signing, SBOM, advisories and npm publication were not audited [U].
 
 ## Validation results
-On 2026-10-25 I read the README, constitution, package metadata, installer script, CI workflow, default treasury policy, replication spawn limit, policy-rule inventory and creator CLI command list from a shallow clone. Nothing was installed or built. No wallets, keys, network calls, tests or agent loops were run. No safety, financial-loss, containment or production-readiness property is claimed. Runtime confidence is capped at medium.
+On 2026-10-25 I read the README, constitution, package metadata, installer script, CI workflow, default treasury policy, replication spawn limit, policy-rule inventory and creator CLI command list from a shallow clone.
+
+The same day, with the user's authorization, I built and tested the pin in a disposable cloud container (transcript row 23 in `evaluations/README.md`):
+- Dependencies installed with `pnpm install --frozen-lockfile` on Node 22.22.0. Only the `better-sqlite3` and `esbuild` build scripts ran; pnpm blocked the optional `bufferutil` and `utf-8-validate` scripts.
+- `pnpm run typecheck` and `pnpm run build` both exited 0. `automaton --version` and `--help` and the creator CLI usage screen printed and exited.
+- Each of the 64 vitest files was run separately with a 300-second cap. 63 files passed: 1,614 tests, 0 failed. They cover the policy engine, financial limits, spend tracking, injection defense, path protection, replication, the agent loop and the wallet [V].
+- `context-hardening.test.ts` does not finish. Its "summarizes old turns", "preserves most recent turns" and "does not summarize when only one turn exists" tests feed 50,000–500,000-character letter-only strings to `estimateTokens`. That function calls `js-tiktoken` `cl100k_base`, which is quadratic on such input: 2k chars took 0.37 s, 8k took 5.8 s and 16k took 20.7 s. Prose, base64, hex and minified code of the same length took 40 ms or less [V].
+- Run as one suite, vitest never exits. Upstream CI turns that timeout into a pass, so the CI result neither confirms nor reports this file's outcome [V].
+- Tests wrote only orchestration workspace files to the scratch `HOME` (`~/.automaton/workspace`). No wallet or key files were created [V].
+
+Not run: `--run`, `--init`, `--provision`, `--setup` or `--configure`, the `curl | sh` installer, any Conway API, inference, chain RPC or inbox network call, or any real or test wallet. Passing unit tests run against mocks and do not establish a safety, financial-loss, containment or production-readiness property. Runtime confidence stays capped at medium.
 
 ## Security findings
 The runtime combines several risks:
@@ -70,7 +80,11 @@ Before any evaluation, review:
 - whether inbox messages can steer financial or replication tools;
 - whether the operator can terminate every descendant.
 
-Treat on-chain and x402 actions as irreversible. No security audit was performed.
+Treat on-chain and x402 actions as irreversible.
+
+Context building can be stalled by untrusted text. `estimateTokens` runs the quadratic tokenizer on turn inputs, thinking and tool results. A web page, file or inbox message containing a long letter-only run could stall a turn for minutes to hours. The measured cost is about 16 s for 16k characters, growing roughly 4× per doubling [V]. I did not check whether every untrusted input is truncated before it is estimated [U]. A length cap or a linear fallback estimate before tokenizing would bound this [I].
+
+No security audit was performed.
 
 ## Legal/licensing findings
 The source license is MIT [V]: commercial use is permitted if the copyright and permission notice are preserved. Conway Cloud, inference providers, domain registrars, Base/Solana networks and stablecoins each carry separate terms, fees and possibly regulatory obligations. An agent holding and moving funds may raise money-transmission, tax, sanctions and consumer-protection questions. These require qualified review and are not resolved here [I]. The "inspired by Anthropic's Claude Constitution" framing does not imply endorsement [I].
@@ -99,7 +113,7 @@ Reference only: no adapter, capability-graph node or bundle is enabled, and Agen
 Execution of any kind needs explicit human approval: wallet creation, funding, network access, replication and self-modification. Legal and compliance review is required before anything touches real value. Promotion from tier C needs reproduced containment and spend-limit evidence plus a verified kill path for all descendants. Upstream claims alone do not justify promotion.
 
 ## Score notes
-Provisional evidence score: 51/100.
+Provisional evidence score: 53/100. Reproducibility rose from 4 to 6 after the clean build and 1,614 passing tests. The hanging test file and CI's masking of the timeout keep it from going higher.
 
 | Criterion | Score |
 |---|---|
@@ -108,7 +122,7 @@ Provisional evidence score: 51/100.
 | Maintenance health | 7/15 |
 | Documentation/usability | 8/10 |
 | License suitability | 9/10 |
-| Reproducibility/testing | 4/10 |
+| Reproducibility/testing | 6/10 |
 | Professional provenance | 5/10 |
 | Integration readiness | 1/5 |
 

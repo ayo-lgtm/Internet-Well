@@ -31,6 +31,7 @@ the session scratchpad; the commands below reproduce each result.
 | 20 | Scrapy 2.17.0 (also 2.13.3) | pip install; HtmlResponse CSS-selector extraction | Exact expected values asserted |
 | 21 | dbmate v2.34.1 (also v2.28.0) | `go install`; SQLite migration new→up→status→insert→rollback | Full roundtrip clean, exit 0 |
 | 22 | parsedmarc 10.2.4 | pip install; `--offline` parse of constructed RUA XML | Exit 0; alignment computed correctly |
+| 23 | Conway Automaton 0.2.1 @ `d8f8168` (2026-10-25) | `pnpm install --frozen-lockfile`; `typecheck`; `build`; `--version`/`--help` only (no `--run`/`--init`/`--provision`, no wallet, scratch `HOME`); vitest run per file, 300 s cap each | Typecheck and build exit 0. 63/64 files, 1,614 tests passed, 0 failed. `context-hardening.test.ts` hangs: 3 tests in "buildContextMessages token budget" do not finish. The cause is quadratic `js-tiktoken` encoding of long letter-only runs (16k chars ≈ 16–21 s, ~4× per doubling); base64/hex/minified input stays fast. The whole-suite run never exits, which upstream CI reports as a pass (exit 124 → 0) |
 
 Failed/blocked attempts, preserved for honesty:
 
