@@ -49,6 +49,15 @@ Failed/blocked attempts, preserved for honesty:
   Plausible, Umami, listmonk, ZAP, Prometheus, Uptime Kuma, Metabase,
   EspoCRM, Documenso, Threat Dragon): Docker daemon unavailable.
 
+## Agent runtime evaluations
+
+- [Conway Automaton offline run — 2026-10-26](conway-automaton-offline-2026-10-26.md):
+  scripted `--run` inside a loopback-only network namespace, with local
+  stand-ins for the Conway API, model, inbox and chain. Transfer, x402,
+  wallet-read, constitution-write and inbox-injection controls held. The
+  `maxChildren` cap is ignored, the agent can edit its own policy-rule
+  source, and credit top-ups bypass the treasury policy.
+
 ## Agent-skill intake scans
 
 - [SkillSpector intake scan — 2026-10-15](skillspector-intake-2026-10-15.md):

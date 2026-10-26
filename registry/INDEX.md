@@ -2,7 +2,7 @@
 
 **GENERATED FILE — do not hand-edit.** Rebuild with `python3 automation/build_index.py`.
 
-77 records as of 2026-10-25 — 50 approved, 18 approved-with-restrictions, 9 experimental. Tiers: 50×B, 27×C. Execution-tested: 29. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
+77 records as of 2026-10-26 — 50 approved, 18 approved-with-restrictions, 9 experimental. Tiers: 50×B, 27×C. Execution-tested: 29. Human-reviewed: 0 (tier A requires human review — see METHODOLOGY §5a).
 
 Rejected candidates (tier D) are preserved with evidence in [rejected/README.md](../rejected/README.md); open verification debts in [evidence/RECHECK.md](../evidence/RECHECK.md); execution-test transcript in [evaluations/README.md](../evaluations/README.md).
 
@@ -88,7 +88,7 @@ Rejected candidates (tier D) are preserved with evidence in [rejected/README.md]
 
 | Name | Category | Tier | Function | License | Pinned | Score | Tested |
 |---|---|---|---|---|---|---|---|
-| [Conway Automaton](engineering/conway-automaton.md) | engineering | C | sovereign-agent-runtime-reference | MIT | d8f816881fd24b6f5e3d616e59edec387a4476… | 53 | ✅ |
+| [Conway Automaton](engineering/conway-automaton.md) | engineering | C | sovereign-agent-runtime-reference | MIT | d8f816881fd24b6f5e3d616e59edec387a4476… | 51 | ✅ |
 | [Google ARTEMIS](engineering/artemis.md) | engineering | C | android-agent-testing | Apache-2.0 | 351ca8422f7b5b54e80a9c1ce03a222e02415b… | 65 | – |
 | [Grok Bot 0.18 Reconstructed](engineering/grok-bot-0.18-reconstructed.md) | engineering | C | agent-orchestration-reference | NOASSERTION (repository exposes no license) | main snapshot observed 2026-08-29; rep… | 72 | – |
 | [promptfoo](engineering/promptfoo.md) | engineering | C | llm-testing-redteaming | MIT | 0.121.19 (npm, published 2026-07-14) | n/a | – |
