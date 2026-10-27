@@ -57,6 +57,9 @@ Failed/blocked attempts, preserved for honesty:
   wallet-read, constitution-write and inbox-injection controls held. The
   `maxChildren` cap is ignored, the agent can edit its own policy-rule
   source, and credit top-ups bypass the treasury policy.
+- [Conway Automaton draft upstream issues](conway-automaton-upstream-issues.md):
+  four issue drafts from the run above, plus three lower-priority ones.
+  Not posted upstream.
 
 ## Agent-skill intake scans
 
