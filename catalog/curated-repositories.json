@@ -4,81 +4,2180 @@
   "status": "research-candidates",
   "policy": "Candidate entries are not approved registry records. Prefer validated registry entries and label all candidate-only recommendations as unverified.",
   "repositories": [
-    {"slug":"aquasecurity/trivy","name":"Trivy","url":"https://github.com/aquasecurity/trivy","capabilities":["dependency-scanning","container-scanning","sbom","misconfiguration-scanning"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"default-security-baseline"},
-    {"slug":"trufflesecurity/trufflehog","name":"TruffleHog","url":"https://github.com/trufflesecurity/trufflehog","capabilities":["secret-detection","secret-validation"],"role":"production-tool","license":"AGPL-3.0","readiness":"production","risk":"high-license","recommendation":"restricted-security-baseline"},
-    {"slug":"zricethezav/gitleaks","name":"Gitleaks","url":"https://github.com/zricethezav/gitleaks","capabilities":["secret-detection","git-security"],"role":"production-tool","license":"MIT","readiness":"production","risk":"low","recommendation":"default-security-baseline"},
-    {"slug":"semgrep/semgrep","name":"Semgrep CE","url":"https://github.com/semgrep/semgrep","capabilities":["sast","custom-security-policy"],"role":"production-tool","license":"LGPL-2.1","readiness":"production","risk":"medium-license","recommendation":"restricted-security-baseline"},
-    {"slug":"google/osv-scanner","name":"OSV-Scanner","url":"https://github.com/google/osv-scanner","capabilities":["dependency-scanning","vulnerability-management"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"low","recommendation":"default-security-baseline"},
-    {"slug":"anchore/syft","name":"Syft","url":"https://github.com/anchore/syft","capabilities":["sbom","supply-chain-security"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"low","recommendation":"default-supply-chain"},
-    {"slug":"anchore/grype","name":"Grype","url":"https://github.com/anchore/grype","capabilities":["vulnerability-scanning","sbom-analysis"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"low","recommendation":"default-supply-chain"},
-    {"slug":"sigstore/cosign","name":"Cosign","url":"https://github.com/sigstore/cosign","capabilities":["artifact-signing","supply-chain-security"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"advanced-supply-chain"},
-    {"slug":"zaproxy/zaproxy","name":"OWASP ZAP","url":"https://github.com/zaproxy/zaproxy","capabilities":["dast","web-security-testing"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"launch-security"},
-    {"slug":"microsoft/playwright","name":"Playwright","url":"https://github.com/microsoft/playwright","capabilities":["browser-testing","browser-automation","critical-journey-testing"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"low","recommendation":"default-web-testing"},
-    {"slug":"vitest-dev/vitest","name":"Vitest","url":"https://github.com/vitest-dev/vitest","capabilities":["unit-testing","component-testing","typescript-testing"],"role":"production-tool","license":"MIT","readiness":"production","risk":"low","recommendation":"default-typescript-testing"},
-    {"slug":"pytest-dev/pytest","name":"pytest","url":"https://github.com/pytest-dev/pytest","capabilities":["unit-testing","python-testing"],"role":"production-tool","license":"MIT","readiness":"production","risk":"low","recommendation":"default-python-testing"},
-    {"slug":"dequelabs/axe-core","name":"axe-core","url":"https://github.com/dequelabs/axe-core","capabilities":["accessibility-testing","wcag-automation"],"role":"production-tool","license":"MPL-2.0","readiness":"production","risk":"low","recommendation":"default-accessibility"},
-    {"slug":"grafana/k6","name":"k6","url":"https://github.com/grafana/k6","capabilities":["load-testing","performance-testing"],"role":"production-tool","license":"AGPL-3.0","readiness":"production","risk":"high-license","recommendation":"restricted-performance-testing"},
-    {"slug":"schemathesis/schemathesis","name":"Schemathesis","url":"https://github.com/schemathesis/schemathesis","capabilities":["api-testing","property-based-testing","openapi-testing"],"role":"production-tool","license":"MIT","readiness":"production","risk":"low","recommendation":"api-quality"},
-    {"slug":"nextauthjs/next-auth","name":"Auth.js","url":"https://github.com/nextauthjs/next-auth","capabilities":["authentication","oauth","nextjs-auth"],"role":"production-tool","license":"ISC","readiness":"production","risk":"medium","recommendation":"nextjs-auth-default"},
-    {"slug":"keycloak/keycloak","name":"Keycloak","url":"https://github.com/keycloak/keycloak","capabilities":["authentication","identity-provider","sso"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium-operational","recommendation":"enterprise-identity"},
-    {"slug":"openfga/openfga","name":"OpenFGA","url":"https://github.com/openfga/openfga","capabilities":["authorization","fine-grained-access-control"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"advanced-authorization"},
-    {"slug":"authzed/spicedb","name":"SpiceDB","url":"https://github.com/authzed/spicedb","capabilities":["authorization","relationship-based-access-control"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"advanced-authorization-alternative"},
-    {"slug":"supabase/supabase","name":"Supabase","url":"https://github.com/supabase/supabase","capabilities":["postgres-platform","authentication","storage","edge-functions"],"role":"platform","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"startup-platform-default"},
-    {"slug":"opentofu/opentofu","name":"OpenTofu","url":"https://github.com/opentofu/opentofu","capabilities":["infrastructure-as-code","cloud-provisioning"],"role":"production-tool","license":"MPL-2.0","readiness":"production","risk":"low","recommendation":"iac-default"},
-    {"slug":"pulumi/pulumi","name":"Pulumi","url":"https://github.com/pulumi/pulumi","capabilities":["infrastructure-as-code","cloud-provisioning"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"iac-code-first-alternative"},
-    {"slug":"ansible/ansible","name":"Ansible","url":"https://github.com/ansible/ansible","capabilities":["configuration-management","automation"],"role":"production-tool","license":"GPL-3.0","readiness":"production","risk":"high-license","recommendation":"restricted-ops-automation"},
-    {"slug":"helm/helm","name":"Helm","url":"https://github.com/helm/helm","capabilities":["kubernetes-packaging","deployment"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"kubernetes-only"},
-    {"slug":"argoproj/argo-cd","name":"Argo CD","url":"https://github.com/argoproj/argo-cd","capabilities":["gitops","kubernetes-deployment"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"kubernetes-gitops"},
-    {"slug":"coollabsio/coolify","name":"Coolify","url":"https://github.com/coollabsio/coolify","capabilities":["self-hosting","deployment-platform"],"role":"reference-implementation","license":"Apache-2.0","readiness":"production","risk":"medium-operational","recommendation":"self-hosted-platform-reference"},
-    {"slug":"prometheus/prometheus","name":"Prometheus","url":"https://github.com/prometheus/prometheus","capabilities":["metrics","monitoring","alerting"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium-operational","recommendation":"metrics-default"},
-    {"slug":"grafana/grafana","name":"Grafana","url":"https://github.com/grafana/grafana","capabilities":["dashboards","observability"],"role":"production-tool","license":"AGPL-3.0","readiness":"production","risk":"high-license","recommendation":"restricted-observability"},
-    {"slug":"open-telemetry/opentelemetry-collector","name":"OpenTelemetry Collector","url":"https://github.com/open-telemetry/opentelemetry-collector","capabilities":["telemetry-collection","traces","metrics","logs"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"telemetry-default"},
-    {"slug":"louislam/uptime-kuma","name":"Uptime Kuma","url":"https://github.com/louislam/uptime-kuma","capabilities":["uptime-monitoring","status-monitoring"],"role":"production-tool","license":"MIT","readiness":"production","risk":"low","recommendation":"founder-monitoring-default"},
-    {"slug":"restic/restic","name":"Restic","url":"https://github.com/restic/restic","capabilities":["backup","restore"],"role":"production-tool","license":"BSD-2-Clause","readiness":"production","risk":"medium","recommendation":"backup-default"},
-    {"slug":"pgbackrest/pgbackrest","name":"pgBackRest","url":"https://github.com/pgbackrest/pgbackrest","capabilities":["postgres-backup","point-in-time-recovery"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium","recommendation":"postgres-backup"},
-    {"slug":"microsoft/presidio","name":"Presidio","url":"https://github.com/microsoft/presidio","capabilities":["pii-detection","pii-redaction","privacy"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium","recommendation":"privacy-engineering"},
-    {"slug":"oss-review-toolkit/ort","name":"OSS Review Toolkit","url":"https://github.com/oss-review-toolkit/ort","capabilities":["license-compliance","dependency-analysis","sbom"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"enterprise-oss-compliance"},
-    {"slug":"nexB/scancode-toolkit","name":"ScanCode Toolkit","url":"https://github.com/nexB/scancode-toolkit","capabilities":["license-scanning","source-compliance"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"low","recommendation":"license-compliance-default"},
-    {"slug":"promptfoo/promptfoo","name":"Promptfoo","url":"https://github.com/promptfoo/promptfoo","capabilities":["llm-evaluation","red-teaming","prompt-testing"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium","recommendation":"fast-ai-evaluation"},
-    {"slug":"UKGovernmentBEIS/inspect_ai","name":"Inspect AI","url":"https://github.com/UKGovernmentBEIS/inspect_ai","capabilities":["llm-evaluation","agent-evaluation","research-evals"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium","recommendation":"high-assurance-ai-evaluation"},
-    {"slug":"langfuse/langfuse","name":"Langfuse","url":"https://github.com/langfuse/langfuse","capabilities":["llm-observability","prompt-management","evaluation"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium-data","recommendation":"ai-observability-default"},
-    {"slug":"Arize-ai/phoenix","name":"Phoenix","url":"https://github.com/Arize-ai/phoenix","capabilities":["llm-observability","tracing","evaluation"],"role":"production-tool","license":"Elastic-2.0","readiness":"production","risk":"high-license","recommendation":"restricted-ai-observability-alternative"},
-    {"slug":"explodinggradients/ragas","name":"Ragas","url":"https://github.com/explodinggradients/ragas","capabilities":["rag-evaluation","llm-evaluation"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"rag-evaluation"},
-    {"slug":"langchain-ai/langgraph","name":"LangGraph","url":"https://github.com/langchain-ai/langgraph","capabilities":["agent-orchestration","durable-agents","workflow-state"],"role":"framework","license":"MIT","readiness":"production","risk":"medium","recommendation":"agent-orchestration-default"},
-    {"slug":"pydantic/pydantic-ai","name":"PydanticAI","url":"https://github.com/pydantic/pydantic-ai","capabilities":["agent-framework","structured-output","python-ai"],"role":"framework","license":"MIT","readiness":"production","risk":"medium","recommendation":"typed-python-agent-default"},
-    {"slug":"BerriAI/litellm","name":"LiteLLM","url":"https://github.com/BerriAI/litellm","capabilities":["model-routing","provider-fallback","cost-control"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium-data","recommendation":"multi-provider-routing"},
-    {"slug":"microsoft/markitdown","name":"MarkItDown","url":"https://github.com/microsoft/markitdown","capabilities":["document-ingestion","markdown-conversion","llm-documents"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium-file-processing","recommendation":"document-ingestion-default"},
-    {"slug":"Unstructured-IO/unstructured","name":"Unstructured","url":"https://github.com/Unstructured-IO/unstructured","capabilities":["document-ingestion","document-parsing","rag"],"role":"framework","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"advanced-document-ingestion"},
-    {"slug":"qdrant/qdrant","name":"Qdrant","url":"https://github.com/qdrant/qdrant","capabilities":["vector-database","semantic-search","rag"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium-operational","recommendation":"vector-database-default"},
-    {"slug":"ollama/ollama","name":"Ollama","url":"https://github.com/ollama/ollama","capabilities":["local-model-serving","developer-ai"],"role":"production-tool","license":"MIT","readiness":"production","risk":"medium-model","recommendation":"local-model-default"},
-    {"slug":"vllm-project/vllm","name":"vLLM","url":"https://github.com/vllm-project/vllm","capabilities":["model-serving","gpu-inference"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"high-operational","recommendation":"scale-model-serving"},
-    {"slug":"OpenHands/OpenHands","name":"OpenHands","url":"https://github.com/OpenHands/OpenHands","capabilities":["coding-agent","autonomous-development","sandboxed-agents"],"role":"reference-implementation","license":"MIT","readiness":"reference","risk":"high-autonomy","recommendation":"coding-agent-reference"},
-    {"slug":"microsoft/playwright-mcp","name":"Playwright MCP","url":"https://github.com/microsoft/playwright-mcp","capabilities":["browser-agent","mcp","browser-automation"],"role":"agent-runtime","license":"Apache-2.0","readiness":"experimental","risk":"high-session-access","recommendation":"permission-gated-browser-agent"},
-    {"slug":"modelcontextprotocol/python-sdk","name":"MCP Python SDK","url":"https://github.com/modelcontextprotocol/python-sdk","capabilities":["mcp","tool-connectivity","agent-integration"],"role":"framework","license":"MIT","readiness":"production","risk":"medium","recommendation":"agent-connection-default"},
-    {"slug":"modelcontextprotocol/servers","name":"MCP Reference Servers","url":"https://github.com/modelcontextprotocol/servers","capabilities":["mcp","tool-servers","agent-integration"],"role":"reference-implementation","license":"MIT","readiness":"reference","risk":"medium","recommendation":"mcp-reference"},
-    {"slug":"browser-use/browser-use","name":"Browser Use","url":"https://github.com/browser-use/browser-use","capabilities":["browser-agent","web-automation"],"role":"agent-runtime","license":"MIT","readiness":"experimental","risk":"high-autonomy","recommendation":"browser-agent-reference"},
-    {"slug":"Aider-AI/aider","name":"Aider","url":"https://github.com/Aider-AI/aider","capabilities":["coding-agent","git-aware-development"],"role":"production-tool","license":"Apache-2.0","readiness":"production","risk":"medium-write-access","recommendation":"coding-assistant-reference"},
-    {"slug":"microsoft/autogen","name":"AutoGen","url":"https://github.com/microsoft/autogen","capabilities":["multi-agent","agent-orchestration"],"role":"reference-implementation","license":"MIT","readiness":"maintenance","risk":"medium-obsolescence","recommendation":"migration-reference-only"},
-    {"slug":"microsoft/semantic-kernel","name":"Semantic Kernel","url":"https://github.com/microsoft/semantic-kernel","capabilities":["agent-orchestration","enterprise-ai","plugins"],"role":"framework","license":"MIT","readiness":"production","risk":"medium","recommendation":"enterprise-agent-alternative"},
-    {"slug":"QuantConnect/Lean","name":"LEAN","url":"https://github.com/QuantConnect/Lean","capabilities":["algorithmic-trading","backtesting","paper-trading"],"role":"reference-implementation","license":"Apache-2.0","readiness":"reference","risk":"high-financial","recommendation":"trading-research-reference"},
-    {"slug":"freqtrade/freqtrade","name":"Freqtrade","url":"https://github.com/freqtrade/freqtrade","capabilities":["crypto-trading","backtesting","paper-trading"],"role":"reference-implementation","license":"GPL-3.0","readiness":"reference","risk":"high-financial-license","recommendation":"crypto-research-reference"},
-    {"slug":"hummingbot/hummingbot","name":"Hummingbot","url":"https://github.com/hummingbot/hummingbot","capabilities":["market-making","crypto-trading","connectors"],"role":"reference-implementation","license":"Apache-2.0","readiness":"reference","risk":"high-financial","recommendation":"market-making-reference"},
-    {"slug":"nautechsystems/nautilus_trader","name":"NautilusTrader","url":"https://github.com/nautechsystems/nautilus_trader","capabilities":["event-driven-trading","backtesting","live-execution"],"role":"reference-implementation","license":"LGPL-3.0","readiness":"reference","risk":"high-financial-license","recommendation":"professional-trading-reference"},
-    {"slug":"polakowo/vectorbt","name":"vectorbt","url":"https://github.com/polakowo/vectorbt","capabilities":["quant-research","vectorized-backtesting"],"role":"research-tool","license":"Apache-2.0","readiness":"research","risk":"high-financial","recommendation":"quant-research"},
-    {"slug":"ranaroussi/quantstats","name":"QuantStats","url":"https://github.com/ranaroussi/quantstats","capabilities":["portfolio-analysis","performance-reporting"],"role":"research-tool","license":"Apache-2.0","readiness":"research","risk":"high-financial","recommendation":"trading-analysis"},
-    {"slug":"jhpyle/docassemble","name":"docassemble","url":"https://github.com/jhpyle/docassemble","capabilities":["legal-interviews","document-assembly","expert-systems"],"role":"reference-implementation","license":"MIT","readiness":"production","risk":"high-legal","recommendation":"legal-document-reference"},
-    {"slug":"freelawproject/courtlistener","name":"CourtListener","url":"https://github.com/freelawproject/courtlistener","capabilities":["legal-search","case-law","legal-data-platform"],"role":"reference-implementation","license":"AGPL-3.0","readiness":"production","risk":"high-legal-license","recommendation":"public-legal-platform-reference"},
-    {"slug":"freelawproject/eyecite","name":"eyecite","url":"https://github.com/freelawproject/eyecite","capabilities":["legal-citation-extraction","legal-nlp"],"role":"production-tool","license":"BSD-2-Clause","readiness":"production","risk":"medium-legal","recommendation":"legal-citation-tool"},
-    {"slug":"CatalaLang/catala","name":"Catala","url":"https://github.com/CatalaLang/catala","capabilities":["computational-law","rules-as-code"],"role":"reference-implementation","license":"Apache-2.0","readiness":"research","risk":"high-legal","recommendation":"rules-as-code-reference"},
-    {"slug":"666ghj/MiroFish","name":"MiroFish","url":"https://github.com/666ghj/MiroFish","capabilities":["multi-agent-simulation","decision-simulation"],"role":"reference-implementation","license":"AGPL-3.0","readiness":"experimental","risk":"high-prediction-license","recommendation":"simulation-reference-only"},
-    {"slug":"amadad/mirofish","name":"MiroFish CLI","url":"https://github.com/amadad/mirofish","capabilities":["multi-agent-simulation","decision-simulation","cli"],"role":"reference-implementation","license":"AGPL-3.0","readiness":"experimental","risk":"high-prediction-license","recommendation":"simulation-reference-only"},
-    {"slug":"appsmithorg/appsmith","name":"Appsmith","url":"https://github.com/appsmithorg/appsmith","capabilities":["internal-tools","low-code","admin-apps"],"role":"reference-implementation","license":"Apache-2.0","readiness":"production","risk":"medium","recommendation":"internal-tool-reference"},
-    {"slug":"nocodb/nocodb","name":"NocoDB","url":"https://github.com/nocodb/nocodb","capabilities":["database-ui","internal-tools","low-code"],"role":"reference-implementation","license":"AGPL-3.0","readiness":"production","risk":"high-license","recommendation":"database-ui-reference"},
-    {"slug":"calcom/cal.com","name":"Cal.com","url":"https://github.com/calcom/cal.com","capabilities":["scheduling","saas-reference","multi-tenant-app"],"role":"reference-implementation","license":"AGPL-3.0","readiness":"production","risk":"high-license","recommendation":"saas-architecture-reference"},
-    {"slug":"activepieces/activepieces","name":"Activepieces","url":"https://github.com/activepieces/activepieces","capabilities":["workflow-automation","integrations","agents"],"role":"reference-implementation","license":"MIT","readiness":"production","risk":"medium","recommendation":"automation-platform-reference"},
-    {"slug":"ayo-lgtm/Internet-Well","name":"Internet-Well","url":"https://github.com/ayo-lgtm/Internet-Well","capabilities":["founder-os","resource-selection","agent-brain"],"role":"first-party-fixture","license":"CC-BY-4.0-content","readiness":"development","risk":"medium","recommendation":"primary-fixture"},
-    {"slug":"ayo-lgtm/findyour-lawyer","name":"Lexura","url":"https://github.com/ayo-lgtm/findyour-lawyer","capabilities":["legal-tech","ai-intake","multilingual-ai"],"role":"first-party-fixture","license":"private-unknown","readiness":"development","risk":"high-legal","recommendation":"legal-tech-fixture"},
-    {"slug":"ayo-lgtm/JobPilot","name":"JobPilot","url":"https://github.com/ayo-lgtm/JobPilot","capabilities":["job-search","browser-automation","ai-saas"],"role":"first-party-fixture","license":"private-unknown","readiness":"development","risk":"high-employment","recommendation":"ai-saas-fixture"},
-    {"slug":"ayo-lgtm/TrueTag","name":"TrueTag","url":"https://github.com/ayo-lgtm/TrueTag","capabilities":["security-review","compliance-review","developer-tool"],"role":"first-party-fixture","license":"private-unknown","readiness":"development","risk":"high-security-legal","recommendation":"security-fixture"}
+    {
+      "slug": "aquasecurity/trivy",
+      "name": "Trivy",
+      "url": "https://github.com/aquasecurity/trivy",
+      "capabilities": [
+        "dependency-scanning",
+        "container-scanning",
+        "sbom",
+        "misconfiguration-scanning"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "default-security-baseline"
+    },
+    {
+      "slug": "trufflesecurity/trufflehog",
+      "name": "TruffleHog",
+      "url": "https://github.com/trufflesecurity/trufflehog",
+      "capabilities": [
+        "secret-detection",
+        "secret-validation"
+      ],
+      "role": "production-tool",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "restricted-security-baseline"
+    },
+    {
+      "slug": "zricethezav/gitleaks",
+      "name": "Gitleaks",
+      "url": "https://github.com/zricethezav/gitleaks",
+      "capabilities": [
+        "secret-detection",
+        "git-security"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-security-baseline"
+    },
+    {
+      "slug": "semgrep/semgrep",
+      "name": "Semgrep CE",
+      "url": "https://github.com/semgrep/semgrep",
+      "capabilities": [
+        "sast",
+        "custom-security-policy"
+      ],
+      "role": "production-tool",
+      "license": "LGPL-2.1",
+      "readiness": "production",
+      "risk": "medium-license",
+      "recommendation": "restricted-security-baseline"
+    },
+    {
+      "slug": "google/osv-scanner",
+      "name": "OSV-Scanner",
+      "url": "https://github.com/google/osv-scanner",
+      "capabilities": [
+        "dependency-scanning",
+        "vulnerability-management"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-security-baseline"
+    },
+    {
+      "slug": "anchore/syft",
+      "name": "Syft",
+      "url": "https://github.com/anchore/syft",
+      "capabilities": [
+        "sbom",
+        "supply-chain-security"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-supply-chain"
+    },
+    {
+      "slug": "anchore/grype",
+      "name": "Grype",
+      "url": "https://github.com/anchore/grype",
+      "capabilities": [
+        "vulnerability-scanning",
+        "sbom-analysis"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-supply-chain"
+    },
+    {
+      "slug": "sigstore/cosign",
+      "name": "Cosign",
+      "url": "https://github.com/sigstore/cosign",
+      "capabilities": [
+        "artifact-signing",
+        "supply-chain-security"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "advanced-supply-chain"
+    },
+    {
+      "slug": "zaproxy/zaproxy",
+      "name": "OWASP ZAP",
+      "url": "https://github.com/zaproxy/zaproxy",
+      "capabilities": [
+        "dast",
+        "web-security-testing"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "launch-security"
+    },
+    {
+      "slug": "microsoft/playwright",
+      "name": "Playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "capabilities": [
+        "browser-testing",
+        "browser-automation",
+        "critical-journey-testing"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-web-testing"
+    },
+    {
+      "slug": "vitest-dev/vitest",
+      "name": "Vitest",
+      "url": "https://github.com/vitest-dev/vitest",
+      "capabilities": [
+        "unit-testing",
+        "component-testing",
+        "typescript-testing"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-typescript-testing"
+    },
+    {
+      "slug": "pytest-dev/pytest",
+      "name": "pytest",
+      "url": "https://github.com/pytest-dev/pytest",
+      "capabilities": [
+        "unit-testing",
+        "python-testing"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-python-testing"
+    },
+    {
+      "slug": "dequelabs/axe-core",
+      "name": "axe-core",
+      "url": "https://github.com/dequelabs/axe-core",
+      "capabilities": [
+        "accessibility-testing",
+        "wcag-automation"
+      ],
+      "role": "production-tool",
+      "license": "MPL-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "default-accessibility"
+    },
+    {
+      "slug": "grafana/k6",
+      "name": "k6",
+      "url": "https://github.com/grafana/k6",
+      "capabilities": [
+        "load-testing",
+        "performance-testing"
+      ],
+      "role": "production-tool",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "restricted-performance-testing"
+    },
+    {
+      "slug": "schemathesis/schemathesis",
+      "name": "Schemathesis",
+      "url": "https://github.com/schemathesis/schemathesis",
+      "capabilities": [
+        "api-testing",
+        "property-based-testing",
+        "openapi-testing"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "api-quality"
+    },
+    {
+      "slug": "nextauthjs/next-auth",
+      "name": "Auth.js",
+      "url": "https://github.com/nextauthjs/next-auth",
+      "capabilities": [
+        "authentication",
+        "oauth",
+        "nextjs-auth"
+      ],
+      "role": "production-tool",
+      "license": "ISC",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "nextjs-auth-default"
+    },
+    {
+      "slug": "keycloak/keycloak",
+      "name": "Keycloak",
+      "url": "https://github.com/keycloak/keycloak",
+      "capabilities": [
+        "authentication",
+        "identity-provider",
+        "sso"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium-operational",
+      "recommendation": "enterprise-identity"
+    },
+    {
+      "slug": "openfga/openfga",
+      "name": "OpenFGA",
+      "url": "https://github.com/openfga/openfga",
+      "capabilities": [
+        "authorization",
+        "fine-grained-access-control"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "advanced-authorization"
+    },
+    {
+      "slug": "authzed/spicedb",
+      "name": "SpiceDB",
+      "url": "https://github.com/authzed/spicedb",
+      "capabilities": [
+        "authorization",
+        "relationship-based-access-control"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "advanced-authorization-alternative"
+    },
+    {
+      "slug": "supabase/supabase",
+      "name": "Supabase",
+      "url": "https://github.com/supabase/supabase",
+      "capabilities": [
+        "postgres-platform",
+        "authentication",
+        "storage",
+        "edge-functions"
+      ],
+      "role": "platform",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "startup-platform-default"
+    },
+    {
+      "slug": "opentofu/opentofu",
+      "name": "OpenTofu",
+      "url": "https://github.com/opentofu/opentofu",
+      "capabilities": [
+        "infrastructure-as-code",
+        "cloud-provisioning"
+      ],
+      "role": "production-tool",
+      "license": "MPL-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "iac-default"
+    },
+    {
+      "slug": "pulumi/pulumi",
+      "name": "Pulumi",
+      "url": "https://github.com/pulumi/pulumi",
+      "capabilities": [
+        "infrastructure-as-code",
+        "cloud-provisioning"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "iac-code-first-alternative"
+    },
+    {
+      "slug": "ansible/ansible",
+      "name": "Ansible",
+      "url": "https://github.com/ansible/ansible",
+      "capabilities": [
+        "configuration-management",
+        "automation"
+      ],
+      "role": "production-tool",
+      "license": "GPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "restricted-ops-automation"
+    },
+    {
+      "slug": "helm/helm",
+      "name": "Helm",
+      "url": "https://github.com/helm/helm",
+      "capabilities": [
+        "kubernetes-packaging",
+        "deployment"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "kubernetes-only"
+    },
+    {
+      "slug": "argoproj/argo-cd",
+      "name": "Argo CD",
+      "url": "https://github.com/argoproj/argo-cd",
+      "capabilities": [
+        "gitops",
+        "kubernetes-deployment"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "kubernetes-gitops"
+    },
+    {
+      "slug": "coollabsio/coolify",
+      "name": "Coolify",
+      "url": "https://github.com/coollabsio/coolify",
+      "capabilities": [
+        "self-hosting",
+        "deployment-platform"
+      ],
+      "role": "reference-implementation",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium-operational",
+      "recommendation": "self-hosted-platform-reference"
+    },
+    {
+      "slug": "prometheus/prometheus",
+      "name": "Prometheus",
+      "url": "https://github.com/prometheus/prometheus",
+      "capabilities": [
+        "metrics",
+        "monitoring",
+        "alerting"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium-operational",
+      "recommendation": "metrics-default"
+    },
+    {
+      "slug": "grafana/grafana",
+      "name": "Grafana",
+      "url": "https://github.com/grafana/grafana",
+      "capabilities": [
+        "dashboards",
+        "observability"
+      ],
+      "role": "production-tool",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "restricted-observability"
+    },
+    {
+      "slug": "open-telemetry/opentelemetry-collector",
+      "name": "OpenTelemetry Collector",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector",
+      "capabilities": [
+        "telemetry-collection",
+        "traces",
+        "metrics",
+        "logs"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "telemetry-default"
+    },
+    {
+      "slug": "louislam/uptime-kuma",
+      "name": "Uptime Kuma",
+      "url": "https://github.com/louislam/uptime-kuma",
+      "capabilities": [
+        "uptime-monitoring",
+        "status-monitoring"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "founder-monitoring-default"
+    },
+    {
+      "slug": "restic/restic",
+      "name": "Restic",
+      "url": "https://github.com/restic/restic",
+      "capabilities": [
+        "backup",
+        "restore"
+      ],
+      "role": "production-tool",
+      "license": "BSD-2-Clause",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "backup-default"
+    },
+    {
+      "slug": "pgbackrest/pgbackrest",
+      "name": "pgBackRest",
+      "url": "https://github.com/pgbackrest/pgbackrest",
+      "capabilities": [
+        "postgres-backup",
+        "point-in-time-recovery"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "postgres-backup"
+    },
+    {
+      "slug": "microsoft/presidio",
+      "name": "Presidio",
+      "url": "https://github.com/microsoft/presidio",
+      "capabilities": [
+        "pii-detection",
+        "pii-redaction",
+        "privacy"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "privacy-engineering"
+    },
+    {
+      "slug": "oss-review-toolkit/ort",
+      "name": "OSS Review Toolkit",
+      "url": "https://github.com/oss-review-toolkit/ort",
+      "capabilities": [
+        "license-compliance",
+        "dependency-analysis",
+        "sbom"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "enterprise-oss-compliance"
+    },
+    {
+      "slug": "nexB/scancode-toolkit",
+      "name": "ScanCode Toolkit",
+      "url": "https://github.com/nexB/scancode-toolkit",
+      "capabilities": [
+        "license-scanning",
+        "source-compliance"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "license-compliance-default"
+    },
+    {
+      "slug": "promptfoo/promptfoo",
+      "name": "Promptfoo",
+      "url": "https://github.com/promptfoo/promptfoo",
+      "capabilities": [
+        "llm-evaluation",
+        "red-teaming",
+        "prompt-testing"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "fast-ai-evaluation"
+    },
+    {
+      "slug": "UKGovernmentBEIS/inspect_ai",
+      "name": "Inspect AI",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_ai",
+      "capabilities": [
+        "llm-evaluation",
+        "agent-evaluation",
+        "research-evals"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "high-assurance-ai-evaluation"
+    },
+    {
+      "slug": "langfuse/langfuse",
+      "name": "Langfuse",
+      "url": "https://github.com/langfuse/langfuse",
+      "capabilities": [
+        "llm-observability",
+        "prompt-management",
+        "evaluation"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "ai-observability-default"
+    },
+    {
+      "slug": "Arize-ai/phoenix",
+      "name": "Phoenix",
+      "url": "https://github.com/Arize-ai/phoenix",
+      "capabilities": [
+        "llm-observability",
+        "tracing",
+        "evaluation"
+      ],
+      "role": "production-tool",
+      "license": "Elastic-2.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "restricted-ai-observability-alternative"
+    },
+    {
+      "slug": "explodinggradients/ragas",
+      "name": "Ragas",
+      "url": "https://github.com/explodinggradients/ragas",
+      "capabilities": [
+        "rag-evaluation",
+        "llm-evaluation"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "rag-evaluation"
+    },
+    {
+      "slug": "langchain-ai/langgraph",
+      "name": "LangGraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "capabilities": [
+        "agent-orchestration",
+        "durable-agents",
+        "workflow-state"
+      ],
+      "role": "framework",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "agent-orchestration-default"
+    },
+    {
+      "slug": "pydantic/pydantic-ai",
+      "name": "PydanticAI",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "capabilities": [
+        "agent-framework",
+        "structured-output",
+        "python-ai"
+      ],
+      "role": "framework",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "typed-python-agent-default"
+    },
+    {
+      "slug": "BerriAI/litellm",
+      "name": "LiteLLM",
+      "url": "https://github.com/BerriAI/litellm",
+      "capabilities": [
+        "model-routing",
+        "provider-fallback",
+        "cost-control"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "multi-provider-routing"
+    },
+    {
+      "slug": "microsoft/markitdown",
+      "name": "MarkItDown",
+      "url": "https://github.com/microsoft/markitdown",
+      "capabilities": [
+        "document-ingestion",
+        "markdown-conversion",
+        "llm-documents"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-file-processing",
+      "recommendation": "document-ingestion-default"
+    },
+    {
+      "slug": "Unstructured-IO/unstructured",
+      "name": "Unstructured",
+      "url": "https://github.com/Unstructured-IO/unstructured",
+      "capabilities": [
+        "document-ingestion",
+        "document-parsing",
+        "rag"
+      ],
+      "role": "framework",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "advanced-document-ingestion"
+    },
+    {
+      "slug": "qdrant/qdrant",
+      "name": "Qdrant",
+      "url": "https://github.com/qdrant/qdrant",
+      "capabilities": [
+        "vector-database",
+        "semantic-search",
+        "rag"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium-operational",
+      "recommendation": "vector-database-default"
+    },
+    {
+      "slug": "ollama/ollama",
+      "name": "Ollama",
+      "url": "https://github.com/ollama/ollama",
+      "capabilities": [
+        "local-model-serving",
+        "developer-ai"
+      ],
+      "role": "production-tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-model",
+      "recommendation": "local-model-default"
+    },
+    {
+      "slug": "vllm-project/vllm",
+      "name": "vLLM",
+      "url": "https://github.com/vllm-project/vllm",
+      "capabilities": [
+        "model-serving",
+        "gpu-inference"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "high-operational",
+      "recommendation": "scale-model-serving"
+    },
+    {
+      "slug": "OpenHands/OpenHands",
+      "name": "OpenHands",
+      "url": "https://github.com/OpenHands/OpenHands",
+      "capabilities": [
+        "coding-agent",
+        "autonomous-development",
+        "sandboxed-agents"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "reference",
+      "risk": "high-autonomy",
+      "recommendation": "coding-agent-reference"
+    },
+    {
+      "slug": "microsoft/playwright-mcp",
+      "name": "Playwright MCP",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "capabilities": [
+        "browser-agent",
+        "mcp",
+        "browser-automation"
+      ],
+      "role": "agent-runtime",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "high-session-access",
+      "recommendation": "permission-gated-browser-agent"
+    },
+    {
+      "slug": "modelcontextprotocol/python-sdk",
+      "name": "MCP Python SDK",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "capabilities": [
+        "mcp",
+        "tool-connectivity",
+        "agent-integration"
+      ],
+      "role": "framework",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "agent-connection-default"
+    },
+    {
+      "slug": "modelcontextprotocol/servers",
+      "name": "MCP Reference Servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "capabilities": [
+        "mcp",
+        "tool-servers",
+        "agent-integration"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "reference",
+      "risk": "medium",
+      "recommendation": "mcp-reference"
+    },
+    {
+      "slug": "browser-use/browser-use",
+      "name": "Browser Use",
+      "url": "https://github.com/browser-use/browser-use",
+      "capabilities": [
+        "browser-agent",
+        "web-automation"
+      ],
+      "role": "agent-runtime",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "browser-agent-reference"
+    },
+    {
+      "slug": "Aider-AI/aider",
+      "name": "Aider",
+      "url": "https://github.com/Aider-AI/aider",
+      "capabilities": [
+        "coding-agent",
+        "git-aware-development"
+      ],
+      "role": "production-tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium-write-access",
+      "recommendation": "coding-assistant-reference"
+    },
+    {
+      "slug": "microsoft/autogen",
+      "name": "AutoGen",
+      "url": "https://github.com/microsoft/autogen",
+      "capabilities": [
+        "multi-agent",
+        "agent-orchestration"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "maintenance",
+      "risk": "medium-obsolescence",
+      "recommendation": "migration-reference-only"
+    },
+    {
+      "slug": "microsoft/semantic-kernel",
+      "name": "Semantic Kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "capabilities": [
+        "agent-orchestration",
+        "enterprise-ai",
+        "plugins"
+      ],
+      "role": "framework",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "enterprise-agent-alternative"
+    },
+    {
+      "slug": "QuantConnect/Lean",
+      "name": "LEAN",
+      "url": "https://github.com/QuantConnect/Lean",
+      "capabilities": [
+        "algorithmic-trading",
+        "backtesting",
+        "paper-trading"
+      ],
+      "role": "reference-implementation",
+      "license": "Apache-2.0",
+      "readiness": "reference",
+      "risk": "high-financial",
+      "recommendation": "trading-research-reference"
+    },
+    {
+      "slug": "freqtrade/freqtrade",
+      "name": "Freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "capabilities": [
+        "crypto-trading",
+        "backtesting",
+        "paper-trading"
+      ],
+      "role": "reference-implementation",
+      "license": "GPL-3.0",
+      "readiness": "reference",
+      "risk": "high-financial-license",
+      "recommendation": "crypto-research-reference"
+    },
+    {
+      "slug": "hummingbot/hummingbot",
+      "name": "Hummingbot",
+      "url": "https://github.com/hummingbot/hummingbot",
+      "capabilities": [
+        "market-making",
+        "crypto-trading",
+        "connectors"
+      ],
+      "role": "reference-implementation",
+      "license": "Apache-2.0",
+      "readiness": "reference",
+      "risk": "high-financial",
+      "recommendation": "market-making-reference"
+    },
+    {
+      "slug": "nautechsystems/nautilus_trader",
+      "name": "NautilusTrader",
+      "url": "https://github.com/nautechsystems/nautilus_trader",
+      "capabilities": [
+        "event-driven-trading",
+        "backtesting",
+        "live-execution"
+      ],
+      "role": "reference-implementation",
+      "license": "LGPL-3.0",
+      "readiness": "reference",
+      "risk": "high-financial-license",
+      "recommendation": "professional-trading-reference"
+    },
+    {
+      "slug": "polakowo/vectorbt",
+      "name": "vectorbt",
+      "url": "https://github.com/polakowo/vectorbt",
+      "capabilities": [
+        "quant-research",
+        "vectorized-backtesting"
+      ],
+      "role": "research-tool",
+      "license": "Apache-2.0",
+      "readiness": "research",
+      "risk": "high-financial",
+      "recommendation": "quant-research"
+    },
+    {
+      "slug": "ranaroussi/quantstats",
+      "name": "QuantStats",
+      "url": "https://github.com/ranaroussi/quantstats",
+      "capabilities": [
+        "portfolio-analysis",
+        "performance-reporting"
+      ],
+      "role": "research-tool",
+      "license": "Apache-2.0",
+      "readiness": "research",
+      "risk": "high-financial",
+      "recommendation": "trading-analysis"
+    },
+    {
+      "slug": "jhpyle/docassemble",
+      "name": "docassemble",
+      "url": "https://github.com/jhpyle/docassemble",
+      "capabilities": [
+        "legal-interviews",
+        "document-assembly",
+        "expert-systems"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "high-legal",
+      "recommendation": "legal-document-reference"
+    },
+    {
+      "slug": "freelawproject/courtlistener",
+      "name": "CourtListener",
+      "url": "https://github.com/freelawproject/courtlistener",
+      "capabilities": [
+        "legal-search",
+        "case-law",
+        "legal-data-platform"
+      ],
+      "role": "reference-implementation",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-legal-license",
+      "recommendation": "public-legal-platform-reference"
+    },
+    {
+      "slug": "freelawproject/eyecite",
+      "name": "eyecite",
+      "url": "https://github.com/freelawproject/eyecite",
+      "capabilities": [
+        "legal-citation-extraction",
+        "legal-nlp"
+      ],
+      "role": "production-tool",
+      "license": "BSD-2-Clause",
+      "readiness": "production",
+      "risk": "medium-legal",
+      "recommendation": "legal-citation-tool"
+    },
+    {
+      "slug": "CatalaLang/catala",
+      "name": "Catala",
+      "url": "https://github.com/CatalaLang/catala",
+      "capabilities": [
+        "computational-law",
+        "rules-as-code"
+      ],
+      "role": "reference-implementation",
+      "license": "Apache-2.0",
+      "readiness": "research",
+      "risk": "high-legal",
+      "recommendation": "rules-as-code-reference"
+    },
+    {
+      "slug": "666ghj/MiroFish",
+      "name": "MiroFish",
+      "url": "https://github.com/666ghj/MiroFish",
+      "capabilities": [
+        "multi-agent-simulation",
+        "decision-simulation"
+      ],
+      "role": "reference-implementation",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "high-prediction-license",
+      "recommendation": "simulation-reference-only"
+    },
+    {
+      "slug": "amadad/mirofish",
+      "name": "MiroFish CLI",
+      "url": "https://github.com/amadad/mirofish",
+      "capabilities": [
+        "multi-agent-simulation",
+        "decision-simulation",
+        "cli"
+      ],
+      "role": "reference-implementation",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "high-prediction-license",
+      "recommendation": "simulation-reference-only"
+    },
+    {
+      "slug": "appsmithorg/appsmith",
+      "name": "Appsmith",
+      "url": "https://github.com/appsmithorg/appsmith",
+      "capabilities": [
+        "internal-tools",
+        "low-code",
+        "admin-apps"
+      ],
+      "role": "reference-implementation",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "internal-tool-reference"
+    },
+    {
+      "slug": "nocodb/nocodb",
+      "name": "NocoDB",
+      "url": "https://github.com/nocodb/nocodb",
+      "capabilities": [
+        "database-ui",
+        "internal-tools",
+        "low-code"
+      ],
+      "role": "reference-implementation",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "database-ui-reference"
+    },
+    {
+      "slug": "calcom/cal.com",
+      "name": "Cal.com",
+      "url": "https://github.com/calcom/cal.com",
+      "capabilities": [
+        "scheduling",
+        "saas-reference",
+        "multi-tenant-app"
+      ],
+      "role": "reference-implementation",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "high-license",
+      "recommendation": "saas-architecture-reference"
+    },
+    {
+      "slug": "activepieces/activepieces",
+      "name": "Activepieces",
+      "url": "https://github.com/activepieces/activepieces",
+      "capabilities": [
+        "workflow-automation",
+        "integrations",
+        "agents"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium",
+      "recommendation": "automation-platform-reference"
+    },
+    {
+      "slug": "ayo-lgtm/Internet-Well",
+      "name": "Internet-Well",
+      "url": "https://github.com/ayo-lgtm/Internet-Well",
+      "capabilities": [
+        "founder-os",
+        "resource-selection",
+        "agent-brain"
+      ],
+      "role": "first-party-fixture",
+      "license": "CC-BY-4.0-content",
+      "readiness": "development",
+      "risk": "medium",
+      "recommendation": "primary-fixture"
+    },
+    {
+      "slug": "ayo-lgtm/findyour-lawyer",
+      "name": "Lexura",
+      "url": "https://github.com/ayo-lgtm/findyour-lawyer",
+      "capabilities": [
+        "legal-tech",
+        "ai-intake",
+        "multilingual-ai"
+      ],
+      "role": "first-party-fixture",
+      "license": "private-unknown",
+      "readiness": "development",
+      "risk": "high-legal",
+      "recommendation": "legal-tech-fixture"
+    },
+    {
+      "slug": "ayo-lgtm/JobPilot",
+      "name": "JobPilot",
+      "url": "https://github.com/ayo-lgtm/JobPilot",
+      "capabilities": [
+        "job-search",
+        "browser-automation",
+        "ai-saas"
+      ],
+      "role": "first-party-fixture",
+      "license": "private-unknown",
+      "readiness": "development",
+      "risk": "high-employment",
+      "recommendation": "ai-saas-fixture"
+    },
+    {
+      "slug": "ayo-lgtm/TrueTag",
+      "name": "TrueTag",
+      "url": "https://github.com/ayo-lgtm/TrueTag",
+      "capabilities": [
+        "security-review",
+        "compliance-review",
+        "developer-tool"
+      ],
+      "role": "first-party-fixture",
+      "license": "private-unknown",
+      "readiness": "development",
+      "risk": "high-security-legal",
+      "recommendation": "security-fixture"
+    },
+    {
+      "slug": "strelov1/freehire",
+      "name": "FreeHire",
+      "url": "https://github.com/strelov1/freehire",
+      "capabilities": [
+        "job-listing-aggregation",
+        "ats-crawling",
+        "job-search-api",
+        "listing-deduplication"
+      ],
+      "role": "platform",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "jobs-data-source"
+    },
+    {
+      "slug": "gitroomhq/postiz-app",
+      "name": "Postiz",
+      "url": "https://github.com/gitroomhq/postiz-app",
+      "capabilities": [
+        "social-scheduling",
+        "multi-platform-posting",
+        "mcp-server"
+      ],
+      "role": "platform",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "social-scheduler"
+    },
+    {
+      "slug": "debpalash/VoiceStudio",
+      "name": "VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "capabilities": [
+        "voice-cloning",
+        "transcription",
+        "dubbing"
+      ],
+      "role": "tool",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "voice-tool-personal-use"
+    },
+    {
+      "slug": "hugohe3/ppt-master",
+      "name": "PPT Master",
+      "url": "https://github.com/hugohe3/ppt-master",
+      "capabilities": [
+        "slide-generation",
+        "document-to-pptx",
+        "agent-skill"
+      ],
+      "role": "tool",
+      "license": "unknown",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "deck-generation-skill"
+    },
+    {
+      "slug": "opf/openproject",
+      "name": "OpenProject",
+      "url": "https://github.com/opf/openproject",
+      "capabilities": [
+        "project-management",
+        "team-planning"
+      ],
+      "role": "platform",
+      "license": "GPL-3.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "project-management"
+    },
+    {
+      "slug": "JosssphZhou/poki",
+      "name": "Poki",
+      "url": "https://github.com/JosssphZhou/poki",
+      "capabilities": [
+        "iphone-automation",
+        "mcp-server",
+        "agent-control"
+      ],
+      "role": "agent-runtime",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "device-agent-trial-spare-device"
+    },
+    {
+      "slug": "AgriciDaniel/jev-seo",
+      "name": "jev-seo",
+      "url": "https://github.com/AgriciDaniel/jev-seo",
+      "capabilities": [
+        "seo-audit",
+        "site-crawl",
+        "report-generation",
+        "jev-judgments"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "seo-audit-skill"
+    },
+    {
+      "slug": "TIGER-AI-Lab/WebsiteBench",
+      "name": "WebsiteBench",
+      "url": "https://github.com/TIGER-AI-Lab/WebsiteBench",
+      "capabilities": [
+        "agent-benchmark",
+        "web-rebuild-eval",
+        "visual-similarity"
+      ],
+      "role": "benchmark",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "agent-eval-reference"
+    },
+    {
+      "slug": "GoogleChrome/modern-web-guidance",
+      "name": "modern-web-guidance",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance",
+      "capabilities": [
+        "web-best-practices",
+        "agent-skills",
+        "legacy-scan"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "web-guidance-skill-pack"
+    },
+    {
+      "slug": "tt-a1i/archify",
+      "name": "Archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "capabilities": [
+        "codebase-mapping",
+        "architecture-diagram",
+        "agent-skill"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "codebase-visualizer"
+    },
+    {
+      "slug": "Gitlawb/openclaude",
+      "name": "OpenClaude",
+      "url": "https://github.com/Gitlawb/openclaude",
+      "capabilities": [
+        "coding-agent",
+        "terminal-agent",
+        "local-models"
+      ],
+      "role": "agent-runtime",
+      "license": "unknown",
+      "readiness": "experimental",
+      "risk": "medium-autonomy",
+      "recommendation": "coding-agent-alt"
+    },
+    {
+      "slug": "tashfeenahmed/freellmapi",
+      "name": "FreeLLM API",
+      "url": "https://github.com/tashfeenahmed/freellmapi",
+      "capabilities": [
+        "llm-router",
+        "free-tier-aggregation",
+        "openai-compatible-api"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "free-tier-router"
+    },
+    {
+      "slug": "D4Vinci/Scrapling",
+      "name": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "capabilities": [
+        "web-scraping",
+        "anti-bot",
+        "agent-research"
+      ],
+      "role": "tool",
+      "license": "BSD-3-Clause",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "scraping-framework"
+    },
+    {
+      "slug": "usestrix/strix",
+      "name": "Strix",
+      "url": "https://github.com/usestrix/strix",
+      "capabilities": [
+        "ai-pentesting",
+        "vulnerability-validation"
+      ],
+      "role": "tool",
+      "license": "unknown",
+      "readiness": "production",
+      "risk": "high-security-legal",
+      "recommendation": "pentest-agent-authorized-only"
+    },
+    {
+      "slug": "yt-dlp/yt-dlp",
+      "name": "yt-dlp",
+      "url": "https://github.com/yt-dlp/yt-dlp",
+      "capabilities": [
+        "video-download",
+        "media-extraction"
+      ],
+      "role": "tool",
+      "license": "Unlicense",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "media-downloader"
+    },
+    {
+      "slug": "NVIDIA/SkillEvaluator",
+      "name": "SkillEvaluator",
+      "url": "https://github.com/NVIDIA/SkillEvaluator",
+      "capabilities": [
+        "skill-evaluation",
+        "quality-gates",
+        "agent-eval"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "skill-quality-gate"
+    },
+    {
+      "slug": "microsoft/TokenEconomizer",
+      "name": "TokenEconomizer",
+      "url": "https://github.com/microsoft/TokenEconomizer",
+      "capabilities": [
+        "token-cost-control",
+        "agent-plugin",
+        "session-learning"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "agent-cost-optimizer"
+    },
+    {
+      "slug": "ag-ui-protocol/ag-ui",
+      "name": "AG-UI",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "capabilities": [
+        "agent-frontend-protocol",
+        "event-streaming",
+        "ui-state"
+      ],
+      "role": "protocol",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "agent-ui-protocol"
+    },
+    {
+      "slug": "elementalsouls/Claude-BugHunter",
+      "name": "Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "capabilities": [
+        "bug-bounty",
+        "red-team",
+        "claude-code-skills"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "high-security-legal",
+      "recommendation": "bug-bounty-skills-authorized-only"
+    },
+    {
+      "slug": "sherlock-project/sherlock",
+      "name": "Sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "capabilities": [
+        "osint",
+        "username-search"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "osint-username-check"
+    },
+    {
+      "slug": "qybaihe/bla",
+      "name": "BLA (Blind LLM Agents)",
+      "url": "https://github.com/qybaihe/bla",
+      "capabilities": [
+        "release-hardening",
+        "anti-reverse-engineering",
+        "mcp-server"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-security",
+      "recommendation": "release-hardening"
+    },
+    {
+      "slug": "meta/astryx",
+      "name": "Astryx",
+      "url": "https://github.com/meta/astryx",
+      "capabilities": [
+        "design-system",
+        "react-components",
+        "theming"
+      ],
+      "role": "library",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "design-system"
+    },
+    {
+      "slug": "wassgha/rescript",
+      "name": "Rescript",
+      "url": "https://github.com/wassgha/rescript",
+      "capabilities": [
+        "transcript-editing",
+        "video-editing",
+        "on-device"
+      ],
+      "role": "tool",
+      "license": "PolyForm-Noncommercial-1.0.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "transcript-video-editor"
+    },
+    {
+      "slug": "rushindrasinha/youtube-shorts-pipeline",
+      "name": "Verticals (youtube-shorts-pipeline)",
+      "url": "https://github.com/rushindrasinha/youtube-shorts-pipeline",
+      "capabilities": [
+        "shorts-generation",
+        "content-pipeline",
+        "auto-upload"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "shorts-pipeline"
+    },
+    {
+      "slug": "libracoder/kiri",
+      "name": "Kiri",
+      "url": "https://github.com/libracoder/kiri",
+      "capabilities": [
+        "container-runtime",
+        "docker-api",
+        "desktop-replacement"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "container-runtime"
+    },
+    {
+      "slug": "expo/exact",
+      "name": "Exact",
+      "url": "https://github.com/expo/exact",
+      "capabilities": [
+        "cross-platform-runtime",
+        "agent-first",
+        "ui-contract"
+      ],
+      "role": "framework",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "cross-platform-runtime"
+    },
+    {
+      "slug": "RunanywhereAI/trnrt",
+      "name": "TrnRT",
+      "url": "https://github.com/RunanywhereAI/trnrt",
+      "capabilities": [
+        "llm-inference",
+        "trainium",
+        "openai-compatible-api"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "inference-engine"
+    },
+    {
+      "slug": "agentes-chat/agentes-chat",
+      "name": "agentes.chat",
+      "url": "https://github.com/agentes-chat/agentes-chat",
+      "capabilities": [
+        "team-chat",
+        "agent-teammates",
+        "self-hosted"
+      ],
+      "role": "platform",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "agent-team-chat"
+    },
+    {
+      "slug": "chenxiachan/textfold",
+      "name": "TextFold",
+      "url": "https://github.com/chenxiachan/textfold",
+      "capabilities": [
+        "text-summarization",
+        "zoomable-detail",
+        "reading-tool"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "reading-summarizer"
+    },
+    {
+      "slug": "vercel-labs/ui",
+      "name": "UI SDK (vercel-labs/ui)",
+      "url": "https://github.com/vercel-labs/ui",
+      "capabilities": [
+        "headless-ui",
+        "accessibility",
+        "agent-components"
+      ],
+      "role": "library",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "accessible-ui-behaviors"
+    },
+    {
+      "slug": "anefzaoui/misterdownloadmanager",
+      "name": "Mister Download Manager",
+      "url": "https://github.com/anefzaoui/misterdownloadmanager",
+      "capabilities": [
+        "download-manager",
+        "torrent"
+      ],
+      "role": "tool",
+      "license": "GPL-3.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "download-manager"
+    },
+    {
+      "slug": "backnotprop/plannotator",
+      "name": "Plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "capabilities": [
+        "plan-review",
+        "agent-feedback",
+        "diff-annotation"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "agent-plan-review"
+    },
+    {
+      "slug": "tradermonty/claude-trading-skills",
+      "name": "Claude Trading Skills",
+      "url": "https://github.com/tradermonty/claude-trading-skills",
+      "capabilities": [
+        "trading-workflows",
+        "claude-skills",
+        "risk-sizing"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "trading-skills"
+    },
+    {
+      "slug": "Likely7/Veyra-NRVideo",
+      "name": "Veyra",
+      "url": "https://github.com/Likely7/Veyra-NRVideo",
+      "capabilities": [
+        "video-enhancement",
+        "super-resolution",
+        "gpu"
+      ],
+      "role": "tool",
+      "license": "GPL-3.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "video-enhancer"
+    },
+    {
+      "slug": "academa-labs/manimgx",
+      "name": "ManimGX",
+      "url": "https://github.com/academa-labs/manimgx",
+      "capabilities": [
+        "3d-animation",
+        "gpu-rendering",
+        "explainer-video"
+      ],
+      "role": "library",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "animation-engine"
+    },
+    {
+      "slug": "anomalyco/browse",
+      "name": "Browse (OpenCode Browse)",
+      "url": "https://github.com/anomalyco/browse",
+      "capabilities": [
+        "browser-agent",
+        "mcp-server",
+        "real-browser"
+      ],
+      "role": "agent-runtime",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "browser-agent-separate-profile"
+    },
+    {
+      "slug": "Player-YN/BrowserKitten",
+      "name": "Browser Kitten",
+      "url": "https://github.com/Player-YN/BrowserKitten",
+      "capabilities": [
+        "browser-agent",
+        "chrome-extension",
+        "side-panel"
+      ],
+      "role": "agent-runtime",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "browser-agent-separate-profile"
+    },
+    {
+      "slug": "datalab-to/indra",
+      "name": "Indra OCR",
+      "url": "https://github.com/datalab-to/indra",
+      "capabilities": [
+        "ocr",
+        "pdf-to-markdown",
+        "cpu-only"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "ocr-engine"
+    },
+    {
+      "slug": "shadcn-labs/pdfcn",
+      "name": "pdfcn",
+      "url": "https://github.com/shadcn-labs/pdfcn",
+      "capabilities": [
+        "pdf-components",
+        "react",
+        "shadcn"
+      ],
+      "role": "library",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "pdf-component-library"
+    },
+    {
+      "slug": "cactus-compute/cactus",
+      "name": "Cactus",
+      "url": "https://github.com/cactus-compute/cactus",
+      "capabilities": [
+        "on-device-models",
+        "speech",
+        "vision"
+      ],
+      "role": "library",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "on-device-inference"
+    },
+    {
+      "slug": "reacher-z/Awesome-REA",
+      "name": "Awesome-REA",
+      "url": "https://github.com/reacher-z/Awesome-REA",
+      "capabilities": [
+        "reverse-engineering",
+        "tool-catalog",
+        "open-data"
+      ],
+      "role": "dataset",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-security",
+      "recommendation": "re-catalog"
+    },
+    {
+      "slug": "we-promise/sure",
+      "name": "Sure",
+      "url": "https://github.com/we-promise/sure",
+      "capabilities": [
+        "personal-finance",
+        "self-hosted"
+      ],
+      "role": "platform",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "finance-app"
+    },
+    {
+      "slug": "zacharytgray/HyprMac",
+      "name": "HyprMac",
+      "url": "https://github.com/zacharytgray/HyprMac",
+      "capabilities": [
+        "window-management",
+        "macos",
+        "tiling"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "window-manager"
+    },
+    {
+      "slug": "open-jarvis/OpenJarvis",
+      "name": "OpenJarvis",
+      "url": "https://github.com/open-jarvis/OpenJarvis",
+      "capabilities": [
+        "personal-assistant",
+        "local-first",
+        "agents"
+      ],
+      "role": "agent-runtime",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "high-autonomy",
+      "recommendation": "local-assistant"
+    },
+    {
+      "slug": "Jakeschincariol/replica-skill",
+      "name": "replica-skill",
+      "url": "https://github.com/Jakeschincariol/replica-skill",
+      "capabilities": [
+        "app-cloning",
+        "claude-skills",
+        "review-mining"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-data",
+      "recommendation": "clone-and-fix-skills"
+    },
+    {
+      "slug": "BenchUp3D/editor",
+      "name": "BenchUp",
+      "url": "https://github.com/BenchUp3D/editor",
+      "capabilities": [
+        "3d-modeling",
+        "woodworking",
+        "cut-lists"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "woodworking-design"
+    },
+    {
+      "slug": "gettogo/togo",
+      "name": "Togo",
+      "url": "https://github.com/gettogo/togo",
+      "capabilities": [
+        "agent-monitoring",
+        "mobile-app",
+        "ssh"
+      ],
+      "role": "tool",
+      "license": "unknown",
+      "readiness": "experimental",
+      "risk": "medium-autonomy",
+      "recommendation": "agent-monitor"
+    },
+    {
+      "slug": "Zleap-AI/SAG-Wiki",
+      "name": "SAG-Wiki",
+      "url": "https://github.com/Zleap-AI/SAG-Wiki",
+      "capabilities": [
+        "local-knowledge-base",
+        "file-indexing"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "local-kb"
+    },
+    {
+      "slug": "GabrieleLozupone/kokon",
+      "name": "Kokon",
+      "url": "https://github.com/GabrieleLozupone/kokon",
+      "capabilities": [
+        "photo-editing",
+        "local-ai",
+        "prompt-based"
+      ],
+      "role": "tool",
+      "license": "AGPL-3.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "photo-editor"
+    },
+    {
+      "slug": "FluentRead/FluentRead",
+      "name": "FluentRead",
+      "url": "https://github.com/FluentRead/FluentRead",
+      "capabilities": [
+        "translation",
+        "browser-extension",
+        "bilingual-reading"
+      ],
+      "role": "tool",
+      "license": "GPL-3.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "reading-translator"
+    },
+    {
+      "slug": "homeassistant-ai/ha-mcp",
+      "name": "ha-mcp",
+      "url": "https://github.com/homeassistant-ai/ha-mcp",
+      "capabilities": [
+        "home-assistant",
+        "mcp-server",
+        "smart-home"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-autonomy",
+      "recommendation": "home-automation-mcp"
+    },
+    {
+      "slug": "pingdotgg/t3code",
+      "name": "T3 Code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "capabilities": [
+        "agent-control-plane",
+        "claude-code",
+        "codex"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "high-autonomy",
+      "recommendation": "agent-control-plane"
+    },
+    {
+      "slug": "NousResearch/hermes-official-plugins",
+      "name": "Hermes Official Plugins",
+      "url": "https://github.com/NousResearch/hermes-official-plugins",
+      "capabilities": [
+        "agent-plugins",
+        "hermes-agent"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "agent-plugins"
+    },
+    {
+      "slug": "aws/aws-emulator",
+      "name": "AWS Emulator",
+      "url": "https://github.com/aws/aws-emulator",
+      "capabilities": [
+        "aws-emulation",
+        "local-testing"
+      ],
+      "role": "tool",
+      "license": "CC0-1.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "aws-local-testing"
+    },
+    {
+      "slug": "ManimCommunity/manim",
+      "name": "Manim",
+      "url": "https://github.com/ManimCommunity/manim",
+      "capabilities": [
+        "math-animation",
+        "explainer-video"
+      ],
+      "role": "library",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "animation-library"
+    },
+    {
+      "slug": "rustdesk/rustdesk",
+      "name": "RustDesk",
+      "url": "https://github.com/rustdesk/rustdesk",
+      "capabilities": [
+        "remote-desktop",
+        "self-hosted"
+      ],
+      "role": "platform",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "remote-desktop"
+    },
+    {
+      "slug": "n8n-io/n8n",
+      "name": "n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "capabilities": [
+        "workflow-automation",
+        "ai-workflows"
+      ],
+      "role": "platform",
+      "license": "Sustainable-Use-License",
+      "readiness": "production",
+      "risk": "medium-autonomy",
+      "recommendation": "workflow-automation"
+    },
+    {
+      "slug": "Comfy-Org/ComfyUI",
+      "name": "ComfyUI",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "capabilities": [
+        "image-generation",
+        "video-generation",
+        "node-workflows"
+      ],
+      "role": "platform",
+      "license": "GPL-3.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "media-generation"
+    },
+    {
+      "slug": "codecrafters-io/build-your-own-x",
+      "name": "Build Your Own X",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "capabilities": [
+        "learning",
+        "tutorials",
+        "from-scratch"
+      ],
+      "role": "dataset",
+      "license": "CC0-1.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "learning-catalog"
+    },
+    {
+      "slug": "nilbuild/developer-roadmap",
+      "name": "Developer Roadmaps",
+      "url": "https://github.com/nilbuild/developer-roadmap",
+      "capabilities": [
+        "learning",
+        "roadmaps",
+        "career-guides"
+      ],
+      "role": "dataset",
+      "license": "custom-restrictive",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "learning-roadmaps"
+    },
+    {
+      "slug": "donnemartin/system-design-primer",
+      "name": "System Design Primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "capabilities": [
+        "system-design",
+        "interview-prep",
+        "learning"
+      ],
+      "role": "dataset",
+      "license": "CC-BY-4.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "learning-resource"
+    },
+    {
+      "slug": "EbookFoundation/free-programming-books",
+      "name": "Free Programming Books",
+      "url": "https://github.com/EbookFoundation/free-programming-books",
+      "capabilities": [
+        "learning",
+        "books",
+        "resources"
+      ],
+      "role": "dataset",
+      "license": "CC-BY-4.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "learning-catalog"
+    },
+    {
+      "slug": "TheAlgorithms/Python",
+      "name": "The Algorithms — Python",
+      "url": "https://github.com/TheAlgorithms/Python",
+      "capabilities": [
+        "algorithms",
+        "education",
+        "python"
+      ],
+      "role": "library",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "algorithm-reference"
+    },
+    {
+      "slug": "morluto/rea",
+      "name": "REA",
+      "url": "https://github.com/morluto/rea",
+      "capabilities": [
+        "reverse-engineering",
+        "mcp-server",
+        "ghidra"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "medium-security",
+      "recommendation": "re-agent"
+    },
+    {
+      "slug": "net-merge/net-merge",
+      "name": "net-merge",
+      "url": "https://github.com/net-merge/net-merge",
+      "capabilities": [
+        "network-bonding",
+        "wifi",
+        "hotspot"
+      ],
+      "role": "tool",
+      "license": "MIT",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "connection-bonding"
+    },
+    {
+      "slug": "localsend/localsend",
+      "name": "LocalSend",
+      "url": "https://github.com/localsend/localsend",
+      "capabilities": [
+        "file-sharing",
+        "local-network"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "file-sharing"
+    },
+    {
+      "slug": "jellyfin/jellyfin",
+      "name": "Jellyfin",
+      "url": "https://github.com/jellyfin/jellyfin",
+      "capabilities": [
+        "media-server",
+        "self-hosted",
+        "streaming"
+      ],
+      "role": "platform",
+      "license": "GPL-2.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "media-server"
+    },
+    {
+      "slug": "immich-app/immich",
+      "name": "Immich",
+      "url": "https://github.com/immich-app/immich",
+      "capabilities": [
+        "photo-backup",
+        "self-hosted"
+      ],
+      "role": "platform",
+      "license": "AGPL-3.0",
+      "readiness": "production",
+      "risk": "medium-data",
+      "recommendation": "photo-backup"
+    },
+    {
+      "slug": "Kareadita/Kavita",
+      "name": "Kavita",
+      "url": "https://github.com/Kareadita/Kavita",
+      "capabilities": [
+        "ebook-server",
+        "comics",
+        "manga"
+      ],
+      "role": "platform",
+      "license": "GPL-3.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "reading-server"
+    },
+    {
+      "slug": "navidrome/navidrome",
+      "name": "Navidrome",
+      "url": "https://github.com/navidrome/navidrome",
+      "capabilities": [
+        "music-streaming",
+        "self-hosted"
+      ],
+      "role": "platform",
+      "license": "GPL-3.0",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "music-server"
+    },
+    {
+      "slug": "pi-hole/pi-hole",
+      "name": "Pi-hole",
+      "url": "https://github.com/pi-hole/pi-hole",
+      "capabilities": [
+        "ad-blocking",
+        "dns",
+        "network"
+      ],
+      "role": "platform",
+      "license": "EUPL-1.2",
+      "readiness": "production",
+      "risk": "low",
+      "recommendation": "network-adblock"
+    },
+    {
+      "slug": "JuneYaooo/rea-video",
+      "name": "rea-video",
+      "url": "https://github.com/JuneYaooo/rea-video",
+      "capabilities": [
+        "video-analysis",
+        "remake-planning",
+        "agent-skill"
+      ],
+      "role": "tool",
+      "license": "Apache-2.0",
+      "readiness": "experimental",
+      "risk": "low",
+      "recommendation": "video-remake-skill"
+    }
   ]
 }
