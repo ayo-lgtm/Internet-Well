@@ -1,0 +1,18 @@
+# Catalog addition — 2026-10-23
+
+**Change:** one candidate appended to `catalog/curated-repositories.json` (76 → 77 entries). Nothing else modified. Per the catalog lifecycle, this is a **research candidate, not a registry approval** — admission still requires the METHODOLOGY.md pipeline (pinning, license/security review, sandboxed evaluation, human review).
+
+## Added: FreeHire
+
+- **Entry:** `strelov1/freehire` — role `platform`, license `MIT`, readiness `production`, risk `medium-data`, recommendation `jobs-data-source`; capabilities: job-listing-aggregation, ats-crawling, job-search-api, listing-deduplication.
+- **Source of the lead:** Instagram reel by @jamesmbuilds (posted 2026-10-22), "GitHub repos that feel illegal to use." The reel gates its links behind a comment keyword, so the repo was identified from the video's content and confirmed at the primary source.
+- **Verified 2026-10-23 (primary sources):** repository is public and actively maintained (pushed the same day) `[V]`; LICENSE file read directly — MIT, © 2026 freehire contributors `[V]`; a public API endpoint is documented in the repo README (`freehire.me/api/v1/jobs`, no key) `[V]`.
+- **API endpoint correction (verified 2026-10-23 ~11:50 CT against https://freehire.me/docs/api v1.0.0):** filters (keyword, location, remote, seniority, etc.) ONLY work on `GET /api/v1/jobs/search` — the plain `GET /api/v1/jobs` endpoint ignores every filter except limit/offset (ignored params are listed in `meta.ignored_params`). First live run: `https://freehire.me/api/v1/jobs/search?category=legal&work_mode=remote&regions=north_america&posted_within_days=30&sort=posted_at&order=desc&limit=25` returned ~20 postings; key facets verified working: `q` (full-text; `title:` prefix), `work_mode` (remote/hybrid/onsite), `category` (includes non-IT `legal` — the catalog is NOT IT-only), `seniority` (intern→c_level), `regions`/`countries`/`cities`/`metros` (one OR group), `salary_min/max`, `posted_within_days`. Docs note the catalog's `reality` signal flags date-refreshed-without-change postings (used to vet the Five9 hit).
+- **Vendor claims, not independently audited:** 3.3M+ live postings from 470,000+ companies across 124 ATS platforms / 320 sources, deduplicated into one schema `[C]` (repo README).
+- **Why it fits the Well:** it applies the registry's own evidence standard to job data — postings crawled directly from company ATS pages (Workday, Greenhouse, Lever, Ashby, iCIMS), each linking to the original posting, instead of aggregator reposts. Candidate use: a jobs data source for founder/agent workflows (cf. the first-party JobPilot fixture already in this catalog).
+- **Risk note:** third-party crawled data — provenance and freshness rest on the operator's pipeline; that is why the risk tag is `medium-data` and why registry admission should include a data-quality evaluation, not just a license check.
+
+## Seen in the same reel, not added
+
+- **Design-inspiration repo** (award-site code, React/GSAP/Tailwind): the exact repository could not be confirmed from public material — the reel never names it on screen and the links are DM-gated. Not cataloged; the registry does not guess URLs.
+- **Turnitout** (`AhmadHassan-BTed/Turnitout-Humanizer`): a plagiarism / AI-detector evasion and watermark-stripping tool. Excluded on purpose and evidence grounds — its function is defeating verification systems, and its efficacy claims are unverified marketing. Recommend filing a preserved rejection in `rejected/` so future agents do not re-recommend it; left unfiled here because this change was scoped to one addition.
