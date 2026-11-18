@@ -13,6 +13,7 @@ from typing import Any, Iterable
 SOURCE_ROOT = Path(__file__).resolve().parents[1]
 GRAPH_REL = Path("integrations/agent-brain/capability-graph.json")
 BUNDLES_REL = Path("bundles/agent-brain-bundles.json")
+CATALOG_REL = Path("catalog/curated-repositories.json")
 TOKEN_RE = re.compile(r"[a-z0-9][a-z0-9+._-]*")
 
 
@@ -120,6 +121,42 @@ def rank(query: str, kind: str | None = None, limit: int = 8, include_restricted
     return ranked[: max(1, limit)]
 
 
+def catalog_candidates(query: str, limit: int = 8) -> list[dict[str, Any]]:
+    """Discover candidates without promoting them into governed bundle resources."""
+    try:
+        catalog_path = _resolve(CATALOG_REL)
+    except BrainError:
+        # Older installed releases may not include the optional candidate catalog.
+        return []
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    q = tokens(query)
+    if not q:
+        return []
+    # A catalog duplicate must never bypass a graph resource's restrictions.
+    graph_sources = {str(n.get("source", "")).lower().rstrip("/") for n in graph()["nodes"]}
+    candidates = []
+    for repo in catalog["repositories"]:
+        if repo["url"].lower().rstrip("/") in graph_sources:
+            continue
+        hay = tokens(" ".join([repo["name"], repo["slug"], *repo["capabilities"]]))
+        overlap = len(q & hay)
+        if not overlap:
+            continue
+        candidates.append({
+            **repo,
+            "id": f"catalog:{repo['slug']}",
+            "kind": "research-candidate",
+            "source": repo["url"],
+            "evidence_status": "research-candidate-unverified",
+            "evidence_score": 0.0,
+            "match_score": overlap,
+            "execution_authorized": False,
+            "restrictions": ["candidate-only", "verify-license-and-security", "pin-and-test-before-adoption"],
+        })
+    candidates.sort(key=lambda r: (-r["match_score"], r["name"].lower(), r["slug"].lower()))
+    return candidates[:max(1, limit)]
+
+
 def route(goal: str) -> dict[str, Any]:
     goal_l = goal.lower()
     goal_tokens = tokens(goal)
@@ -143,6 +180,7 @@ def route(goal: str) -> dict[str, Any]:
                 preferred.append({"id": rid, "kind": node.get("kind"), "evidence_score": evidence_score(node), "restrictions": node.get("restrictions", [])})
         return {
             "goal": goal,
+            "candidate_resources": catalog_candidates(goal),
             "bundle": selected["id"],
             "required_capabilities": selected.get("capabilities", []),
             "preferred_resources": preferred,
@@ -152,6 +190,7 @@ def route(goal: str) -> dict[str, Any]:
         }
     return {
         "goal": goal,
+        "candidate_resources": catalog_candidates(goal),
         "bundle": None,
         "required_capabilities": [],
         "preferred_resources": rank(goal),
@@ -161,7 +200,8 @@ def route(goal: str) -> dict[str, Any]:
 
 
 def find_capability(capability: str, limit: int = 8) -> dict[str, Any]:
-    return {"capability": capability, "results": rank(capability, limit=limit)}
+    results = rank(capability, limit=limit) + catalog_candidates(capability, limit=limit)
+    return {"capability": capability, "results": results[:max(1, limit)]}
 
 
 def recommend_stack(goal: str) -> dict[str, Any]:
@@ -246,7 +286,7 @@ def mcp_tools() -> list[dict[str, Any]]:
     def tool(name: str, description: str, props: dict[str, Any], required: list[str]) -> dict[str, Any]:
         return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": props, "required": required, "additionalProperties": False}}
     return [
-        tool("find_capability", "Rank governed resources for a capability.", {"capability": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 20}}, ["capability"]),
+        tool("find_capability", "Find governed resources, then explicitly unverified catalog candidates, for a capability.", {"capability": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 20}}, ["capability"]),
         tool("recommend_stack", "Route a product/agent goal to the best governed bundle.", {"goal": {"type": "string"}}, ["goal"]),
         tool("find_api", "Route an API need to Internet-Well's governed API discovery source.", {"query": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 20}}, ["query"]),
         tool("get_skill", "Rank governed skills/workflow resources.", {"query": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 20}}, ["query"]),

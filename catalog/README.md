@@ -18,3 +18,5 @@ research candidate
 ```
 
 `curated-repositories.json` is machine-readable and powers the experimental project detector and resource selector. The selector must prefer validated registry entries over candidate-only entries and must clearly label candidate recommendations as unverified.
+
+The Agent Brain also searches this catalog through `find-capability`. Governed graph matches come first; catalog matches retain their license, risk, and recommendation notes and are explicitly labeled `research-candidate-unverified` with no execution authority. `recommend-stack` and implementation plans expose matching candidates separately in `candidate_resources`; catalog additions never become preferred bundle resources automatically. New catalog entries are read directly, so no generated graph update is required for discovery.

@@ -57,6 +57,7 @@ license-files = ["LICENSE", "LICENSE-CONTENT", "LICENSES.md"]
 include = ["automation*"]
 
 [tool.setuptools.data-files]
+"catalog" = ["catalog/curated-repositories.json"]
 "integrations/vibe" = ["integrations/vibe/manifest.json", "integrations/vibe/ponytail.json", "integrations/vibe/screenshot-resources.json", "integrations/vibe/apple-design-skills.json"]
 "integrations/agent-systems" = ["integrations/agent-systems/wassim-agent-systems.json"]
 "integrations/api-discovery" = ["integrations/api-discovery/public-apis.json"]

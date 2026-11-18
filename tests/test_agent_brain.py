@@ -2,11 +2,44 @@ import json
 import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 
 from automation import agent_brain, upstream_verifier
 
 
 class AgentBrainTests(unittest.TestCase):
+    def test_catalog_additions_are_discoverable_without_approval(self):
+        for name, slug in [("FreeHire", "strelov1/freehire"),
+                           ("Plannotator", "backnotprop/plannotator"),
+                           ("VoiceStudio", "debpalash/VoiceStudio")]:
+            with self.subTest(name=name):
+                results = agent_brain.find_capability(name)["results"]
+                candidate = next((r for r in results if r.get("slug") == slug), None)
+                self.assertIsNotNone(candidate)
+                self.assertEqual(candidate["evidence_status"], "research-candidate-unverified")
+                self.assertEqual(candidate["evidence_score"], 0)
+                self.assertFalse(candidate["execution_authorized"])
+                self.assertTrue(candidate["license"])
+                self.assertIn("verify-license-and-security", candidate["restrictions"])
+
+    def test_recommendations_expose_candidates_separately_from_bundle(self):
+        result = agent_brain.recommend_stack("build a production web app with Plannotator")
+        self.assertIn("backnotprop/plannotator", {r["slug"] for r in result["candidate_resources"]})
+        self.assertNotIn("catalog:backnotprop/plannotator", {r["id"] for r in result["preferred_resources"]})
+
+    def test_candidate_search_retains_risks_and_limits(self):
+        result = agent_brain.find_capability("VoiceStudio", limit=1)["results"]
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["risk"], "medium-data")
+        self.assertEqual(result[0]["recommendation"], "voice-tool-personal-use")
+        self.assertEqual(agent_brain.find_capability("zzzz-no-such-resource-987")["results"], [])
+
+    def test_catalog_cannot_bypass_restricted_graph_resource(self):
+        restricted = {"nodes": [{"id": "restricted-voice", "kind": "restricted-reference",
+                                 "source": "https://github.com/debpalash/VoiceStudio"}]}
+        with patch.object(agent_brain, "graph", return_value=restricted):
+            self.assertEqual(agent_brain.find_capability("VoiceStudio")["results"], [])
+
     def test_graph_loads_and_scores(self):
         g = agent_brain.graph()
         self.assertGreaterEqual(len(g["nodes"]), 10)

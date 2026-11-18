@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated_at": "2026-07-29",
+  "generated_at": "2026-11-18",
   "status": "research-candidates",
   "policy": "Candidate entries are not approved registry records. Prefer validated registry entries and label all candidate-only recommendations as unverified.",
   "repositories": [
@@ -1152,11 +1152,12 @@
         "transcription",
         "dubbing"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "AGPL-3.0",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "voice-tool-personal-use"
+      "recommendation": "voice-tool-personal-use",
+      "resource_type": "tool"
     },
     {
       "slug": "hugohe3/ppt-master",
@@ -1167,11 +1168,12 @@
         "document-to-pptx",
         "agent-skill"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "unknown",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "deck-generation-skill"
+      "recommendation": "deck-generation-skill",
+      "resource_type": "tool"
     },
     {
       "slug": "opf/openproject",
@@ -1212,11 +1214,12 @@
         "report-generation",
         "jev-judgments"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "seo-audit-skill"
+      "recommendation": "seo-audit-skill",
+      "resource_type": "tool"
     },
     {
       "slug": "TIGER-AI-Lab/WebsiteBench",
@@ -1227,11 +1230,12 @@
         "web-rebuild-eval",
         "visual-similarity"
       ],
-      "role": "benchmark",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "agent-eval-reference"
+      "recommendation": "agent-eval-reference",
+      "resource_type": "benchmark"
     },
     {
       "slug": "GoogleChrome/modern-web-guidance",
@@ -1242,11 +1246,12 @@
         "agent-skills",
         "legacy-scan"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "web-guidance-skill-pack"
+      "recommendation": "web-guidance-skill-pack",
+      "resource_type": "tool"
     },
     {
       "slug": "tt-a1i/archify",
@@ -1257,11 +1262,12 @@
         "architecture-diagram",
         "agent-skill"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "codebase-visualizer"
+      "recommendation": "codebase-visualizer",
+      "resource_type": "tool"
     },
     {
       "slug": "Gitlawb/openclaude",
@@ -1287,11 +1293,12 @@
         "free-tier-aggregation",
         "openai-compatible-api"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "free-tier-router"
+      "recommendation": "free-tier-router",
+      "resource_type": "tool"
     },
     {
       "slug": "D4Vinci/Scrapling",
@@ -1302,11 +1309,12 @@
         "anti-bot",
         "agent-research"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "BSD-3-Clause",
       "readiness": "production",
       "risk": "medium-data",
-      "recommendation": "scraping-framework"
+      "recommendation": "scraping-framework",
+      "resource_type": "tool"
     },
     {
       "slug": "usestrix/strix",
@@ -1316,11 +1324,12 @@
         "ai-pentesting",
         "vulnerability-validation"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "unknown",
       "readiness": "production",
       "risk": "high-security-legal",
-      "recommendation": "pentest-agent-authorized-only"
+      "recommendation": "pentest-agent-authorized-only",
+      "resource_type": "tool"
     },
     {
       "slug": "yt-dlp/yt-dlp",
@@ -1330,11 +1339,12 @@
         "video-download",
         "media-extraction"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "Unlicense",
       "readiness": "production",
       "risk": "medium-data",
-      "recommendation": "media-downloader"
+      "recommendation": "media-downloader",
+      "resource_type": "tool"
     },
     {
       "slug": "NVIDIA/SkillEvaluator",
@@ -1345,11 +1355,12 @@
         "quality-gates",
         "agent-eval"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "skill-quality-gate"
+      "recommendation": "skill-quality-gate",
+      "resource_type": "tool"
     },
     {
       "slug": "microsoft/TokenEconomizer",
@@ -1360,11 +1371,12 @@
         "agent-plugin",
         "session-learning"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "agent-cost-optimizer"
+      "recommendation": "agent-cost-optimizer",
+      "resource_type": "tool"
     },
     {
       "slug": "ag-ui-protocol/ag-ui",
@@ -1375,11 +1387,12 @@
         "event-streaming",
         "ui-state"
       ],
-      "role": "protocol",
+      "role": "framework",
       "license": "MIT",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "agent-ui-protocol"
+      "recommendation": "agent-ui-protocol",
+      "resource_type": "protocol"
     },
     {
       "slug": "elementalsouls/Claude-BugHunter",
@@ -1390,11 +1403,12 @@
         "red-team",
         "claude-code-skills"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "high-security-legal",
-      "recommendation": "bug-bounty-skills-authorized-only"
+      "recommendation": "bug-bounty-skills-authorized-only",
+      "resource_type": "tool"
     },
     {
       "slug": "sherlock-project/sherlock",
@@ -1404,11 +1418,12 @@
         "osint",
         "username-search"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "MIT",
       "readiness": "production",
       "risk": "medium-data",
-      "recommendation": "osint-username-check"
+      "recommendation": "osint-username-check",
+      "resource_type": "tool"
     },
     {
       "slug": "qybaihe/bla",
@@ -1419,11 +1434,12 @@
         "anti-reverse-engineering",
         "mcp-server"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-security",
-      "recommendation": "release-hardening"
+      "recommendation": "release-hardening",
+      "resource_type": "tool"
     },
     {
       "slug": "meta/astryx",
@@ -1434,11 +1450,12 @@
         "react-components",
         "theming"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "MIT",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "design-system"
+      "recommendation": "design-system",
+      "resource_type": "library"
     },
     {
       "slug": "wassgha/rescript",
@@ -1449,11 +1466,12 @@
         "video-editing",
         "on-device"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "PolyForm-Noncommercial-1.0.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "transcript-video-editor"
+      "recommendation": "transcript-video-editor",
+      "resource_type": "tool"
     },
     {
       "slug": "rushindrasinha/youtube-shorts-pipeline",
@@ -1464,11 +1482,12 @@
         "content-pipeline",
         "auto-upload"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "shorts-pipeline"
+      "recommendation": "shorts-pipeline",
+      "resource_type": "tool"
     },
     {
       "slug": "libracoder/kiri",
@@ -1479,11 +1498,12 @@
         "docker-api",
         "desktop-replacement"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "container-runtime"
+      "recommendation": "container-runtime",
+      "resource_type": "tool"
     },
     {
       "slug": "expo/exact",
@@ -1509,11 +1529,12 @@
         "trainium",
         "openai-compatible-api"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "inference-engine"
+      "recommendation": "inference-engine",
+      "resource_type": "tool"
     },
     {
       "slug": "agentes-chat/agentes-chat",
@@ -1539,11 +1560,12 @@
         "zoomable-detail",
         "reading-tool"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "reading-summarizer"
+      "recommendation": "reading-summarizer",
+      "resource_type": "tool"
     },
     {
       "slug": "vercel-labs/ui",
@@ -1554,11 +1576,12 @@
         "accessibility",
         "agent-components"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "accessible-ui-behaviors"
+      "recommendation": "accessible-ui-behaviors",
+      "resource_type": "library"
     },
     {
       "slug": "anefzaoui/misterdownloadmanager",
@@ -1568,11 +1591,12 @@
         "download-manager",
         "torrent"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "GPL-3.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "download-manager"
+      "recommendation": "download-manager",
+      "resource_type": "tool"
     },
     {
       "slug": "backnotprop/plannotator",
@@ -1583,11 +1607,12 @@
         "agent-feedback",
         "diff-annotation"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "agent-plan-review"
+      "recommendation": "agent-plan-review",
+      "resource_type": "tool"
     },
     {
       "slug": "tradermonty/claude-trading-skills",
@@ -1598,11 +1623,12 @@
         "claude-skills",
         "risk-sizing"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "trading-skills"
+      "recommendation": "trading-skills",
+      "resource_type": "tool"
     },
     {
       "slug": "Likely7/Veyra-NRVideo",
@@ -1613,11 +1639,12 @@
         "super-resolution",
         "gpu"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "GPL-3.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "video-enhancer"
+      "recommendation": "video-enhancer",
+      "resource_type": "tool"
     },
     {
       "slug": "academa-labs/manimgx",
@@ -1628,11 +1655,12 @@
         "gpu-rendering",
         "explainer-video"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "animation-engine"
+      "recommendation": "animation-engine",
+      "resource_type": "library"
     },
     {
       "slug": "anomalyco/browse",
@@ -1673,11 +1701,12 @@
         "pdf-to-markdown",
         "cpu-only"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "ocr-engine"
+      "recommendation": "ocr-engine",
+      "resource_type": "tool"
     },
     {
       "slug": "shadcn-labs/pdfcn",
@@ -1688,11 +1717,12 @@
         "react",
         "shadcn"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "pdf-component-library"
+      "recommendation": "pdf-component-library",
+      "resource_type": "library"
     },
     {
       "slug": "cactus-compute/cactus",
@@ -1703,11 +1733,12 @@
         "speech",
         "vision"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "on-device-inference"
+      "recommendation": "on-device-inference",
+      "resource_type": "library"
     },
     {
       "slug": "reacher-z/Awesome-REA",
@@ -1718,11 +1749,12 @@
         "tool-catalog",
         "open-data"
       ],
-      "role": "dataset",
+      "role": "reference-implementation",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-security",
-      "recommendation": "re-catalog"
+      "recommendation": "re-catalog",
+      "resource_type": "dataset"
     },
     {
       "slug": "we-promise/sure",
@@ -1747,11 +1779,12 @@
         "macos",
         "tiling"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "window-manager"
+      "recommendation": "window-manager",
+      "resource_type": "tool"
     },
     {
       "slug": "open-jarvis/OpenJarvis",
@@ -1777,11 +1810,12 @@
         "claude-skills",
         "review-mining"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-data",
-      "recommendation": "clone-and-fix-skills"
+      "recommendation": "clone-and-fix-skills",
+      "resource_type": "tool"
     },
     {
       "slug": "BenchUp3D/editor",
@@ -1792,11 +1826,12 @@
         "woodworking",
         "cut-lists"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "woodworking-design"
+      "recommendation": "woodworking-design",
+      "resource_type": "tool"
     },
     {
       "slug": "gettogo/togo",
@@ -1807,11 +1842,12 @@
         "mobile-app",
         "ssh"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "unknown",
       "readiness": "experimental",
       "risk": "medium-autonomy",
-      "recommendation": "agent-monitor"
+      "recommendation": "agent-monitor",
+      "resource_type": "tool"
     },
     {
       "slug": "Zleap-AI/SAG-Wiki",
@@ -1821,11 +1857,12 @@
         "local-knowledge-base",
         "file-indexing"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "local-kb"
+      "recommendation": "local-kb",
+      "resource_type": "tool"
     },
     {
       "slug": "GabrieleLozupone/kokon",
@@ -1836,11 +1873,12 @@
         "local-ai",
         "prompt-based"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "AGPL-3.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "photo-editor"
+      "recommendation": "photo-editor",
+      "resource_type": "tool"
     },
     {
       "slug": "FluentRead/FluentRead",
@@ -1851,11 +1889,12 @@
         "browser-extension",
         "bilingual-reading"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "GPL-3.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "reading-translator"
+      "recommendation": "reading-translator",
+      "resource_type": "tool"
     },
     {
       "slug": "homeassistant-ai/ha-mcp",
@@ -1866,11 +1905,12 @@
         "mcp-server",
         "smart-home"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-autonomy",
-      "recommendation": "home-automation-mcp"
+      "recommendation": "home-automation-mcp",
+      "resource_type": "tool"
     },
     {
       "slug": "pingdotgg/t3code",
@@ -1881,11 +1921,12 @@
         "claude-code",
         "codex"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "MIT",
       "readiness": "production",
       "risk": "high-autonomy",
-      "recommendation": "agent-control-plane"
+      "recommendation": "agent-control-plane",
+      "resource_type": "tool"
     },
     {
       "slug": "NousResearch/hermes-official-plugins",
@@ -1895,11 +1936,12 @@
         "agent-plugins",
         "hermes-agent"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "agent-plugins"
+      "recommendation": "agent-plugins",
+      "resource_type": "tool"
     },
     {
       "slug": "aws/aws-emulator",
@@ -1909,11 +1951,12 @@
         "aws-emulation",
         "local-testing"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "CC0-1.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "aws-local-testing"
+      "recommendation": "aws-local-testing",
+      "resource_type": "tool"
     },
     {
       "slug": "ManimCommunity/manim",
@@ -1923,11 +1966,12 @@
         "math-animation",
         "explainer-video"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "MIT",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "animation-library"
+      "recommendation": "animation-library",
+      "resource_type": "library"
     },
     {
       "slug": "rustdesk/rustdesk",
@@ -1981,11 +2025,12 @@
         "tutorials",
         "from-scratch"
       ],
-      "role": "dataset",
+      "role": "reference-implementation",
       "license": "CC0-1.0",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "learning-catalog"
+      "recommendation": "learning-catalog",
+      "resource_type": "dataset"
     },
     {
       "slug": "nilbuild/developer-roadmap",
@@ -1996,11 +2041,12 @@
         "roadmaps",
         "career-guides"
       ],
-      "role": "dataset",
+      "role": "reference-implementation",
       "license": "custom-restrictive",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "learning-roadmaps"
+      "recommendation": "learning-roadmaps",
+      "resource_type": "dataset"
     },
     {
       "slug": "donnemartin/system-design-primer",
@@ -2011,11 +2057,12 @@
         "interview-prep",
         "learning"
       ],
-      "role": "dataset",
+      "role": "reference-implementation",
       "license": "CC-BY-4.0",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "learning-resource"
+      "recommendation": "learning-resource",
+      "resource_type": "dataset"
     },
     {
       "slug": "EbookFoundation/free-programming-books",
@@ -2026,11 +2073,12 @@
         "books",
         "resources"
       ],
-      "role": "dataset",
+      "role": "reference-implementation",
       "license": "CC-BY-4.0",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "learning-catalog"
+      "recommendation": "learning-catalog",
+      "resource_type": "dataset"
     },
     {
       "slug": "TheAlgorithms/Python",
@@ -2041,11 +2089,12 @@
         "education",
         "python"
       ],
-      "role": "library",
+      "role": "framework",
       "license": "MIT",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "algorithm-reference"
+      "recommendation": "algorithm-reference",
+      "resource_type": "library"
     },
     {
       "slug": "morluto/rea",
@@ -2056,11 +2105,12 @@
         "mcp-server",
         "ghidra"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "medium-security",
-      "recommendation": "re-agent"
+      "recommendation": "re-agent",
+      "resource_type": "tool"
     },
     {
       "slug": "net-merge/net-merge",
@@ -2071,11 +2121,12 @@
         "wifi",
         "hotspot"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "MIT",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "connection-bonding"
+      "recommendation": "connection-bonding",
+      "resource_type": "tool"
     },
     {
       "slug": "localsend/localsend",
@@ -2085,11 +2136,12 @@
         "file-sharing",
         "local-network"
       ],
-      "role": "tool",
+      "role": "production-tool",
       "license": "Apache-2.0",
       "readiness": "production",
       "risk": "low",
-      "recommendation": "file-sharing"
+      "recommendation": "file-sharing",
+      "resource_type": "tool"
     },
     {
       "slug": "jellyfin/jellyfin",
@@ -2173,11 +2225,12 @@
         "remake-planning",
         "agent-skill"
       ],
-      "role": "tool",
+      "role": "research-tool",
       "license": "Apache-2.0",
       "readiness": "experimental",
       "risk": "low",
-      "recommendation": "video-remake-skill"
+      "recommendation": "video-remake-skill",
+      "resource_type": "tool"
     }
   ]
 }
