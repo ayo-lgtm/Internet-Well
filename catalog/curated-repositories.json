@@ -2254,6 +2254,24 @@
       "readiness": "experimental",
       "risk": "low",
       "recommendation": "research-skill-pack"
+    },
+    {
+      "slug": "ai-job-search-dev/ai-job-search",
+      "name": "AI Job Search",
+      "url": "https://github.com/ai-job-search-dev/ai-job-search",
+      "capabilities": [
+        "job-fit-evaluation",
+        "tailored-cv-generation",
+        "cover-letter-drafting",
+        "application-tracking",
+        "interview-preparation",
+        "prompt-injection-guarding"
+      ],
+      "role": "reference-implementation",
+      "license": "MIT",
+      "readiness": "production",
+      "risk": "high-employment",
+      "recommendation": "job-application-agent-reference"
     }
   ]
 }
