@@ -27,6 +27,19 @@ A well-documented, governance-aware reference for an agentic job-application wor
 - Gmail/Notion connectors grant access to a mailbox/workspace; treat as new-provider data processing requiring explicit authorization.
 - Not for: bulk/automated application spam, auto-submission, or misrepresenting candidate experience.
 
+## Upstream test run — 2026-11-19 (authorized by the founder)
+
+Tag `v2.0.0` (`745e6770dbcfb524ee245c89be0ff8df95924919`), Python 3.13.18, isolated venv with CI's pins only (`pyyaml`, `openpyxl==3.1.5`); mirrors the Python jobs in `.github/workflows/ci.yml`.
+
+| Check | Result |
+|---|---|
+| `tools/lint_skills.py` | OK — 3 skills, 12 commands, settings.json |
+| `tools/check_framework_version.py` | OK |
+| `tools/security_guards.py` | OK — permissions/hooks allowlists, gitignore rules, package manifests, skill/command allowed-tools, agent tools |
+| `python -m unittest discover -s tests -t .` | **957 tests, OK, 1 skipped** (`test_refuses_out_inside_repo_spelled_in_another_case`: needs a case-insensitive filesystem) |
+
+Working tree unchanged after the run. **Not run:** the Bun/TypeScript CI jobs (portal typecheck), the Windows leg, and any end-to-end `/setup`/`/scrape`/`/apply` session — those need Claude Code, LaTeX, network access and personal data. A passing unit suite is not evidence that the agent workflow is correct or that its prompt-injection defenses hold against real postings.
+
 ## Not done
 
-No upstream code was installed or executed; no registry record, bundle, or capability-graph node was created. Upstream test suite not run.
+No portal CLIs or `bun install`; no registry record, bundle, or capability-graph node was created.
